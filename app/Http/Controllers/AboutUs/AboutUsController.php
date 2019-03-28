@@ -14,7 +14,8 @@ class AboutUsController extends Controller
      */
     public function index()
     {
-        //
+        $aboutus=AboutUs::aboutus_index();
+        return view('admin.about_us.index',compact('aboutus'));
     }
 
     /**
@@ -24,7 +25,7 @@ class AboutUsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.about_us.create');
     }
 
     /**
@@ -35,7 +36,12 @@ class AboutUsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $description=$request['description'];
+        $address=$request['address'];
+        $lat=$request['lat'];
+        $lang=$request['lang'];
+       $aboutus=AboutUs::aboutus_insert($description,$address,$lat,$lang);
+        return redirect('admin/about us/index');     
     }
 
     /**
@@ -46,7 +52,7 @@ class AboutUsController extends Controller
      */
     public function show(AboutUs $aboutUs)
     {
-        //
+        
     }
 
     /**
@@ -55,9 +61,10 @@ class AboutUsController extends Controller
      * @param  \App\AboutUs  $aboutUs
      * @return \Illuminate\Http\Response
      */
-    public function edit(AboutUs $aboutUs)
+    public function edit($id)
     {
-        //
+        $aboutus=AboutUs::aboutus_show($id);
+        return view('admin.about_us.update',compact('aboutus'));
     }
 
     /**
@@ -69,7 +76,13 @@ class AboutUsController extends Controller
      */
     public function update(Request $request, AboutUs $aboutUs)
     {
-        //
+        $id=$request['id'];
+        $description=$request['description'];
+        $address=$request['address'];
+        $lat=$request['lat'];
+        $lang=$request['lang'];
+       $aboutus=AboutUs::aboutus_update($id,$description,$address,$lat,$lang);
+        return redirect('admin/about us/index');   
     }
 
     /**
@@ -78,8 +91,9 @@ class AboutUsController extends Controller
      * @param  \App\AboutUs  $aboutUs
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AboutUs $aboutUs)
+    public function delete($id)
     {
-        //
+        $aboutus=AboutUs::aboutus_delete($id);
+        return redirect('admin/about us/index');  
     }
 }
