@@ -61,7 +61,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="/admin/about us/index">About us </a>
-            <a class="collapse-item" href="cards.html">Cards</a>
+            <a class="collapse-item" href="/admin/company/index">Company</a>
           </div>
         </div>
       </li>
