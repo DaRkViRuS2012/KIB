@@ -41,4 +41,9 @@ class Company extends Model
     	$company=Company::find($id);
     	$company->delete();
     }
+        public static function company_show($id)
+    {
+        $company=Company::find($id);
+        return $company;
+    }
 }
