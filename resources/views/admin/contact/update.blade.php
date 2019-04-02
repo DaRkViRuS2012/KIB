@@ -25,36 +25,25 @@
 @endif
 
   <div class="col-6">
-<form  class="container" action='/admin/about us/update/{{$aboutus->id}}' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/{{Request::segment(2)}}/update/{{$contact->id}}' method="POST" enctype="multipart/form-data">
   @csrf
 
-        <div class="form-group">
-    <label for="exampleInputEmail1">about us Description</label>
-    <textarea name="description" class="form-control" rows="5" id="comment" required>{{$aboutus->description}}</textarea>
-    
-  </div>
-
+ 
 
         <div class="form-group">
-    <label for="exampleInputEmail1">about us address</label>
-    <input name="address" class="form-control"  id="comment" required value="{{$aboutus->address}}">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} type</label>
+    <input name="type" class="form-control" id="comment" required value="{{$contact->type}}">
+    
+  </div>
+
+         <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} data</label>
+    <input name="data" class="form-control" id="comment" required value="{{$contact->data}}">
     
   </div>
 
 
-  <div id="us2" style="width: 500px; height: 400px;"></div>
 
-       <div class="form-group">
-    <label for="exampleInputEmail1">lat</label>
-    <input name="lat" class="form-control" id="lat" required value="{{$aboutus->lat}}">
-    
-  </div>
-
-       <div class="form-group">
-    <label for="exampleInputEmail1">lang</label>
-    <input name="lang" class="form-control"  id="lang" required value="{{$aboutus->lang}}">
-    
-  </div>
 
   <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Update {{Request::segment(2)}}</button>
 </form>
@@ -78,37 +67,6 @@
 
   <!-- Page level custom scripts -->
   <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
-
-
-<script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
-<script src="{{ asset('js/locationpicker.jquery.js') }}"></script>
-
-
-  <script type="text/javascript">
-    $('#us2').locationpicker(
-
-    {
-enableAutocomplete: true,
-    enableReverseGeocode: true,
-  radius: 0,
-  inputBinding: {
-    latitudeInput: $('#lat'),
-    longitudeInput: $('#lang'),
-    radiusInput: $('#us2-radius'),
-
-  },
-  onchanged: function (currentLocation, radius, isMarkerDropped) {
-        var addressComponents = $(this).locationpicker('map').location.addressComponents;
-    console.log(currentLocation);  //latlon  
-    updateControls(addressComponents); //Data
-    }
-
-});
-
-function updateControls(addressComponents) {
-  console.log(addressComponents);
-}
-  </script>
 @endsection
 
 

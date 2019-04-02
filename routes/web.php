@@ -37,3 +37,10 @@ Route::post('/admin/company/create','CompanyController@store');
 Route::get('/admin/company/update/{id}','CompanyController@edit');
 Route::post('/admin/company/update/{id}','CompanyController@update');
 Route::get('/admin/company/delete/{id}','CompanyController@delete');
+//*********************************************************************************************
+Route::get('/admin/contact/index','ContactController@index');
+Route::get('/admin/contact/create','ContactController@create');
+Route::post('/admin/contact/create','ContactController@store');
+Route::get('/admin/contact/update/{id}','ContactController@edit');
+Route::post('/admin/contact/update/{id}','ContactController@update');
+Route::get('/admin/contact/delete/{id}','ContactController@delete');

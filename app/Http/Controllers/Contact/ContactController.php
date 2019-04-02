@@ -14,7 +14,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contacts=Contact::contact_index();
+        return view('admin.contact.index',compact('contacts'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.contact.create');
     }
 
     /**
@@ -35,7 +36,10 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $type=$request['type'];
+        $data=$request['data'];
+        Contact::contact_create($type,$data);   
+        return redirect('/admin/contact/index');
     }
 
     /**
@@ -55,9 +59,10 @@ class ContactController extends Controller
      * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contact $contact)
+    public function edit($id)
     {
-        //
+        $contact=Contact::contact_show($id);
+        return view('admin.contact.update',compact('contact'));
     }
 
     /**
@@ -69,7 +74,11 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $id=$request['id'];
+        $type=$request['type'];
+        $data=$request['data'];
+        Contact::contact_update($id,$type,$data);   
+        return redirect('/admin/contact/index');
     }
 
     /**
@@ -78,8 +87,10 @@ class ContactController extends Controller
      * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function delete($id)
     {
-        //
+        $id=$request['id'];
+        Contact::delete($id);
+        return redirect('/admin/contact/index');
     }
 }

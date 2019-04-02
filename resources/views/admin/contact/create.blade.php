@@ -25,36 +25,25 @@
 @endif
 
   <div class="col-6">
-<form  class="container" action='/admin/about us/update/{{$aboutus->id}}' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/{{Request::segment(2)}}/create' method="POST" enctype="multipart/form-data">
   @csrf
 
-        <div class="form-group">
-    <label for="exampleInputEmail1">about us Description</label>
-    <textarea name="description" class="form-control" rows="5" id="comment" required>{{$aboutus->description}}</textarea>
-    
-  </div>
-
+ 
 
         <div class="form-group">
-    <label for="exampleInputEmail1">about us address</label>
-    <input name="address" class="form-control"  id="comment" required value="{{$aboutus->address}}">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} type</label>
+    <input name="type" class="form-control"  id="comment" required>
+    
+  </div>
+
+         <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} data</label>
+    <input name="data" class="form-control"  id="comment" required>
     
   </div>
 
 
-  <div id="us2" style="width: 500px; height: 400px;"></div>
 
-       <div class="form-group">
-    <label for="exampleInputEmail1">lat</label>
-    <input name="lat" class="form-control" id="lat" required value="{{$aboutus->lat}}">
-    
-  </div>
-
-       <div class="form-group">
-    <label for="exampleInputEmail1">lang</label>
-    <input name="lang" class="form-control"  id="lang" required value="{{$aboutus->lang}}">
-    
-  </div>
 
   <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Update {{Request::segment(2)}}</button>
 </form>

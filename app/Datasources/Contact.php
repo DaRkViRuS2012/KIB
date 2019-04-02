@@ -17,6 +17,13 @@ class Contact extends Model
     }
 
 
+      public static function contact_show($id)
+    {
+        $contact=Contact::find($id);
+        return  $contact;
+    }
+
+
     public static function contact_create($type,$data)
     {
     	$contact=new Contact;
