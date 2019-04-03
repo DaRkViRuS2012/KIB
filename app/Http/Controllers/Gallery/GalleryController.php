@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Gallery;
+use App\Media;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
@@ -14,7 +16,8 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        $galleries=Gallery::gallery_index();
+        return view('admin.gallery.index',compact('galleries'));
     }
 
     /**
@@ -24,7 +27,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.gallery.create');
     }
 
     /**
@@ -33,9 +36,27 @@ class GalleryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+  public function store(Request $request)
+    {   
+        $data=$request->all();
+        $ar_title=$data['ar_title'];
+        $en_title=$data['en_title'];
+        $content_type='image';
+        $media_type='gallery';
+        $gallery=Gallery::gallery_create($en_title,$ar_title);
+
+                    if($request->hasFile('image')){
+            foreach($request->file('image') as $file) {                    
+            $imagename=$file->getClientOriginalName();
+            $path_img=$file->storeAs('public/',$imagename);
+             $img_name=str_replace('public/', '', $path_img);
+             Media::media_create($img_name,$media_type,$gallery->id,$content_type);
+            
+             }
+             return redirect('/admin/gallery/index');
+        }
+    return Redirect::back()->withErrors('The image input must not be empty');
+
     }
 
     /**
@@ -55,9 +76,10 @@ class GalleryController extends Controller
      * @param  \App\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gallery $gallery)
+    public function edit($id)
     {
-        //
+        $gallery=Gallery::gallery_show($id);
+        return view('admin.gallery.update',compact('gallery'));
     }
 
     /**
@@ -67,9 +89,13 @@ class GalleryController extends Controller
      * @param  \App\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gallery $gallery)
+    public function update(Request $request)
     {
-        //
+        $id=$request['id'];
+        $ar_title=$data['ar_title'];
+        $en_title=$data['en_title'];
+        Gallery::gallery_update($id,$en_title,$ar_title);
+        return redirect('/admin/gallery/index'); 
     }
 
     /**
@@ -78,8 +104,13 @@ class GalleryController extends Controller
      * @param  \App\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gallery $gallery)
+    public function delete($id)
     {
-        //
+        $gallery=Gallery::gallery_show($id);
+        foreach ($gallery->media as $image) {
+        Storage::delete('public/'.$image);
+        }
+        Gallery::gallery_delete($id);
+
     }
 }
