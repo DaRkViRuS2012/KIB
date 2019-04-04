@@ -44,3 +44,10 @@ Route::post('/admin/contact/create','ContactController@store');
 Route::get('/admin/contact/update/{id}','ContactController@edit');
 Route::post('/admin/contact/update/{id}','ContactController@update');
 Route::get('/admin/contact/delete/{id}','ContactController@delete');
+//*********************************************************************************************
+Route::get('/admin/partner/index','PartnerController@index');
+Route::get('/admin/partner/create','PartnerController@create');
+Route::post('/admin/partner/create','PartnerController@store');
+Route::get('/admin/partner/update/{id}','PartnerController@edit');
+Route::post('/admin/partner/update/{id}','PartnerController@update');
+Route::get('/admin/partner/delete/{id}','PartnerController@delete');

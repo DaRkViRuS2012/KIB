@@ -18,6 +18,13 @@ class ContactController extends Controller
         return view('admin.contact.index',compact('contacts'));
     }
 
+    
+        public function index_api()
+    {
+         $contacts=Contact::contact_index();
+        return response()->json(['status' => True, 'data' => $contacts, 'message' => '']);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -96,4 +96,14 @@ class AboutUsController extends Controller
         $aboutus=AboutUs::aboutus_delete($id);
         return redirect('admin/about us/index');  
     }
+
+
+        public function index_api()
+    {
+        $aboutus=AboutUs::aboutus_index();
+        return response()->json(['status' => True, 'data' => $aboutus, 'message' => '']);
+    }
+
+
+
 }

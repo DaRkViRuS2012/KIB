@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Partner;
 use Illuminate\Http\Request;
-
+use Redirect;
 class PartnerController extends Controller
 {
     /**
@@ -14,8 +14,16 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        //
+        $partners=Partner::partner_index();
+        return view('admin.partner.index',compact('partners'));
     }
+
+        public function index_api()
+    {
+        $partners=Partner::partner_index();
+    return response()->json(['status' => True, 'data' => $partners, 'message' => '']);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +32,7 @@ class PartnerController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.partner.create');
     }
 
     /**
@@ -33,15 +41,33 @@ class PartnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+   public function store(Request $request)
+      {   
+        $data=$request->all();
+        $title=$data['title'];
+        $url=$data['url'];
+ 
+      if($request->file('image')!= null){
 
+            $path;
+            if(request()->file('image')->isValid()){
+                $path = $request->file('image')->storeAs('public', time().'.jpg');
+                $image=str_replace('public/', '', $path);
+                if(empty($path)){
+                    return response()->json([],400);
+                }
+
+            }
+        Partner::partner_create($title,$url,$image);
+         return redirect('/admin/partner/index');
+    }
+    return Redirect::back()->withErrors('The image input must not be empty');
+
+    }
     /**
      * Display the specified resource.
      *
-     * @param  \App\Partner  $partner
+     * @param  \App\partner  $partner
      * @return \Illuminate\Http\Response
      */
     public function show(Partner $partner)
@@ -52,34 +78,63 @@ class PartnerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Partner  $partner
+     * @param  \App\partner  $partner
      * @return \Illuminate\Http\Response
      */
-    public function edit(Partner $partner)
+    public function edit($id)
     {
-        //
+        $partner=Partner::partner_show($id);
+        return view('admin.partner.update',compact('partner'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Partner  $partner
+     * @param  \App\partner  $partner
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Partner $partner)
-    {
-        //
+     public function update(Request $request)
+    {   
+        $data=$request->all();
+        $id=$request['id'];
+        $title=$data['title'];
+        $url=$data['url'];
+ 
+      if($request->file('image')!= null){
+
+            $path;
+            if(request()->file('image')->isValid()){
+                $path = $request->file('image')->storeAs('public', time().'.jpg');
+                $image=str_replace('public/', '', $path);
+                if(empty($path)){
+                    return response()->json([],400);
+                }
+
+            }
+      Partner::partner_update($id,$title,$url,$image);
     }
+    else
+    {
+        $partner=Partner::partner_show($id);
+      Partner::partner_update($id,$title,$url,$partner->image);
+    }
+
+       
+         return redirect('/admin/partner/index');
+
+    }
+
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Partner  $partner
+     * @param  \App\partner  $partner
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Partner $partner)
+    public function delete($id)
     {
-        //
+        $partner=Partner::partner_delete($id);
+        return redirect('/admin/partner/index');
     }
 }
