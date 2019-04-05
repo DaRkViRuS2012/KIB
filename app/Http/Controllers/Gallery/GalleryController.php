@@ -60,7 +60,7 @@ class GalleryController extends Controller
                     if($request->hasFile('image')){
             foreach($request->file('image') as $file) {                    
             $imagename=$file->getClientOriginalName();
-            $path_img=$file->storeAs('public/',$imagename.time());
+            $path_img=$file->storeAs('public/',time().$imagename);
              $img_name=str_replace('public/', '', $path_img);
              Media::media_create($img_name,$media_type,$gallery->id,$content_type);
             
@@ -123,6 +123,6 @@ class GalleryController extends Controller
         Storage::delete('public/'.$image);
         }
         Gallery::gallery_delete($id);
-
+return redirect('/admin/gallery/index'); 
     }
 }
