@@ -24,12 +24,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //*********************************************************************************************
-Route::get('/admin/about us/index','AboutUsController@index');
-Route::get('/admin/about us/create','AboutUsController@create');
-Route::post('/admin/about us/create','AboutUsController@store');
-Route::get('/admin/about us/update/{id}','AboutUsController@edit');
-Route::post('/admin/about us/update/{id}','AboutUsController@update');
-Route::get('/admin/about us/delete/{id}','AboutUsController@delete');
+Route::get('/admin/about/index','AboutUsController@index');
+Route::get('/admin/about/create','AboutUsController@create');
+Route::post('/admin/about/create','AboutUsController@store');
+Route::get('/admin/about/update/{id}','AboutUsController@edit');
+Route::post('/admin/about/update/{id}','AboutUsController@update');
+Route::get('/admin/about/delete/{id}','AboutUsController@delete');
 //*********************************************************************************************
 Route::get('/admin/company/index','CompanyController@index');
 Route::get('/admin/company/create','CompanyController@create');
