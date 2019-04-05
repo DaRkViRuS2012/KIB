@@ -120,7 +120,7 @@ class GalleryController extends Controller
     {
         $gallery=Gallery::gallery_show($id);
         foreach ($gallery->media as $image) {
-        Storage::delete('public/'.$image);
+        Storage::delete('public'.$image->url);
         }
         Gallery::gallery_delete($id);
 return redirect('/admin/gallery/index'); 

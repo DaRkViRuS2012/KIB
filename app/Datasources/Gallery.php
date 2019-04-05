@@ -51,6 +51,9 @@ class Gallery extends Model
     public static function gallery_delete($id)
     {
     	$gallery=Gallery::find($id);
+        foreach ($gallery->media as $media) {
+            Media::media_delete($media->id);
+        }
     	$gallery->delete();
     }
 
