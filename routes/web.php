@@ -51,3 +51,10 @@ Route::post('/admin/partner/create','PartnerController@store');
 Route::get('/admin/partner/update/{id}','PartnerController@edit');
 Route::post('/admin/partner/update/{id}','PartnerController@update');
 Route::get('/admin/partner/delete/{id}','PartnerController@delete');
+//*********************************************************************************************
+Route::get('/admin/gallery/index','GalleryController@index');
+Route::get('/admin/gallery/create','GalleryController@create');
+Route::post('/admin/gallery/create','GalleryController@store');
+Route::get('/admin/gallery/update/{id}','GalleryController@edit');
+Route::post('/admin/gallery/update/{id}','GalleryController@update');
+Route::get('/admin/gallery/delete/{id}','GalleryController@delete');

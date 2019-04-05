@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\en_titlebase\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Model;
+use App\Media;
 class Gallery extends Model
 {
        protected $fillable = [
@@ -13,7 +13,7 @@ class Gallery extends Model
 
        public function media()
     {
-    	return $this->hasMany('App\Media');
+    	return $this->hasMany('App\Media','content_id');
     }
 
         public static function gallery_index()
