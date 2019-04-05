@@ -20,6 +20,18 @@ class GalleryController extends Controller
         return view('admin.gallery.index',compact('galleries'));
     }
 
+        public function index_api()
+    {
+        $galleries=Gallery::gallery_index();
+        foreach ($galleries as $gallery) {
+            foreach ($gallery->media as $media1) {
+                $media1->url=env('website_link').env('image_storage').$media1->url;
+            }
+        }
+        // return view('admin.gallery.index',compact('galleries'));
+         return response()->json(['status' => True, 'data' => $galleries, 'message' => '','type'=>'array']);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -48,7 +60,7 @@ class GalleryController extends Controller
                     if($request->hasFile('image')){
             foreach($request->file('image') as $file) {                    
             $imagename=$file->getClientOriginalName();
-            $path_img=$file->storeAs('public/',$imagename);
+            $path_img=$file->storeAs('public/',$imagename.time());
              $img_name=str_replace('public/', '', $path_img);
              Media::media_create($img_name,$media_type,$gallery->id,$content_type);
             
