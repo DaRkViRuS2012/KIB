@@ -13,7 +13,7 @@ class Gallery extends Model
 
        public function media()
     {
-    	return $this->hasMany('App\Media','content_id');
+    	return $this->hasMany('App\Media','content_id')->where('media_type','gallery');
     }
 
         public static function gallery_index()

@@ -8,6 +8,8 @@ class Media extends Model
 {
     
 
+
+
            protected $fillable = [
         'url', 'media_type', 'content_id','content_type'
     ];
@@ -39,5 +41,11 @@ class Media extends Model
     {
     	$media=Media::find($id);
     	$media->delete();
+    }
+
+
+    public static function media_by_type($content_id,$media_type)
+    {
+        return Media::where('content_id',$content_id)->where('media_type',$media_type)->get();
     }
 }
