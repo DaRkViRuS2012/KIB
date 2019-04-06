@@ -13,7 +13,7 @@
     @section('content')
     <div id="content-wrapper">
 
-      <a style="margin:1%" href="/admin/{{Request::segment(2)}}/create" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Add New Gallery</a>
+      <a style="margin:1%" href="/admin/{{Request::segment(2)}}/create" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Add New {{Request::segment(2)}}</a>
 
      
 
@@ -40,17 +40,21 @@
                     <th>#</th>
                     <th>en_title</th>
                     <th>ar_title</th>
+                    <th>en_body</th>
+                    <th>ar_body</th>
                     <th>operations</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($galleries as $gallery)
+                  @foreach($news as $new)
                   <tr>
-                    <td>{{$gallery->id}}</td>
-                  <td><a href="/admin/gallery_images/index/{{$gallery->id}}">{{$gallery->en_title }}</a></td>
-                  <td>{{$gallery->ar_title }}</td>
+                    <td>{{$new->id}}</td>
+                  <td><a href="/admin/new_images/index/{{$new->id}}">{{$new->en_title }}</a></td>
+                  <td>{{$new->ar_title}}</td>
+                  <td>{{$new->ar_body}}</td>
+                  <td>{{$new->ar_body}}</td>
                     <td style="width: 18%;"><div class="container">
-                      <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$gallery->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this gallery')" href="/admin/{{Request::segment(2)}}/delete/{{$gallery->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a></div>
+                      <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$new->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this news')" href="/admin/{{Request::segment(2)}}/delete/{{$new->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a></div>
                       </div>
                     <div>
                     </td>

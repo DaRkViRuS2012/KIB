@@ -10,9 +10,10 @@ class News extends Model
         'ar_title', 'en_title','en_body','ar_body'
     ];
 
-    public function media()
+
+       public function media()
     {
-    	return $this->hasMany('App\Media');
+        return $this->hasMany('App\Media','content_id');
     }
 
         public static function news_index()
@@ -22,7 +23,14 @@ class News extends Model
     }
 
 
-        public static function news_create($ar_title,$en_title,$en_body,$ar_body)
+            public static function news_show($id)
+    {
+        $news=News::where('id',$id)->with('media')->first();
+        return  $news;
+    }
+
+
+        public static function news_create($en_title,$ar_title,$en_body,$ar_body)
     {
     	$news=new News;
     	$news->ar_title=$ar_title;

@@ -23,4 +23,6 @@ Route::get('/contacts','ContactController@index_api');
 
 Route::get('/partners','PartnerController@index_api');
 
-Route::get('galleries','GalleryController@index_api');
+Route::get('/galleries','GalleryController@index_api');
+
+Route::get('/news','NewsController@index_api');

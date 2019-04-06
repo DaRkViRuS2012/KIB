@@ -104,8 +104,8 @@ class GalleryController extends Controller
     public function update(Request $request)
     {
         $id=$request['id'];
-        $ar_title=$data['ar_title'];
-        $en_title=$data['en_title'];
+        $ar_title=$request['ar_title'];
+        $en_title=$request['en_title'];
         Gallery::gallery_update($id,$en_title,$ar_title);
         return redirect('/admin/gallery/index'); 
     }

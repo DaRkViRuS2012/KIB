@@ -86,6 +86,7 @@
             <a class="collapse-item" href="/admin/contact/index">Contact</a>
             <a class="collapse-item" href="/admin/partner/index">Partner</a>
             <a class="collapse-item" href="/admin/gallery/index">Gallery</a>
+            <a class="collapse-item" href="/admin/news/index">News</a>
           </div>
         </div>
       </li>

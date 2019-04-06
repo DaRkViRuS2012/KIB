@@ -58,3 +58,10 @@ Route::post('/admin/gallery/create','GalleryController@store');
 Route::get('/admin/gallery/update/{id}','GalleryController@edit');
 Route::post('/admin/gallery/update/{id}','GalleryController@update');
 Route::get('/admin/gallery/delete/{id}','GalleryController@delete');
+//*********************************************************************************************
+Route::get('/admin/news/index','NewsController@index');
+Route::get('/admin/news/create','NewsController@create');
+Route::post('/admin/news/create','NewsController@store');
+Route::get('/admin/news/update/{id}','NewsController@edit');
+Route::post('/admin/news/update/{id}','NewsController@update');
+Route::get('/admin/news/delete/{id}','NewsController@delete');
