@@ -41,7 +41,7 @@ class AboutUsController extends Controller
         $lat=$request['lat'];
         $lang=$request['lang'];
        $aboutus=AboutUs::aboutus_insert($description,$address,$lat,$lang);
-        return redirect('admin/about us/index');     
+        return redirect('admin/about/index');     
     }
 
     /**
@@ -82,7 +82,7 @@ class AboutUsController extends Controller
         $lat=$request['lat'];
         $lang=$request['lang'];
        $aboutus=AboutUs::aboutus_update($id,$description,$address,$lat,$lang);
-        return redirect('admin/about us/index');   
+        return redirect('admin/about/index');   
     }
 
     /**
@@ -94,7 +94,7 @@ class AboutUsController extends Controller
     public function delete($id)
     {
         $aboutus=AboutUs::aboutus_delete($id);
-        return redirect('admin/about us/index');  
+        return redirect('admin/about/index');  
     }
 
 

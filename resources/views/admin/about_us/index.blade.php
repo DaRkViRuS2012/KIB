@@ -21,7 +21,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-               <a style="margin:1%" href="/admin/about us/create" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Add New {{Request::segment(2)}}</a>  
+               <a style="margin:1%" href="/admin/{{Request::segment(2)}}/create" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Add New {{Request::segment(2)}}</a>  
             </div>
             <div class="card-body">
               <div class="table-responsive">
