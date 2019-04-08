@@ -82,4 +82,13 @@ class MediaController extends Controller
     {
         //
     }
+
+    public function get_by_type(Request $request)
+    {
+        $media_type=$request['media_type'];
+        $content_id=$request['content_id'];
+        $medias=Media::get_by_type($media_type,$content_id);
+        return $medias;
+        return view('admin.media.index',compact('medias'));
+    }
 }
