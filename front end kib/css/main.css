@@ -15,6 +15,11 @@
     height: 45px;
     border-bottom: 1px solid #5e5e5e;
 }
+
+a.bg-light:hover, button.bg-light:focus, button.bg-light:hover {
+    background-color: #202e9b!important;
+    color: white!important;
+}
 .filter-button
 {
     font-size: 18px;
@@ -103,10 +108,33 @@
   background-color: #444;
 }
 
+
+
+.nav-link:focus, .nav-link:hover {
+color: #3544ab!important;
+font-weight: bold;
+}
+
+
+
+#service_button {
+    /* color: blue; */
+    background-color: #3544ab;
+    border-color: #3544ab;
+    border-radius: 5px;
+}
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
   transition: margin-left .5s; /* If you want a transition effect */
   padding: 20px;
+}
+
+img.card-img-top.img-responsive {
+    height: 350px;
+}
+
+.sidebar {
+position: fixed // or absolute
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -233,14 +261,15 @@
 
 a.button-style {
     color: #fff;
-    letter-spacing: 1px;
-    background: #f44336;
+        letter-spacing: 1%;
+    background: #202e9c;
     padding: 15px 20px;
-    font-size: 15px;
     border-radius: 40px;
     margin-top: 1em;
     display: inline-block;
     text-underline-position: unset;
+            font-size: 25px; 
+
 }
 
 @media(max-width: 1680px) {
@@ -296,7 +325,7 @@ a.button-style {
 
     a.button-style {
         padding: 14px 20px;
-        font-size: 14px;
+
     }
 
     .w3l-slide-text {
@@ -828,5 +857,28 @@ a.button-style {
     .ch-grid li {
         margin: 3px;
     }
+}
+
+.right {
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+    border: 0.1em solid #fff;
+    border-radius: 50%;
+    margin-left: -0.5em;
+}
+
+.right:after {
+    content: '';
+    display: inline-block;
+    margin-top: 0.9em;
+    margin-left: 0.9em;
+    width: 1em;
+    height: 1em;
+    border-top: 0.5em solid #202e9c;
+    border-right: 0.5em solid #202e9c;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
