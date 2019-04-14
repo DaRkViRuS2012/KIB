@@ -882,3 +882,8 @@ a.button-style {
     transform: rotate(45deg);
 }
 
+
+.jislider__img
+{
+    border-radius: 50%;
+}
