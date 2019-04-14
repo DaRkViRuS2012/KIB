@@ -6,5 +6,67 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    //
+     protected $fillable = [
+        'en_title', 'ar_title','en_subtitle','ar_subtitle','en_description','ar_description','parent_id','quotation_id','company_id','portal_link'
+    ];
+
+       public function media()
+    {
+        return $this->hasMany('App\Media','content_id')->where('media_type','service');
+    }
+
+    public function company()
+    {
+    	return $this->BelongsTo('App\Company','company_id');
+    }
+
+        public function service()
+    {
+    	return $this->BelongsTo('App\Service','parent_id');
+    }
+
+    public static function service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link)
+    {
+    	$service=new Service;
+    	$service->en_title=$en_title;
+    	$service->ar_title=$ar_title;
+    	$service->en_subtitle=$en_subtitle;
+    	$service->en_description=$en_description;
+    	$service->ar_description=$ar_description;
+    	$service->parent_id=$parent_id;
+    	$service->quotation_id=$quotation_id;
+    	$service->company_id=$company_id;
+    	$service->portal_link=$portal_link;
+    	$service->save();
+    	return $service;
+    }
+
+
+        public static function service_update($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link)
+    {
+    	$service=Service::find($id);
+    	$service->en_title=$en_title;
+    	$service->ar_title=$ar_title;
+    	$service->en_subtitle=$en_subtitle;
+    	$service->en_description=$en_description;
+    	$service->ar_description=$ar_description;
+    	$service->parent_id=$parent_id;
+    	$service->quotation_id=$quotation_id;
+    	$service->company_id=$company_id;
+    	$service->portal_link=$portal_link;
+    	$service->save();
+    	return $service;
+    }
+
+        public static function service_delete($id)
+    {
+    	$service=Service::find($id);
+    	$service->delete();
+    }
+        public static function service_show($id)
+    {
+        $service=Service::find($id);
+        return $service;
+    }
+
 }

@@ -10,6 +10,12 @@ class Company extends Model
         'name', 'link', 'image',
     ];
 
+
+    public function services()
+    {
+        return $this->hasMany('App\Service');
+    }
+
     public static function company_index()
     {
     	$compamies=Company::all();
