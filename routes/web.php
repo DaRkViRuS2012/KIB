@@ -65,3 +65,10 @@ Route::post('/admin/news/create','NewsController@store');
 Route::get('/admin/news/update/{id}','NewsController@edit');
 Route::post('/admin/news/update/{id}','NewsController@update');
 Route::get('/admin/news/delete/{id}','NewsController@delete');
+//*********************************************************************************************
+Route::get('/admin/service/index','ServiceController@index');
+Route::get('/admin/service/create','ServiceController@create');
+Route::post('/admin/service/create','ServiceController@store');
+Route::get('/admin/service/update/{id}','ServiceController@edit');
+Route::post('/admin/service/update/{id}','ServiceController@update');
+Route::get('/admin/service/delete/{id}','ServiceController@delete');

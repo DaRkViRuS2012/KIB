@@ -14,7 +14,14 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $services=Service::service_index();
+        return view('admin.service.index',compact('services'));
+    }
+
+     public function index_api()
+    {
+        $services=Service::service_index();
+         return response()->json(['status' => True, 'data' => $services, 'message' => '','type'=>'array']);
     }
 
     /**
@@ -24,7 +31,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.service.create');
     }
 
     /**
@@ -35,7 +42,16 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $en_title =$request['en_title'];
+        $ar_title=$request['ar_title'];                                        
+        $en_subtitle=$request['en_subtitle'];                                     
+        $ar_subtitle=$request['ar_subtitle'];                                     
+        $ar_description=$request['ar_description'];                                      
+        $en_description=$request['en_description'];                                      
+        $parent_id =$request['parent_id'];                                 
+        $quotation_id=$request['quotation_id'];                                                                      
+        $company_id=$request['company_id'];                               
+        $portal_link=$request['portal_link'];
     }
 
     /**
@@ -69,7 +85,16 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $en_title =$request['en_title'];
+        $ar_title=$request['ar_title'];                                        
+        $en_subtitle=$request['en_subtitle'];                                     
+        $ar_subtitle=$request['ar_subtitle'];                                     
+        $ar_description=$request['ar_description'];                                      
+        $en_description=$request['en_description'];                                      
+        $parent_id =$request['parent_id'];                                 
+        $quotation_id=$request['quotation_id'];                                                                      
+        $company_id=$request['company_id'];                               
+        $portal_link=$request['portal_link'];
     }
 
     /**

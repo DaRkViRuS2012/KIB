@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
      protected $fillable = [
-        'en_title', 'ar_title','en_subtitle','ar_subtitle','en_description','ar_description','parent_id','quotation_id','company_id','portal_link'
+        'en_title', 'ar_title','en_subtitle','ar_subtitle','en_description','ar_description','parent_id','quotation_id','company_id','portal_link','active'
     ];
 
        public function media()
@@ -25,6 +25,13 @@ class Service extends Model
     	return $this->BelongsTo('App\Service','parent_id');
     }
 
+
+    public static function service_index()
+    {
+    	$services=Service::with('media','service','company')->get();
+    	return $services;
+    }
+
     public static function service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link)
     {
     	$service=new Service;
@@ -37,6 +44,7 @@ class Service extends Model
     	$service->quotation_id=$quotation_id;
     	$service->company_id=$company_id;
     	$service->portal_link=$portal_link;
+    	$service->active='active';
     	$service->save();
     	return $service;
     }
@@ -67,6 +75,18 @@ class Service extends Model
     {
         $service=Service::find($id);
         return $service;
+    }
+
+    public static function service_active($id)
+    {
+    	$service=Service::find($id);
+    	if ($service->active=='active') {
+    		$service->active='inactive';
+    	}
+    	else
+    	{
+    		$service->active='active';
+    	}
     }
 
 }
