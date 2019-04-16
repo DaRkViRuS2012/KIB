@@ -20,7 +20,7 @@ class ServiceController extends Controller
 
      public function index_api()
     {
-        $services=Service::service_index();
+         $services=Service::service_index();
          return response()->json(['status' => True, 'data' => $services, 'message' => '','type'=>'array']);
     }
 
@@ -52,6 +52,18 @@ class ServiceController extends Controller
         $quotation_id=$request['quotation_id'];                                                                      
         $company_id=$request['company_id'];                               
         $portal_link=$request['portal_link'];
+        $content_type='service';
+        $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link)
+                    if($request->hasFile('image')){
+            foreach($request->file('image') as $file) {                    
+            $imagename=$file->getClientOriginalName();
+            $path_img=$file->storeAs('public/',time().$imagename);
+             $img_name=str_replace('public/', '', $path_img);
+             Media::media_create($img_name,$media_type,$news->id,$content_type);
+             }
+             return redirect('/admin/service/index');
+        }
+    return Redirect::back()->withErrors('The image input must not be empty');
     }
 
     /**
@@ -71,9 +83,10 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit($id)
     {
-        //
+        $service=Service::service_show($id);
+        return view('admin.service.update',compact('service'));
     }
 
     /**
@@ -85,6 +98,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
+        $id=$request['id'];
         $en_title =$request['en_title'];
         $ar_title=$request['ar_title'];                                        
         $en_subtitle=$request['en_subtitle'];                                     
@@ -95,6 +109,8 @@ class ServiceController extends Controller
         $quotation_id=$request['quotation_id'];                                                                      
         $company_id=$request['company_id'];                               
         $portal_link=$request['portal_link'];
+        Service::service_create($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link);
+          return redirect('/admin/service/index');
     }
 
     /**
@@ -103,8 +119,15 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+  
+
+      public function delete($id)
     {
-        //
+        $service=News::service_show($id);
+        foreach ($service->media as $image) {
+        Storage::delete('public'.$image->url);
+        }
+        service::service_delete($id);
+return redirect('/admin/service/index'); 
     }
 }
