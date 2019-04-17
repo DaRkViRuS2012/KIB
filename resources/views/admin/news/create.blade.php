@@ -23,16 +23,31 @@
 	@csrf
 
 			<div class="form-group">
-		<label for="exampleInputEmail1">Gallery en_Title</label>
+		<label for="exampleInputEmail1">{{Request::segment(2)}} en_Title</label>
 		<input name="en_title" class="form-control"  id="comment" required>
 		
 	</div>
 
 				<div class="form-group">
-		<label for="exampleInputEmail1">Gallery ar_Title</label>
+		<label for="exampleInputEmail1">{{Request::segment(2)}} ar_Title</label>
 		<input name="ar_title" class="form-control"  id="comment" required>
 		
 	</div>
+
+
+          <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} en_body</label>
+    <textarea name="en_body" rows="5" class="form-control"  id="comment" required></textarea>
+    
+  </div>
+
+
+          <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} ar_body</label>
+    <textarea name="ar_body" rows="5" class="form-control"  id="comment" required></textarea>
+    
+  </div>
+
 
 
 

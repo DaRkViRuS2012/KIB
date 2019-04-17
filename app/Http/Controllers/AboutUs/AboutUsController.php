@@ -101,7 +101,7 @@ class AboutUsController extends Controller
         public function index_api()
     {
         $aboutus=AboutUs::aboutus_index();
-        return response()->json(['status' => True, 'data' => $aboutus, 'message' => '']);
+        return response()->json(['status' => True, 'data' => $aboutus, 'message' => '','type'=>'array']);
     }
 
 

@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\en_titlebase\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Model;
+use App\Media;
 class Gallery extends Model
 {
        protected $fillable = [
@@ -13,7 +13,7 @@ class Gallery extends Model
 
        public function media()
     {
-    	return $this->hasMany('App\Media');
+    	return $this->hasMany('App\Media','content_id')->where('media_type','gallery');
     }
 
         public static function gallery_index()
@@ -25,7 +25,7 @@ class Gallery extends Model
 
      public static function gallery_show($gallery_id)
     {
-        $gallery=Gallery::where('id',$gallery_id)->with('media')->get();
+        $gallery=Gallery::where('id',$gallery_id)->with('media')->first();
         return  $gallery;
     }
 
@@ -51,6 +51,9 @@ class Gallery extends Model
     public static function gallery_delete($id)
     {
     	$gallery=Gallery::find($id);
+        foreach ($gallery->media as $media) {
+            Media::media_delete($media->id);
+        }
     	$gallery->delete();
     }
 

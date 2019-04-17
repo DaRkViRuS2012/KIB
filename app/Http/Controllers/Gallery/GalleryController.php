@@ -20,6 +20,18 @@ class GalleryController extends Controller
         return view('admin.gallery.index',compact('galleries'));
     }
 
+        public function index_api()
+    {
+        $galleries=Gallery::gallery_index();
+        foreach ($galleries as $gallery) {
+            foreach ($gallery->media as $media1) {
+                $media1->url=env('website_link').env('image_storage').$media1->url;
+            }
+        }
+        // return view('admin.gallery.index',compact('galleries'));
+         return response()->json(['status' => True, 'data' => $galleries, 'message' => '','type'=>'array']);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -48,7 +60,7 @@ class GalleryController extends Controller
                     if($request->hasFile('image')){
             foreach($request->file('image') as $file) {                    
             $imagename=$file->getClientOriginalName();
-            $path_img=$file->storeAs('public/',$imagename);
+            $path_img=$file->storeAs('public/',time().$imagename);
              $img_name=str_replace('public/', '', $path_img);
              Media::media_create($img_name,$media_type,$gallery->id,$content_type);
             
@@ -92,8 +104,8 @@ class GalleryController extends Controller
     public function update(Request $request)
     {
         $id=$request['id'];
-        $ar_title=$data['ar_title'];
-        $en_title=$data['en_title'];
+        $ar_title=$request['ar_title'];
+        $en_title=$request['en_title'];
         Gallery::gallery_update($id,$en_title,$ar_title);
         return redirect('/admin/gallery/index'); 
     }
@@ -108,9 +120,9 @@ class GalleryController extends Controller
     {
         $gallery=Gallery::gallery_show($id);
         foreach ($gallery->media as $image) {
-        Storage::delete('public/'.$image);
+        Storage::delete('public'.$image->url);
         }
         Gallery::gallery_delete($id);
-
+return redirect('/admin/gallery/index'); 
     }
 }

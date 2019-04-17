@@ -11,40 +11,40 @@
   <!-- Custom styles for this page -->
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 @endsection
-
-@if($errors->any())
-<div class="alert alert-danger col-lg-6">
-  {{$errors->first()}}
-</div>           
-@endif
-
 	<div class="col-6">
-<form  class="container" action='/admin/{{Request::segment(2)}}/create' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/{{Request::segment(2)}}/update/{{$news->id}}' method="POST" enctype="multipart/form-data">
 	@csrf
 
 			<div class="form-group">
-		<label for="exampleInputEmail1">Gallery en_Title</label>
-		<input name="en_title" class="form-control"  id="comment" required>
+		<label for="exampleInputEmail1">{{Request::segment(2)}} en_Title</label>
+		<input name="en_title" class="form-control"  id="comment" required value="{{$news->en_title}}">
 		
 	</div>
 
 				<div class="form-group">
-		<label for="exampleInputEmail1">Gallery ar_Title</label>
-		<input name="ar_title" class="form-control"  id="comment" required>
+		<label for="exampleInputEmail1">{{Request::segment(2)}} ar_Title</label>
+		<input name="ar_title" class="form-control"  id="comment" required value="{{$news->ar_title}}">
 		
 	</div>
 
 
+            <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} en_body</label>
+    <textarea name="en_body" rows="5" class="form-control"  id="comment" required>{{$news->en_body}}</textarea>
+    
+  </div>
 
 
-	<label for="exampleInputEmail1">Image</label>
-	<input class="active" type="file" name="image[]" enctype="multipart/form-data" required multiple>
-	<br><br>
-	<button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Create {{Request::segment(2)}}</button>
+          <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} ar_body</label>
+    <textarea name="ar_body" rows="5" class="form-control"  id="comment" required>{{$news->ar_body}}</textarea>
+    
+  </div>
+
+	<button  type="submit" class="btn btn-primary"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Update {{Request::segment(2)}}</button>
 </form>
 	</div>
 @endsection
-
 @section('scripts')
    <!-- Bootstrap core JavaScript-->
   <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>

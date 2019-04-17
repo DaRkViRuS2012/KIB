@@ -81,10 +81,12 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/admin/about us/index">About us </a>
+            <a class="collapse-item" href="/admin/about/index">About us </a>
             <a class="collapse-item" href="/admin/company/index">Company</a>
             <a class="collapse-item" href="/admin/contact/index">Contact</a>
             <a class="collapse-item" href="/admin/partner/index">Partner</a>
+            <a class="collapse-item" href="/admin/gallery/index">Gallery</a>
+            <a class="collapse-item" href="/admin/news/index">News</a>
           </div>
         </div>
       </li>
