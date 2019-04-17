@@ -10,6 +10,12 @@ class Company extends Model
         'name', 'link', 'image',
     ];
 
+
+    public function services()
+    {
+        return $this->hasMany('App\Service');
+    }
+
     public static function company_index()
     {
     	$compamies=Company::all();
@@ -36,14 +42,14 @@ class Company extends Model
     	return $company;
     }
 
-    public static function company_delete($id)
-    {
-    	$company=Company::find($id);
-    	$company->delete();
-    }
-        public static function company_show($id)
-    {
-        $company=Company::find($id);
-        return $company;
-    }
+public static function company_delete($id)
+{
+	$company=Company::find($id);
+	$company->delete();
+}
+    public static function company_show($id)
+{
+    $company=Company::find($id);
+    return $company;
+}
 }

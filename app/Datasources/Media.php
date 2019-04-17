@@ -19,7 +19,7 @@ class Media extends Model
     public static function get_by_category($content_id,$media_type)
     {
         $medias=Media::where('content_id,',$content_id)->where('media_type',$media_type)->get();
-        return $medias
+        return $medias;
     }
 
 
