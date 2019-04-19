@@ -18,56 +18,46 @@
 </div>           
 @endif
 
-  <div class="col-6">
+	<div class="col-6">
 <form  class="container" action='/admin/{{Request::segment(2)}}/create' method="POST" enctype="multipart/form-data">
-  @csrf
+	@csrf
 
-      <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} english title</label>
-    <input name="en_title" class="form-control"  id="comment" required value="{{$service->en_title}}">
-    
-  </div>
+			<div class="form-group">
+		<label for="exampleInputEmail1">{{Request::segment(2)}} en_Title</label>
+		<input name="en_title" class="form-control"  id="comment" required>
+		
+	</div>
 
-        <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} arabic Title</label>
-    <input name="ar_title" class="form-control"  id="comment" required>
-    
-  </div>
+				<div class="form-group">
+		<label for="exampleInputEmail1">{{Request::segment(2)}} ar_Title</label>
+		<input name="ar_title" class="form-control"  id="comment" required>
+		
+	</div>
 
-          <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} english subtitle</label>
-    <input name="en_subtitle" class="form-control"  id="comment" required>
-    
-  </div>
 
           <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} arabic subtitle</label>
-    <input name="ar_subtitle" class="form-control"  id="comment" required>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} en_body</label>
+    <textarea name="en_body" rows="5" class="form-control"  id="comment" required></textarea>
     
   </div>
 
 
           <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} english description</label>
-    <textarea name="en_description" rows="5" class="form-control"  id="comment" required></textarea>
-  </div>
-
-
-          <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} arabic description</label>
-    <textarea name="ar_description" rows="5" class="form-control"  id="comment" required></textarea>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} ar_body</label>
+    <textarea name="ar_body" rows="5" class="form-control"  id="comment" required></textarea>
+    
   </div>
 
 
 
 
 
-  <label for="exampleInputEmail1">Image</label>
-  <input class="active" type="file" name="image[]" enctype="multipart/form-data" required multiple>
-  <br><br>
-  <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Create {{Request::segment(2)}}</button>
+	<label for="exampleInputEmail1">Image</label>
+	<input class="active" type="file" name="image[]" enctype="multipart/form-data" required multiple>
+	<br><br>
+	<button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Create {{Request::segment(2)}}</button>
 </form>
-  </div>
+	</div>
 @endsection
 
 @section('scripts')

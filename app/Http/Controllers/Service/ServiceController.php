@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Service;
 use Illuminate\Http\Request;
+use App\Company;
 
 class ServiceController extends Controller
 {
@@ -31,7 +32,9 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('admin.service.create');
+        $services=Service::service_index();
+        $companies=Company::company_index();
+        return view('admin.service.create',compact('services','companies'));
     }
 
     /**
@@ -53,7 +56,7 @@ class ServiceController extends Controller
         $company_id=$request['company_id'];                               
         $portal_link=$request['portal_link'];
         $content_type='service';
-        $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link)
+        $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link);
                     if($request->hasFile('image')){
             foreach($request->file('image') as $file) {                    
             $imagename=$file->getClientOriginalName();
