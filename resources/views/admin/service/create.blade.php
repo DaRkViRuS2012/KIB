@@ -48,6 +48,18 @@
     
   </div>
 
+          <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} parent_id</label>
+    <select name="parent_id" class="form-control">
+      <option value="0">Father</option>
+      @foreach ($services as $service)
+      <option value="{{$service->id}}">{{$service->en_title}}</option>
+      @endforeach
+      
+    </select>
+    
+  </div>
+
 
 
 
