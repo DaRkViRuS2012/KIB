@@ -38,12 +38,12 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>{{Request::segment(2)}} english title</th>
-                    <th> {{Request::segment(2)}} arabic title</th>
-                    <th>{{Request::segment(2)}} english subtitle</th>
-                    <th>{{Request::segment(2)}} arabic subtitle</th>
-                    <th>{{Request::segment(2)}} english Description</th>
-                    <th>{{Request::segment(2)}} arabic Description</th>
+                    <th>en_title</th>
+                    <th>ar_title</th>
+                    <th>en_subtitle</th>
+                    <th>ar_subtitle</th>
+                    <th>en_description</th>
+                    <th>ar_description</th>
                     <th>operations</th>
                   </tr>
                 </thead>
@@ -52,11 +52,14 @@
                   <tr>
                     <td>{{$service->id}}</td>
                   <td><a href="/admin/service_images/index/{{$service->id}}">{{$service->en_title }}</a></td>
+                  <td>{{$service->en_title}}</td>
                   <td>{{$service->ar_title}}</td>
-                  <td>{{$service->ar_body}}</td>
-                  <td>{{$service->ar_body}}</td>
+                  <td>{{$service->en_subtitle}}</td>
+                  <td>{{$service->ar_subtitle}}</td>
+                  <td>{{$service->en_description}}</td>
+                  <td>{{$service->ar_description}}</td>
                     <td style="width: 18%;"><div class="container">
-                      <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$service->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this services')" href="/admin/{{Request::segment(2)}}/delete/{{$service->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a></div>
+                      <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$service->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this service')" href="/admin/{{Request::segment(2)}}/delete/{{$service->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a></div>
                       </div>
                     <div>
                     </td>

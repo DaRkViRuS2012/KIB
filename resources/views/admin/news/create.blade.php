@@ -23,29 +23,39 @@
 	@csrf
 
 			<div class="form-group">
-		<label for="exampleInputEmail1">{{Request::segment(2)}} en_Title</label>
+		<label for="exampleInputEmail1">{{Request::segment(2)}} english title</label>
 		<input name="en_title" class="form-control"  id="comment" required>
 		
 	</div>
 
 				<div class="form-group">
-		<label for="exampleInputEmail1">{{Request::segment(2)}} ar_Title</label>
+		<label for="exampleInputEmail1">{{Request::segment(2)}} arabic Title</label>
 		<input name="ar_title" class="form-control"  id="comment" required>
 		
 	</div>
 
+          <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} english subtitle</label>
+    <input name="en_subtitle" class="form-control"  id="comment" required>
+    
+  </div>
 
           <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} en_body</label>
-    <textarea name="en_body" rows="5" class="form-control"  id="comment" required></textarea>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} arabic subtitle</label>
+    <input name="ar_subtitle" class="form-control"  id="comment" required>
     
   </div>
 
 
           <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} ar_body</label>
-    <textarea name="ar_body" rows="5" class="form-control"  id="comment" required></textarea>
-    
+    <label for="exampleInputEmail1">{{Request::segment(2)}} english description</label>
+    <textarea name="en_description" rows="5" class="form-control"  id="comment" required></textarea>
+  </div>
+
+
+          <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} arabic description</label>
+    <textarea name="ar_description" rows="5" class="form-control"  id="comment" required></textarea>
   </div>
 
 
