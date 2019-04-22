@@ -16,11 +16,15 @@ Route::get('/', function () {
 });
 
 
+Route::get('/services', 'SiteController@services')->name('home');
+
 
 Auth::routes();
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 
 
 //*********************************************************************************************
@@ -80,7 +84,7 @@ Route::get('/admin/slider/update/{id}','SliderController@edit');
 Route::post('/admin/slider/update/{id}','SliderController@update');
 Route::get('/admin/slider/delete/{id}','SliderController@delete');
 //*********************************************************************************************
-Route::get('/admin/media/index/{content_id}/{media_type}','MediaController@get_by_type');
+Route::get('/admin/media/index/{content_id}/{content_type}','MediaController@get_by_type');
 Route::get('/admin/media/create','MediaController@create');
 Route::post('/admin/media/create','MediaController@store');
 Route::get('/admin/media/update/{id}/{type}','MediaController@edit');

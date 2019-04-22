@@ -12,7 +12,7 @@ class Service extends Model
 
        public function media()
     {
-        return $this->hasMany('App\Media','content_id')->where('media_type','service');
+        return $this->hasMany('App\Media','content_id')->where('content_type','service');
     }
 
     public function company()
@@ -38,13 +38,14 @@ class Service extends Model
     	$service->en_title=$en_title;
     	$service->ar_title=$ar_title;
     	$service->en_subtitle=$en_subtitle;
+        $service->ar_subtitle=$ar_subtitle;
     	$service->en_description=$en_description;
     	$service->ar_description=$ar_description;
     	$service->parent_id=$parent_id;
     	$service->quotation_id=$quotation_id;
     	$service->company_id=$company_id;
     	$service->portal_link=$portal_link;
-    	$service->active='active';
+    	$service->active=1;
     	$service->save();
     	return $service;
     }
@@ -56,6 +57,7 @@ class Service extends Model
     	$service->en_title=$en_title;
     	$service->ar_title=$ar_title;
     	$service->en_subtitle=$en_subtitle;
+        $service->ar_subtitle=$ar_subtitle;
     	$service->en_description=$en_description;
     	$service->ar_description=$ar_description;
     	$service->parent_id=$parent_id;

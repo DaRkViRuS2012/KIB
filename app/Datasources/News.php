@@ -14,7 +14,7 @@ class News extends Model
 
        public function media()
     {
-        return $this->hasMany('App\Media','content_id')->where('media_type','news');
+        return $this->hasMany('App\Media','content_id')->where('content_type','news');
     }
 
         public static function news_index()

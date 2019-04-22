@@ -89,9 +89,9 @@ class MediaController extends Controller
 
     public function get_by_type(Request $request)
     {
-        $media_type=$request['media_type'];
+        $content_type=$request['content_type'];
         $content_id=$request['content_id'];
-        $medias=Media::media_by_type($content_id,$media_type);
+        $medias=Media::media_by_type($content_id,$content_type);
         
         // return compact('medias');
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Service;
 use Illuminate\Http\Request;
 use App\Company;
+use App\Media;
 
 class ServiceController extends Controller
 {
@@ -22,6 +23,11 @@ class ServiceController extends Controller
      public function index_api()
     {
          $services=Service::service_index();
+            foreach ($services as $service) {
+            foreach ($service->media as $media1) {
+                $media1->url=env('website_link').env('image_storage').$media1->url;
+            }
+        }
          return response()->json(['status' => True, 'data' => $services, 'message' => '','type'=>'array']);
     }
 
@@ -52,7 +58,7 @@ class ServiceController extends Controller
         $ar_description=$request['ar_description'];                                      
         $en_description=$request['en_description'];                                      
         $parent_id =$request['parent_id'];                                 
-        $quotation_id=$request['quotation_id'];                                                                      
+        $quotation_id=$request['quotation_id'];                                                                    
         $company_id=$request['company_id'];                               
         $portal_link=$request['portal_link'];
         $content_type='service';
@@ -62,7 +68,7 @@ class ServiceController extends Controller
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().$imagename);
              $img_name=str_replace('public/', '', $path_img);
-             Media::media_create($img_name,$media_type,$news->id,$content_type);
+             Media::media_create($img_name,'image',$service->id,$content_type);
              }
              return redirect('/admin/service/index');
         }

@@ -39,7 +39,7 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>media type</th>>
+                    <th>media type</th>
                     <th>image</th>
                     <th>Operations</th>
 
@@ -51,7 +51,7 @@
                     <td>{{$media->id}}</td>
                     <td>{{$media->media_type }}</td>
                        <td><img class="img-responsive col-md-4" src="{{env('image_storage') }}/{{$media->url}}"></td>
-                    <td style="width: 17%;"><div class="container">
+                    <td style="width: 19%;"><div class="container">
                       <div  class="row"><a style="margin-left:1%" href="/admin/medias/update/{{$media->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this product')" href="/admin/medias/delete/{{$media->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a></div>
                       </div>
                     <div>

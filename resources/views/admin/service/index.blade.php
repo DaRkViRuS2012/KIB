@@ -51,8 +51,7 @@
                   @foreach($services as $service)
                   <tr>
                     <td>{{$service->id}}</td>
-                  <td><a href="/admin/service_images/index/{{$service->id}}">{{$service->en_title }}</a></td>
-                  <td>{{$service->en_title}}</td>
+                  <td><a href="/admin/media/index/{{$service->id}}/service">{{$service->en_title }}</a></td>
                   <td>{{$service->ar_title}}</td>
                   <td>{{$service->en_subtitle}}</td>
                   <td>{{$service->ar_subtitle}}</td>
