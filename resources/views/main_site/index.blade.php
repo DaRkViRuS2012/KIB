@@ -101,10 +101,10 @@
         </li>
 
 
-@foreach ($sliders as $key => $slider)
-	{{-- expr --}}
+{{-- @foreach ($sliders as $key => $slider) --}}
+	
 
-                <li>
+{{--                 <li>
           <div class="w3layouts-banner-top{{$key+4}}" style="background: url({{env('image_storage')}}/{{$slider->media->url}}) no-repeat 0px 0px;background-size: cover;-webkit-background-size: cover;-moz-background-size:cover;-o-background-size: cover;-moz-background-size: cover;">
             <div class="bs-slider-overlay">
               <div class="container">
@@ -117,8 +117,8 @@
               </div>
             </div>
           </div>
-        </li>
-        @endforeach
+        </li> --}}
+        {{-- @endforeach --}}
       </ul>
     </div>
   </div>

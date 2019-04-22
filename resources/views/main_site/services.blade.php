@@ -20,7 +20,7 @@
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
   	@foreach ($services as $service)
-    <li><a href="/service_single/{{$service->id}}">{{$service->en_title}}</a></li>
+    <li style="background-color:#3544ab;"><a style="color: white;" href="/service_single/{{$service->id}}">{{$service->en_title}}</a></li>
     @endforeach
   </ul>
 </div>
@@ -28,7 +28,7 @@
 
     <div class="col-lg-10 col-md-12" id="main" style="background-color:#d6d6d6;">
       <div class="container">
-  <h1 class="text-center">Gallery</h1>
+  <h1 class="text-center">Services</h1>
         <div class="row">
         <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
             
