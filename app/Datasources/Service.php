@@ -75,7 +75,7 @@ class Service extends Model
     }
         public static function service_show($id)
     {
-        $service=Service::find($id);
+        $service=Service::where('id',$id)->with('media','service','company')->first();
         return $service;
     }
 
