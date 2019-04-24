@@ -12,15 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main_site.index');
 });
 
+
+Route::get('/services', 'SiteController@services')->name('home');
 
 
 Auth::routes();
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 
 
 //*********************************************************************************************
@@ -72,3 +76,17 @@ Route::post('/admin/service/create','ServiceController@store');
 Route::get('/admin/service/update/{id}','ServiceController@edit');
 Route::post('/admin/service/update/{id}','ServiceController@update');
 Route::get('/admin/service/delete/{id}','ServiceController@delete');
+//*********************************************************************************************
+Route::get('/admin/slider/index','SliderController@index');
+Route::get('/admin/slider/create','SliderController@create');
+Route::post('/admin/slider/create','SliderController@store');
+Route::get('/admin/slider/update/{id}','SliderController@edit');
+Route::post('/admin/slider/update/{id}','SliderController@update');
+Route::get('/admin/slider/delete/{id}','SliderController@delete');
+//*********************************************************************************************
+Route::get('/admin/media/index/{content_id}/{content_type}','MediaController@get_by_type');
+Route::get('/admin/media/create','MediaController@create');
+Route::post('/admin/media/create','MediaController@store');
+Route::get('/admin/media/update/{id}/{type}','MediaController@edit');
+Route::post('/admin/media/update/{id}/{type}','MediaController@update');
+Route::get('/admin/media/delete/{id}','MediaController@delete');

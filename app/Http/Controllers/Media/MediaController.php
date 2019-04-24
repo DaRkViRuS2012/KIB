@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Media;
 use Illuminate\Http\Request;
-
+use App\News;
+use App\Slider;
+use App\Service;
 class MediaController extends Controller
 {
     /**
@@ -12,9 +14,11 @@ class MediaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $id=$request['id'];
+        $type=$request['type'];
+        
     }
 
     /**
@@ -85,10 +89,12 @@ class MediaController extends Controller
 
     public function get_by_type(Request $request)
     {
-        $media_type=$request['media_type'];
+        $content_type=$request['content_type'];
         $content_id=$request['content_id'];
-        $medias=Media::get_by_type($media_type,$content_id);
-        return $medias;
+        $medias=Media::media_by_type($content_id,$content_type);
+        
+        // return compact('medias');
+
         return view('admin.media.index',compact('medias'));
     }
 }

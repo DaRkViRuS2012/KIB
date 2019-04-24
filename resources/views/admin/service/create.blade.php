@@ -34,29 +34,69 @@
 		
 	</div>
 
+          <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} en subtitle</label>
+    <input name="en_subtitle" class="form-control"  id="comment" required>
+    
+  </div>
 
           <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} en_body</label>
-    <textarea name="en_body" rows="5" class="form-control"  id="comment" required></textarea>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} ar subtitle</label>
+    <input name="ar_subtitle" class="form-control"  id="comment" required>
     
   </div>
 
 
           <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} ar_body</label>
-    <textarea name="ar_body" rows="5" class="form-control"  id="comment" required></textarea>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} en description</label>
+    <textarea name="en_description" rows="5" class="form-control"  id="comment" required></textarea>
+    
+  </div>
+
+
+          <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} ar description</label>
+    <textarea name="ar_description" rows="5" class="form-control"  id="comment" required></textarea>
     
   </div>
 
           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} parent_id</label>
     <select name="parent_id" class="form-control">
+      <option>Select Your company</option>
       <option value="0">Father</option>
       @foreach ($services as $service)
       <option value="{{$service->id}}">{{$service->en_title}}</option>
       @endforeach
       
     </select>
+    
+  </div>
+
+
+            <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} Company</label>
+    <select name="company_id" class="form-control">
+      <option value="0">Select Your company</option>
+      @foreach ($companies as $company)
+      <option value="{{$company->id}}">{{$company->name}}</option>
+      @endforeach
+      
+    </select>
+    
+  </div>
+
+
+
+          <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} portal link</label>
+    <input name="portal_link" class="form-control"  id="comment" required>
+    
+  </div>
+
+          <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} quotation id</label>
+    <input name="quotation_id" class="form-control"  id="comment" required>
     
   </div>
 

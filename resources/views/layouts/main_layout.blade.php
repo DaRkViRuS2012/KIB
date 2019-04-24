@@ -13,11 +13,11 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="./css/main.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('main_site/css/main.css') }}">
 
-  <link href="./css/JiSlider.css" rel="stylesheet">
+  <link href="{{ asset('main_site/css/JiSlider.css') }}" rel="stylesheet">
 
-  <link rel="stylesheet" type="text/css" href="./css/round_icons.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('main_site/css/round_icons.css') }}">
 
 </head>
 <body>
@@ -26,7 +26,7 @@
    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
   <div class="container">
     <a class="navbar-brand" href="#">
-        <img src="./img/cover.jpg" class="rounded-circle img-responsive" style="width:60px;height:60px">
+        <img src="{{ asset('main_site/img/cover.jpg') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
         </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -34,7 +34,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home
+          <a class="nav-link" href="/">Home
                 <span class="sr-only">(current)</span>
               </a>
         </li>
@@ -42,7 +42,7 @@
           <a class="nav-link" href="#">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
+          <a class="nav-link" href="/services">Services</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
@@ -54,108 +54,7 @@
   </header>
 </section>
 <section id="content">
-  <div class="banner-silder">
-    <div id="JiSlider" class="jislider">
-      <ul>
-        <li>
-          <div class="w3layouts-banner-top">
-            <div class="bs-slider-overlay">
-              <div class="container">
-                <!-- Slide Text Layer -->
-                <div class="w3l-slide-text col-lg-6">
-                  <h3 style="color:#414141" data-animation="animated zoomInRight">Have The Right Insurance</h3>
-                  <p class="aos-init aos-animate" data-aos="fade-down">To Keep Your Family Safe</p>
-                  <a  href="services.html" target="_blank" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">Get A Qutation</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="w3layouts-banner-top w3layouts-banner-top1">
-            <div class="bs-slider-overlay">
-              <div class="container">
-                <div class="row">
-                <!-- Slide Text Layer -->
-                <div class="w3l-slide-text col-lg-6">
-                   <h3 style="color:#3544ab;" data-animation="animated zoomInRight">KIB</h3>
-                  <p class="aos-init aos-animate" data-aos="fade-down">Excepteur sint occaecat cupidatat non proident</p>
-                  <a href="services.html" target="_blank" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">View
-                    Our Services</a>
-                </div>
-                  <div class="w3l-slide-text col-lg-6">
-                        <div class='circle-container'>
-      <a style="color: white!important" href='#' class='center'>why why why why </a>
-      <a href='#' class='deg0'><img style="border-radius:50%!important"  src='./img/cover.jpg'></a>
-      <a href='#' class='deg45'><img style="border-radius:50%!important"  src='./img/cover.jpg'></a>
-      <a href='#' class='deg95'><img style="border-radius:50%!important"  src='./img/cover.jpg'></a>
-      <a href='#' class='deg135'><img style="border-radius:50%!important"  src='./img/cover.jpg'></a>
-      <a href='#' class='deg180'><img style="border-radius:50%!important"  src='./img/cover.jpg'></a>
-      <a href='#' class='deg225'><img style="border-radius:50%!important"  src='./img/cover.jpg'></a>
-      <a href='#' class='deg267'><img style="border-radius:50%!important"  src='./img/cover.jpg'></a>
-      <a href='#' class='deg315'><img style="border-radius:50%!important"  src='./img/cover.jpg'></a>
-    </div>
-                </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="w3layouts-banner-top w3layouts-banner-top2">
-            <div class="bs-slider-overlay">
-              <div class="container">
-                <!-- Slide Text Layer -->
-                <div class="w3l-slide-text col-lg-7">
-                  <h3 data-animation="animated zoomInRight">Why You Should Choose <span style="color:#202e9c">KIB</span></h3>
-                  <p>
-  <a style="font-size:25px;color:#414141;font-weight:bold" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
-     <span class="right"></span>
-    Reason1
-  </a>
-</p>
-<div class="collapse" id="collapseExample1">
-  <div class="card card-body" style="background-color: transparent;color: white;">
-    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-  </div>
-</div>
-
-
-                <p>
-
-  <a style="font-size:25px;color:#414141;font-weight:bold" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
-      <span class="right" ></span>
-    Reason2
-  </a>
-</p>
-<div class="collapse" id="collapseExample2">
-  <div class="card card-body" style="background-color: transparent;color: white;">
-    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-  </div>
-</div>
-
-                <p>
-
-  <a style="font-size:25px;color:#414141;font-weight:bold" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
-       <span class="right"></span>
-    Reason3
-  </a>
-</p>
-<div class="collapse" id="collapseExample3">
-  <div class="card card-body" style="background-color: transparent;color: white;">
-    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-  </div>
-</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-  
+  @yield('content')
 </section>
 
 
@@ -178,7 +77,7 @@
           </div>
 
           <div class="row" style="margin-bottom:5%">
-            <img src="./img/cover.jpg" class="rounded-circle img-responsive" style="width:60px;height:60px">
+            <img src="{{ asset('main_site/img/cover.jpg') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
           </div>
           
           <div class="row" style="margin-bottom:5%">
@@ -315,7 +214,7 @@ function closeNav() {
 </script>
 <!-- Latest compiled JavaScript -->
 
-<script src="./js/JiSlider.js"></script>
+<script src="{{ asset('main_site/js/JiSlider.js') }}"></script>
   <script>
 
 
