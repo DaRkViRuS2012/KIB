@@ -16,7 +16,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','username','birthdate','fcmtoken','os','role','location_id',
+
     ];
 
     /**
@@ -36,4 +37,47 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public static function user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$location_id,$code)
+    {
+        $user=new user;
+        $user->name=$name;
+        $user->username=$username;
+        $user->email=$email;
+        $user->active='1'
+        $user->password=$password
+        $user->birthdate=$birthdate;
+        $user->fcmtoken=$fcmtoken;
+        $user->os=$os;
+        $user->role=$role;
+        $user->location_id=$location_id;
+        $user->save();
+        return $user;
+    }
+
+       public static function user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$location_id,$code)
+    {
+        $user=User::find($id);
+        $user->name=$name;
+        $user->username=$username;
+        $user->email=$email;
+        $user->active='1'
+        $user->password=$password
+        $user->birthdate=$birthdate;
+        $user->fcmtoken=$fcmtoken;
+        $user->os=$os;
+        $user->role=$role;
+        $user->location_id=$location_id;
+        $user->save();
+        return $user;
+    }
+
+
+
+        public static function user_delete($id)
+    {
+        $user=User::find($id);
+        $user->delete();
+    }
 }
