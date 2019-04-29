@@ -21,12 +21,24 @@
 
 </head>
 <body>
+   <div id="loader">
+    <img src="{{ asset('main_site/img/logo.gif') }}" width="30%">
+  </div>
+  <script type="text/javascript">
+    var loader=document.getElementById("loader");
+    window.addEventListener("load",function() {
+      loader.style.height = '100px';
+      loader.style.width = '100px';
+      loader.style.borderRadius = '50%';
+      loader.style.visibility = 'hidden';
+    });
+  </script>
 <section id="navbar">
   <header>
    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
   <div class="container">
     <a class="navbar-brand" href="#">
-        <img src="{{ asset('main_site/img/logo.gif') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
+        <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
         </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -77,7 +89,7 @@
           </div>
 
           <div class="row" style="margin-bottom:5%">
-            <img src="{{ asset('main_site/img/logo.gif') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
+            <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
           </div>
           
           <div class="row" style="margin-bottom:5%">

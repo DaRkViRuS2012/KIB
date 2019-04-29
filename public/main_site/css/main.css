@@ -888,3 +888,22 @@ a.button-style {
     border-radius: 50%;
 }
 
+
+#loader
+{
+    width: 1500px;
+    height: 1500px;
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 50;
+}
+#loader img
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
