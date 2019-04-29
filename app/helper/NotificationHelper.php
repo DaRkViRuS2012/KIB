@@ -1,10 +1,4 @@
 <?php
-
-/**
- * Description of FCM
- *
- * @author Amal Abdulraouf
- */
 class NotificationHelper {
 
     function __construct() {

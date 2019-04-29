@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 Route::get('/services', 'SiteController@services')->name('home');
 
+Route::get('/service/{id}', 'SiteController@services_single')->name('home');
+
 
 Auth::routes();
 

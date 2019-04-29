@@ -8,7 +8,7 @@
       </div>
       <div class="list-group list-group-flush">
       	@foreach ($services as $service)
-        <a href="/service_single/{{$service->id}}" class="list-group-item list-group-item-action bg-light">{{$service->en_title}}</a>
+        <a href="/service/{{$service->id}}" class="list-group-item list-group-item-action bg-light">{{$service->en_title}}</a>
         @endforeach
       </div>
     </div>
@@ -20,7 +20,7 @@
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
   	@foreach ($services as $service)
-    <li style="background-color:#3544ab;"><a style="color: white;" href="/service_single/{{$service->id}}">{{$service->en_title}}</a></li>
+    <li style="background-color:#3544ab;"><a style="color: white;" href="/service/{{$service->id}}">{{$service->en_title}}</a></li>
     @endforeach
   </ul>
 </div>

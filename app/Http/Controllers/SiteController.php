@@ -18,6 +18,14 @@ public function services()
     return view('main_site.services',compact('services'));
 }
 
+
+public function services_single($id)
+{
+    $service=Service::service_show($id);
+    // return $service;
+    return view('main_site.service_single',compact('service'));
+}
+
 public function index()
 {
 	
