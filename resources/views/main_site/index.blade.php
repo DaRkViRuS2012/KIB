@@ -21,12 +21,24 @@
 
 </head>
 <body>
+  <div id="loader">
+    <img src="{{ asset('main_site/img/logo.gif') }}" width="30%">
+  </div>
+  <script type="text/javascript">
+    var loader=document.getElementById("loader");
+    window.addEventListener("load",function() {
+      loader.style.height = '100px';
+      loader.style.width = '100px';
+      loader.style.borderRadius = '50%';
+      loader.style.visibility = 'hidden';
+    });
+  </script>
 <section id="navbar">
   <header>
    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
   <div class="container">
     <a class="navbar-brand" href="#">
-        <img src="{{ asset('main_site/img/logo.gif') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
+        <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
         </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -80,7 +92,7 @@
                 <div class="w3l-slide-text col-lg-6">
                    <h3 style="color:#3544ab;" data-animation="animated zoomInRight">KIB</h3>
                   <p class="aos-init aos-animate" data-aos="fade-down">Excepteur sint occaecat cupidatat non proident</p>
-                  <a href="services.html" target="_blank" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">View
+                  <a href="/services" target="_blank" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">View
                     Our Services</a>
                 </div>
                   <div class="w3l-slide-text col-lg-6">
@@ -182,118 +194,8 @@
 
 </body>
 
-<footer class="page-footer font-small blue pt-4" style="background-color:#3544ab;color:white">
 
-    <!-- Footer Links -->
-    <div class="container text-center text-md-left">
 
-      <!-- Grid row -->
-      <div class="row">
-
-        <!-- Grid column -->
-        <div class="col-md-12 col-lg-3 mt-md-0 mt-3" style="margin-left:5%">
-
-          <!-- Content -->
-          <div class="row" style="margin-bottom:5%">
-          <h5 class="text-uppercase">About us</h5>  
-          </div>
-
-          <div class="row" style="margin-bottom:5%">
-            <img src="{{ asset('main_site/img/cover.jpg') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
-          </div>
-          
-          <div class="row" style="margin-bottom:5%">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-        </div>
-        <!-- Grid column -->
-
-        <hr class="clearfix w-100 d-md-none pb-3">
-
-        <!-- Grid column -->
-        <div class="col-md-12 col-lg-3 mb-md-0 mb-3" style="margin-left:5%">
-
-            <!-- Links -->
-            <h5 class="text-uppercase">Links</h5>
-
-    
-            <ul class="list-unstyled">
-              <li>
-                <a href="#!" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Link 1</a>
-              </li>
-              <li>
-                <a href="#!" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Link 2</a>
-              </li>
-              <li>
-                <a href="#!" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Link 3</a>
-              </li>
-              <li>
-                <a href="#!" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Link 4</a>
-              </li>
-              <li>
-                <a href="#!" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Link 4</a>
-              </li>
-              <li>
-                <a href="#!" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Link 4</a>
-              </li>
-            </ul>
-
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-12 col-lg-3 mb-md-0 mb-3" style="margin-left:5%">
-
-            <!-- Links -->
-            <div class="row">
-                  <h5 class="text-uppercase">Contact us</h5>
-            </div>
-        
-
-            <div class="row">
-           <div class="mapouter"><div class="gmap_canvas"><iframe width="250" height="200" id="gmap_canvas" src="https://maps.google.com/maps?q=%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D8%A9&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.emojilib.com">emojilib.com</a></div><style>.mapouter{position:relative;text-align:right;height:200px;width:250px;}.gmap_canvas {overflow:hidden;background:none!important;height:200px;width:250px;}</style></div>
-
-          </div>
-
-          <div class="row">
-            <p id="email">
-              email@gmail.com
-            </p>
-          </div>
-
-          <div class="row">
-            <p id="phone">
-              +96300000000
-            </p>
-          </div>
-          <!-- Grid column -->
-
-      </div>
-      <!-- Grid row -->
-
-    </div>
-    <!-- Footer Links -->
-
-    <!-- Copyright -->
- 
-    <!-- Copyright -->
-
-  </footer>
-
-     <div style="background-color:#3544ab" class="footer">
-      <div class="container">
-        
-      
-      <div class="row" style="margin-left:4%">
-        <div class="col-lg-4 col-md-12 col-sm-12">
-<i style="color:white;font-size:20px;margin-left:-5%;margin-right:2%" class="fab fa-facebook-square"></i>
-<i style="color:white;font-size:20px;" class="fab fa-twitter"></i>
-        </div>
-      <div class="col-lg-4 col-md-12 col-sm-12" style="color: white">All Rights Reserved To KIB ©2019
-  </div>
-      </div>
-      </div>
-    </div>
 
 <script type="text/javascript">
     $(document).ready(function(){
