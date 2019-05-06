@@ -67,7 +67,7 @@
 </nav>
   </header>
 </section>
-<section id="content">
+<section id="content" style="height:100vh;">
   <div class="banner-silder">
     <div id="JiSlider" class="jislider">
       <ul>
