@@ -16,9 +16,7 @@ class MediaController extends Controller
      */
     public function index(Request $request)
     {
-        $id=$request['id'];
-        $type=$request['type'];
-        
+
     }
 
     /**
@@ -26,9 +24,10 @@ class MediaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($content_id,$content_type)
     {
-        //
+        $media=Media::get($content_id,$content_type);
+        return view('admin.media.create',compact('media'));
     }
 
     /**
@@ -39,7 +38,26 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id=$request['id'];
+        $content_id=$request['content_id'];
+        $content_type=$request['content_type'];
+        $media_type=$request['media_type'];
+              if($request->file('image')!= null){
+
+            $path;
+            if(request()->file('image')->isValid()){
+                $path = $request->file('image')->storeAs('public', time().'.jpg');
+                $image=str_replace('public/', '', $path);
+                if(empty($path)){
+                    return response()->json([],400);
+                }
+
+            }
+        Media::media_create($url,$media_type,$content_id,$content_type);
+         return redirect('/admin/media/index/'.$content_id.'/'.$content_type);
+    }
+
+     return redirect('/admin/media/index/'.$content_id.'/'.$content_type);
     }
 
     /**
@@ -50,7 +68,7 @@ class MediaController extends Controller
      */
     public function show(Media $media)
     {
-        //
+        
     }
 
     /**
@@ -59,9 +77,10 @@ class MediaController extends Controller
      * @param  \App\Media  $media
      * @return \Illuminate\Http\Response
      */
-    public function edit(Media $media)
+    public function edit($id)
     {
-        //
+        $media=Media::media_show($id);
+        return view('admin.media.upadte',compact('media'));
     }
 
     /**
@@ -71,10 +90,28 @@ class MediaController extends Controller
      * @param  \App\Media  $media
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Media $media)
+    public function update(Request $request)
     {
-        //
+        $id=$request['id'];
+        $media=Media::media_show($id);
+              if($request->file('image')!= null){
+
+            $path;
+            if(request()->file('image')->isValid()){
+                $path = $request->file('image')->storeAs('public', time().'.jpg');
+                $image=str_replace('public/', '', $path);
+                if(empty($path)){
+                    return response()->json([],400);
+                }
+
+            }
+        Media::media_update($id,$image);
+         return redirect('/admin/media/index/'.$media->content_id.'/'.$media->content_type);
     }
+
+    return redirect('/admin/media/index/'.$media->content_id.'/'.$media->content_type);
+    }
+
 
     /**
      * Remove the specified resource from storage.
