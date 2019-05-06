@@ -4,7 +4,7 @@
 	<div class="row">
     <div class="bg-light border-right col-2 d-none d-lg-block " id="sidebar-wrapper">
       <div class="sidebar-heading">
-        <h5 >Choose what Type of Service you want:</h5>
+        <h5 class="medium_font">Choose what Type of Service you want:</h5>
       </div>
       <div class="list-group list-group-flush">
       	@foreach ($services as $service)
@@ -28,24 +28,75 @@
 
     <div class="col-lg-10 col-md-12" id="main" style="background-color:#d6d6d6;">
       <div class="container">
-  <h1 class="text-center">Services</h1>
         <div class="row">
-        <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            
-        </div>
-        <div class="container">
-        <div class="row" style="margin-top: 2%">
+        <div class="container-fluid">
+        <div class="row" style="margin-top: 2%;margin-bottom: 2%;">
         	@foreach ($services as $service)
         		{{-- expr --}}
         	
-                  <div class="card col-lg-4">
-  <img class="card-img-top img-responsive" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
+                  <div class="card small_font" id="service" style="margin-left:10px;margin-bottom:3%;width:32%">
+  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
-    <h4 class="card-title">{{$service->en_title}}</h4>
-    <p class="card-text">{{$service->en_description}}</p>
-    <a id="service_button" href="#" class="btn btn-primary">See Profile</a>
+    <h5 class="card-title">{{$service->en_title}}</h5>
+    <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
+    <a href="/service/{{$service->id}}" id="service_button" href="#" class="btn btn-primary">More ...</a>
   </div>
 </div>
+
+                  <div class="card small_font" id="service" style="margin-left:10px;margin-bottom:3%;width:32%">
+  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
+  <div class="card-body">
+    <h5 class="card-title">{{$service->en_title}}</h5>
+    <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
+    <a href="/service/{{$service->id}}" id="service_button" href="#" class="btn btn-primary">More ...</a>
+  </div>
+</div>
+
+                  <div class="card small_font" id="service" style="margin-left:10px;margin-bottom:3%;width:32%">
+  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
+  <div class="card-body">
+    <h5 class="card-title">{{$service->en_title}}</h5>
+    <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
+    <a href="/service/{{$service->id}}" id="service_button" href="#" class="btn btn-primary">More ...</a>
+  </div>
+</div>
+
+                  <div class="card small_font" id="service" style="margin-left:10px;margin-bottom:3%;width:32%">
+  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
+  <div class="card-body">
+    <h5 class="card-title">{{$service->en_title}}</h5>
+    <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
+    <a href="/service/{{$service->id}}" id="service_button" href="#" class="btn btn-primary">More ...</a>
+  </div>
+</div>
+
+                  <div class="card small_font" id="service" style="margin-left:10px;margin-bottom:3%;width:32%">
+  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
+  <div class="card-body">
+    <h5 class="card-title">{{$service->en_title}}</h5>
+    <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
+    <a href="/service/{{$service->id}}" id="service_button" href="#" class="btn btn-primary">More ...</a>
+  </div>
+</div>
+
+                  <div class="card small_font" id="service" style="margin-left:10px;margin-bottom:3%;width:32%">
+  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
+  <div class="card-body">
+    <h5 class="card-title">{{$service->en_title}}</h5>
+    <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
+    <a href="/service/{{$service->id}}" id="service_button" href="#" class="btn btn-primary">More ...</a>
+  </div>
+</div>
+
+                  <div class="card small_font" id="service" style="margin-left:10px;margin-bottom:3%;width:32%">
+  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
+  <div class="card-body">
+    <h5 class="card-title">{{$service->en_title}}</h5>
+    <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
+    <a href="/service/{{$service->id}}" id="service_button" href="#" class="btn btn-primary">More ...</a>
+  </div>
+</div>
+
 @endforeach
         </div>
       </div>

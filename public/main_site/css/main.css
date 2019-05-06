@@ -129,9 +129,7 @@ font-weight: bold;
   padding: 20px;
 }
 
-img.card-img-top.img-responsive {
-    height: 350px;
-}
+
 
 .sidebar {
 position: fixed // or absolute
@@ -240,7 +238,7 @@ position: fixed // or absolute
 }
 @media(max-width: 1440px) {
     .w3l-slide-text h3 {
-        font-size: 52px;
+        font-size: 42px;
     }
 
     .w3l-slide-text p {
@@ -268,7 +266,7 @@ a.button-style {
     margin-top: 1em;
     display: inline-block;
     text-underline-position: unset;
-            font-size: 25px; 
+            font-size: 18px; 
 
 }
 
@@ -282,7 +280,7 @@ a.button-style {
 
 @media(max-width: 1440px) {
     .w3l-slide-text h3 {
-        font-size: 52px;
+        font-size: 42px;
     }
 
     .w3l-slide-text p {
@@ -607,6 +605,11 @@ a.button-style {
     .w3l-slide-text p {
         font-size: 12px;
     }
+
+    #service
+    {
+        width: 50%;
+    }
 }
 
 @media(max-width: 640px) {
@@ -906,4 +909,17 @@ a.button-style {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+}
+
+.medium_font
+{
+    text-align: center;
+    font-size: 18px;
+}
+
+
+
+.small_font
+{
+    font-size: 12px;
 }

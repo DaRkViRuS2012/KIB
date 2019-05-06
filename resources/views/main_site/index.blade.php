@@ -36,10 +36,12 @@
 <section id="navbar">
   <header>
    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
-  <div class="container">
+  <div class="container-fluid">
+    <div class="col-3">
     <a class="navbar-brand" href="#">
         <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
         </a>
+        </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -122,7 +124,7 @@
                 <div class="w3l-slide-text col-lg-7">
                   <h3 data-animation="animated zoomInRight">Why You Should Choose <span style="color:#202e9c">KIB</span></h3>
                   <p>
-  <a style="font-size:25px;color:#414141;font-weight:bold" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
+  <a style="font-size:18px;color:#414141;font-weight:bold" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
      <span class="right"></span>
     Reason1
   </a>
@@ -136,7 +138,7 @@
 
                 <p>
 
-  <a style="font-size:25px;color:#414141;font-weight:bold" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+  <a style="font-size:18px;color:#414141;font-weight:bold" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
       <span class="right" ></span>
     Reason2
   </a>
@@ -149,7 +151,7 @@
 
                 <p style="margin-bottom:100px">
 
-  <a style="font-size:25px;color:#414141;font-weight:bold" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
+  <a style="font-size:18px;color:#414141;font-weight:bold" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
        <span class="right"></span>
     Reason3
   </a>
@@ -276,14 +278,14 @@ function closeNav() {
       }
     });
   </script>
-  <style type="text/css">
-    nav.navbar.navbar-expand-lg.navbar-light.bg-light.static-top {
+<style type="text/css">
+      nav.navbar.navbar-expand-lg.navbar-light.bg-light.static-top {
     display: block;
     margin: 0px;
     position: fixed;
     width: 100%;
     z-index: 100;
-    background: #00000052!important;
+    background: #00000000!important;
     border-radius: 0px;
     color: white;
 }
@@ -297,5 +299,5 @@ function closeNav() {
 .navbar-light .navbar-nav .nav-link {
     color: rgb(255, 255, 255);
 }
-  </style>
+</style>
 </html>
