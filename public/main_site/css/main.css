@@ -923,3 +923,9 @@ a.button-style {
 {
     font-size: 12px;
 }
+
+#content
+{
+overflow-x: hidden;
+
+}
