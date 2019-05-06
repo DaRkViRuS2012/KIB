@@ -20,7 +20,7 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('main_site/css/round_icons.css') }}">
 
 </head>
-<body>
+<body style="height:100vh;">
   <div id="loader">
     <img src="{{ asset('main_site/img/logo.gif') }}" width="30%">
   </div>
