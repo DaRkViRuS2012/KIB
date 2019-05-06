@@ -23,6 +23,11 @@ class Media extends Model
         return $medias;
     }
 
+      public static function get($content_id,$content_type)
+    {
+        $medias=Media::where('content_id,',$content_id)->where('content_type',$content_type)->first();
+        return $medias;
+    }
 
         public static function media_create($url,$media_type,$content_id,$content_type)
     {
@@ -58,5 +63,11 @@ class Media extends Model
     {
         $medias= Media::where('content_id',$content_id)->where('content_type',$content_type)->get();
         return $medias;
+    }
+
+        public static function media_show($id)
+    {
+        $media=Media::find($id);
+        return $media;
     }
 }
