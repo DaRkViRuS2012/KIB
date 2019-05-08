@@ -278,6 +278,14 @@ function closeNav() {
       }
     });
   </script>
+
+<script type="text/javascript">
+  $('.collapse').on('show.bs.collapse', function () {
+    $('.collapse.in').each(function(){
+        $(this).collapse('hide');
+    });
+  });
+</script>
 <style type="text/css">
       nav.navbar.navbar-expand-lg.navbar-light.bg-light.static-top {
     display: block;

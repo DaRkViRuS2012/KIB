@@ -253,6 +253,7 @@ function closeNav() {
           $(this).toggleClass('open');
         }
       );
+
     });
   </script>
   <!-- //dropdown smooth -->

@@ -16,6 +16,9 @@
     border-bottom: 1px solid #5e5e5e;
 }
 
+
+
+
 a.bg-light:hover, button.bg-light:focus, button.bg-light:hover {
     background-color: #202e9b!important;
     color: white!important;
@@ -142,6 +145,12 @@ position: fixed // or absolute
 }
 
 
+#service
+{    width: 45%;
+    margin-left: 20px;
+    margin-bottom: 3%;
+}
+
 
 .list-group-item:hover small 
 {
@@ -252,6 +261,12 @@ position: fixed // or absolute
     .text-info-sec img {
         left: 22%;
     }
+
+    #service
+{    width: 30%;
+    margin-left: 10px;
+    margin-bottom: 3%;
+}
 }
 
 
@@ -531,7 +546,14 @@ a.button-style {
     }
 }
 
-@media(max-width: 768px) {}
+@media(max-width: 768px) {
+    #service
+{    width: 45%;
+    margin-left: 20px;
+    margin-bottom: 3%;
+}
+
+}
 
 @media(max-width: 736px) {
     .w3l-slide-text {
@@ -541,6 +563,13 @@ a.button-style {
     .bs-slider-overlay {
         height: 63vw;
     }
+
+    #service
+{    width: 45%;
+    margin-left: 20px;
+    margin-bottom: 3%;
+}
+
 
     .w3l-slide-text h3 {
         letter-spacing: 2px;
@@ -620,6 +649,13 @@ a.button-style {
     p.copy-right-grids {
         font-size: 14px;
     }
+
+    #service
+{    width: 45%;
+    margin-left: 20px;
+    margin-bottom: 3%;
+}
+
 }
 
 @media(max-width: 600px) {
