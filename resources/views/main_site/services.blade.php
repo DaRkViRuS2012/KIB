@@ -108,4 +108,29 @@
 </div>
     </div>
 
+    <section id="clients">
+<div class="container">
+  <div class="row">
+    <div id="owl" class=" col-lg-12 owl-carousel">
+      <div class="col-lg-10 client">
+        <img src="{{ asset('main_site/img/paramount.png') }}" class="img-responsive item">
+      </div>
+      <div class="col-lg-10 client">
+        <img src="{{ asset('main_site/img/paramount.png') }}" class="img-responsive item">
+      </div>
+      <div class="col-lg-10 client">
+        <img src="{{ asset('main_site/img/paramount.png') }}" class="img-responsive item">
+      </div>
+      <div class="col-lg-10 client">
+        <img src="{{ asset('main_site/img/paramount.png') }}" class="img-responsive item">
+      </div>
+      <div class="col-lg-10 client">
+        <img src="{{ asset('main_site/img/paramount.png') }}" class="img-responsive item">
+      </div>
+    </div>
+  </div>
+ </div>
+
+</section>
+
 @endsection

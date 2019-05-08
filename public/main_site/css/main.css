@@ -172,7 +172,7 @@ position: fixed // or absolute
 
 
 .w3layouts-banner-top {
-    background: url(../img/5.jpg) no-repeat 0px 0px;
+    background: url(../img/5.jpg) repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -181,7 +181,7 @@ position: fixed // or absolute
 }
 
 .w3layouts-banner-top1 {
-    background: url(../img/2.jpg) no-repeat 0px 0px;
+    background: url(../img/2.jpg) repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -190,7 +190,7 @@ position: fixed // or absolute
 }
 
 .w3layouts-banner-top2 {
-    background: url(../img/7.jpg) no-repeat 0px 0px;
+    background: url(../img/7.jpg) repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -199,7 +199,7 @@ position: fixed // or absolute
 }
 
 .w3layouts-banner-top3 {
-    background: url(../img/4.jpg) no-repeat 0px 0px;
+    background: url(../img/4.jpg) repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -208,7 +208,7 @@ position: fixed // or absolute
 }
 
 .w3layouts-banner-top4 {
-    background: url(../img/3.jpg) no-repeat 0px 0px;
+    background: url(../img/3.jpg) repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -964,4 +964,11 @@ a.button-style {
 {
 overflow-x: hidden;
 
+}
+#clients
+{
+    background-color: white;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 5%;
 }

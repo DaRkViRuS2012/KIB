@@ -94,7 +94,7 @@
                 <div class="w3l-slide-text col-lg-6">
                    <h3 style="color:#3544ab;" data-animation="animated zoomInRight">KIB</h3>
                   <p class="aos-init aos-animate" data-aos="fade-down">Excepteur sint occaecat cupidatat non proident</p>
-                  <a href="/services" target="_blank" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">View
+                  <a href="/services" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">View
                     Our Services</a>
                 </div>
                   <div class="w3l-slide-text col-lg-6">
