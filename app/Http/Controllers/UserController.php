@@ -81,4 +81,33 @@ class UserController extends Controller
     {
         //
     }
+
+
+public function RandomString()
+{
+       $code=strval(rand(100000,999999));
+    return $code;
 }
+
+    public static function send_sms($message,$mobile,$lang) {
+ $user_controller=new UserController;
+    $otp=$user_controller->RandomString();
+    var_dump($otp);
+      $message = 'Your activation code is: ' . $otp;
+      // $_url='https://bms.syriatel.sy/API.asmx?wsdl?user_name=IETS&password=P@123456&msg='.$message.'&sender='.'KIB'.'&to=963'.$mobile;
+      $_url='https://bms.syriatel.sy/API/SendSMS.aspx?user_name=IETS&password=P@123456&msg='.$message.'&sender=KIB&to=963'.$mobile;
+      // var_dump($_url);
+      $_url = preg_replace("/ /", "%20", $_url);
+      $result = file_get_contents($_url);
+       // var_dump($result,"<br>");
+      return $result;
+  }
+
+
+      public static function send_sms_post(Request $request) {
+        $user_controller=new UserController;
+        echo($user_controller->send_sms($request['message'], $request['mobile'], $request['lang']));
+    }
+
+}
+
