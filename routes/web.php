@@ -97,3 +97,10 @@ Route::post('/admin/media/create','MediaController@store');
 Route::get('/admin/media/update/{id}/{type}','MediaController@edit');
 Route::post('/admin/media/update/{id}/{type}','MediaController@update');
 Route::get('/admin/media/delete/{id}','MediaController@delete');
+//*********************************************************************************************
+Route::get('/admin/city/index','CityController@index');
+Route::get('/admin/city/create','CityController@create');
+Route::post('/admin/city/create','CityController@store');
+Route::get('/admin/city/update/{id}','CityController@edit');
+Route::post('/admin/city/update/{id}','CityController@update');
+Route::get('/admin/city/delete/{id}','CityController@delete');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Sms_helper;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -63,10 +64,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $name=$data['name'];
+        $username=$data['username'];
+        $email=$data['email'];
+        $password=Hash::make($data['password']);
+        $birthdate=$data['birthdate'];
+        $fcmtoken=$data['fcmtoken'];
+        $location_id=$data['location_id'];
+        $code=Sms_helper::RandomString();
+        $mobile=$data['mobile'];
+        $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$location_id,$code,$mobile);
+        Sms_helper::send_sms_post($user->mobile,$user->code);
+        return Auth::loginUsingId($user->id);
     }
 }
