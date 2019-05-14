@@ -13,7 +13,12 @@ class Option extends Model
 
     public function service()
     {
-    	return $this->belongsToMany('App\Service')->withPivot('service_id');
+    	return $this->belongsTo('App\Service','service_id');
+    }
+
+      public function application()
+    {
+    	return $this->belongsToMany('App\Application')->withPivot('application_id');
     }
 
 
