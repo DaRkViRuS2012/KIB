@@ -11,6 +11,12 @@ class City extends Model
         'ar_title', 'en_title', 'city_id'
     ];
 
+
+    public function users()
+    {
+    	return $this->hasMany('App\User');
+    }
+
     public function FunctionName($value='')
     {
     	# code...

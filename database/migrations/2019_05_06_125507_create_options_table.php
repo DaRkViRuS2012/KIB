@@ -15,6 +15,10 @@ class CreateOptionsTable extends Migration
     {
         Schema::create('options', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->char('title', 255);
+            $table->char('type', 255);
+            $table->text('value');
+            $table->bigInteger('service_id')->unsigned();
             $table->timestamps();
         });
     }

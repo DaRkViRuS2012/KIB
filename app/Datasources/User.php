@@ -39,6 +39,12 @@ class User extends Authenticatable
     ];
 
 
+    public function city()
+    {
+        $this->belongsTo('App\City','city_id');
+    }
+
+
     public static function user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$location_id,$code)
     {
         $user=new user;
