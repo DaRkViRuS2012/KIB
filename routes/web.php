@@ -104,3 +104,10 @@ Route::post('/admin/city/create','CityController@store');
 Route::get('/admin/city/update/{id}','CityController@edit');
 Route::post('/admin/city/update/{id}','CityController@update');
 Route::get('/admin/city/delete/{id}','CityController@delete');
+//*********************************************************************************************
+Route::get('setlocale/{locale}', function ($locale) {
+  if (in_array($locale, \Config::get('app.locales'))) {
+    Session::put('locale', $locale);
+  }
+  return redirect()->back();
+});
