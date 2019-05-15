@@ -24,7 +24,7 @@ class Application extends Model
 
     public function options()
     {
-    	return $this->belongsToMany('App\Option')->withPivot('option_id');
+    	   return $this->belongsToMany('App\Option','applications_options')->as('app_option')->withpivot('value')->withTimestamps();
     }
 
     public static function application_index()
