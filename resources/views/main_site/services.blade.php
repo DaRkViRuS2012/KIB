@@ -26,7 +26,7 @@
 </div>
     </div>
 
-    <div class="col-lg-10 col-md-12" id="main" style="background-color:#d6d6d6;">
+    <div class="col-lg-10 col-md-12 col-sm-12" id="main" style="background-color:#d6d6d6;">
       <div class="container">
         <div class="row">
         <div class="container-fluid">
@@ -34,7 +34,7 @@
         	@foreach ($services as $service)
         		{{-- expr --}}
         	
-                  <div class="card small_font" id="service" style="margin-left:10px;margin-bottom:3%;width:32%">
+                  <div class="card small_font" id="service">
   <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
@@ -43,7 +43,7 @@
   </div>
 </div>
 
-                  <div class="card small_font" id="service" style="margin-left:10px;margin-bottom:3%;width:32%">
+                  <div class="card small_font" id="service">
   <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
@@ -52,7 +52,7 @@
   </div>
 </div>
 
-                  <div class="card small_font" id="service" style="margin-left:10px;margin-bottom:3%;width:32%">
+                  <div class="card small_font" id="service">
   <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
@@ -61,7 +61,7 @@
   </div>
 </div>
 
-                  <div class="card small_font" id="service" style="margin-left:10px;margin-bottom:3%;width:32%">
+                  <div class="card small_font" id="service">
   <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
@@ -70,7 +70,7 @@
   </div>
 </div>
 
-                  <div class="card small_font" id="service" style="margin-left:10px;margin-bottom:3%;width:32%">
+                  <div class="card small_font" id="service">
   <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
@@ -79,7 +79,7 @@
   </div>
 </div>
 
-                  <div class="card small_font" id="service" style="margin-left:10px;margin-bottom:3%;width:32%">
+                  <div class="card small_font" id="service">
   <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
@@ -88,7 +88,7 @@
   </div>
 </div>
 
-                  <div class="card small_font" id="service" style="margin-left:10px;margin-bottom:3%;width:32%">
+                  <div class="card small_font" id="service">
   <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
@@ -107,5 +107,30 @@
         </div>
 </div>
     </div>
+
+    <section id="clients">
+<div class="container">
+  <div class="row">
+    <div id="owl" class=" col-lg-12 owl-carousel">
+      <div class="col-lg-10 client">
+        <img src="{{ asset('main_site/img/paramount.png') }}" class="img-responsive item">
+      </div>
+      <div class="col-lg-10 client">
+        <img src="{{ asset('main_site/img/paramount.png') }}" class="img-responsive item">
+      </div>
+      <div class="col-lg-10 client">
+        <img src="{{ asset('main_site/img/paramount.png') }}" class="img-responsive item">
+      </div>
+      <div class="col-lg-10 client">
+        <img src="{{ asset('main_site/img/paramount.png') }}" class="img-responsive item">
+      </div>
+      <div class="col-lg-10 client">
+        <img src="{{ asset('main_site/img/paramount.png') }}" class="img-responsive item">
+      </div>
+    </div>
+  </div>
+ </div>
+
+</section>
 
 @endsection

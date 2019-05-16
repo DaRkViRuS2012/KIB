@@ -88,6 +88,7 @@
             <a class="collapse-item" href="/admin/gallery/index">Gallery</a>
             <a class="collapse-item" href="/admin/news/index">News</a>
             <a class="collapse-item" href="/admin/service/index">Service</a>
+            <a class="collapse-item" href="/admin/city/index">Cities</a>
           </div>
         </div>
       </li>

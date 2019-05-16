@@ -39,6 +39,12 @@ class User extends Authenticatable
     ];
 
 
+    public function city()
+    {
+        $this->belongsTo('App\City','city_id');
+    }
+
+
     public static function user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$location_id,$code)
     {
         $user=new user;
@@ -56,7 +62,7 @@ class User extends Authenticatable
         return $user;
     }
 
-       public static function user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$location_id,$code)
+       public static function user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$location_id,$code,$mobile)
     {
         $user=User::find($id);
         $user->name=$name;
@@ -69,6 +75,7 @@ class User extends Authenticatable
         $user->os=$os;
         $user->role=$role;
         $user->location_id=$location_id;
+        $user->mobile=$mobile;
         $user->save();
         return $user;
     }
@@ -80,4 +87,11 @@ class User extends Authenticatable
         $user=User::find($id);
         $user->delete();
     }
+
+
+        public function RandomString()
+{
+       $code=strval(rand(100000,999999));
+    return $code;
+}
 }

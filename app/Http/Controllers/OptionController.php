@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Option;
+use App\Service;
 use Illuminate\Http\Request;
 
 class OptionController extends Controller
@@ -14,7 +15,8 @@ class OptionController extends Controller
      */
     public function index()
     {
-        //
+        $options=Option::option_index();
+        return view('admin.option.index',compact('options'));
     }
 
     /**
@@ -24,7 +26,8 @@ class OptionController extends Controller
      */
     public function create()
     {
-        //
+        $services=Service::service_index();
+        return view('admin.option.create',compact('services'));
     }
 
     /**
@@ -35,7 +38,14 @@ class OptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title=$request['title'];
+        $type=$request['type'];
+        $value=$request['value'];
+        $service_id=$request['service_id'];
+        Option::option_create($title,$type,$value,$service_id);
+
+        return redirect('/admin/option/index');
+
     }
 
     /**
@@ -55,9 +65,11 @@ class OptionController extends Controller
      * @param  \App\Option  $option
      * @return \Illuminate\Http\Response
      */
-    public function edit(Option $option)
+    public function edit($id)
     {
-        //
+        $option=Option::option_show($id);
+        $services=Service::service_index();
+        return view('admin.option.update',compact('option','services'));
     }
 
     /**
@@ -69,7 +81,13 @@ class OptionController extends Controller
      */
     public function update(Request $request, Option $option)
     {
-        //
+        $id=$request['id'];
+        $title=$request['title'];
+        $type=$request['type'];
+        $value=$request['value'];
+        $service_id=$request['service_id'];
+        Option::option_update($id,$title,$type,$value,$service_id);
+        return redirect('/admin/option/index');
     }
 
     /**
@@ -78,8 +96,9 @@ class OptionController extends Controller
      * @param  \App\Option  $option
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Option $option)
+    public function delete($id)
     {
-        //
+        Option::option_delete($id);
+        return redirect('/admin/option/index');
     }
 }

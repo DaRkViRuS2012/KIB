@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOptionsTable extends Migration
+class CreateCitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('options', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->char('title', 255);
-            $table->char('type', 255);
-            $table->text('value');
-            $table->bigInteger('service_id')->unsigned();
+            $table->text('ar_title');
+            $table->text('en_title');
+            $table->integer('city_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('options');
+        Schema::dropIfExists('cities');
     }
 }
