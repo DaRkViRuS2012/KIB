@@ -24,7 +24,7 @@ class Option extends Model
 
     public static function option_index()
     {
-    	$options=Option::with('service')->get();
+    	$options=Option::with('service','application')->get();
     	return $options;
     }
 
@@ -54,7 +54,7 @@ class Option extends Model
 
       public static function option_show($id)
     {
-    $option=Option::with('service')->first();
+    $option=Option::with('service','application')->first();
     	return $option;
     }
 

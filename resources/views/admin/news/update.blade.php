@@ -11,76 +11,40 @@
   <!-- Custom styles for this page -->
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 @endsection
+	<div class="col-6">
+<form  class="container" action='/admin/{{Request::segment(2)}}/update/{{$news->id}}' method="POST" enctype="multipart/form-data">
+	@csrf
 
-@if($errors->any())
-<div class="alert alert-danger col-lg-6">
-  {{$errors->first()}}
-</div>           
-@endif
+			<div class="form-group">
+		<label for="exampleInputEmail1">{{Request::segment(2)}} en_Title</label>
+		<input name="en_title" class="form-control"  id="comment" required value="{{$news->en_title}}">
+		
+	</div>
 
-  <div class="col-6">
-<form  class="container" action='/admin/{{Request::segment(2)}}/create' method="POST" enctype="multipart/form-data">
-  @csrf
+				<div class="form-group">
+		<label for="exampleInputEmail1">{{Request::segment(2)}} ar_Title</label>
+		<input name="ar_title" class="form-control"  id="comment" required value="{{$news->ar_title}}">
+		
+	</div>
 
-      <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} english title</label>
-    <input name="en_title" class="form-control"  id="comment" required value="{{$service->en_title}}">
-    
-  </div>
 
-        <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} arabic Title</label>
-    <input name="ar_title" class="form-control"  id="comment" required>
-    
-  </div>
-
-          <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} english subtitle</label>
-    <input name="en_subtitle" class="form-control"  id="comment" required>
-    
-  </div>
-
-          <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} arabic subtitle</label>
-    <input name="ar_subtitle" class="form-control"  id="comment" required>
+            <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} en_body</label>
+    <textarea name="en_body" rows="5" class="form-control"  id="comment" required>{{$news->en_body}}</textarea>
     
   </div>
 
 
           <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} english description</label>
-    <textarea name="en_description" rows="5" class="form-control"  id="comment" required></textarea>
-  </div>
-
-
-          <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} arabic description</label>
-    <textarea name="ar_description" rows="5" class="form-control"  id="comment" required></textarea>
-  </div>
-
-
-         <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} parent_id</label>
-    <select name="parent_id" class="form-control">
-      <option value="0">Father</option>
-      @foreach ($services as $service)
-      <option value="{{$service->id}}">{{$service->en_title}}</option>
-      @endforeach
-      
-    </select>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} ar_body</label>
+    <textarea name="ar_body" rows="5" class="form-control"  id="comment" required>{{$news->ar_body}}</textarea>
     
   </div>
 
-
-
-  <label for="exampleInputEmail1">Image</label>
-  <input class="active" type="file" name="image[]" enctype="multipart/form-data" required multiple>
-  <br><br>
-  <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Create {{Request::segment(2)}}</button>
+	<button  type="submit" class="btn btn-primary"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Update {{Request::segment(2)}}</button>
 </form>
-  </div>
+	</div>
 @endsection
-
 @section('scripts')
    <!-- Bootstrap core JavaScript-->
   <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
