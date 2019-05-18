@@ -15,6 +15,10 @@ class CreateApplicationsTable extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('service_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->string('date',250);
+            $table->string('code',250);
             $table->timestamps();
         });
     }

@@ -32,6 +32,12 @@ class Service extends Model
     	return $services;
     }
 
+     public static function service_index_fathers()
+    {
+        $services=Service::where('parent_id','0')->with('media','service','company')->get();
+        return $services;
+    }
+
     public static function service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link)
     {
     	$service=new Service;

@@ -29,7 +29,7 @@ class Application extends Model
 
     public static function application_index()
     {
-    	$applications=Application::with('service','user')->get();
+    	$applications=Application::with('service','user','options')->get();
     	return $applications;
     }
     public static function  application_create($service_id,$user_id,$date,$code)

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Service;
 use App\Slider;
 use App\Gallery;
+use App\Application;
+use App\Media;
+use App\Option;
 class SiteController extends Controller
 {
     /**
@@ -44,5 +47,16 @@ public function galleries()
         $gallery_id=$request['gallery_id'];
         $gallery=Gallery::gallery_show($gallery_id);
        return view('main_site.gallery',compact('gallery'));
+    }
+
+    public function application_create()
+    {
+        $services=Service::service_index_fathers();
+        return view('main_site.application_create',compact('services'));
+    }
+
+    public function application_store()
+    {
+        
     }
 }

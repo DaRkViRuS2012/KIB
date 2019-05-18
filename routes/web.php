@@ -26,6 +26,9 @@ Route::get('/services', 'SiteController@services')->name('home');
 
 Route::get('/service/{id}', 'SiteController@services_single')->name('home');
 
+Route::get('/application/create','SiteController@application_create');
+
+Route::post('/application/create','SiteController@application_store');
 
 Auth::routes();
 
