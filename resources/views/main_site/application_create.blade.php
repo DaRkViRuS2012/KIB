@@ -5,7 +5,7 @@
 	
 
 <div class="row">
-	<h2>Fill Your Application</h2>
+	<h2 style="color:#3544ab">Fill Your Application</h2>
 </div>
 <form action="/application/create">
 <div class="row">
@@ -50,8 +50,8 @@
 
   </div>
 
-
-    <div class="form-group col-4">
+</div>
+{{--     <div class="form-group col-4">
     <label for="pwd">service</label>
     <select class="form-control" name="service_sons">
     	<option selected disabled>Select Your Main Service</option>
@@ -64,10 +64,13 @@
     </select>
 
     
-  </div>
+  </div> --}}
 
-
-  <button type="submit" class="btn btn-primary">Submit</button>
+<div class="row">
+<button style="margin: 1%;
+    padding: 1% 3% 1% 3%;background-color:#3544ab;border-color:#3544ab" type="submit" class="btn btn-primary">Submit</button>	
+</div>
+  
 </form>
 </div>
 </div>
