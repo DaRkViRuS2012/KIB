@@ -29,6 +29,8 @@ Route::get('/news','NewsController@index_api');
 
 Route::get('/services','ServiceController@index_api');
 
+Route::get('/options','OptionController@index_api');
+
 
 
 Route::get('/sms','UserController@send_sms');

@@ -19,6 +19,18 @@ class OptionController extends Controller
         return view('admin.option.index',compact('options'));
     }
 
+
+      public function index_api()
+    {
+        $options=Option::option_index();
+        foreach ($options as $key => $option) {
+        $values=explode('@',$option->value);
+        $option->value=$values;
+        }
+        
+       return response()->json(['status' => True, 'data' => $options, 'message' => '','type'=>'array']);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
