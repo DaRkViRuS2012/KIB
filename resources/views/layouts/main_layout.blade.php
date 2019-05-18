@@ -216,9 +216,11 @@
       </div>
       </div>
     </div>
-
+<script type="text/javascript" src="{{ asset('main_site/js/contact.js')}}">
+</script>
 <script type="text/javascript">
     $(document).ready(function(){
+      social();
 
     $(".filter-button").click(function(){
         var value = $(this).attr('data-filter');
