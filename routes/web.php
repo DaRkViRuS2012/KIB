@@ -16,9 +16,10 @@ Route::get('/', function () {
 });
 
 
-Route::get('/gallery', function () {
-    return view('main_site.gallery');
-});
+Route::get('/galleries','SiteController@galleries');
+
+
+Route::get('/gallery/{gallery_id}', 'SiteController@gallery')->name('gallery');
 
 
 Route::get('/services', 'SiteController@services')->name('home');
