@@ -74,4 +74,10 @@
 </form>
 </div>
 </div>
+
+
+<script type="text/javascript" src="{{ asset('main_site/js/options.js') }}"></script>
+<script type="text/javascript">
+	get_options();
+</script>
 @endsection
