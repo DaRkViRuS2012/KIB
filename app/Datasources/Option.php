@@ -16,15 +16,15 @@ class Option extends Model
     	return $this->belongsTo('App\Service','service_id');
     }
 
-      public function application()
-    {
-    	return $this->belongsToMany('App\Ad','applications_options')->as('applications')->withPivot('value')->withTimestamps();
-    }
+    //   public function application()
+    // {
+    // 	return $this->belongsToMany('App\Application','applications_options')->as('applications')->withPivot('value')->withTimestamps();
+    // }
 
 
     public static function option_index()
     {
-    	$options=Option::with('service','application')->get();
+    	$options=Option::with('service')->get();
     	return $options;
     }
 
@@ -54,7 +54,7 @@ class Option extends Model
 
       public static function option_show($id)
     {
-    $option=Option::with('service','application')->first();
+    $option=Option::with('service')->first();
     	return $option;
     }
 

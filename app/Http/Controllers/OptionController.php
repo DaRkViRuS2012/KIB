@@ -41,7 +41,8 @@ class OptionController extends Controller
         $title=$request['title'];
         $type=$request['type'];
         $value=$request['value'];
-        $service_id=$request['service_id'];
+        $service_id=$request['service'];
+        $value = implode('@', $value);
         Option::option_create($title,$type,$value,$service_id);
 
         return redirect('/admin/option/index');
@@ -85,6 +86,7 @@ class OptionController extends Controller
         $title=$request['title'];
         $type=$request['type'];
         $value=$request['value'];
+        $value = implode('@', $value);
         $service_id=$request['service_id'];
         Option::option_update($id,$title,$type,$value,$service_id);
         return redirect('/admin/option/index');
