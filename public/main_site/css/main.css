@@ -972,3 +972,9 @@ overflow-x: hidden;
     margin-bottom: 3%;
     margin-left: 5%;
 }
+
+h5#gallery_title {
+    font-size: 2em;
+    margin-top: 5%;
+    color: #3544ab;
+}

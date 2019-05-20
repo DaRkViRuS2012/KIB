@@ -20,6 +20,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.green.min.css">
 
 
+
+
+
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -38,7 +41,14 @@
   <link href="{{ asset('main_site/css/JiSlider.css') }}" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="{{ asset('main_site/css/round_icons.css') }}">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js.map"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js.map"></script>
 </head>
 <body>
    <div id="loader">
@@ -206,9 +216,11 @@
       </div>
       </div>
     </div>
-
+<script type="text/javascript" src="{{ asset('main_site/js/contact.js')}}">
+</script>
 <script type="text/javascript">
     $(document).ready(function(){
+      social();
 
     $(".filter-button").click(function(){
         var value = $(this).attr('data-filter');
@@ -282,7 +294,7 @@ function closeNav() {
                 rtl: true,
                 mouseDrag: true,
                 touchDrag: true,
-                loop:true,
+                loop:false,
                 autoplay:true,
                 autoplayTimeout:2000,
               

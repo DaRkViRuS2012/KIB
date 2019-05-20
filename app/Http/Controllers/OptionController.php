@@ -19,6 +19,26 @@ class OptionController extends Controller
         return view('admin.option.index',compact('options'));
     }
 
+
+      public function index_api()
+    {
+        $options=Option::option_index();
+        foreach ($options as $key => $option) {
+        $values=explode('@',$option->value);
+        $option->value=$values;
+        }
+        
+       return response()->json(['status' => True, 'data' => $options, 'message' => '','type'=>'array']);
+    }
+
+
+    public function get_by_service(Request $request)
+    {
+    $service_id=$request['service_id'];
+    $options=Option::get_by_service($service_id);
+     return response()->json(['status' => True, 'data' => $options, 'message' => '','type'=>'array']);   
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -40,10 +60,21 @@ class OptionController extends Controller
     {
         $title=$request['title'];
         $type=$request['type'];
-        $value=$request['value'];
-        $service_id=$request['service_id'];
+           $value=$request['value'];
+        
+        $service_id=$request['service'];
+        if ($type=="input") {
+            $value=' ';
+        }
+        else
+        {
+            if ($value!=null) {
+             
+            $value = implode('@', $value);
+            }
+            
+        }
         Option::option_create($title,$type,$value,$service_id);
-
         return redirect('/admin/option/index');
 
     }
@@ -79,13 +110,14 @@ class OptionController extends Controller
      * @param  \App\Option  $option
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Option $option)
+    public function update(Request $request)
     {
         $id=$request['id'];
         $title=$request['title'];
         $type=$request['type'];
         $value=$request['value'];
-        $service_id=$request['service_id'];
+        $service_id=$request['service'];
+        $value = implode('@', $value);
         Option::option_update($id,$title,$type,$value,$service_id);
         return redirect('/admin/option/index');
     }

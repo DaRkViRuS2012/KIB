@@ -16,15 +16,19 @@ Route::get('/', function () {
 });
 
 
-Route::get('/gallery', function () {
-    return view('main_site.gallery');
-});
+Route::get('/galleries','SiteController@galleries');
+
+
+Route::get('/gallery/{gallery_id}', 'SiteController@gallery')->name('gallery');
 
 
 Route::get('/services', 'SiteController@services')->name('home');
 
 Route::get('/service/{id}', 'SiteController@services_single')->name('home');
 
+Route::get('/application/create','SiteController@application_create');
+
+Route::post('/application/create','SiteController@application_store');
 
 Auth::routes();
 
@@ -104,6 +108,13 @@ Route::post('/admin/city/create','CityController@store');
 Route::get('/admin/city/update/{id}','CityController@edit');
 Route::post('/admin/city/update/{id}','CityController@update');
 Route::get('/admin/city/delete/{id}','CityController@delete');
+//*********************************************************************************************
+Route::get('/admin/option/index','OptionController@index');
+Route::get('/admin/option/create','OptionController@create');
+Route::post('/admin/option/create','OptionController@store');
+Route::get('/admin/option/update/{id}','OptionController@edit');
+Route::post('/admin/option/update/{id}','OptionController@update');
+Route::get('/admin/option/delete/{id}','OptionController@delete');
 //*********************************************************************************************
 Route::get('setlocale/{locale}', function ($locale) {
   if (in_array($locale, \Config::get('app.locales'))) {

@@ -18,21 +18,21 @@
 </div>           
 @endif
 
-	<div class="col-6">
+  <div class="col-6">
 <form  class="container" action='/admin/{{Request::segment(2)}}/create' method="POST" enctype="multipart/form-data">
-	@csrf
+  @csrf
 
-			<div class="form-group">
-		<label for="exampleInputEmail1">{{Request::segment(2)}} en_Title</label>
-		<input name="en_title" class="form-control"  id="comment" required>
-		
-	</div>
+      <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} en_Title</label>
+    <input name="en_title" class="form-control"  id="comment" required>
+    
+  </div>
 
-				<div class="form-group">
-		<label for="exampleInputEmail1">{{Request::segment(2)}} ar_Title</label>
-		<input name="ar_title" class="form-control"  id="comment" required>
-		
-	</div>
+        <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} ar_Title</label>
+    <input name="ar_title" class="form-control"  id="comment" required>
+    
+  </div>
 
           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} en subtitle</label>
@@ -104,12 +104,12 @@
 
 
 
-	<label for="exampleInputEmail1">Image</label>
-	<input class="active" type="file" name="image[]" enctype="multipart/form-data" required multiple>
-	<br><br>
-	<button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Create {{Request::segment(2)}}</button>
+  <label for="exampleInputEmail1">Image</label>
+  <input class="active" type="file" name="image[]" enctype="multipart/form-data" required multiple>
+  <br><br>
+  <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Create {{Request::segment(2)}}</button>
 </form>
-	</div>
+  </div>
 @endsection
 
 @section('scripts')

@@ -89,6 +89,7 @@
             <a class="collapse-item" href="/admin/news/index">News</a>
             <a class="collapse-item" href="/admin/service/index">Service</a>
             <a class="collapse-item" href="/admin/city/index">Cities</a>
+            <a class="collapse-item" href="/admin/option/index">options</a>
           </div>
         </div>
       </li>
@@ -188,7 +189,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; KIB Insurance 2019</span>
           </div>
         </div>
       </footer>

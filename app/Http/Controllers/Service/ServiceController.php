@@ -31,6 +31,13 @@ class ServiceController extends Controller
          return response()->json(['status' => True, 'data' => $services, 'message' => '','type'=>'array']);
     }
 
+
+    public function get_sons_api($service_id)
+    {
+        $services=Service::service_index_sons($service_id);
+        return response()->json(['status' => True, 'data' => $services, 'message' => '','type'=>'array']);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
