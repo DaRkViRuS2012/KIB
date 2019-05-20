@@ -294,7 +294,7 @@ function closeNav() {
                 rtl: true,
                 mouseDrag: true,
                 touchDrag: true,
-                loop:true,
+                loop:false,
                 autoplay:true,
                 autoplayTimeout:2000,
               

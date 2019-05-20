@@ -9,6 +9,7 @@ use App\Gallery;
 use App\Application;
 use App\Media;
 use App\Option;
+use App\Partner;
 class SiteController extends Controller
 {
     /**
@@ -19,7 +20,8 @@ class SiteController extends Controller
 public function services()
 {
     $services=Service::service_index();
-    return view('main_site.services',compact('services'));
+    $partners=Partner::partner_index();
+    return view('main_site.services',compact('services','partners'));
 }
 
 

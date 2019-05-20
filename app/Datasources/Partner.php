@@ -12,38 +12,38 @@ class Partner extends Model
 
     public static function partner_index()
     {
-    	$compamies=Partner::all();
-    	return $compamies;
+    	$partners=Partner::all();
+    	return $partners;
     }
 
     public static function partner_create($title,$url,$image)
     {
-    	$company=new Company;
-    	$company->title=$title;
-    	$company->url=$url;
-    	$company->image=$image;
-    	$company->save();
-    	return $company;
+    	$partners=new Partner;
+    	$partners->title=$title;
+    	$partners->url=$url;
+    	$partners->image=$image;
+    	$partners->save();
+    	return $partners;
     }
 
     public static function partner_update($id,$title,$url,$image)
     {
-    	$company=Partner::find($id);
-    	$company->title=$title;
-    	$company->url=$url;
-    	$company->image=$image;
-    	$company->save();
-    	return $company;
+    	$partners=Partner::find($id);
+    	$partners->title=$title;
+    	$partners->url=$url;
+    	$partners->image=$image;
+    	$partners->save();
+    	return $partners;
     }
 
     public static function partner_delete($id)
     {
-    	$company=Partner::find($id);
-    	$company->delete();
+    	$partners=Partner::find($id);
+    	$partners->delete();
     }
         public static function partner_show($id)
     {
-        $company=Partner::find($id);
-        return $company;
+        $partners=Partner::find($id);
+        return $partners;
     }
 }

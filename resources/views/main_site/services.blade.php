@@ -112,21 +112,11 @@
 <div class="container">
   <div class="row">
     <div id="owl" class=" col-lg-12 owl-carousel">
+      @foreach ($partners as $partner)
       <div class="col-lg-10 client">
-        <img src="{{ asset('main_site/img/paramount.png') }}" class="img-responsive item">
+        <img src="{{env('image_storage')}}/{{$partner->image}}" class="img-responsive item">
       </div>
-      <div class="col-lg-10 client">
-        <img src="{{ asset('main_site/img/paramount.png') }}" class="img-responsive item">
-      </div>
-      <div class="col-lg-10 client">
-        <img src="{{ asset('main_site/img/paramount.png') }}" class="img-responsive item">
-      </div>
-      <div class="col-lg-10 client">
-        <img src="{{ asset('main_site/img/paramount.png') }}" class="img-responsive item">
-      </div>
-      <div class="col-lg-10 client">
-        <img src="{{ asset('main_site/img/paramount.png') }}" class="img-responsive item">
-      </div>
+      @endforeach
     </div>
   </div>
  </div>
