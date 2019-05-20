@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2019 at 05:24 PM
+-- Generation Time: May 20, 2019 at 09:13 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -49,6 +49,22 @@ INSERT INTO `about_us` (`id`, `description`, `address`, `lat`, `lang`, `created_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `applications`
+--
+
+CREATE TABLE `applications` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `service_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `date` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `banks`
 --
 
@@ -65,6 +81,30 @@ CREATE TABLE `banks` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cities`
+--
+
+CREATE TABLE `cities` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `ar_title` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `en_title` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city_id` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `cities`
+--
+
+INSERT INTO `cities` (`id`, `ar_title`, `en_title`, `city_id`, `created_at`, `updated_at`) VALUES
+(4, 'سوريا', 'Syria', 0, '2019-05-12 14:25:51', '2019-05-12 14:25:51'),
+(5, 'دمشق', 'damascus', 4, '2019-05-12 14:25:59', '2019-05-12 14:25:59'),
+(6, 'حمص', 'homs', 4, '2019-05-12 14:26:14', '2019-05-12 14:26:14');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `companies`
 --
 
@@ -77,13 +117,6 @@ CREATE TABLE `companies` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `companies`
---
-
-INSERT INTO `companies` (`id`, `name`, `link`, `image`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'bemo', 'bemo.com', '1555968131.jpg', '2019-04-22 18:22:11', '2019-04-22 18:22:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -121,7 +154,8 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `type`, `data`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'facebook1', 'facebook.com', '2019-04-02 08:18:36', '2019-04-02 08:18:41', NULL);
+(1, 'facebook1', 'facebook.com', '2019-04-02 08:18:36', '2019-04-02 08:18:41', NULL),
+(2, 'phone', '+963111234567', '2019-05-17 22:54:14', '2019-05-17 22:54:14', NULL);
 
 -- --------------------------------------------------------
 
@@ -144,6 +178,18 @@ CREATE TABLE `galleries` (
 
 INSERT INTO `galleries` (`id`, `en_title`, `ar_title`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'asdasd', 'sadasda', '2019-04-06 19:29:31', '2019-04-06 19:29:31', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `locations`
+--
+
+CREATE TABLE `locations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -171,7 +217,8 @@ INSERT INTO `media` (`id`, `url`, `media_type`, `content_id`, `content_type`, `c
 (20, '/1554589772download.jpg', 'image', 1, 'gallery', '2019-04-06 19:29:32', '2019-04-06 19:29:32', NULL),
 (21, '/1554589794slide4.jpg', 'image', 1, 'news', '2019-04-06 19:29:54', '2019-04-06 19:29:54', NULL),
 (22, '/1554589794vo28ssjt25l21.jpg', 'image', 1, 'news\r\n', '2019-04-06 19:29:54', '2019-04-06 19:29:54', NULL),
-(23, '/1555969056download.jpg', 'image', 4, 'service', '2019-04-22 18:37:36', '2019-04-22 18:37:36', NULL);
+(23, '/1555969056download.jpg', 'image', 4, 'service', '2019-04-22 18:37:36', '2019-04-22 18:37:36', NULL),
+(24, '/1558215817download.jpg', 'image', 5, 'service', '2019-05-18 18:43:37', '2019-05-18 18:43:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -202,8 +249,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2019_03_21_224759_create_partners_table', 6),
 (15, '2019_03_21_225155_create_complaints_table', 7),
 (16, '2019_03_21_225843_create_notifications_table', 8),
-(17, '2019_03_21_230302_create_companies_table', 9),
-(18, '2019_03_21_230422_create_banks_table', 10);
+(27, '2019_03_21_230302_create_companies_table', 9),
+(28, '2019_03_21_230422_create_banks_table', 9),
+(29, '2019_03_25_112321_create_locations_table', 9),
+(31, '2019_05_10_214019_create_cities_table', 9),
+(32, '2019_05_06_125507_create_options_table', 10),
+(33, '2019_05_14_011211_create_applications_table', 11);
 
 -- --------------------------------------------------------
 
@@ -248,6 +299,30 @@ CREATE TABLE `notifications` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `options`
+--
+
+CREATE TABLE `options` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` char(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` char(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` text COLLATE utf8mb4_unicode_ci,
+  `service_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `options`
+--
+
+INSERT INTO `options` (`id`, `title`, `type`, `value`, `service_id`, `created_at`, `updated_at`) VALUES
+(4, 'data', 'dropdown', 'hello@test', 5, '2019-05-17 21:47:14', '2019-05-19 21:26:20'),
+(10, 'data123', 'input', '', 5, '2019-05-19 20:59:08', '2019-05-19 21:15:21');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `partners`
 --
 
@@ -260,6 +335,20 @@ CREATE TABLE `partners` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `partners`
+--
+
+INSERT INTO `partners` (`id`, `title`, `image`, `url`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'bemo', '1558313616.jpg', 'https://www.bemobank.com/', '2019-05-19 21:53:36', '2019-05-19 21:53:36', NULL),
+(2, 'bemo', '1558313616.jpg', 'https://www.bemobank.com/', '2019-05-19 21:53:36', '2019-05-19 21:53:36', NULL),
+(3, 'bemo', '1558313616.jpg', 'https://www.bemobank.com/', '2019-05-19 21:53:36', '2019-05-19 21:53:36', NULL),
+(4, 'bemo', '1558313616.jpg', 'https://www.bemobank.com/', '2019-05-19 21:53:36', '2019-05-19 21:53:36', NULL),
+(5, 'bemo', '1558313616.jpg', 'https://www.bemobank.com/', '2019-05-19 21:53:36', '2019-05-19 21:53:36', NULL),
+(6, 'bemo', '1558313616.jpg', 'https://www.bemobank.com/', '2019-05-19 21:53:36', '2019-05-19 21:53:36', NULL),
+(7, 'bemo', '1558313616.jpg', 'https://www.bemobank.com/', '2019-05-19 21:53:36', '2019-05-19 21:53:36', NULL),
+(8, 'bemo', '1558313616.jpg', 'https://www.bemobank.com/', '2019-05-19 21:53:36', '2019-05-19 21:53:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -302,7 +391,8 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `en_title`, `ar_title`, `en_subtitle`, `ar_subtitle`, `ar_description`, `en_description`, `parent_id`, `quotation_id`, `active`, `company_id`, `portal_link`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(4, 'Life insurance\r\n', 'Life insurance\r\n', '6th International Building Technology Exhibition in Syria', '6th International Building Technology Exhibition in Syria', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, 1, 1, 1, '6th International Building Technology Exhibition in Syria', '2019-04-22 18:37:36', '2019-04-22 18:37:36', NULL);
+(4, 'Life insurance\r\n', 'Life insurance\r\n', '6th International Building Technology Exhibition in Syria', '6th International Building Technology Exhibition in Syria', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, 1, 1, 1, '6th International Building Technology Exhibition in Syria', '2019-04-22 18:37:36', '2019-04-22 18:37:36', NULL),
+(5, 'exhibition', 'معرض', '6th International Building Technology Exhibition in Syria', '6th International Building Technology Exhibition in Syria', '6th International Building Technology Exhibition in Syria 6th International Building Technology Exhibition in Syria 6th International Building Technology Exhibition in Syria 6th International Building Technology Exhibition in Syria', '6th International Building Technology Exhibition in Syria 6th International Building Technology Exhibition in Syria 6th International Building Technology Exhibition in Syria 6th International Building Technology Exhibition in Syria', 4, 2, 1, 0, '6th International Building Technology Exhibition in Syria', '2019-05-18 18:43:37', '2019-05-18 18:43:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -358,9 +448,21 @@ ALTER TABLE `about_us`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `applications`
+--
+ALTER TABLE `applications`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `banks`
 --
 ALTER TABLE `banks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cities`
+--
+ALTER TABLE `cities`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -388,6 +490,12 @@ ALTER TABLE `galleries`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `locations`
+--
+ALTER TABLE `locations`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `media`
 --
 ALTER TABLE `media`
@@ -409,6 +517,12 @@ ALTER TABLE `news`
 -- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `options`
+--
+ALTER TABLE `options`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -454,16 +568,28 @@ ALTER TABLE `about_us`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `applications`
+--
+ALTER TABLE `applications`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `banks`
 --
 ALTER TABLE `banks`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `cities`
+--
+ALTER TABLE `cities`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `complaints`
@@ -475,7 +601,7 @@ ALTER TABLE `complaints`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `galleries`
@@ -484,16 +610,22 @@ ALTER TABLE `galleries`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `locations`
+--
+ALTER TABLE `locations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -508,16 +640,22 @@ ALTER TABLE `notifications`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `options`
+--
+ALTER TABLE `options`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `partners`
 --
 ALTER TABLE `partners`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sliders`
