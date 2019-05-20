@@ -1,8 +1,3 @@
-$('select').on('change', function (e) {
- 
-});
-
-
 function get_sub_service() {
 	var service_id = $('#main_service').find(":selected").val();
 	$('#sub_service').empty();
