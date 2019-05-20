@@ -28,6 +28,13 @@ class Option extends Model
     	return $options;
     }
 
+     public static function get_by_service($id)
+    {
+        $options=Option::where('service_id',$id)->get();
+        return $options;
+    }
+
+
 
     public static  function option_create($title,$type,$value,$service_id)
     {

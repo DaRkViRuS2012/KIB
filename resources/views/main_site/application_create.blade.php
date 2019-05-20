@@ -46,8 +46,6 @@
     		<option value="{{$service->id}}">{{$service->en_title}}</option>
     	@endforeach
     </select>
-
-
   </div>
 
 
@@ -58,11 +56,13 @@
     </select>
   </div>
 
+
+
+</div>
+
   <div class="row" id="options">
     
   </div>
-
-</div>
 {{--     <div class="form-group col-4">
     <label for="pwd">service</label>
     <select class="form-control" name="service_sons">
@@ -93,6 +93,11 @@
   $('#main_service').on('change', '', function (e) {
 get_sub_service();
 });
-	
+	  $('#sub_service').on('change', '', function (e) {
+get_options();
+});
+  
+
+
 </script>
 @endsection

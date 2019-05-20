@@ -31,6 +31,14 @@ class OptionController extends Controller
        return response()->json(['status' => True, 'data' => $options, 'message' => '','type'=>'array']);
     }
 
+
+    public function get_by_service(Request $request)
+    {
+    $service_id=$request['service_id'];
+    $options=Option::get_by_service($service_id);
+     return response()->json(['status' => True, 'data' => $options, 'message' => '','type'=>'array']);   
+    }
+
     /**
      * Show the form for creating a new resource.
      *
