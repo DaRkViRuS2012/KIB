@@ -32,6 +32,7 @@ Route::get('/services','ServiceController@index_api');
 Route::get('/options','OptionController@index_api');
 
 
+Route::get('/service/sub/{service_id}', 'ServiceController@get_sons_api');
 
 Route::get('/sms','UserController@send_sms');
 

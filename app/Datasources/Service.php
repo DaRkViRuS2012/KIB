@@ -15,6 +15,11 @@ class Service extends Model
         return $this->hasMany('App\Media','content_id')->where('content_type','service');
     }
 
+    public function options()
+    {
+        return $this->hasMany('App\Option');
+    }
+
     public function company()
     {
     	return $this->BelongsTo('App\Company','company_id');
@@ -28,7 +33,7 @@ class Service extends Model
 
     public static function service_index()
     {
-    	$services=Service::with('media','service','company')->get();
+    	$services=Service::with('media','service','company','options')->get();
     	return $services;
     }
 
@@ -37,6 +42,14 @@ class Service extends Model
         $services=Service::where('parent_id','0')->with('media','service','company')->get();
         return $services;
     }
+
+
+      public static function service_index_sons($service_id)
+    {
+        $services=Service::where('parent_id',$service_id)->with('media','service','company')->get();
+        return $services;
+    }
+
 
     public static function service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link)
     {

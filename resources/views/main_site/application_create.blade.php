@@ -38,9 +38,9 @@
     <input type="lname_ar" class="form-control" id="pwd">
   </div>
 
-    <div class="form-group col-4">
+    <div class="form-group col-6">
     <label for="pwd">service</label>
-    <select class="form-control" name="service">
+    <select class="form-control" name="service" id="main_service">
     	<option selected disabled>Select Your Main Service</option>
     	@foreach ($services as $service)
     		<option value="{{$service->id}}">{{$service->en_title}}</option>
@@ -48,6 +48,18 @@
     </select>
 
 
+  </div>
+
+
+    <div class="form-group col-6">
+    <label for="pwd">sub service</label>
+    <select class="form-control" id="sub_service">
+      <option selected disabled>Select Your Main Service</option>
+    </select>
+  </div>
+
+  <div class="row" id="options">
+    
   </div>
 
 </div>
@@ -78,6 +90,9 @@
 
 <script type="text/javascript" src="{{ asset('main_site/js/options.js') }}"></script>
 <script type="text/javascript">
-	get_options();
+  $('#main_service').on('change', '', function (e) {
+get_sub_service();
+});
+	
 </script>
 @endsection

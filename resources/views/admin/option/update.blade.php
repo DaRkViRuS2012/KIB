@@ -25,12 +25,12 @@
 @endif
 
   <div class="col-6">
-<form  class="container" action='/admin/{{Request::segment(2)}}/create' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/{{Request::segment(2)}}/update/{{$option->id}}' method="POST" enctype="multipart/form-data">
   @csrf
 
         <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} Title</label>
-    <input name="title" class="form-control" id="comment" required value="{{$option->value}}">
+    <input name="title" class="form-control" id="comment" required value="{{$option->title}}">
     
   </div>
         <div class="form-group">
@@ -38,9 +38,9 @@
   <select class="form-control"  name="type">
     <option selected disabled>choose option Type</option>
     @if ($option->type=='dropdown')
-    <option value="dropdown" selected>Input</option>
+    <option value="dropdown" selected>Dropdown</option>
     @else
-    <option value="input" selected>Dropdown</option>
+    <option value="input" selected>Input</option>
     @endif
 </select>
 </div>

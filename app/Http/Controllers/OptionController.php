@@ -52,11 +52,21 @@ class OptionController extends Controller
     {
         $title=$request['title'];
         $type=$request['type'];
-        $value=$request['value'];
+           $value=$request['value'];
+        
         $service_id=$request['service'];
-        $value = implode('@', $value);
+        if ($type=="input") {
+            $value=' ';
+        }
+        else
+        {
+            if ($value!=null) {
+             
+            $value = implode('@', $value);
+            }
+            
+        }
         Option::option_create($title,$type,$value,$service_id);
-
         return redirect('/admin/option/index');
 
     }
@@ -92,14 +102,14 @@ class OptionController extends Controller
      * @param  \App\Option  $option
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Option $option)
+    public function update(Request $request)
     {
         $id=$request['id'];
         $title=$request['title'];
         $type=$request['type'];
         $value=$request['value'];
+        $service_id=$request['service'];
         $value = implode('@', $value);
-        $service_id=$request['service_id'];
         Option::option_update($id,$title,$type,$value,$service_id);
         return redirect('/admin/option/index');
     }

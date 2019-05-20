@@ -41,7 +41,7 @@ class Option extends Model
     }
 
 
-        public static  function option_update($id,$title,$type,$value,$service_id)
+        public static function option_update($id,$title,$type,$value,$service_id)
     {
     	$option=Option::find($id);
     	$option->title=$title;
@@ -54,7 +54,7 @@ class Option extends Model
 
       public static function option_show($id)
     {
-    $option=Option::with('service')->first();
+    $option=Option::where('id',$id)->with('service')->first();
     	return $option;
     }
 

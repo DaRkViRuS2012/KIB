@@ -37,8 +37,8 @@
 <label for="exampleInputEmail1">{{Request::segment(2)}} Option Type</label>
   <select class="form-control"  name="type">
     <option selected disabled>choose option Type</option>
-    <option value="dropdown">Input</option>
-    <option value="input">Dropdown</option>
+    <option value="dropdown">Dropdown</option>
+    <option value="input">Input</option>
 </select>
 </div>
 
