@@ -38,7 +38,7 @@
           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} city</label>
     <select name="city_id" class="form-control">
-      <option>Select Your company</option>
+      <option>Select Your City</option>
       @foreach ($cities as $city)
       <option value="{{$city->id}}">{{$city->en_title}}</option>
       @endforeach

@@ -17,9 +17,10 @@ class City extends Model
     	return $this->hasMany('App\User');
     }
 
-    public function FunctionName($value='')
+    public static function get_cities($id)
     {
-    	# code...
+    	$cities=City::where('city_id',$id)->get();
+        return $cities;
     }
     public static function city_index()
     {
