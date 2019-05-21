@@ -1,4 +1,5 @@
 @extends('layouts.admin_layout')
+
 @section('styles')
     <!-- Custom fonts for this template -->
   <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -12,23 +13,18 @@
 @endsection
 
 @section('content')
-	<div class="col-6">
-<form  class="container" action='/admin/{{Request::segment(2)}}/update/{{$gallery_image->id}}' method="POST" enctype="multipart/form-data">
-	@csrf
+  <div class="col-6">
+<form  class="container" action='/admin/{{Request::segment(2)}}/update/{{$media->id}}' method="POST" enctype="multipart/form-data">
+  @csrf
 
 
-	<div class="form-group">
-  <label for="sel1">Select list:</label>
-  <select class="form-control" id="sel1" name="gallery_id">
-  	  <option value="{{$gallery_image->id}}" selected>{{$gallery_image->gallery->title}}</option>
-  </select>
-</div>
-	<label for="exampleInputEmail1">Image</label>
-	<input class="active" type="file" name="image" enctype="multipart/form-data">
-	<br><br>
-	<button  type="submit" class="btn btn-primary"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Update Image of gallery</button>
+
+  <label for="exampleInputEmail1">Image</label>
+  <input class="active" type="file" name="image" enctype="multipart/form-data">
+  <br><br>
+  <button  type="submit" class="btn btn-primary"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Add Image to media</button>
 </form>
-	</div>
+  </div>
 @endsection
 
     @section('scripts')

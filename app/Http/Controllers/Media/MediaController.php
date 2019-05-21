@@ -38,7 +38,6 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-        $id=$request['id'];
         $content_id=$request['content_id'];
         $content_type=$request['content_type'];
         $media_type=$request['media_type'];
@@ -53,7 +52,7 @@ class MediaController extends Controller
                 }
 
             }
-        Media::media_create($url,$media_type,$content_id,$content_type);
+        Media::media_create($image,$media_type,$content_id,$content_type);
          return redirect('/admin/media/index/'.$content_id.'/'.$content_type);
     }
 
@@ -80,7 +79,7 @@ class MediaController extends Controller
     public function edit($id)
     {
         $media=Media::media_show($id);
-        return view('admin.media.upadte',compact('media'));
+        return view('admin.media.update',compact('media'));
     }
 
     /**

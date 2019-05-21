@@ -14,20 +14,22 @@
 
 @section('content')
 	<div class="col-6">
-<form  class="container" action='/admin/{{Request::segment(2)}}/create/{{$gallery->id}}' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/{{Request::segment(2)}}/create/{{$media->content_id}}/{{$media->content_type}}' method="POST" enctype="multipart/form-data">
 	@csrf
 
 
 	<div class="form-group">
-  <label for="sel1">Select list:</label>
-  <select class="form-control" id="sel1" name="gallery_id">
-  	  <option value="{{$gallery->id}}" selected>{{$gallery->title}}</option>
+  <label for="sel1">Select Media Type</label>
+  <select class="form-control" id="sel1" name="media_type">
+  	<option selected disabled>select media Type</option>
+    <option value="image">Image</option>
+    <option value="video">Video</option>
   </select>
 </div>
 	<label for="exampleInputEmail1">Image</label>
 	<input class="active" type="file" name="image" enctype="multipart/form-data">
 	<br><br>
-	<button  type="submit" class="btn btn-primary"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Add Image to gallery</button>
+	<button  type="submit" class="btn btn-primary"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Add Image to media</button>
 </form>
 	</div>
 @endsection

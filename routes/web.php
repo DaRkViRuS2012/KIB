@@ -96,10 +96,10 @@ Route::post('/admin/slider/update/{id}','SliderController@update');
 Route::get('/admin/slider/delete/{id}','SliderController@delete');
 //*********************************************************************************************
 Route::get('/admin/media/index/{content_id}/{content_type}','MediaController@get_by_type');
-Route::get('/admin/media/create','MediaController@create');
-Route::post('/admin/media/create','MediaController@store');
-Route::get('/admin/media/update/{id}/{type}','MediaController@edit');
-Route::post('/admin/media/update/{id}/{type}','MediaController@update');
+Route::get('/admin/media/create/{content_id}/{content_type}','MediaController@create');
+Route::post('/admin/media/create/{content_id}/{content_type}','MediaController@store');
+Route::get('/admin/media/update/{id}','MediaController@edit');
+Route::post('/admin/media/update/{id}','MediaController@update');
 Route::get('/admin/media/delete/{id}','MediaController@delete');
 //*********************************************************************************************
 Route::get('/admin/city/index','CityController@index');
