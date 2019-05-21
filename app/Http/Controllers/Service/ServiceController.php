@@ -101,8 +101,9 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
+        $services=Service::service_index_fathers();
         $service=Service::service_show($id);
-        return view('admin.service.update',compact('service'));
+        return view('admin.service.update',compact('service','services'));
     }
 
     /**
