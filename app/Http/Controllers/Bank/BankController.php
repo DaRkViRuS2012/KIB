@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bank;
-use App\Location;
+use App\City;
 use Illuminate\Http\Request;
 
 class BankController extends Controller
