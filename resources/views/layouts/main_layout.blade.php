@@ -83,14 +83,24 @@
               </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="/services">Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" href="/products">Buy Insurance</a>
         </li>
+
+          <li class="nav-item">
+          <a class="nav-link" href="/news">News</a>
+        </li>
+
+         <li class="nav-item">
+          <a class="nav-link" href="/aboutus">About us</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact us</a>
+        </li>
+     
       </ul>
     </div>
   </div>

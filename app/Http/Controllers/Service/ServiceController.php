@@ -64,12 +64,12 @@ class ServiceController extends Controller
         $ar_subtitle=$request['ar_subtitle'];                                     
         $ar_description=$request['ar_description'];                                      
         $en_description=$request['en_description'];                                      
-        $parent_id =$request['parent_id'];                                 
-        $quotation_id=$request['quotation_id'];                                                                    
+        $parent_id ='0';                                                                                                     
         $company_id=$request['company_id'];                               
         $portal_link=$request['portal_link'];
         $content_type='service';
-        $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link);
+        $type='service';
+        $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$company_id,$portal_link,$type);
                     if($request->hasFile('image')){
             foreach($request->file('image') as $file) {                    
             $imagename=$file->getClientOriginalName();
@@ -77,8 +77,17 @@ class ServiceController extends Controller
              $img_name=str_replace('public/', '', $path_img);
              Media::media_create($img_name,'image',$service->id,$content_type);
              }
+        }
+
+                      if($request->hasFile('quotation')){
+                      $file=$request['quotation'];                  
+            $imagename=$file->getClientOriginalName();
+            $path_img=$file->storeAs('public/',time().'.pdf');
+             $img_name=str_replace('public/', '', $path_img);
+             Media::media_create($img_name,'quotation',$service->id,$content_type);
              return redirect('/admin/service/index');
         }
+
     return Redirect::back()->withErrors('The image input must not be empty');
     }
 
@@ -140,6 +149,119 @@ class ServiceController extends Controller
 
       public function delete($id)
     {
+        $service=Service::service_show($id);
+        foreach ($service->media as $image) {
+        Storage::delete('public'.$image->url);
+        }
+        service::service_delete($id);
+return redirect('/admin/service/index'); 
+    }
+
+
+
+
+
+    /////-------------------------------------- products section
+
+
+       public function product_create()
+    {
+        $services=Service::service_index();
+        $companies=Company::company_index();
+        return view('admin.product.create',compact('services','companies'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function product_store(Request $request)
+    {
+        $en_title =$request['en_title'];
+        $ar_title=$request['ar_title'];                                        
+        $en_subtitle=$request['en_subtitle'];                                     
+        $ar_subtitle=$request['ar_subtitle'];                                     
+        $ar_description=$request['ar_description'];                                      
+        $en_description=$request['en_description'];                                   
+        $parent_id =$request['parent_id'];                                 
+        $quotation_id=$request['quotation_id'];                                                                    
+        $company_id=$request['company_id'];                               
+        $portal_link=$request['portal_link'];
+        $type='product';
+        $content_type='product';
+        $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link,$type);
+                    if($request->hasFile('image')){
+            foreach($request->file('image') as $file) {                    
+            $imagename=$file->getClientOriginalName();
+            $path_img=$file->storeAs('public/',time().$imagename);
+             $img_name=str_replace('public/', '', $path_img);
+             Media::media_create($img_name,'image',$service->id,$content_type);
+             }
+             return redirect('/admin/service/index');
+        }
+    return Redirect::back()->withErrors('The image input must not be empty');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Service  $service
+     * @return \Illuminate\Http\Response
+     */
+    public function product_show(Service $service)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Service  $service
+     * @return \Illuminate\Http\Response
+     */
+    public function product_edit($id)
+    {
+        $services=Service::service_index_fathers();
+        $service=Service::service_show($id);
+        return view('admin.product.update',compact('service','services'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Service  $service
+     * @return \Illuminate\Http\Response
+     */
+    public function product_update(Request $request, Service $service)
+    {
+        $id=$request['id'];
+        $en_title =$request['en_title'];
+        $ar_title=$request['ar_title'];                                        
+        $en_subtitle=$request['en_subtitle'];                                     
+        $ar_subtitle=$request['ar_subtitle'];                                     
+        $ar_description=$request['ar_description'];                                      
+        $en_description=$request['en_description'];                                      
+        $parent_id =$request['parent_id'];                                 
+        $quotation_id=$request['quotation_id'];                                                                      
+        $company_id=$request['company_id'];                               
+        $portal_link=$request['portal_link'];
+        Service::service_create($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link);
+          return redirect('/admin/service/index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Service  $service
+     * @return \Illuminate\Http\Response
+     */
+  
+
+      public function product_delete($id)
+    {
         $service=News::service_show($id);
         foreach ($service->media as $image) {
         Storage::delete('public'.$image->url);
@@ -147,4 +269,23 @@ class ServiceController extends Controller
         service::service_delete($id);
 return redirect('/admin/service/index'); 
     }
+
+
+        public function product_index()
+    {
+        $products=Service::product_index();
+        return view('admin.product.index',compact('products'));
+    }
+
+     public function product_index_api()
+    {
+         $products=Service::product_index();
+            foreach ($products as $product) {
+            foreach ($product->media as $media1) {
+                $media1->url=env('website_link').env('image_storage').$media1->url;
+            }
+        }
+         return response()->json(['status' => True, 'data' => $products, 'message' => '','type'=>'array']);
+    }
+
 }

@@ -39,11 +39,7 @@
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
     <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
-    @if ($service->parent_id==0)
-   <a href="/service/{{$service->id}}/show" id="service_button" href="#" class="btn btn-primary">More ...</a>
-    @else
     <a href="/service/{{$service->id}}" id="service_button" href="#" class="btn btn-primary">More ...</a>
-    @endif
   </div>
 </div>
 
@@ -118,7 +114,7 @@
     <div id="owl" class=" col-lg-12 owl-carousel">
       @foreach ($partners as $partner)
       <div class="col-lg-10 client">
-        <img style="width: 100px !important;height: 100px !important;border-radius: 50%;" src="{{env('image_storage')}}/{{$partner->image}}" class="img-responsive item">
+        <img src="{{env('image_storage')}}/{{$partner->image}}" class="img-responsive item">
       </div>
       @endforeach
     </div>

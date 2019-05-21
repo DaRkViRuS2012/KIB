@@ -978,3 +978,22 @@ h5#gallery_title {
     margin-top: 5%;
     color: #3544ab;
 }
+
+.btn-blog {
+    color: #ffffff;
+    background-color: #3544ab;
+    border-color: #3544ab;
+    border-radius:0;
+    margin-bottom:10px
+}
+.btn-blog:hover,
+.btn-blog:focus,
+.btn-blog:active,
+.btn-blog.active,
+.open .dropdown-toggle.btn-blog {
+    color: white;
+    background-color:#3544ab;
+    border-color: #3544ab;
+}
+ h2{color:#3544ab;}
+ .margin10{margin-bottom:10px; margin-right:10px;}

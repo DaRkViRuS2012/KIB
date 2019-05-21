@@ -24,12 +24,25 @@ Route::get('/gallery/{gallery_id}', 'SiteController@gallery')->name('gallery');
 
 Route::get('/services', 'SiteController@services')->name('home');
 
+Route::get('/products', 'SiteController@products')->name('home');
+
 Route::get('/service/{id}', 'SiteController@services_single')->name('home');
+
+Route::get('/product/{id}/show', 'SiteController@product_single')->name('home');
+
+Route::get('/service/{id}/show', 'SiteController@service_single')->name('home');
+
+
+Route::get('/product/{id}', 'SiteController@product_get_sons')->name('home');
 
 Route::get('/application/create','SiteController@application_create');
 
 Route::post('/application/create','SiteController@application_store');
+ 
 
+Route::get('/news', function() {
+    return view('main_site.news');
+});
 Auth::routes();
 
 
@@ -90,6 +103,14 @@ Route::post('/admin/service/create','ServiceController@store');
 Route::get('/admin/service/update/{id}','ServiceController@edit');
 Route::post('/admin/service/update/{id}','ServiceController@update');
 Route::get('/admin/service/delete/{id}','ServiceController@delete');
+
+//*********************************************************************************************
+Route::get('/admin/product/index','ServiceController@product_index');
+Route::get('/admin/product/create','ServiceController@product_create');
+Route::post('/admin/product/create','ServiceController@product_store');
+Route::get('/admin/product/update/{id}','ServiceController@product_edit');
+Route::post('/admin/product/update/{id}','ServiceController@product_update');
+Route::get('/admin/product/delete/{id}','ServiceController@product_delete');
 //*********************************************************************************************
 Route::get('/admin/slider/index','SliderController@index');
 Route::get('/admin/slider/create','SliderController@create');

@@ -10,6 +10,10 @@
 
   <!-- Custom styles for this page -->
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
+
+     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 @endsection
 
 @if($errors->any())
@@ -37,13 +41,13 @@
 
           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} english body</label>
-    <textarea name="en_body" rows="5" class="form-control"  id="comment" required></textarea>
+    <textarea name="en_body" rows="5" class="form-control summernote"  id="comment" required></textarea>
   </div>
 
 
           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} arabic body</label>
-    <textarea name="ar_body" rows="5" class="form-control"  id="comment" required></textarea>
+    <textarea name="ar_body" rows="5" class="form-control summernote"  id="comment" required></textarea>
   </div>
 
 
@@ -75,4 +79,12 @@
 
   <!-- Page level custom scripts -->
   <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  $('.summernote').summernote();
+});
+</script>
 @endsection

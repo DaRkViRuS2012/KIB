@@ -24,6 +24,14 @@ public function services()
     return view('main_site.services',compact('services','partners'));
 }
 
+public function products()
+{
+    $services=Service::service_index();
+    $partners=Partner::partner_index();
+    return view('main_site.products',compact('services','partners'));
+}
+
+
 
 public function services_single($id)
 {
