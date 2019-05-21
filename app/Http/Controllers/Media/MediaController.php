@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\News;
 use App\Slider;
 use App\Service;
+use Illuminate\Support\Facades\Storage;
 class MediaController extends Controller
 {
     /**
@@ -132,5 +133,14 @@ class MediaController extends Controller
         // return compact('medias');
 
         return view('admin.media.index',compact('medias'));
+    }
+
+
+        public function delete($id)
+    {
+        $media=Media::media_show($id);
+        Storage::delete('public'.$media->url);
+        Media::media_delete($id);
+        return redirect('/admin/media/index/'.$media->content_id.'/'.$media->content_type); 
     }
 }
