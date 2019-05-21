@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bank;
+use App\Location;
 use Illuminate\Http\Request;
 
 class BankController extends Controller
@@ -14,7 +15,8 @@ class BankController extends Controller
      */
     public function index()
     {
-        //
+        $banks=Bank::bank_index();
+        return view('admin.bank.index',compact('banks'));
     }
 
     /**
@@ -24,7 +26,8 @@ class BankController extends Controller
      */
     public function create()
     {
-        //
+        $cities=City::city_index();
+        return view('admin.bank.create',compact('cities'));
     }
 
     /**
@@ -35,7 +38,11 @@ class BankController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $en_name=$request['en_name'];
+            $ar_name=$request['ar_name'];
+            $city_id=$request['city_id'];
+            Bank::bank_create($en_name,$ar_name,$city_id);
+            return redirect('admin/bank/index');
     }
 
     /**
@@ -55,9 +62,10 @@ class BankController extends Controller
      * @param  \App\Bank  $bank
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bank $bank)
+    public function edit($id)
     {
-        //
+        $bank=Bank::bank_show($id);
+        return view('admin.bank.update',compact('bank'));
     }
 
     /**
@@ -69,7 +77,12 @@ class BankController extends Controller
      */
     public function update(Request $request, Bank $bank)
     {
-        //
+            $id=$request['id'];
+            $en_name=$request['en_name'];
+            $ar_name=$request['ar_name'];
+            $city_id=$request['city_id'];
+            Bank::bank_update($id,$en_name,$ar_name,$city_id);
+              return redirect('admin/bank/index');
     }
 
     /**

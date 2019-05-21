@@ -90,6 +90,7 @@
             <a class="collapse-item" href="/admin/service/index">Service</a>
             <a class="collapse-item" href="/admin/city/index">Cities</a>
             <a class="collapse-item" href="/admin/option/index">options</a>
+            <a class="collapse-item" href="/admin/bank/index">Banks</a>
           </div>
         </div>
       </li>

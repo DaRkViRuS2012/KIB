@@ -17,7 +17,7 @@ class CreateBanksTable extends Migration
             $table->bigIncrements('id');
             $table->string('en_name');
             $table->string('ar_name');
-            $table->integer('location_id');
+            $table->integer('city_id');
             $table->timestamps();
             $table->softDeletes();
         });

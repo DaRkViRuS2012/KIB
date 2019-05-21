@@ -119,6 +119,14 @@ Route::get('/admin/option/update/{id}','OptionController@edit');
 Route::post('/admin/option/update/{id}','OptionController@update');
 Route::get('/admin/option/delete/{id}','OptionController@delete');
 //*********************************************************************************************
+
+Route::get('/admin/bank/index','BankController@index');
+Route::get('/admin/bank/create','BankController@create');
+Route::post('/admin/bank/create','BankController@store');
+Route::get('/admin/bank/update/{id}','BankController@edit');
+Route::post('/admin/bank/update/{id}','BankController@update');
+Route::get('/admin/bank/delete/{id}','BankController@delete');
+//*********************************************************************************************
 Route::get('setlocale/{locale}', function ($locale) {
   if (in_array($locale, \Config::get('app.locales'))) {
     Session::put('locale', $locale);
