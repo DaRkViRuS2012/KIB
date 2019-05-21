@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Slider;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 class SliderController extends Controller
 {
     /**

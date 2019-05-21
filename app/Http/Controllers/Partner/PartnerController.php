@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Partner;
 use Illuminate\Http\Request;
 use Redirect;
+use Illuminate\Support\Facades\Storage;
 class PartnerController extends Controller
 {
     /**

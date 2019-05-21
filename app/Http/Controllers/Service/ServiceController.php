@@ -6,7 +6,7 @@ use App\Service;
 use Illuminate\Http\Request;
 use App\Company;
 use App\Media;
-
+use Illuminate\Support\Facades\Storage;
 class ServiceController extends Controller
 {
     /**
