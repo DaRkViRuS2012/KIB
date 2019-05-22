@@ -42,6 +42,17 @@ public function service_sons(Request $request)
     return view('main_site.service_sons',compact('services','partners','main_service'));
 }
 
+
+public function product_sons(Request $request)
+{
+    $id=$request['id'];
+    $products=Service::product_index_fathers();
+    $main_service=Service::product_show($id);
+    $partners=Partner::partner_index();
+    return view('main_site.product_sons',compact('products','partners','main_service'));
+}
+
+
 public function products()
 {
     $products=Service::product_index_fathers();
