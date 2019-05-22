@@ -19,21 +19,21 @@
     </div>
 
 
-        <div class="bg-light border-right col-2 d-block d-lg-none" id="sidebar-wrapper">
-    <div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="background-color:#3544ab;color:white;border-color: #3544ab;">Choose what Type of Service you want:
-  <span class="caret"></span></button>
-  <ul class="dropdown-menu">
-    @foreach ($services as $service)
-     @if ($service->id==$main_service->id)
-    <li style="background-color: #3544ab!important;color: white;"><a style="color: white;" href="/service/{{$service->id}}/show">{{$service->en_title}}</a></li>
-       @else
-        <li style="background-color:#ffffff;color:black"><a style="color: white;" href="/service/{{$service->id}}/show">{{$service->en_title}}</a></li>
-       @endif
-    @endforeach
-  </ul>
+ <div class="bg-light border-right col-2 d-block d-lg-none" id="sidebar-wrapper">
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="background-color:#3544ab;color:white;border-color: #3544ab;">Choose what Type of Service you want:
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      @foreach ($services as $service)
+       @if ($service->id==$main_service->id)
+      <li style="background-color: #3544ab!important;color: white;"><a style="color: white;" href="/service/{{$service->id}}/show">{{$service->en_title}}</a></li>
+         @else
+          <li style="background-color:#ffffff;color:black"><a style="color: white;" href="/service/{{$service->id}}/show">{{$service->en_title}}</a></li>
+         @endif
+      @endforeach
+    </ul>
+  </div>
 </div>
-    </div>
 
     <div class="col-lg-10 col-md-12 col-sm-12" id="main" style="background-color:#d6d6d6;">
       <div class="container">
@@ -43,16 +43,16 @@
           @foreach ($main_service->sons as $service)
             {{-- expr --}}
           
-                  <div class="card small_font" id="service">
+<div class="card small_font" id="service">
   <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
-    <h5 class="card-title">{{$service->en_title}}</h5>
-    <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
-    @if ($service->parent_id==0)
-   <a href="/service/{{$service->id}}/show" id="service_button" href="#" class="btn btn-primary">More ...</a>
-    @else
-    <a href="/service/{{$service->id}}" id="service_button" href="#" class="btn btn-primary">More ...</a>
-    @endif
+      <h5 class="card-title">{{$service->en_title}}</h5>
+      <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
+      @if ($service->parent_id==0)
+     <a href="/service/{{$service->id}}/show" id="service_button" href="#" class="btn btn-primary">More ...</a>
+      @else
+      <a href="/service/{{$service->id}}" id="service_button" href="#" class="btn btn-primary">More ...</a>
+      @endif
   </div>
 </div>
 

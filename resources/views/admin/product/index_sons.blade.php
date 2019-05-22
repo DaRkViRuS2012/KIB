@@ -13,7 +13,7 @@
     @section('content')
     <div id="content-wrapper">
 
-      <a style="margin:1%" href="/admin/{{Request::segment(2)}}/create/{{$parent_id}}" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Add New Sub {{Request::segment(2)}}</a>
+      <a style="margin:1%" href="/admin/{{Request::segment(2)}}/create/{{$parent_id}}" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Add New {{Request::segment(2)}}</a>
 
      
 

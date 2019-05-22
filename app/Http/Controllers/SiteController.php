@@ -21,6 +21,9 @@ public function services()
 {
     $services=Service::service_index_fathers();
     $partners=Partner::partner_index();
+    if (count($services)> 0 ){
+        
+    }
     return view('main_site.services',compact('services','partners'));
 }
 

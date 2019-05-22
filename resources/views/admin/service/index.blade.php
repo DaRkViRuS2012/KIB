@@ -58,7 +58,7 @@
                   <td>{{$service->en_description}}</td>
                   <td>{{$service->ar_description}}</td>
                     <td style="width: 18%;"><div class="container">
-                      <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$service->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this service')" href="/admin/{{Request::segment(2)}}/delete/{{$service->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a> <a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" href="/admin/{{Request::segment(2)}}/index/{{$service->id}}"><button class="btn btn-success" aria-hidden="true">View sons</button></a></div>
+                      <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$service->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this service')" href="/admin/{{Request::segment(2)}}/delete/{{$service->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a> <a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" href="/admin/{{Request::segment(2)}}/index/{{$service->id}}"><button class="btn btn-success" aria-hidden="true">View Products</button></a></div>
                       </div>
                     <div>
                     </td>

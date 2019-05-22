@@ -14,17 +14,17 @@
     </div>
 
 
-        <div class="bg-light border-right col-2 d-block d-lg-none" id="sidebar-wrapper">
-    <div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="background-color:#3544ab;color:white;border-color: #3544ab;">Choose what Type of Service you want:
-  <span class="caret"></span></button>
-  <ul class="dropdown-menu">
-  	@foreach ($services as $service)
-    <li style="background-color:#3544ab;"><a style="color: white;" href="/service/{{$service->id}}">{{$service->en_title}}</a></li>
-    @endforeach
-  </ul>
+<div class="bg-light border-right col-2 d-block d-lg-none" id="sidebar-wrapper">
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="background-color:#3544ab;color:white;border-color: #3544ab;">Choose what Type of Service you want:
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+    	@foreach ($services as $service)
+      <li style="background-color:#3544ab;"><a style="color: white;" href="/service/{{$service->id}}">{{$service->en_title}}</a></li>
+      @endforeach
+    </ul>
+  </div>
 </div>
-    </div>
 
     <div class="col-lg-10 col-md-12 col-sm-12" id="main" style="background-color:#d6d6d6;">
       <div class="container">
