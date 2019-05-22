@@ -1,6 +1,6 @@
 @extends('layouts.main_layout')
 @section('content')
-<section class="banner-bottom-w3ls pt-lg-5 pt-md-3 pt-3">
+{{-- <section class="banner-bottom-w3ls pt-lg-5 pt-md-3 pt-3">
         <div class="inner-sec-wthreelayouts pt-md-5 pt-md-3 pt-3">
             <h2 class="tittle text-center mb-md-5 mb-4">Get In Touch</h2>
             <div class="container">
@@ -57,7 +57,7 @@
                     <div class="col-md-6 main_grid_contact">
                         <div class="form">
                             <h4 class="mb-4 text-left">Send us a message</h4>
-                            <form method="post" {{-- action="{{ route('contactus.store') }}" --}}>
+                            <form method="post" {{-- action="{{ route('contactus.store') }}">
                                 @csrf
                                 <div class="form-group">
                                     <label class="my-2">Name</label>
@@ -70,7 +70,7 @@
                                {{--  <div class="form-group">
                                     <label>Message</label>
                                     <textarea id="textarea" name="message" cols="10" placeholder=""></textarea>
-                                </div> --}}
+                                </div>
                                 <div class="input-group1">
                                     <input class="form-control" type="submit" value="Submit" style="background-color: #3544ab;
     color: white;">
@@ -86,5 +86,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}} 
+<center>
+    <h1>
+        Under Construction
+    </h1>
+    </center>
 @endsection

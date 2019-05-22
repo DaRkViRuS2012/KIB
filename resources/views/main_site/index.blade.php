@@ -108,21 +108,21 @@
                 <!-- Slide Text Layer -->
                 <div class="w3l-slide-text col-lg-6">
                    <h3 style="color:#3544ab;" data-animation="animated zoomInRight">KIB</h3>
-                  <p class="aos-init aos-animate" data-aos="fade-down">Excepteur sint occaecat cupidatat non proident</p>
+                  <p class="aos-init aos-animate" data-aos="fade-down">We make your insurance easy</p>
                   <a href="/services" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">View
                     Our Services</a>
                 </div>
                   <div class="w3l-slide-text col-lg-6">
                         <div class='circle-container'>
       <a style="color: white!important" href='#' class='center'>why why why why </a>
-      <a href='#' class='deg0'><img style="border-radius:50%!important"  src='{{ asset('main_site/img/cover.jpg') }}'></a>
-      <a href='#' class='deg45'><img style="border-radius:50%!important"  src='{{ asset('main_site/img/cover.jpg') }}'></a>
-      <a href='#' class='deg95'><img style="border-radius:50%!important"  src='{{ asset('main_site/img/cover.jpg') }}'></a>
-      <a href='#' class='deg135'><img style="border-radius:50%!important"  src='{{ asset('main_site/img/cover.jpg') }}'></a>
-      <a href='#' class='deg180'><img style="border-radius:50%!important"  src='{{ asset('main_site/img/cover.jpg') }}'></a>
-      <a href='#' class='deg225'><img style="border-radius:50%!important"  src='{{ asset('main_site/img/cover.jpg') }}'></a>
-      <a href='#' class='deg267'><img style="border-radius:50%!important"  src='{{ asset('main_site/img/cover.jpg') }}'></a>
-      <a href='#' class='deg315'><img style="border-radius:50%!important"  src='{{ asset('main_site/img/cover.jpg') }}'></a>
+      <a href='#' class='deg0'><img {{-- style="border-radius:50%!important"  --}} src='{{ asset('main_site/img/car_insurance.svg') }}'></a>
+      <a href='#' class='deg45'><img {{-- style="border-radius:50%!important"  --}} src='{{ asset('main_site/img/car_insurance.svg') }}'></a>
+      <a href='#' class='deg95'><img {{-- style="border-radius:50%!important"  --}} src='{{ asset('main_site/img/car_insurance.svg') }}'></a>
+      <a href='#' class='deg135'><img {{-- style="border-radius:50%!important"  --}} src='{{ asset('main_site/img/car_insurance.svg') }}'></a>
+      <a href='#' class='deg180'><img {{-- style="border-radius:50%!important"  --}} src='{{ asset('main_site/img/car_insurance.svg') }}'></a>
+      <a href='#' class='deg225'><img {{-- style="border-radius:50%!important"  --}} src='{{ asset('main_site/img/car_insurance.svg') }}'></a>
+      <a href='#' class='deg267'><img {{-- style="border-radius:50%!important"  --}} src='{{ asset('main_site/img/car_insurance.svg') }}'></a>
+      <a href='#' class='deg315'><img {{-- style="border-radius:50%!important"  --}} src='{{ asset('main_site/img/family_insurance.svg') }}'></a>
     </div>
                 </div>
                 </div>

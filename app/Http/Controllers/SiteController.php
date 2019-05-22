@@ -21,9 +21,13 @@ public function services()
 {
     $services=Service::service_index_fathers();
     $partners=Partner::partner_index();
+    $service;
     if (count($services)> 0 ){
-        
+        $service = $services[0];
+        //dd($service);
+        return redirect('/service/'.$service->id.'/show');
     }
+
     return view('main_site.services',compact('services','partners'));
 }
 
@@ -42,6 +46,12 @@ public function products()
 {
     $products=Service::product_index_fathers();
     $partners=Partner::partner_index();
+       $product;
+    if (count($products)> 0 ){
+        $product = $products[0];
+        //dd($service);
+        return redirect('/product/'.$product->id.'/show');
+    }
     return view('main_site.products',compact('products','partners'));
 }
 

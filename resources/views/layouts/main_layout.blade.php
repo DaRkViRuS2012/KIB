@@ -134,12 +134,13 @@
           <h5 class="text-uppercase">About us</h5>  
           </div>
 
-          <div class="row" style="margin-bottom:5%">
+      {{--     <div class="row" style="margin-bottom:5%">
             <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
-          </div>
+          </div> --}}
           
           <div class="row" style="margin-bottom:5%">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                      <p>Khouri Insurance Brokerage Office is specialized in insurance studies and consultations. We seek through our consultations and studies to ensure that customers receive the best insurance services in addition to the follow-up to any inquiries required by individuals and groups in all insurance fields
+</p>
           </div>
         </div>
         <!-- Grid column -->
