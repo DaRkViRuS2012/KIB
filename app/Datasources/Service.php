@@ -32,7 +32,7 @@ class Service extends Model
 
         public function sons()
     {
-    	return $this->BelongsTo('App\Service','parent_id');
+    	return $this->HasMany('App\Service','parent_id');
     }
 
 
@@ -41,6 +41,15 @@ class Service extends Model
     	$services=Service::where('type','service')->with('media','sons','company','options','quotation')->get();
     	return $services;
     }
+
+
+
+    public static function service_show($id)
+    {
+        $services=Service::where('type','service')->where('id',$id)->with('media','sons','company','options','quotation')->first();
+        return $services;
+    }
+
 
 
       public static function product_index()
@@ -103,11 +112,7 @@ class Service extends Model
     	$service=Service::find($id);
     	$service->delete();
     }
-        public static function service_show($id)
-    {
-        $service=Service::where('id',$id)->with('media','sons','company','quotation')->first();
-        return $service;
-    }
+
 
     public static function service_active($id)
     {

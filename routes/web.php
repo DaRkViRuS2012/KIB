@@ -105,6 +105,10 @@ Route::post('/admin/service/update/{id}','ServiceController@update');
 Route::get('/admin/service/delete/{id}','ServiceController@delete');
 
 //*********************************************************************************************
+Route::get('/admin/service/index/{parent_id}','ServiceController@index_sons');
+Route::get('/admin/service/create/{parent_id}','ServiceController@create_son');
+Route::post('/admin/service/create/{parent_id}','ServiceController@store_son');
+//*********************************************************************************************
 Route::get('/admin/product/index','ServiceController@product_index');
 Route::get('/admin/product/create','ServiceController@product_create');
 Route::post('/admin/product/create','ServiceController@product_store');

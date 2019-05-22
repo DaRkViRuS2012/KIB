@@ -16,7 +16,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services=Service::service_index();
+        $services=Service::service_index_fathers();
         return view('admin.service.index',compact('services'));
     }
 
@@ -90,6 +90,56 @@ class ServiceController extends Controller
 
     return Redirect::back()->withErrors('The image input must not be empty');
     }
+
+    public function create_son($parent_id)
+    {
+        $service=Service::service_show($parent_id);
+        $companies=Company::company_index();
+        return view('admin.service.create_son',compact('service','companies'));
+    }
+
+        public function store_son(Request $request)
+    {
+        $en_title =$request['en_title'];
+        $ar_title=$request['ar_title'];                                        
+        $en_subtitle=$request['en_subtitle'];                                     
+        $ar_subtitle=$request['ar_subtitle'];                                     
+        $ar_description=$request['ar_description'];                                      
+        $en_description=$request['en_description'];                                      
+        $parent_id =$request['parent_id'];                                                                                                     
+        $company_id=$request['company_id'];                               
+        $portal_link=$request['portal_link'];
+        $content_type='service';
+        $type='service';
+        $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$company_id,$portal_link,$type);
+                    if($request->hasFile('image')){
+            foreach($request->file('image') as $file) {                    
+            $imagename=$file->getClientOriginalName();
+            $path_img=$file->storeAs('public/',time().$imagename);
+             $img_name=str_replace('public/', '', $path_img);
+             Media::media_create($img_name,'image',$service->id,$content_type);
+             }
+        }
+
+                      if($request->hasFile('quotation')){
+                      $file=$request['quotation'];                  
+            $imagename=$file->getClientOriginalName();
+            $path_img=$file->storeAs('public/',time().'.pdf');
+             $img_name=str_replace('public/', '', $path_img);
+             Media::media_create($img_name,'quotation',$service->id,$content_type);
+             return redirect('/admin/service/index/'.$parent_id);
+        }
+
+    return Redirect::back()->withErrors('The image input must not be empty');
+    }
+
+
+        public function index_sons($parent_id)
+    {
+        $service_sons=Service::service_index_sons($parent_id);
+        return view('admin.service.index_sons',compact('service_sons','parent_id'));
+    }
+
 
     /**
      * Display the specified resource.
@@ -178,6 +228,37 @@ return redirect('/admin/service/index');
      * @return \Illuminate\Http\Response
      */
     public function product_store(Request $request)
+    {
+        $en_title =$request['en_title'];
+        $ar_title=$request['ar_title'];                                        
+        $en_subtitle=$request['en_subtitle'];                                     
+        $ar_subtitle=$request['ar_subtitle'];                                     
+        $ar_description=$request['ar_description'];                                      
+        $en_description=$request['en_description'];                                   
+        $parent_id ='0';                                 
+        $quotation_id=$request['quotation_id'];                               
+        $company_id=$request['company_id'];                               
+        $portal_link=$request['portal_link'];
+        $content_type='product';
+        $type='product';
+        $product=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$company_id,$portal_link,$type);
+                    if($request->hasFile('image')){
+            foreach($request->file('image') as $file) {                    
+            $imagename=$file->getClientOriginalName();
+            $path_img=$file->storeAs('public/',time().$imagename);
+             $img_name=str_replace('public/', '', $path_img);
+             Media::media_create($img_name,'image',$product->id,$content_type);
+             return redirect('/admin/product/index');
+             }
+
+        }
+
+
+    return Redirect::back()->withErrors('The image input must not be empty');
+    }
+
+
+        public function product_store_son(Request $request)
     {
         $en_title =$request['en_title'];
         $ar_title=$request['ar_title'];                                        

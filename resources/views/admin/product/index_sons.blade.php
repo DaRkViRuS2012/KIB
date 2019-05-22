@@ -13,7 +13,7 @@
     @section('content')
     <div id="content-wrapper">
 
-      <a style="margin:1%" href="/admin/{{Request::segment(2)}}/create" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Add New {{Request::segment(2)}}</a>
+      <a style="margin:1%" href="/admin/{{Request::segment(2)}}/create/{{$parent_id}}" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Add New Sub {{Request::segment(2)}}</a>
 
      
 
@@ -58,8 +58,7 @@
                   <td>{{$product->en_description}}</td>
                   <td>{{$product->ar_description}}</td>
                     <td style="width: 18%;"><div class="container">
-                      <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$product->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this product')" href="/admin/{{Request::segment(2)}}/delete/{{$product->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" href="/admin/{{Request::segment(2)}}/index/{{$product->id}}"><button class="btn btn-success" aria-hidden="true">View sons</button></a>
-                      </div>
+                      <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$product->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this product')" href="/admin/{{Request::segment(2)}}/delete/{{$product->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a></div>
                       </div>
                     <div>
                     </td>

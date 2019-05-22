@@ -19,7 +19,7 @@
 @endif
 
   <div class="col-6">
-<form  class="container" action='/admin/{{Request::segment(2)}}/create' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/{{Request::segment(2)}}/create_son/{{$service->id}}' method="POST" enctype="multipart/form-data">
   @csrf
 
       <div class="form-group">
@@ -60,7 +60,7 @@
     
   </div>
 
-{{--           <div class="form-group" hidden>
+{{--           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} parent_id</label>
     <select name="parent_id" class="form-control">
       <option>Select Your company</option>
@@ -71,9 +71,9 @@
       
     </select>
     
-  </div> --}}
+  </div>
 
-
+ --}}
             <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} Company</label>
     <select name="company_id" class="form-control">
@@ -94,12 +94,16 @@
     
   </div>
 
-
-
 <div class="form-group">
+ <label for="exampleInputEmail1">quotation</label>
+  <input class="active" type="file" name="quotation" enctype="multipart/form-data" required multiple>
+</div>
+
+
+
+
   <label for="exampleInputEmail1">Image</label>
   <input class="active" type="file" name="image[]" enctype="multipart/form-data" required multiple>
-</div>
   <br><br>
   <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Create {{Request::segment(2)}}</button>
 </form>
