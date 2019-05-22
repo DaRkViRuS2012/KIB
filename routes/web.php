@@ -24,11 +24,40 @@ Route::get('/gallery/{gallery_id}', 'SiteController@gallery')->name('gallery');
 
 Route::get('/services', 'SiteController@services')->name('home');
 
+Route::get('/products', 'SiteController@products')->name('home');
+
 Route::get('/service/{id}', 'SiteController@services_single')->name('home');
+
+Route::get('/product/{id}/show', 'SiteController@product_sons')->name('home');
+
+Route::get('/service/{id}/show', 'SiteController@service_sons')->name('home');
+
+
+Route::get('/product/{id}', 'SiteController@product_single')->name('home');
 
 Route::get('/application/create','SiteController@application_create');
 
 Route::post('/application/create','SiteController@application_store');
+ 
+
+Route::get('/news', function() {
+    return view('main_site.news');
+});
+
+
+Route::get('/news_single', function() {
+    return view('main_site.news_single');
+});
+
+
+Route::get('/contact', function() {
+    return view('main_site.contact');
+});
+
+
+Route::get('/aboutus', function() {
+    return view('main_site.about_us');
+});
 
 Auth::routes();
 
@@ -36,6 +65,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+Route::get('/admin', function() {
+    return view('admin.index');
+});
 
 
 //*********************************************************************************************
@@ -87,6 +119,22 @@ Route::post('/admin/service/create','ServiceController@store');
 Route::get('/admin/service/update/{id}','ServiceController@edit');
 Route::post('/admin/service/update/{id}','ServiceController@update');
 Route::get('/admin/service/delete/{id}','ServiceController@delete');
+
+//*********************************************************************************************
+Route::get('/admin/service/index/{parent_id}','ServiceController@index_sons');
+Route::get('/admin/service/create/{parent_id}','ServiceController@create_son');
+Route::post('/admin/service/create/{parent_id}','ServiceController@store_son');
+//*********************************************************************************************
+Route::get('/admin/product/index','ServiceController@product_index');
+Route::get('/admin/product/create','ServiceController@product_create');
+Route::post('/admin/product/create','ServiceController@product_store');
+Route::get('/admin/product/update/{id}','ServiceController@product_edit');
+Route::post('/admin/product/update/{id}','ServiceController@product_update');
+Route::get('/admin/product/delete/{id}','ServiceController@product_delete');
+//*********************************************************************************************
+Route::get('/admin/product/index/{parent_id}','ServiceController@product_index_sons');
+Route::get('/admin/product/create/{parent_id}','ServiceController@product_create_son');
+Route::post('/admin/product/create/{parent_id}','ServiceController@product_store_son');
 //*********************************************************************************************
 Route::get('/admin/slider/index','SliderController@index');
 Route::get('/admin/slider/create','SliderController@create');
@@ -96,10 +144,10 @@ Route::post('/admin/slider/update/{id}','SliderController@update');
 Route::get('/admin/slider/delete/{id}','SliderController@delete');
 //*********************************************************************************************
 Route::get('/admin/media/index/{content_id}/{content_type}','MediaController@get_by_type');
-Route::get('/admin/media/create','MediaController@create');
-Route::post('/admin/media/create','MediaController@store');
-Route::get('/admin/media/update/{id}/{type}','MediaController@edit');
-Route::post('/admin/media/update/{id}/{type}','MediaController@update');
+Route::get('/admin/media/create/{content_id}/{content_type}','MediaController@create');
+Route::post('/admin/media/create/{content_id}/{content_type}','MediaController@store');
+Route::get('/admin/media/update/{id}','MediaController@edit');
+Route::post('/admin/media/update/{id}','MediaController@update');
 Route::get('/admin/media/delete/{id}','MediaController@delete');
 //*********************************************************************************************
 Route::get('/admin/city/index','CityController@index');
@@ -115,6 +163,14 @@ Route::post('/admin/option/create','OptionController@store');
 Route::get('/admin/option/update/{id}','OptionController@edit');
 Route::post('/admin/option/update/{id}','OptionController@update');
 Route::get('/admin/option/delete/{id}','OptionController@delete');
+//*********************************************************************************************
+
+Route::get('/admin/bank/index','BankController@index');
+Route::get('/admin/bank/create','BankController@create');
+Route::post('/admin/bank/create','BankController@store');
+Route::get('/admin/bank/update/{id}','BankController@edit');
+Route::post('/admin/bank/update/{id}','BankController@update');
+Route::get('/admin/bank/delete/{id}','BankController@delete');
 //*********************************************************************************************
 Route::get('setlocale/{locale}', function ($locale) {
   if (in_array($locale, \Config::get('app.locales'))) {

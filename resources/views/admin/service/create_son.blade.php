@@ -19,49 +19,51 @@
 @endif
 
   <div class="col-6">
-<form  class="container" action='/admin/{{Request::segment(2)}}/update' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/{{Request::segment(2)}}/create/{{$service->id}}' method="POST" enctype="multipart/form-data">
   @csrf
 
       <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} english title</label>
-    <input name="en_title" class="form-control"  id="comment" required value="{{$service->en_title}}">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} en_Title</label>
+    <input name="en_title" class="form-control"  id="comment" required>
     
   </div>
 
         <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} arabic Title</label>
-    <input name="ar_title" class="form-control"  id="comment" required value="{{$service->ar_title}}">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} ar_Title</label>
+    <input name="ar_title" class="form-control"  id="comment" required>
     
   </div>
 
           <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} english subtitle</label>
-    <input name="en_subtitle" class="form-control"  id="comment" required value="{{$service->en_subtitle}}">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} en subtitle</label>
+    <input name="en_subtitle" class="form-control"  id="comment" required>
     
   </div>
 
           <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} arabic subtitle</label>
-    <input name="ar_subtitle" class="form-control"  id="comment" required value="{{$service->ar_subtitle}}">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} ar subtitle</label>
+    <input name="ar_subtitle" class="form-control"  id="comment" required>
     
   </div>
 
 
           <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} english description</label>
-    <textarea name="en_description" rows="5" class="form-control"  id="comment" required>{{$service->en_description}}</textarea>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} en description</label>
+    <textarea name="en_description" rows="5" class="form-control"  id="comment" required></textarea>
+    
   </div>
 
 
           <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} arabic description</label>
-    <textarea name="ar_description" rows="5" class="form-control"  id="comment" required>{{$service->ar_description}}</textarea>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} ar description</label>
+    <textarea name="ar_description" rows="5" class="form-control"  id="comment" required></textarea>
+    
   </div>
 
-
-{{--          <div class="form-group">
+{{--           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} parent_id</label>
     <select name="parent_id" class="form-control">
+      <option>Select Your company</option>
       <option value="0">Father</option>
       @foreach ($services as $service)
       <option value="{{$service->id}}">{{$service->en_title}}</option>
@@ -69,8 +71,28 @@
       
     </select>
     
-  </div> --}}
+  </div>
 
+ --}}
+            <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} Company</label>
+    <select name="company_id" class="form-control">
+      <option value="0">Select Your company</option>
+      @foreach ($companies as $company)
+      <option value="{{$company->id}}">{{$company->name}}</option>
+      @endforeach
+      
+    </select>
+    
+  </div>
+
+
+
+          <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} portal link</label>
+    <input name="portal_link" class="form-control"  id="comment" required>
+    
+  </div>
 
 <div class="form-group">
  <label for="exampleInputEmail1">quotation</label>
@@ -78,10 +100,12 @@
 </div>
 
 
+
+
   <label for="exampleInputEmail1">Image</label>
   <input class="active" type="file" name="image[]" enctype="multipart/form-data" required multiple>
   <br><br>
-  <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Update {{Request::segment(2)}}</button>
+  <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Create {{Request::segment(2)}}</button>
 </form>
   </div>
 @endsection

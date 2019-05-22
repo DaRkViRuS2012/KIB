@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Bank extends Model
 {
       protected $fillable = [
-        'en_name', 'ar_name', 'location_id',
+        'en_name', 'ar_name', 'city_id',
     ];
 
-    public function location()
+    public function city()
     {
-    	return $this->belongsTo('App\Location','location_id');
+    	return $this->belongsTo('App\City','city_id');
     }
 
     public static function bank_index()
@@ -21,22 +21,22 @@ class Bank extends Model
     	return $banks;
     }
 
-    public static function bank_create($en_name,$ar_name,$location_id)
+    public static function bank_create($en_name,$ar_name,$city_id)
     {
     	$bank=new Bank;
     	$bank->en_name=$en_name;
     	$bank->ar_name=$ar_name;
-    	$bank->location_id=$location_id;
+    	$bank->city_id=$city_id;
     	$bank->save();
     	return $bank;
     }
 
-    public static function bank_update($id,$en_name,$ar_name,$location_id)
+    public static function bank_update($id,$en_name,$ar_name,$city_id)
     {
     	$bank=Bank::find($id);
     	$bank->en_name=$en_name;
     	$bank->ar_name=$ar_name;
-    	$bank->location_id=$location_id;
+    	$bank->city_id=$city_id;
     	$bank->save();
     	return $bank;
     }

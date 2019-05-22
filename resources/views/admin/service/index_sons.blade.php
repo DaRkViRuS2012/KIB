@@ -10,11 +10,10 @@
   <!-- Custom styles for this page -->
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 @endsection
-
     @section('content')
     <div id="content-wrapper">
 
-      <a style="margin:1%" href="/admin/{{Request::segment(2)}}/create/{{$medias[0]->content_id}}/{{$medias[0]->content_type}}" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Add image to gallery</a>
+      <a style="margin:1%" href="/admin/{{Request::segment(2)}}/create/{{$parent_id}}" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Add New Sub  {{Request::segment(2)}}</a>
 
      
 
@@ -39,20 +38,27 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>media type</th>
-                    <th>image</th>
-                    <th>Operations</th>
-
+                    <th>en_title</th>
+                    <th>ar_title</th>
+                    <th>en_subtitle</th>
+                    <th>ar_subtitle</th>
+                    <th>en_description</th>
+                    <th>ar_description</th>
+                    <th>operations</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($medias as $media)
+                  @foreach($service_sons as $service)
                   <tr>
-                    <td>{{$media->id}}</td>
-                    <td>{{$media->media_type }}</td>
-                       <td><img class="img-responsive col-md-4" src="{{env('image_storage') }}/{{$media->url}}"></td>
-                    <td style="width: 19%;"><div class="container">
-                      <div  class="row"><a style="margin-left:1%" href="/admin/media/update/{{$media->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this product')" href="/admin/media/delete/{{$media->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a></div>
+                    <td>{{$service->id}}</td>
+                  <td><a href="/admin/media/index/{{$service->id}}/service">{{$service->en_title }}</a></td>
+                  <td>{{$service->ar_title}}</td>
+                  <td>{{$service->en_subtitle}}</td>
+                  <td>{{$service->ar_subtitle}}</td>
+                  <td>{{$service->en_description}}</td>
+                  <td>{{$service->ar_description}}</td>
+                    <td style="width: 18%;"><div class="container">
+                      <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$service->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this service')" href="/admin/{{Request::segment(2)}}/delete/{{$service->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a></div>
                       </div>
                     <div>
                     </td>
@@ -62,7 +68,6 @@
               </table>
             </div>
           </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
 
    
@@ -82,8 +87,7 @@
     </div>
     <!-- /.content-wrapper -->
     @endsection
-
-        @section('scripts')
+    @section('scripts')
    <!-- Bootstrap core JavaScript-->
   <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

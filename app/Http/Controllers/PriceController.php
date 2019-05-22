@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Bank;
-use App\City;
+use App\Price;
 use Illuminate\Http\Request;
 
-class BankController extends Controller
+class PriceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class BankController extends Controller
      */
     public function index()
     {
-        $banks=Bank::bank_index();
-        return view('admin.bank.index',compact('banks'));
+        //
     }
 
     /**
@@ -26,8 +24,7 @@ class BankController extends Controller
      */
     public function create()
     {
-        $cities=City::city_index();
-        return view('admin.bank.create',compact('cities'));
+        //
     }
 
     /**
@@ -38,20 +35,16 @@ class BankController extends Controller
      */
     public function store(Request $request)
     {
-            $en_name=$request['en_name'];
-            $ar_name=$request['ar_name'];
-            $city_id=$request['city_id'];
-            Bank::bank_create($en_name,$ar_name,$city_id);
-            return redirect('admin/bank/index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Bank  $bank
+     * @param  \App\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function show(Bank $bank)
+    public function show(Price $price)
     {
         //
     }
@@ -59,39 +52,33 @@ class BankController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Bank  $bank
+     * @param  \App\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Price $price)
     {
-        $bank=Bank::bank_show($id);
-        return view('admin.bank.update',compact('bank'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Bank  $bank
+     * @param  \App\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bank $bank)
+    public function update(Request $request, Price $price)
     {
-            $id=$request['id'];
-            $en_name=$request['en_name'];
-            $ar_name=$request['ar_name'];
-            $city_id=$request['city_id'];
-            Bank::bank_update($id,$en_name,$ar_name,$city_id);
-              return redirect('admin/bank/index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Bank  $bank
+     * @param  \App\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bank $bank)
+    public function destroy(Price $price)
     {
         //
     }

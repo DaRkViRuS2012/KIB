@@ -29,6 +29,15 @@ class CityController extends Controller
         return view('admin.city.create',compact('cities'));
     }
 
+
+        public function get_cities_api(Request $request)
+    {
+        $city_id=$request['city_id'];
+        $cities=City::get_cities($city_id);
+         return response()->json(['status' => True, 'data' => $cities, 'message' => '','type'=>'array']);
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *

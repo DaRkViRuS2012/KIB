@@ -1,34 +1,37 @@
-  function social() {
-    $("#twitter1").html("");
-    $("#instagram").html("");
-    $("#youtube").html("");
-    $("#address").html("");
-    $("#email").html("");
-    $("#phone").html("");
-    $("#phone1").html("");
-    $("#email1").html("");
-    $("#address1").html("");
-      $.ajax({
-     type: "GET",
-     url: '/api/contacts',
-     data: "check",
-     success: function(response){
-        var contacts=response.data;
-        console.log(contacts);
+//   function social() {
+//     $("#twitter1").html("");
+//     $("#instagram").html("");
+//     $("#youtube").html("");
+//     $("#address").html("");
+//     $("#email").html("");
+//     $("#phone").html("");
+//     $("#phone1").html("");
+//     $("#email1").html("");
+//     $("#address1").html("");
+//       $.ajax({
+//      type: "GET",
+//      url: '/api/contacts',
+//      data: "check",
+//      success: function(response){
+//         var contacts=response.data;
+//         console.log(contacts);
 
-for (var i = contacts.length - 1; i >= 0; i--) {
-  if (contacts[i].type=='phone') {
-    $("#phone").html('  <i class="fas mr-1 fa-phone"></i>'+contacts[i].data);
+// for (var i = contacts.length - 1; i >= 0; i--) {
+//   if (contacts[i].type=='phone') {
+//     $("#phone").html('  <i class="fas mr-1 fa-phone"></i>'+contacts[i].data);
 
-  }
-  else if (contacts[i].type=='facebook') {
-$("#facebook").html('  <i class="fas mr-1 fa-facebook"></i>'+contacts[i].data);    
-  }
+//   }
+//   else if (contacts[i].type=='facebook') {
+// $("#facebook").html('  <i class="fas mr-1 fa-facebook"></i>'+contacts[i].data);    
+//   }
 
-    else if (contacts[i].type=='twitter') {
-$("#twitter").html('  <i class="fas mr-1 fa-twitter"></i>'+contacts[i].data);    
-  }
-}
+//     else if (contacts[i].type=='twitter') {
+// $("#twitter").html('  <i class="fas mr-1 fa-twitter"></i>'+contacts[i].data);    
+//   }
+// }
+
+
+//555555555555555555555555555555555555555555555555555555555555555555555
         // $("#facebook").attr("href","http://"+contact.facebook);
         // $("#twitter").attr("href","http://"+ contact.twitter);
         // $("#twitter1").html('<p id="twitter1"><span class="fab fa-twitter"></span>'+contact.twitter+'</p>');

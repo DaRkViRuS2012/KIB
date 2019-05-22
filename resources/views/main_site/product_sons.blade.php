@@ -8,7 +8,7 @@
       </div>
       <div class="list-group list-group-flush">
       	@foreach ($services as $service)
-        <a href="/service/{{$service->id}}/show" class="list-group-item list-group-item-action bg-light">{{$service->en_title}}</a>
+        <a href="/service/{{$service->id}}" class="list-group-item list-group-item-action bg-light">{{$service->en_title}}</a>
         @endforeach
       </div>
     </div>
@@ -20,7 +20,7 @@
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
   	@foreach ($services as $service)
-    <li style="background-color:#3544ab;"><a style="color: white;" href="/service/{{$service->id}}/show">{{$service->en_title}}</a></li>
+    <li style="background-color:#3544ab;"><a style="color: white;" href="/service/{{$service->id}}">{{$service->en_title}}</a></li>
     @endforeach
   </ul>
 </div>
@@ -31,7 +31,7 @@
         <div class="row">
         <div class="container-fluid">
         <div class="row" style="margin-top: 2%;margin-bottom: 2%;">
-        	@foreach ($services[0]->sons as $service)
+        	@foreach ($services as $service)
         		{{-- expr --}}
         	
                   <div class="card small_font" id="service">
@@ -39,11 +39,7 @@
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
     <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
-    @if ($service->parent_id==0)
-   <a href="/service/{{$service->id}}/show" id="service_button" href="#" class="btn btn-primary">More ...</a>
-    @else
     <a href="/service/{{$service->id}}" id="service_button" href="#" class="btn btn-primary">More ...</a>
-    @endif
   </div>
 </div>
 
@@ -118,7 +114,7 @@
     <div id="owl" class=" col-lg-12 owl-carousel">
       @foreach ($partners as $partner)
       <div class="col-lg-10 client">
-        <img style="width: 100px !important;height: 100px !important;border-radius: 50%;" src="{{env('image_storage')}}/{{$partner->image}}" class="img-responsive item">
+        <img src="{{env('image_storage')}}/{{$partner->image}}" class="img-responsive item">
       </div>
       @endforeach
     </div>

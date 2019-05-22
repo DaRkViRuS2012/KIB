@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use Illuminate\Http\Request;
 use Redirect;
+use Illuminate\Support\Facades\Storage;
 class CompanyController extends Controller
 {
     /**

@@ -7,12 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
      protected $fillable = [
-        'en_title', 'ar_title','en_subtitle','ar_subtitle','en_description','ar_description','parent_id','quotation_id','company_id','portal_link','active'
+        'en_title', 'ar_title','en_subtitle','ar_subtitle','en_description','ar_description','parent_id','company_id','portal_link','active','type'
     ];
 
        public function media()
     {
         return $this->hasMany('App\Media','content_id')->where('content_type','service');
+    }
+
+
+         public function product_media()
+    {
+        return $this->hasMany('App\Media','content_id')->where('content_type','product');
+    }
+
+       public function quotation()
+    {
+        return $this->hasOne('App\Media','content_id')->where('content_type','service')->where('media_type','quotation');
     }
 
     public function options()
@@ -25,33 +36,62 @@ class Service extends Model
     	return $this->BelongsTo('App\Company','company_id');
     }
 
-        public function service()
+        public function sons()
     {
-    	return $this->BelongsTo('App\Service','parent_id');
+    	return $this->HasMany('App\Service','parent_id');
     }
 
 
     public static function service_index()
     {
-    	$services=Service::with('media','service','company','options')->get();
+    	$services=Service::where('type','service')->with('media','sons','company','options','quotation')->get();
     	return $services;
+    }
+
+
+
+    public static function service_show($id)
+    {
+        $services=Service::where('type','service')->where('id',$id)->with('media','sons','company','options','quotation')->first();
+        return $services;
+    }
+
+    public static function product_show($id)
+    {
+        $services=Service::where('type','product')->where('id',$id)->with('product_media','sons','company','options','quotation')->first();
+        return $services;
+    }
+
+
+
+      public static function product_index()
+    {
+        $services=Service::where('type','product')->with('product_media','sons','company','options','quotation')->get();
+        return $services;
     }
 
      public static function service_index_fathers()
     {
-        $services=Service::where('parent_id','0')->with('media','service','company')->get();
+        $services=Service::where('parent_id','0')->where('type','service')->with('media','sons','company','quotation')->get();
+        return $services;
+    }
+
+
+        public static function product_index_fathers()
+    {
+        $services=Service::where('parent_id','0')->where('type','product')->with('product_media','sons','company','quotation')->get();
         return $services;
     }
 
 
       public static function service_index_sons($service_id)
     {
-        $services=Service::where('parent_id',$service_id)->with('media','service','company')->get();
+        $services=Service::where('parent_id',$service_id)->with('media','sons','company','quotation')->get();
         return $services;
     }
 
 
-    public static function service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link)
+    public static function service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$company_id,$portal_link,$type)
     {
     	$service=new Service;
     	$service->en_title=$en_title;
@@ -61,16 +101,16 @@ class Service extends Model
     	$service->en_description=$en_description;
     	$service->ar_description=$ar_description;
     	$service->parent_id=$parent_id;
-    	$service->quotation_id=$quotation_id;
     	$service->company_id=$company_id;
     	$service->portal_link=$portal_link;
+        $service->type=$type;
     	$service->active=1;
     	$service->save();
     	return $service;
     }
 
 
-        public static function service_update($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link)
+        public static function service_update($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$company_id,$portal_link)
     {
     	$service=Service::find($id);
     	$service->en_title=$en_title;
@@ -80,7 +120,6 @@ class Service extends Model
     	$service->en_description=$en_description;
     	$service->ar_description=$ar_description;
     	$service->parent_id=$parent_id;
-    	$service->quotation_id=$quotation_id;
     	$service->company_id=$company_id;
     	$service->portal_link=$portal_link;
     	$service->save();
@@ -92,11 +131,7 @@ class Service extends Model
     	$service=Service::find($id);
     	$service->delete();
     }
-        public static function service_show($id)
-    {
-        $service=Service::where('id',$id)->with('media','service','company')->first();
-        return $service;
-    }
+
 
     public static function service_active($id)
     {

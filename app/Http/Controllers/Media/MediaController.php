@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\News;
 use App\Slider;
 use App\Service;
+use Illuminate\Support\Facades\Storage;
 class MediaController extends Controller
 {
     /**
@@ -38,7 +39,6 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-        $id=$request['id'];
         $content_id=$request['content_id'];
         $content_type=$request['content_type'];
         $media_type=$request['media_type'];
@@ -53,7 +53,7 @@ class MediaController extends Controller
                 }
 
             }
-        Media::media_create($url,$media_type,$content_id,$content_type);
+        Media::media_create($image,$media_type,$content_id,$content_type);
          return redirect('/admin/media/index/'.$content_id.'/'.$content_type);
     }
 
@@ -80,7 +80,7 @@ class MediaController extends Controller
     public function edit($id)
     {
         $media=Media::media_show($id);
-        return view('admin.media.upadte',compact('media'));
+        return view('admin.media.update',compact('media'));
     }
 
     /**
@@ -133,5 +133,14 @@ class MediaController extends Controller
         // return compact('medias');
 
         return view('admin.media.index',compact('medias'));
+    }
+
+
+        public function delete($id)
+    {
+        $media=Media::media_show($id);
+        Storage::delete('public'.$media->url);
+        Media::media_delete($id);
+        return redirect('/admin/media/index/'.$media->content_id.'/'.$media->content_type); 
     }
 }

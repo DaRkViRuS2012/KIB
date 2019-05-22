@@ -60,7 +60,7 @@
     
   </div>
 
-          <div class="form-group">
+{{--           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} parent_id</label>
     <select name="parent_id" class="form-control">
       <option>Select Your company</option>
@@ -73,7 +73,7 @@
     
   </div>
 
-
+ --}}
             <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} Company</label>
     <select name="company_id" class="form-control">
@@ -94,12 +94,10 @@
     
   </div>
 
-          <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} quotation id</label>
-    <input name="quotation_id" class="form-control"  id="comment" required>
-    
-  </div>
-
+<div class="form-group">
+ <label for="exampleInputEmail1">quotation</label>
+  <input class="active" type="file" name="quotation" enctype="multipart/form-data" required multiple>
+</div>
 
 
 

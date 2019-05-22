@@ -51,8 +51,8 @@ class User extends Authenticatable
         $user->name=$name;
         $user->username=$username;
         $user->email=$email;
-        $user->active='1'
-        $user->password=$password
+        $user->active='1';
+        $user->password=$password;
         $user->birthdate=$birthdate;
         $user->fcmtoken=$fcmtoken;
         $user->os=$os;
@@ -68,8 +68,8 @@ class User extends Authenticatable
         $user->name=$name;
         $user->username=$username;
         $user->email=$email;
-        $user->active='1'
-        $user->password=$password
+        $user->active='1';
+        $user->password=$password;
         $user->birthdate=$birthdate;
         $user->fcmtoken=$fcmtoken;
         $user->os=$os;

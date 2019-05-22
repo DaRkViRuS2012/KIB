@@ -10,10 +10,6 @@
 
   <!-- Custom styles for this page -->
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-
-
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 @endsection
 
 @if($errors->any())
@@ -27,37 +23,31 @@
   @csrf
 
       <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} english title</label>
-    <input name="en_title" class="form-control"  id="comment" required>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} en_Title</label>
+    <input name="en_title" class="form-control"  id="comment" value="{{$bank->en_title}}" required>
     
   </div>
 
         <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} arabic Title</label>
-    <input name="ar_title" class="form-control"  id="comment" required>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} ar_Title</label>
+    <input name="ar_title" class="form-control"  id="comment" value="{{$bank->ar_title}}" required>
     
   </div>
 
 
           <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} english body</label>
-    <textarea name="en_body" rows="5" class="form-control summernote"  id="comment" required></textarea>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} city</label>
+    <select name="parent_id" class="form-control">
+      <option>Select Your company</option>
+      <option value="0">Father</option>
+      @foreach ($cities as $city)
+      <option value="{{$city->id}}">{{$city->en_title}}</option>
+      @endforeach
+      
+    </select>
+    
   </div>
-
-
-          <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} arabic body</label>
-    <textarea name="ar_body" rows="5" class="form-control summernote"  id="comment" required></textarea>
-  </div>
-
-
-
-
-
-  <label for="exampleInputEmail1">Image</label>
-  <input class="active" type="file" name="image[]" enctype="multipart/form-data" required multiple>
-  <br><br>
-  <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Create {{Request::segment(2)}}</button>
+    <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Update {{Request::segment(2)}}</button>
 </form>
   </div>
 @endsection
@@ -79,12 +69,4 @@
 
   <!-- Page level custom scripts -->
   <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
-
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-  $('.summernote').summernote();
-});
-</script>
 @endsection

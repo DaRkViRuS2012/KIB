@@ -71,15 +71,14 @@
     
   </div> --}}
 
-
 <div class="form-group">
  <label for="exampleInputEmail1">quotation</label>
   <input class="active" type="file" name="quotation" enctype="multipart/form-data" required multiple>
 </div>
-
-
+<div class="form-group">
   <label for="exampleInputEmail1">Image</label>
   <input class="active" type="file" name="image[]" enctype="multipart/form-data" required multiple>
+</div>
   <br><br>
   <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Update {{Request::segment(2)}}</button>
 </form>
