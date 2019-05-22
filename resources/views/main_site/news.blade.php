@@ -13,7 +13,7 @@
                          of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
                          Lorem Ipsum.    
                          </p></article>
-                     <a class="btn btn-blog pull-right marginBottom10" href="http://bootsnipp.com/user/snippets/2RoQ">READ MORE</a> 
+                     <a class="btn btn-blog pull-right marginBottom10" href="/news_single">READ MORE</a> 
                  </div>
                   <div class="col-md-10 blogShort">
                      <h1>Title 2</h1>
@@ -25,7 +25,7 @@
                          of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
                          Lorem Ipsum.
                          </p></article>
-                     <a class="btn btn-blog pull-right marginBottom10" href="http://bootsnipp.com/user/snippets/2RoQ">READ MORE</a> 
+                     <a class="btn btn-blog pull-right marginBottom10" href="/news_single">READ MORE</a> 
                  </div>
                  
                   <div class="col-md-10 blogShort">
@@ -38,6 +38,6 @@
                          of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
                          Lorem Ipsum.
                          </p></article>
-                     <a class="btn btn-blog pull-right marginBottom10" href="http://bootsnipp.com/user/snippets/2RoQ">READ MORE</a> 
+                     <a class="btn btn-blog pull-right marginBottom10" href="/news_single">READ MORE</a> 
                  </div>
 @endsection

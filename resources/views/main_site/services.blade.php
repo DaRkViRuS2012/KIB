@@ -35,7 +35,7 @@
         		{{-- expr --}}
         	
                   <div class="card small_font" id="service">
-  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[1]->url}}" alt="Card image">
+  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
     <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
@@ -48,7 +48,7 @@
 </div>
 
                   <div class="card small_font" id="service">
-  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[1]->url}}" alt="Card image">
+  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
     <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
@@ -57,7 +57,7 @@
 </div>
 
                   <div class="card small_font" id="service">
-  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[1]->url}}" alt="Card image">
+  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
     <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
@@ -66,7 +66,7 @@
 </div>
 
                   <div class="card small_font" id="service">
-  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[1]->url}}" alt="Card image">
+  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
     <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
@@ -75,7 +75,7 @@
 </div>
 
                   <div class="card small_font" id="service">
-  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[1]->url}}" alt="Card image">
+  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
     <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
@@ -84,7 +84,7 @@
 </div>
 
                   <div class="card small_font" id="service">
-  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[1]->url}}" alt="Card image">
+  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
     <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>
@@ -93,7 +93,7 @@
 </div>
 
                   <div class="card small_font" id="service">
-  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[1]->url}}" alt="Card image">
+  <img class="card-img-top" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
   <div class="card-body">
     <h5 class="card-title">{{$service->en_title}}</h5>
     <p class="card-text">{{ str_limit($service->en_description, $limit = 150, $end = '...') }}</p>

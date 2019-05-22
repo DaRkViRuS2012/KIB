@@ -43,6 +43,22 @@ Route::post('/application/create','SiteController@application_store');
 Route::get('/news', function() {
     return view('main_site.news');
 });
+
+
+Route::get('/news_single', function() {
+    return view('main_site.news_single');
+});
+
+
+Route::get('/contact', function() {
+    return view('main_site.contact');
+});
+
+
+Route::get('/aboutus', function() {
+    return view('main_site.about_us');
+});
+
 Auth::routes();
 
 
