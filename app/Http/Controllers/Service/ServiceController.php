@@ -98,6 +98,14 @@ class ServiceController extends Controller
         return view('admin.service.create_son',compact('service','companies'));
     }
 
+
+        public function product_create_son($parent_id)
+    {
+        $product=Service::product_show($parent_id);
+        $companies=Company::company_index();
+        return view('admin.product.create_son',compact('product','companies'));
+    }
+
         public function store_son(Request $request)
     {
         $en_title =$request['en_title'];
@@ -138,6 +146,12 @@ class ServiceController extends Controller
     {
         $service_sons=Service::service_index_sons($parent_id);
         return view('admin.service.index_sons',compact('service_sons','parent_id'));
+    }
+
+        public function product_index_sons($parent_id)
+    {
+        $product_sons=Service::service_index_sons($parent_id);
+        return view('admin.product.index_sons',compact('product_sons','parent_id'));
     }
 
 
@@ -280,7 +294,7 @@ return redirect('/admin/service/index');
              $img_name=str_replace('public/', '', $path_img);
              Media::media_create($img_name,'image',$service->id,$content_type);
              }
-             return redirect('/admin/service/index');
+            return redirect('/admin/product/index/'.$parent_id);
         }
     return Redirect::back()->withErrors('The image input must not be empty');
     }

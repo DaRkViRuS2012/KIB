@@ -19,7 +19,7 @@
 @endif
 
   <div class="col-6">
-<form  class="container" action='/admin/{{Request::segment(2)}}/create_son/{{$product->id}}' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/{{Request::segment(2)}}/create/{{$product->id}}' method="POST" enctype="multipart/form-data">
   @csrf
 
       <div class="form-group">
@@ -94,16 +94,7 @@
     
   </div>
 
-          <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} quotation id</label>
-    <input name="quotation_id" class="form-control"  id="comment" required>
-    
-  </div>
 
-<div class="form-group">
- <label for="exampleInputEmail1">qotation</label>
-  <input class="active" type="file" name="qotation" enctype="multipart/form-data" required multiple>
-</div>
 
 <div class="form-group">
   <label for="exampleInputEmail1">Image</label>

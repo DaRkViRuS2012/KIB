@@ -19,17 +19,29 @@ class SiteController extends Controller
      */
 public function services()
 {
-    $services=Service::service_index();
+    $services=Service::service_index_fathers();
     $partners=Partner::partner_index();
     return view('main_site.services',compact('services','partners'));
 }
 
+
+
+public function service_sons(Request $request)
+{
+    $id=$request['id'];
+    $services=Service::service_index_fathers();
+    $main_service=Service::service_show($id);
+    $partners=Partner::partner_index();
+    return view('main_site.service_sons',compact('services','partners','main_service'));
+}
+
 public function products()
 {
-    $services=Service::service_index();
+    $products=Service::product_index_fathers();
     $partners=Partner::partner_index();
-    return view('main_site.products',compact('services','partners'));
+    return view('main_site.products',compact('products','partners'));
 }
+
 
 
 
@@ -39,6 +51,14 @@ public function services_single($id)
     // return $service;
     return view('main_site.service_single',compact('service'));
 }
+
+public function product_single($id)
+{
+    $product=Service::product_show($id);
+    // return $service;
+    return view('main_site.product_single',compact('product'));
+}
+
 
 public function index()
 {

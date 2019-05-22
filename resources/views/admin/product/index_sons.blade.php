@@ -48,7 +48,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($products as $product)
+                  @foreach($product_sons as $product)
                   <tr>
                     <td>{{$product->id}}</td>
                   <td><a href="/admin/media/index/{{$product->id}}/product">{{$product->en_title }}</a></td>

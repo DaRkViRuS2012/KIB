@@ -19,7 +19,7 @@
 @endif
 
   <div class="col-6">
-<form  class="container" action='/admin/{{Request::segment(2)}}/create_son/{{$service->id}}' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/{{Request::segment(2)}}/create/{{$service->id}}' method="POST" enctype="multipart/form-data">
   @csrf
 
       <div class="form-group">

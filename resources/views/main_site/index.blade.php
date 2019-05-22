@@ -59,6 +59,11 @@
           <a class="nav-link" href="/products">Buy Insurance</a>
         </li>
 
+
+        <li class="nav-item">
+          <a class="nav-link" href="/galleries">Galleries</a>
+        </li>
+
           <li class="nav-item">
           <a class="nav-link" href="/news">News</a>
         </li>

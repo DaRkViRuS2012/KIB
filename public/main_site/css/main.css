@@ -151,6 +151,12 @@ position: fixed // or absolute
     margin-bottom: 3%;
 }
 
+#product
+{    width: 45%;
+    margin-left: 20px;
+    margin-bottom: 3%;
+}
+
 
 .list-group-item:hover small 
 {
@@ -997,3 +1003,8 @@ h5#gallery_title {
 }
  h2{color:#3544ab;}
  .margin10{margin-bottom:10px; margin-right:10px;}
+
+ a.list-group-item.list-group-item-action.bg-light:active {
+    background-color: #3544ab!important;
+    color: white;
+}

@@ -28,12 +28,12 @@ Route::get('/products', 'SiteController@products')->name('home');
 
 Route::get('/service/{id}', 'SiteController@services_single')->name('home');
 
-Route::get('/product/{id}/show', 'SiteController@product_single')->name('home');
+Route::get('/product/{id}/show', 'SiteController@product_sons')->name('home');
 
-Route::get('/service/{id}/show', 'SiteController@service_single')->name('home');
+Route::get('/service/{id}/show', 'SiteController@service_sons')->name('home');
 
 
-Route::get('/product/{id}', 'SiteController@product_get_sons')->name('home');
+Route::get('/product/{id}', 'SiteController@product_single')->name('home');
 
 Route::get('/application/create','SiteController@application_create');
 
@@ -115,6 +115,10 @@ Route::post('/admin/product/create','ServiceController@product_store');
 Route::get('/admin/product/update/{id}','ServiceController@product_edit');
 Route::post('/admin/product/update/{id}','ServiceController@product_update');
 Route::get('/admin/product/delete/{id}','ServiceController@product_delete');
+//*********************************************************************************************
+Route::get('/admin/product/index/{parent_id}','ServiceController@product_index_sons');
+Route::get('/admin/product/create/{parent_id}','ServiceController@product_create_son');
+Route::post('/admin/product/create/{parent_id}','ServiceController@product_store_son');
 //*********************************************************************************************
 Route::get('/admin/slider/index','SliderController@index');
 Route::get('/admin/slider/create','SliderController@create');
