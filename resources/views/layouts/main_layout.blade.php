@@ -155,22 +155,27 @@
     
             <ul class="list-unstyled">
               <li>
-                <a href="#!" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Link 1</a>
+                <a href="/" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Home</a>
               </li>
               <li>
-                <a href="#!" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Link 2</a>
+                <a href="/services" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Services</a>
               </li>
               <li>
-                <a href="#!" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Link 3</a>
+                <a href="/products" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Buy Insurance</a>
               </li>
               <li>
-                <a href="#!" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Link 4</a>
+                <a href="/galleries" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Galleries</a>
+              </li>
+
+               <li>
+                <a href="/news" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">News</a>
               </li>
               <li>
-                <a href="#!" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Link 4</a>
+                <a href="/aboutus" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">About us</a>
               </li>
+
               <li>
-                <a href="#!" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Link 4</a>
+                <a href="contact" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Contact us</a>
               </li>
             </ul>
 
