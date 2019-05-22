@@ -16,7 +16,7 @@ class AboutUs extends Model
     	return $about_us;
     }
 
-        public static function aboutus_insert($description,$address,$lat,$lang)
+    public static function aboutus_insert($description,$address,$lat,$lang)
     {
         $about_us=new AboutUs;
         $about_us->description=$description;
@@ -27,7 +27,7 @@ class AboutUs extends Model
         return $about_us;
     }
 
-        public static function aboutus_update($id,$description,$address,$lat,$lang)
+    public static function aboutus_update($id,$description,$address,$lat,$lang)
     {
     	$about_us=AboutUs::find($id);
     	$about_us->description=$description;
@@ -39,14 +39,14 @@ class AboutUs extends Model
     }
 
 
-        public static function aboutus_show($id)
+    public static function aboutus_show($id)
     {
         $about_us=AboutUs::find($id);
         return $about_us;
     }
 
 
-         public static function aboutus_delete($id)
+    public static function aboutus_delete($id)
     {
         $about_us=AboutUs::find($id);
         $about_us->delete();
