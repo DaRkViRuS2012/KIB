@@ -104,7 +104,18 @@
         <li class="nav-item">
           <a class="nav-link" href="/contact">Contact us</a>
         </li>
-     
+        @if (Auth::check())
+           <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user"></i> Profile </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+          <a class="dropdown-item" href="#">My account</a>
+          <a class="dropdown-item" href="#">Log out</a>
+        </div>
+      </li>
+        @endif
+      
       </ul>
     </div>
   </div>
