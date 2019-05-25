@@ -16,10 +16,10 @@ class Option extends Model
     	return $this->belongsTo('App\Service','service_id');
     }
 
-    //   public function application()
-    // {
-    // 	return $this->belongsToMany('App\Application','applications_options')->as('applications')->withPivot('value')->withTimestamps();
-    // }
+      public function application()
+    {
+    	return $this->belongsToMany('App\Application','application_options')->as('applications')->withPivot('option_value')->withTimestamps();
+    }
 
 
     public static function option_index()

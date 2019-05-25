@@ -21,7 +21,7 @@ class OptionService extends Model
     ];
 
 
-    public static  function option_create($option_id,$type,$value,$service_id)
+    public static  function option_create($option_id,$option_value,$service_id)
     {
         $option_service=new OptionService;
         $option_service->option_id=$option_id;
@@ -32,7 +32,7 @@ class OptionService extends Model
     }
 
 
-        public static function option_update($id,$option_id,$type,$value,$service_id)
+        public static function option_update($id,$option_id,$option_value,$service_id)
     {
         $option_service=OptionService::find($id);
         $option_service->option_id=$option_id;

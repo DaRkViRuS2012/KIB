@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2019 at 09:13 PM
+-- Generation Time: May 25, 2019 at 02:03 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -54,6 +54,8 @@ INSERT INTO `about_us` (`id`, `description`, `address`, `lat`, `lang`, `created_
 
 CREATE TABLE `applications` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `applicant_name_en` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `applicant_name_ar` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `service_id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `date` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -61,6 +63,49 @@ CREATE TABLE `applications` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `applications`
+--
+
+INSERT INTO `applications` (`id`, `applicant_name_en`, `applicant_name_ar`, `service_id`, `user_id`, `date`, `code`, `created_at`, `updated_at`) VALUES
+(7, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:48:29', '648501', '2019-05-24 20:48:29', '2019-05-24 20:48:29'),
+(8, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:49:13', '458399', '2019-05-24 20:49:13', '2019-05-24 20:49:13'),
+(9, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:50:04', '433677', '2019-05-24 20:50:04', '2019-05-24 20:50:04'),
+(10, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:50:45', '740687', '2019-05-24 20:50:45', '2019-05-24 20:50:45'),
+(11, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:51:40', '274251', '2019-05-24 20:51:40', '2019-05-24 20:51:40'),
+(12, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:52:08', '655572', '2019-05-24 20:52:08', '2019-05-24 20:52:08'),
+(13, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:52:34', '109772', '2019-05-24 20:52:34', '2019-05-24 20:52:34'),
+(14, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:54:22', '503075', '2019-05-24 20:54:22', '2019-05-24 20:54:22'),
+(15, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:54:51', '658471', '2019-05-24 20:54:51', '2019-05-24 20:54:51'),
+(16, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:56:50', '879547', '2019-05-24 20:56:50', '2019-05-24 20:56:50'),
+(17, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:57:19', '799794', '2019-05-24 20:57:19', '2019-05-24 20:57:19'),
+(18, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:59:17', '487789', '2019-05-24 20:59:17', '2019-05-24 20:59:17'),
+(19, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:59:57', '846932', '2019-05-24 20:59:57', '2019-05-24 20:59:57'),
+(20, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-25 00:00:18', '789343', '2019-05-24 21:00:18', '2019-05-24 21:00:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `application_options`
+--
+
+CREATE TABLE `application_options` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `application_id` int(11) NOT NULL,
+  `option_id` int(11) NOT NULL,
+  `option_value` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `application_options`
+--
+
+INSERT INTO `application_options` (`id`, `application_id`, `option_id`, `option_value`, `created_at`, `updated_at`) VALUES
+(1, 20, 4, 'hello', '2019-05-24 21:00:18', '2019-05-24 21:00:18'),
+(2, 20, 11, 'test', '2019-05-24 21:00:18', '2019-05-24 21:00:18');
 
 -- --------------------------------------------------------
 
@@ -72,7 +117,7 @@ CREATE TABLE `banks` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `en_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ar_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `location_id` int(11) NOT NULL,
+  `city_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -182,18 +227,6 @@ INSERT INTO `galleries` (`id`, `en_title`, `ar_title`, `created_at`, `updated_at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `locations`
---
-
-CREATE TABLE `locations` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `media`
 --
 
@@ -217,8 +250,18 @@ INSERT INTO `media` (`id`, `url`, `media_type`, `content_id`, `content_type`, `c
 (20, '/1554589772download.jpg', 'image', 1, 'gallery', '2019-04-06 19:29:32', '2019-04-06 19:29:32', NULL),
 (21, '/1554589794slide4.jpg', 'image', 1, 'news', '2019-04-06 19:29:54', '2019-04-06 19:29:54', NULL),
 (22, '/1554589794vo28ssjt25l21.jpg', 'image', 1, 'news\r\n', '2019-04-06 19:29:54', '2019-04-06 19:29:54', NULL),
-(23, '/1555969056download.jpg', 'image', 4, 'service', '2019-04-22 18:37:36', '2019-04-22 18:37:36', NULL),
-(24, '/1558215817download.jpg', 'image', 5, 'service', '2019-05-18 18:43:37', '2019-05-18 18:43:37', NULL);
+(43, '1558487748.jpg', 'image', 1, 'service', '2019-05-21 22:15:48', '2019-05-21 22:15:48', NULL),
+(44, '1558487894.jpg', 'image', 3, 'service', '2019-05-21 22:18:14', '2019-05-21 22:18:14', NULL),
+(45, '1558487941.jpg', 'image', 2, 'service', '2019-05-21 22:19:01', '2019-05-21 22:19:01', NULL),
+(46, '/1558488809general_carpentry.jpg', 'image', 4, 'service', '2019-05-21 22:33:29', '2019-05-21 22:33:29', NULL),
+(47, '/1558488809.pdf', 'quotation', 4, 'service', '2019-05-21 22:33:29', '2019-05-21 22:33:29', NULL),
+(48, '/1558488841bespoke carpentry 1.jpg', 'image', 5, 'service', '2019-05-21 22:34:01', '2019-05-21 22:34:01', NULL),
+(49, '/1558488841.pdf', 'quotation', 5, 'service', '2019-05-21 22:34:01', '2019-05-21 22:34:01', NULL),
+(50, '/1558487278.pdf', 'quotation', 1, 'service', '2019-05-21 22:07:58', '2019-05-21 22:07:58', NULL),
+(51, '/1558487479.pdf', 'quotation', 2, 'service', '2019-05-21 22:11:19', '2019-05-21 22:11:19', NULL),
+(52, '/1558487548.pdf', 'quotation', 3, 'service', '2019-05-21 22:12:28', '2019-05-21 22:12:28', NULL),
+(55, '/1558490519bespoke carpentry 1.jpg', 'image', 10, 'product', '2019-05-21 23:01:59', '2019-05-21 23:01:59', NULL),
+(57, '/1558490961bespoke carpentry 1.jpg', 'image', 11, 'product', '2019-05-21 23:09:21', '2019-05-21 23:09:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -250,11 +293,14 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (15, '2019_03_21_225155_create_complaints_table', 7),
 (16, '2019_03_21_225843_create_notifications_table', 8),
 (27, '2019_03_21_230302_create_companies_table', 9),
-(28, '2019_03_21_230422_create_banks_table', 9),
-(29, '2019_03_25_112321_create_locations_table', 9),
 (31, '2019_05_10_214019_create_cities_table', 9),
 (32, '2019_05_06_125507_create_options_table', 10),
-(33, '2019_05_14_011211_create_applications_table', 11);
+(34, '2019_03_21_230422_create_banks_table', 12),
+(37, '2019_05_21_152639_create_prices_table', 13),
+(42, '2019_05_14_011211_create_applications_table', 14),
+(43, '2019_05_24_205119_create_partner_services_table', 14),
+(44, '2019_05_24_210813_create_application_options_table', 14),
+(45, '2019_05_21_181854_create_option_services_table', 15);
 
 -- --------------------------------------------------------
 
@@ -318,7 +364,22 @@ CREATE TABLE `options` (
 
 INSERT INTO `options` (`id`, `title`, `type`, `value`, `service_id`, `created_at`, `updated_at`) VALUES
 (4, 'data', 'dropdown', 'hello@test', 5, '2019-05-17 21:47:14', '2019-05-19 21:26:20'),
-(10, 'data123', 'input', '', 5, '2019-05-19 20:59:08', '2019-05-19 21:15:21');
+(11, 'data123', 'input', ' ', 5, '2019-05-24 20:53:43', '2019-05-24 20:53:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `option_services`
+--
+
+CREATE TABLE `option_services` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `option_id` int(11) NOT NULL,
+  `service_id` int(11) NOT NULL,
+  `option_value` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -353,6 +414,21 @@ INSERT INTO `partners` (`id`, `title`, `image`, `url`, `created_at`, `updated_at
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `partner_services`
+--
+
+CREATE TABLE `partner_services` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `parnter_id` int(11) NOT NULL,
+  `service_id` int(11) NOT NULL,
+  `option_value` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `password_resets`
 --
 
@@ -360,6 +436,22 @@ CREATE TABLE `password_resets` (
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prices`
+--
+
+CREATE TABLE `prices` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `service_id` int(11) NOT NULL,
+  `min` int(11) NOT NULL,
+  `max` int(11) NOT NULL,
+  `value` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -377,10 +469,10 @@ CREATE TABLE `services` (
   `ar_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `en_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `parent_id` int(11) NOT NULL,
-  `quotation_id` int(11) NOT NULL,
   `active` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `company_id` int(11) DEFAULT NULL,
   `portal_link` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -390,9 +482,14 @@ CREATE TABLE `services` (
 -- Dumping data for table `services`
 --
 
-INSERT INTO `services` (`id`, `en_title`, `ar_title`, `en_subtitle`, `ar_subtitle`, `ar_description`, `en_description`, `parent_id`, `quotation_id`, `active`, `company_id`, `portal_link`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(4, 'Life insurance\r\n', 'Life insurance\r\n', '6th International Building Technology Exhibition in Syria', '6th International Building Technology Exhibition in Syria', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, 1, 1, 1, '6th International Building Technology Exhibition in Syria', '2019-04-22 18:37:36', '2019-04-22 18:37:36', NULL),
-(5, 'exhibition', 'معرض', '6th International Building Technology Exhibition in Syria', '6th International Building Technology Exhibition in Syria', '6th International Building Technology Exhibition in Syria 6th International Building Technology Exhibition in Syria 6th International Building Technology Exhibition in Syria 6th International Building Technology Exhibition in Syria', '6th International Building Technology Exhibition in Syria 6th International Building Technology Exhibition in Syria 6th International Building Technology Exhibition in Syria 6th International Building Technology Exhibition in Syria', 4, 2, 1, 0, '6th International Building Technology Exhibition in Syria', '2019-05-18 18:43:37', '2019-05-18 18:43:37', NULL);
+INSERT INTO `services` (`id`, `en_title`, `ar_title`, `en_subtitle`, `ar_subtitle`, `ar_description`, `en_description`, `parent_id`, `active`, `company_id`, `portal_link`, `type`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Life insucrance', 'Life insucrance', 'Life insucrance', 'Life insucrance', 'Life insucranceLife insucranceLife insucranceLife insucranceLife insucrance', 'Life insucranceLife insucranceLife insucrance', 0, 1, 0, '/Life insucrance', 'service', '2019-05-21 22:07:58', '2019-05-21 22:07:58', NULL),
+(2, 'Life insucrance son', 'Life insucrance son', 'Life insucrance sonLife insucrance son', 'Life insucrance sonLife insucrance sonLife insucrance son', 'Life insucrance sonLife insucrance sonLife insucrance sonLife insucrance sonLife insucrance sonLife insucrance sonLife insucrance sonLife insucrance son', 'Life insucrance sonLife insucrance sonLife insucrance sonLife insucrance sonLife insucrance sonLife insucrance son', 1, 1, 0, 'Life insucrance son', 'service', '2019-05-21 22:11:19', '2019-05-21 22:11:19', NULL),
+(3, 'Life insucrance son2', 'Life insucrance son2', 'Life insucrance son2', 'Life insucrance son2', 'Life insucrance son2Life insucrance son2Life insucrance son2Life insucrance son2', 'Life insucrance son2Life insucrance son2Life insucrance son2', 1, 1, 0, 'Life insucrance son2', 'service', '2019-05-21 22:12:28', '2019-05-21 22:12:28', NULL),
+(4, 'insurace 2', 'insurace 2', 'insurace 2', 'insurace 2', 'insurace 2insurace 2insurace 2', 'insurace 2insurace 2insurace 2', 0, 1, 0, 'insurace 2insurace 2', 'service', '2019-05-21 22:33:29', '2019-05-21 22:33:29', NULL),
+(5, 'insurace 2 son1', 'insurace 2 son1', 'insurace 2 son1insurace 2 son1', 'insurace 2 son1insurace 2 son1insurace 2 son1', 'insurace 2 son1insurace 2 son1insurace 2 son1insurace 2 son1', 'insurace 2 son1insurace 2 son1insurace 2 son1', 4, 1, 0, 'insurace 2 son1', 'service', '2019-05-21 22:34:01', '2019-05-21 22:34:01', NULL),
+(10, 'sadasda', 'sadasda', 'sadasda', 'sadasda', 'sadasda', 'sadasda', 0, 1, 0, 'sadasda', 'product', '2019-05-21 23:01:59', '2019-05-21 23:01:59', NULL),
+(11, 'sadasdasadasdasadasda', 'sadasdasadasdasadasda', 'sadasdasadasdasadasda', 'sadasdasadasdasadasdasadasda', 'sadasdasadasdasadasda', 'sadasdasadasdasadasda', 10, 1, NULL, '0', 'sadasda', '2019-05-21 23:09:21', '2019-05-21 23:09:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -454,6 +551,12 @@ ALTER TABLE `applications`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `application_options`
+--
+ALTER TABLE `application_options`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `banks`
 --
 ALTER TABLE `banks`
@@ -490,12 +593,6 @@ ALTER TABLE `galleries`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `locations`
---
-ALTER TABLE `locations`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `media`
 --
 ALTER TABLE `media`
@@ -526,9 +623,21 @@ ALTER TABLE `options`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `option_services`
+--
+ALTER TABLE `option_services`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `partners`
 --
 ALTER TABLE `partners`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `partner_services`
+--
+ALTER TABLE `partner_services`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -536,6 +645,12 @@ ALTER TABLE `partners`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `prices`
+--
+ALTER TABLE `prices`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `services`
@@ -571,7 +686,13 @@ ALTER TABLE `about_us`
 -- AUTO_INCREMENT for table `applications`
 --
 ALTER TABLE `applications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `application_options`
+--
+ALTER TABLE `application_options`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `banks`
@@ -610,22 +731,16 @@ ALTER TABLE `galleries`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `locations`
---
-ALTER TABLE `locations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -643,7 +758,13 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `option_services`
+--
+ALTER TABLE `option_services`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `partners`
@@ -652,10 +773,22 @@ ALTER TABLE `partners`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `partner_services`
+--
+ALTER TABLE `partner_services`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `prices`
+--
+ALTER TABLE `prices`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `sliders`

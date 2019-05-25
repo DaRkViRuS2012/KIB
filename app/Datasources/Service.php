@@ -15,6 +15,10 @@ class Service extends Model
         return $this->hasMany('App\Media','content_id')->where('content_type','service');
     }
 
+     public function partner()
+    {
+        return $this->belongsToMany('App\Partner','partner_options')->as('partner')->withPivot('value')->withTimestamps();
+    }
 
          public function product_media()
     {

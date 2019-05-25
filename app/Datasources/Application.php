@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Application extends Model
 {
            protected $fillable = [
-       'service_id','user_id','date','code'
+      'applicant_name_en','applicant_name_ar', 'service_id','user_id','date','code'
 
        //options in application_option
     ];
@@ -24,7 +24,7 @@ class Application extends Model
 
     public function options()
     {
-    	   return $this->belongsToMany('App\Option','applications_options')->as('app_option')->withpivot('value')->withTimestamps();
+    	   return $this->belongsToMany('App\Option','application_options')->as('app_option')->withpivot('option_value')->withTimestamps();
     }
 
     public static function application_index()
@@ -32,9 +32,11 @@ class Application extends Model
     	$applications=Application::with('service','user','options')->get();
     	return $applications;
     }
-    public static function  application_create($service_id,$user_id,$date,$code)
+    public static function  application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code)
     {
     	$application=new Application;
+        $application->applicant_name_en=$applicant_name_en;
+        $application->applicant_name_ar=$applicant_name_ar;
     	$application->service_id=$service_id;
     	$application->user_id=$user_id;
     	$application->date=$date;
@@ -43,9 +45,11 @@ class Application extends Model
     	return $application;
     }
 
-        public static function application_update($id,$service_id,$user_id,$date,$code)
+        public static function application_update($applicant_name_en,$applicant_name_ar,$id,$service_id,$user_id,$date,$code)
     {
     	$application=Application::find($id);
+        $application->applicant_name_en=$applicant_name_en;
+        $application->applicant_name_ar=$applicant_name_ar;
     	$application->service_id=$service_id;
     	$application->user_id=$user_id;
     	$application->date=$date;

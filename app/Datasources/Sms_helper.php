@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sms_helper extends Model
 {
-    public function RandomString()
+    public static function RandomString()
 {
        $code=strval(rand(100000,999999));
     return $code;
