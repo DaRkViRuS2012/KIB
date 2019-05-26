@@ -94,6 +94,12 @@ class Service extends Model
         return $services;
     }
 
+         public static function service_all_sons()
+    {
+        $services=Service::where('parent_id','!=',0)->with('media','sons','company','quotation')->get();
+        return $services;
+    }
+
 
     public static function service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$company_id,$portal_link,$type)
     {

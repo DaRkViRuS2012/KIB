@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username','birthdate','fcmtoken','os','role','location_id',
+        'name', 'email', 'password','username','birthdate','fcmtoken','os','role','city_id',
 
     ];
 
@@ -45,7 +45,7 @@ class User extends Authenticatable
     }
 
 
-    public static function user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$location_id,$code)
+    public static function user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code)
     {
         $user=new user;
         $user->name=$name;
@@ -57,12 +57,12 @@ class User extends Authenticatable
         $user->fcmtoken=$fcmtoken;
         $user->os=$os;
         $user->role=$role;
-        $user->location_id=$location_id;
+        $user->city_id=$city_id;
         $user->save();
         return $user;
     }
 
-       public static function user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$location_id,$code,$mobile)
+       public static function user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile)
     {
         $user=User::find($id);
         $user->name=$name;
@@ -74,7 +74,7 @@ class User extends Authenticatable
         $user->fcmtoken=$fcmtoken;
         $user->os=$os;
         $user->role=$role;
-        $user->location_id=$location_id;
+        $user->city_id=$city_id;
         $user->mobile=$mobile;
         $user->save();
         return $user;

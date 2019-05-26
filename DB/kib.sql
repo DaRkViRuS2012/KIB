@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2019 at 02:03 AM
+-- Generation Time: May 26, 2019 at 03:38 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -69,19 +69,6 @@ CREATE TABLE `applications` (
 --
 
 INSERT INTO `applications` (`id`, `applicant_name_en`, `applicant_name_ar`, `service_id`, `user_id`, `date`, `code`, `created_at`, `updated_at`) VALUES
-(7, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:48:29', '648501', '2019-05-24 20:48:29', '2019-05-24 20:48:29'),
-(8, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:49:13', '458399', '2019-05-24 20:49:13', '2019-05-24 20:49:13'),
-(9, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:50:04', '433677', '2019-05-24 20:50:04', '2019-05-24 20:50:04'),
-(10, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:50:45', '740687', '2019-05-24 20:50:45', '2019-05-24 20:50:45'),
-(11, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:51:40', '274251', '2019-05-24 20:51:40', '2019-05-24 20:51:40'),
-(12, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:52:08', '655572', '2019-05-24 20:52:08', '2019-05-24 20:52:08'),
-(13, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:52:34', '109772', '2019-05-24 20:52:34', '2019-05-24 20:52:34'),
-(14, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:54:22', '503075', '2019-05-24 20:54:22', '2019-05-24 20:54:22'),
-(15, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:54:51', '658471', '2019-05-24 20:54:51', '2019-05-24 20:54:51'),
-(16, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:56:50', '879547', '2019-05-24 20:56:50', '2019-05-24 20:56:50'),
-(17, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:57:19', '799794', '2019-05-24 20:57:19', '2019-05-24 20:57:19'),
-(18, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:59:17', '487789', '2019-05-24 20:59:17', '2019-05-24 20:59:17'),
-(19, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-24 23:59:57', '846932', '2019-05-24 20:59:57', '2019-05-24 20:59:57'),
 (20, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-25 00:00:18', '789343', '2019-05-24 21:00:18', '2019-05-24 21:00:18');
 
 -- --------------------------------------------------------
@@ -296,11 +283,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (31, '2019_05_10_214019_create_cities_table', 9),
 (32, '2019_05_06_125507_create_options_table', 10),
 (34, '2019_03_21_230422_create_banks_table', 12),
-(37, '2019_05_21_152639_create_prices_table', 13),
 (42, '2019_05_14_011211_create_applications_table', 14),
 (43, '2019_05_24_205119_create_partner_services_table', 14),
 (44, '2019_05_24_210813_create_application_options_table', 14),
-(45, '2019_05_21_181854_create_option_services_table', 15);
+(45, '2019_05_21_181854_create_option_services_table', 15),
+(46, '2019_05_21_152639_create_prices_table', 16),
+(49, '2019_05_25_220349_create_portals_table', 17),
+(50, '2019_05_25_223552_create_pages_table', 17);
 
 -- --------------------------------------------------------
 
@@ -384,6 +373,24 @@ CREATE TABLE `option_services` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pages`
+--
+
+CREATE TABLE `pages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `en_name` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `en_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ar_name` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ar_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `partners`
 --
 
@@ -441,6 +448,20 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `portals`
+--
+
+CREATE TABLE `portals` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `company_id` int(10) UNSIGNED NOT NULL,
+  `portal` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `prices`
 --
 
@@ -450,6 +471,7 @@ CREATE TABLE `prices` (
   `min` int(11) NOT NULL,
   `max` int(11) NOT NULL,
   `value` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -629,6 +651,12 @@ ALTER TABLE `option_services`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `partners`
 --
 ALTER TABLE `partners`
@@ -645,6 +673,12 @@ ALTER TABLE `partner_services`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `portals`
+--
+ALTER TABLE `portals`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `prices`
@@ -740,7 +774,7 @@ ALTER TABLE `media`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -767,6 +801,12 @@ ALTER TABLE `option_services`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `partners`
 --
 ALTER TABLE `partners`
@@ -776,6 +816,12 @@ ALTER TABLE `partners`
 -- AUTO_INCREMENT for table `partner_services`
 --
 ALTER TABLE `partner_services`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `portals`
+--
+ALTER TABLE `portals`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --

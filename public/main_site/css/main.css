@@ -130,6 +130,9 @@ font-weight: bold;
 #main {
   transition: margin-left .5s; /* If you want a transition effect */
   padding: 20px;
+      background-color: #d6d6d6;
+    height: 400px;
+    overflow-y: scroll;
 }
 
 
@@ -156,6 +159,7 @@ position: fixed // or absolute
     margin-left: 20px;
     margin-bottom: 3%;
 }
+
 
 
 .list-group-item:hover small 

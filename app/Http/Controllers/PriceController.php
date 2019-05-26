@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Price;
+use App\Service;
 use Illuminate\Http\Request;
 
 class PriceController extends Controller
@@ -14,7 +15,8 @@ class PriceController extends Controller
      */
     public function index()
     {
-        //
+        $prices=Price::price_index();
+        return view('admin.price.index',compact('prices'));
     }
 
     /**
@@ -24,7 +26,8 @@ class PriceController extends Controller
      */
     public function create()
     {
-        //
+        $services=Service::service_all_sons();
+        return view('admin.price.create',compact('services'));
     }
 
     /**
@@ -35,7 +38,13 @@ class PriceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $service_id=$request['service_id'];
+        $min=$request['min'];
+        $max=$request['max'];
+        $value=$request['value'];
+        $type=$request['type'];
+        Price::price_create($service_id,$min,$max,$value,$type);
+        return redirect('/admin/price/index');
     }
 
     /**
@@ -55,9 +64,11 @@ class PriceController extends Controller
      * @param  \App\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function edit(Price $price)
+    public function edit($id)
     {
-        //
+        $services=Service::service_all_sons();
+        $prices=Price::price_show($id);
+        return view('admin.price.update',compact('services','price'));
     }
 
     /**
@@ -69,7 +80,14 @@ class PriceController extends Controller
      */
     public function update(Request $request, Price $price)
     {
-        //
+        $id=$request['id'];
+        $service_id=$request['service_id'];
+        $min=$request['min'];
+        $max=$request['max'];
+        $value=$request['value'];
+        $type=$request['type'];
+        Price::price_update($service_id,$min,$max,$value,$type);
+        return redirect('/admin/price/index');
     }
 
     /**
@@ -78,8 +96,9 @@ class PriceController extends Controller
      * @param  \App\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Price $price)
+    public function delete($id)
     {
-        //
+        Price::price_update($id);
+        return redirect('/admin/price/index');
     }
 }

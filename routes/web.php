@@ -172,6 +172,27 @@ Route::get('/admin/bank/update/{id}','BankController@edit');
 Route::post('/admin/bank/update/{id}','BankController@update');
 Route::get('/admin/bank/delete/{id}','BankController@delete');
 //*********************************************************************************************
+Route::get('/admin/price/index','PriceController@index');
+Route::get('/admin/price/create','PriceController@create');
+Route::post('/admin/price/create','PriceController@store');
+Route::get('/admin/price/update/{id}','PriceController@edit');
+Route::post('/admin/price/update/{id}','PriceController@update');
+Route::get('/admin/price/delete/{id}','PriceController@delete');
+//*********************************************************************************************
+Route::get('/admin/portal/index','PortalController@index');
+Route::get('/admin/portal/create','PortalController@create');
+Route::post('/admin/portal/create','PortalController@store');
+Route::get('/admin/portal/update/{id}','PortalController@edit');
+Route::post('/admin/portal/update/{id}','PortalController@update');
+Route::get('/admin/portal/delete/{id}','PortalController@delete');
+//*********************************************************************************************
+Route::get('/admin/page/index','PageController@index');
+Route::get('/admin/page/create','PageController@create');
+Route::post('/admin/page/create','PageController@store');
+Route::get('/admin/page/update/{id}','PageController@edit');
+Route::post('/admin/page/update/{id}','PageController@update');
+Route::get('/admin/page/delete/{id}','PageController@delete');
+//*********************************************************************************************
 Route::get('setlocale/{locale}', function ($locale) {
   if (in_array($locale, \Config::get('app.locales'))) {
     Session::put('locale', $locale);

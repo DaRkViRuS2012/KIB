@@ -10,6 +10,11 @@ class Partner extends Model
         'title', 'image', 'url',
     ];
 
+
+    public function service()
+    {
+        return $this->belongsToMany('App\Service','partner_options')->as('service')->withPivot('value')->withTimestamps();
+    }
     public static function partner_index()
     {
     	$partners=Partner::all();
