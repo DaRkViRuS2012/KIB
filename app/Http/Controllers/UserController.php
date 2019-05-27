@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\City;
 use App\Sms_helper;
 use App\User;
-use Illuminate\Support\Facades\Auth;
+use Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
@@ -51,7 +52,7 @@ class UserController extends Controller
         $os='android';
         $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile);
         // Sms_helper::send_sms_post($user->mobile,$user->code);
-        return Auth::loginUsingId($user->id);
+        Auth::loginUsingId($user->id);
     }
 
     /**
