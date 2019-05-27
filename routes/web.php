@@ -16,6 +16,10 @@ Route::get('/', function () {
 });
 
 
+
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+
 Route::get('/galleries','SiteController@galleries');
 
 

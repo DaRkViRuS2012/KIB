@@ -29,9 +29,21 @@
     <label for="email">Email</label>
     <input name="email" class="form-control" id="email" type="text">
   </div>
+
+
+
+  
+
+
   <div class="form-group col-4">
     <label for="pwd">User Name</label>
     <input name="username" class="form-control" id="username" type="text">
+  </div>
+
+
+   <div class="form-group col-4">
+    <label for="email">Password</label>
+    <input name="password" class="form-control" id="email" type="password">
   </div>
 
     <div class="form-group col-4">
