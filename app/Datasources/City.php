@@ -35,6 +35,13 @@ class City extends Model
     }
 
 
+            public static function city_all()
+    {
+        $cities=City::where('city_id','!=',0)->get();
+        return $cities;
+    }
+
+
         public static function city_show($id)
     {
     	$city=City::find($id);

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Sms_helper;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username','birthdate','fcmtoken','os','role','city_id',
+        'name', 'email', 'password','username','birthdate','fcmtoken','os','role','city_id','code',
 
     ];
 
@@ -56,7 +57,8 @@ class User extends Authenticatable
         $user->birthdate=$birthdate;
         $user->fcmtoken=$fcmtoken;
         $user->os=$os;
-        $user->role=$role;
+        $user->role='user';
+        $user->code=Sms_helper::RandomString();
         $user->city_id=$city_id;
         $user->save();
         return $user;
@@ -73,7 +75,6 @@ class User extends Authenticatable
         $user->birthdate=$birthdate;
         $user->fcmtoken=$fcmtoken;
         $user->os=$os;
-        $user->role=$role;
         $user->city_id=$city_id;
         $user->mobile=$mobile;
         $user->save();

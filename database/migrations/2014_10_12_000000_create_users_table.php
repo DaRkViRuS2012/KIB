@@ -23,9 +23,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->date('birthdate');
             $table->text('fcmtoken')->nullable();
-            $table->string('os');
+            $table->string('os')->nullable();
+            $table->string('code');
             $table->string('role');
-            $table->integer('location_id');
+            $table->integer('city_id');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

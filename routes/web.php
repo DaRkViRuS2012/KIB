@@ -70,6 +70,9 @@ Route::get('/admin', function() {
 });
 
 
+Route::get('user/register', 'UserController@create');
+Route::post('user/register', 'UserController@store');
+
 //*********************************************************************************************
 Route::get('/admin/about/index','AboutUsController@index');
 Route::get('/admin/about/create','AboutUsController@create');

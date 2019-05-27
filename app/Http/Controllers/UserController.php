@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\City;
+use App\Sms_helper;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     /**
@@ -23,7 +27,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        
+        $cities=City::city_all();
+        return view('auth.register',compact('cities'));
     }
 
     /**
@@ -34,7 +39,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
+        $username=$request['username'];
+        $email=$request['email'];
+        $password=Hash::make($request['password']);
+        $birthdate=$request['birthdate'];
+        $fcmtoken=$request['fcmtoken'];
+        $city_id=$request['city_id'];
+        $code=Sms_helper::RandomString();
+        $mobile=$request['mobile'];
+        $os='android';
+        $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile);
+        // Sms_helper::send_sms_post($user->mobile,$user->code);
+        return Auth::loginUsingId($user->id);
     }
 
     /**

@@ -86,7 +86,6 @@
   
 </form>
 </div>
-</div>
 
 
 <script type="text/javascript" src="{{ asset('main_site/js/options.js') }}"></script>
