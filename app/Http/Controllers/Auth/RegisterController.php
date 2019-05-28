@@ -62,19 +62,5 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
-    {
-        $name=$data['name'];
-        $username=$data['username'];
-        $email=$data['email'];
-        $password=Hash::make($data['password']);
-        $birthdate=$data['birthdate'];
-        $fcmtoken=$data['fcmtoken'];
-        $city_id=$data['city_id'];
-        $code=Sms_helper::RandomString();
-        $mobile=$data['mobile'];
-        $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile);
-        Sms_helper::send_sms_post($user->mobile,$user->code);
-        return Auth::loginUsingId($user->id);
-    }
+
 }

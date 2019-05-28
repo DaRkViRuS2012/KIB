@@ -15,9 +15,19 @@ Route::get('/', function () {
     return view('main_site.index');
 });
 
+Route::get('user/register', 'UserController@create');
+Route::post('user/register', 'UserController@store');
 
+Route::get('user/login', 'UserController@login_page');
+Route::post('user/login', 'UserController@login');
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::post('/login', 'Auth\LoginController@login')->name('logout');
+
+Route::post('/login', 'Auth\LoginController@login')->name('logout');
+
+Route::get('/account', 'UserController@account')->name('logout');
 
 
 Route::get('/galleries','SiteController@galleries');
@@ -74,8 +84,6 @@ Route::get('/admin', function() {
 });
 
 
-Route::get('user/register', 'UserController@create');
-Route::post('user/register', 'UserController@store');
 
 //*********************************************************************************************
 Route::get('/admin/about/index','AboutUsController@index');

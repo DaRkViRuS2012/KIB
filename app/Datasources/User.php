@@ -42,9 +42,14 @@ class User extends Authenticatable
 
     public function city()
     {
-        $this->belongsTo('App\City','city_id');
+       return $this->belongsTo('App\City','city_id');
     }
 
+    public static function user_show($id)
+    {
+        $user=User::where('id',$id)->with('city')->first();
+        return $user;
+    }
 
     public static function user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code)
     {
@@ -95,4 +100,30 @@ class User extends Authenticatable
        $code=strval(rand(100000,999999));
     return $code;
 }
+
+
+     public function is_admin()
+     {
+       if($this->type=='admin')
+       {
+         return true;
+       }
+       else {
+         // code...
+         return false;
+       }
+     }
+
+
+          public function is_user()
+     {
+       if($this->type=='user')
+       {
+         return true;
+       }
+       else {
+         // code...
+         return false;
+       }
+     }
 }

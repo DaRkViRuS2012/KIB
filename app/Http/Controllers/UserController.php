@@ -16,28 +16,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function create()
     {
         $cities=City::city_all();
         return view('auth.register',compact('cities'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function store(Request $request)
     {
         $name=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
@@ -55,53 +41,46 @@ class UserController extends Controller
         Auth::loginUsingId($user->id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+   public function account()
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $id=Auth::id();
+        $cities=City::city_all();
+        $user=User::user_show($id);
+        $name=explode(' ',$user->name);
+        return view('main_site.account',compact('user','name','cities'));
     }
 
 
+    public function login_page()
+    {
+        return view('auth.login');
+    }
 
+public function login(Request $request)
+  {
+    $email=$request['email'];
+    $password=$request['password'];
+      //$credentials = $request->only('email', 'password');
+
+      if (Auth::attempt(['email' => $email, 'password' => $password])) {
+          // Authentication passed...
+        $user= User::where('email',$request->email)->first();
+        if($user->is_admin())
+        {
+          return redirect('/admin');
+        }
+        elseif($user->is_user()) {
+          return redirect('/');
+        }
+
+        else
+        return redirect('/company'); 
+
+      }
+      return redirect()->intended('/login')->withErrors(['the Email or Password wrong']);
+  }
 
 }
 

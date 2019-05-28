@@ -132,4 +132,6 @@ public function galleries()
         }
         return redirect('/');
     }
+
+ 
 }
