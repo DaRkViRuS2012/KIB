@@ -59,7 +59,8 @@ public function products()
 {
     $products=Service::product_index_fathers();
     $partners=Partner::partner_index();
-       $product;
+    $product;
+    
     if (count($products)> 0 ){
         $product = $products[0];
         //dd($service);

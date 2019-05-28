@@ -68,7 +68,7 @@ class Service extends Model
 
 
 
-      public static function product_index()
+    public static function product_index()
     {
         $services=Service::where('type','product')->with('product_media','sons','company','options','quotation')->get();
         return $services;
@@ -81,7 +81,7 @@ class Service extends Model
     }
 
 
-        public static function product_index_fathers()
+    public static function product_index_fathers()
     {
         $services=Service::where('parent_id','0')->where('type','product')->with('product_media','sons','company','quotation')->get();
         return $services;

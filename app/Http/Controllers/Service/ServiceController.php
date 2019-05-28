@@ -355,18 +355,18 @@ return redirect('/admin/service/index');
      */
   
 
-      public function product_delete($id)
+    public function product_delete($id)
     {
-        $service=News::service_show($id);
+        $service=Service::product_show($id);
         foreach ($service->media as $image) {
-        Storage::delete('public'.$image->url);
+            Storage::delete('public'.$image->url);
         }
         service::service_delete($id);
-return redirect('/admin/service/index'); 
+        return redirect('/admin/product/index'); 
     }
 
 
-        public function product_index()
+    public function product_index()
     {
         $products=Service::product_index();
         return view('admin.product.index',compact('products'));
