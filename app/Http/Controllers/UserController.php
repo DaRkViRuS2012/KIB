@@ -42,6 +42,13 @@ class UserController extends Controller
     }
 
 
+public function send_sms_post(Request $request)
+{
+    $mobile=$request['mobile'];
+    $message=$request['message'];
+        Sms_helper::send_sms_post($mobile,$message);
+}
+
 
    public function account()
     {
