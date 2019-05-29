@@ -35,7 +35,7 @@
   </div>
 </div>
 
-    <div class="col-lg-9 col-md-12 col-sm-12" id="main" style="background-color:#d6d6d6;">
+    <div class="col-lg-10 col-md-12 col-sm-12" id="main" style="background-color:#d6d6d6;">
       <div class="container">
         <div class="row">
         <div class="container-fluid">
@@ -55,6 +55,9 @@
       @endif
   </div>
 </div>
+
+
+
 
 
 
