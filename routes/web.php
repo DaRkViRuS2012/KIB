@@ -160,10 +160,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/', function () {
-      if(Session::get('locale')=="")
-  {
-    Session::put('locale', "ar");
-  }
     return view('main_site.index');
 });
 
@@ -226,9 +222,4 @@ Route::get('/aboutus', function() {
 });
 
 
-Route::get('setlocale/{locale}', function ($locale) {
-  if (in_array($locale, \Config::get('app.locales'))) {
-    Session::put('locale', $locale);
-  }
-  return redirect()->back();
-});
+Route::get('/lang/{locale}', 'LocalizationController@index');

@@ -48,46 +48,55 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
      <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/">{{ __('messages.welcome') }}
+          <a class="nav-link" href="/">@lang("Home")
                 <span class="sr-only">(current)</span>
               </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/services">Services</a>
+          <a class="nav-link" href="/services">@lang("Services")</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/products">Buy Insurance</a>
+          <a class="nav-link" href="/products">@lang("Buy Insurance")</a>
         </li>
 
 
         <li class="nav-item">
-          <a class="nav-link" href="/galleries">Galleries</a>
+          <a class="nav-link" href="/galleries">@lang("Galleries")</a>
         </li>
 
           <li class="nav-item">
-          <a class="nav-link" href="/news">News</a>
+          <a class="nav-link" href="/news">@lang("News")</a>
         </li>
 
          <li class="nav-item">
-          <a class="nav-link" href="/aboutus">About us</a>
+          <a class="nav-link" href="/aboutus">@lang("About us")</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact us</a>
+          <a class="nav-link" href="/contact">@lang("Contact us")</a>
         </li>
         @if (Auth::check())
            <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user"></i> Profile </a>
+          <i class="fas fa-user"></i> {{Auth::user()->name}} </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-          <a class="dropdown-item" href="/account">My account</a>
-          <a class="dropdown-item" href="/logout">Log out</a>
+          <a class="dropdown-item" href="/account">@lang('My account')</a>
+          <a class="dropdown-item" href="/logout">@lang('Log out')</a>
         </div>
       </li>
       @else
       <li class="nav-item">
-          <a class="nav-link" href="/user/login">Login</a>
+          <a class="nav-link" href="/user/login">@lang('Login')</a>
+        </li>
+        @endif
+          @if (Session::get('locale')=="ar")
+          <li class="nav-item">
+          <a class="nav-link" href="/lang/en">EN</a>
+        </li>
+        @else
+         <li class="nav-item">
+          <a class="nav-link" href="/lang/ar">عربي</a>
         </li>
         @endif
       </ul>
@@ -106,9 +115,9 @@
               <div class="container">
                 <!-- Slide Text Layer -->
                 <div class="w3l-slide-text col-lg-6">
-                  <h3 style="color:#414141" data-animation="animated zoomInRight">Have The Right Insurance</h3>
-                  <p class="aos-init aos-animate" data-aos="fade-down">To Keep Your Family Safe</p>
-                  <a  href="services.html" target="_blank" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">Get A Qutation</a>
+                  <h3 style="color:#414141" data-animation="animated zoomInRight">@lang('Have The Right Insurance')</h3>
+                  <p class="aos-init aos-animate" data-aos="fade-down">@lang('To Keep Your Family Safe')</p>
+                  <a  href="services.html" target="_blank" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">@lang('Get A Qutation')</a>
                 </div>
               </div>
             </div>
@@ -121,10 +130,9 @@
                 <div class="row">
                 <!-- Slide Text Layer -->
                 <div class="w3l-slide-text col-lg-6">
-                   <h3 style="color:#3544ab;" data-animation="animated zoomInRight">KIB</h3>
-                  <p class="aos-init aos-animate" data-aos="fade-down">We make your insurance easy</p>
-                  <a href="/services" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">View
-                    Our Services</a>
+                   <h3 style="color:#3544ab;" data-animation="animated zoomInRight">@lang('KIB')</h3>
+                  <p class="aos-init aos-animate" data-aos="fade-down">@lang('We make your insurance easy')</p>
+                  <a href="/services" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">@lang('View Our Services')</a>
                 </div>
                   <div class="w3l-slide-text col-lg-6">
                         <div class='circle-container'>
@@ -151,7 +159,7 @@
               <div class="container">
                 <!-- Slide Text Layer -->
                 <div class="w3l-slide-text col-lg-7">
-                  <h3 data-animation="animated zoomInRight">Why You Should Choose <span style="color:#202e9c">KIB</span></h3>
+                  <h3 data-animation="animated zoomInRight">@lang('Why You Should Choose ')<span style="color:#202e9c">@lang('KIB')</span></h3>
                   <p>
   <a style="font-size:18px;color:#414141;font-weight:bold" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
      <span class="right"></span>

@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Session;
 class Service extends Model
 {
      protected $fillable = [
@@ -154,5 +154,19 @@ class Service extends Model
     		$service->active='active';
     	}
     }
+
+    public function getTitle()
+{
+ $str =  Session::get('locale').'_title';
+ $title=$this[$str];
+ return $title;
+}
+
+   public function getDescription()
+{
+ $str =  Session::get('locale').'_description';
+ $description=$this[$str];
+ return $description;
+}
 
 }

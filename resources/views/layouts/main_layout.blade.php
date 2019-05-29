@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 	<title>Welcome To KIB</title>
@@ -65,68 +66,78 @@
   </script>
 <section id="navbar">
   <header>
-   <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
-  <div class="container-fluid">
-    <div class="col-3">
-    <a class="navbar-brand" href="#">
-        <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
-        </a>
-        </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home
-                <span class="sr-only">(current)</span>
-              </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/services">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/products">Buy Insurance</a>
-        </li>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+	 <div class="container-fluid">
+	 	<div class="col-3">
+	 	<a class="navbar-brand" href="#">
+	 			<img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
+	 			</a>
+	 			</div>
+	 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	 				<span class="navbar-toggler-icon"></span>
+	 			</button>
+	 	<div class="collapse navbar-collapse" id="navbarResponsive">
+	 	 <ul class="navbar-nav ml-auto">
+	 			<li class="nav-item active">
+	 				<a class="nav-link" href="/">@lang("Home")
+	 							<span class="sr-only">(current)</span>
+	 						</a>
+	 			</li>
+	 			<li class="nav-item">
+	 				<a class="nav-link" href="/services">@lang("Services")</a>
+	 			</li>
+	 			<li class="nav-item">
+	 				<a class="nav-link" href="/products">@lang("Buy Insurance")</a>
+	 			</li>
 
+
+	 			<li class="nav-item">
+	 				<a class="nav-link" href="/galleries">@lang("Galleries")</a>
+	 			</li>
+
+	 				<li class="nav-item">
+	 				<a class="nav-link" href="/news">@lang("News")</a>
+	 			</li>
+
+	 			 <li class="nav-item">
+	 				<a class="nav-link" href="/aboutus">@lang("About us")</a>
+	 			</li>
+
+	 			<li class="nav-item">
+	 				<a class="nav-link" href="/contact">@lang("Contact us")</a>
+	 			</li>
+	 			@if (Auth::check())
+	 				 <li class="nav-item dropdown">
+	 			<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+	 				aria-haspopup="true" aria-expanded="false">
+	 				<i class="fas fa-user"></i> {{Auth::user()->name}} </a>
+	 			<div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+	 				<a class="dropdown-item" href="/account">@lang('My account')</a>
+	 				<a class="dropdown-item" href="/logout">@lang('Log out')</a>
+	 			</div>
+	 		</li>
+	 		@else
+	 		<li class="nav-item">
+	 				<a class="nav-link" href="/user/login">@lang('Login')</a>
+	 			</li>
+	 			@endif
+				@if (Session::get('locale')=="ar")
           <li class="nav-item">
-          <a class="nav-link" href="/galleries">Galleries</a>
+          <a class="nav-link" href="/lang/en">EN</a>
         </li>
-
-          <li class="nav-item">
-          <a class="nav-link" href="/news">News</a>
-        </li>
-
+        @else
          <li class="nav-item">
-          <a class="nav-link" href="/aboutus">About us</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact us</a>
-        </li>
-        @if (Auth::check())
-           <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user"></i> Profile </a>
-        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-          <a class="dropdown-item" href="/account">My account</a>
-          <a class="dropdown-item" href="/logout">Log out</a>
-        </div>
-      </li>
-      @else
-        <li class="nav-item">
-          <a class="nav-link" href="/user/login">Login</a>
+          <a class="nav-link" href="/lang/ar">عربي</a>
         </li>
         @endif
-      
-      </ul>
-    </div>
-  </div>
-</nav>
+	 		</ul>
+	 	</div>
+	 </div>
+	 </nav>
   </header>
 </section>
 <section id="content">
+
   @yield('content')
 </section>
 <div class="container">
@@ -159,15 +170,15 @@
 
           <!-- Content -->
           <div class="row" style="margin-bottom:5%">
-          <h5 class="text-uppercase">About us</h5>  
+          <h5 class="text-uppercase">@lang('About us')</h5>
           </div>
 
       {{--     <div class="row" style="margin-bottom:5%">
             <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
           </div> --}}
-          
+
           <div class="row" style="margin-bottom:5%">
-                      <p>Khouri Insurance Brokerage Office is specialized in insurance studies and consultations. We seek through our consultations and studies to ensure that customers receive the best insurance services in addition to the follow-up to any inquiries required by individuals and groups in all insurance fields
+                      <p>@lang('Khouri Insurance Brokerage Office is specialized in insurance studies and consultations. We seek through our consultations and studies to ensure that customers receive the best insurance services in addition to the follow-up to any inquiries required by individuals and groups in all insurance fields')
 </p>
           </div>
         </div>
@@ -179,32 +190,32 @@
         <div class="col-md-12 col-lg-3 mb-md-0 mb-3" style="margin-left:5%">
 
             <!-- Links -->
-            <h5 class="text-uppercase">Links</h5>
+            <h5 class="text-uppercase">@lang('Links')</h5>
 
-    
+
             <ul class="list-unstyled">
               <li>
-                <a href="/" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Home</a>
+                <a href="/" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">@lang('Home')</a>
               </li>
               <li>
-                <a href="/services" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Services</a>
+                <a href="/services" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">@lang('Services')</a>
               </li>
               <li>
-                <a href="/products" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Buy Insurance</a>
+                <a href="/products" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">@lang('Buy Insurance')</a>
               </li>
               <li>
-                <a href="/galleries" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Galleries</a>
+                <a href="/galleries" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">@lang('Galleries')</a>
               </li>
 
                <li>
-                <a href="/news" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">News</a>
+                <a href="/news" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">@lang('News')</a>
               </li>
               <li>
-                <a href="/aboutus" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">About us</a>
+                <a href="/aboutus" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">@lang('About us')</a>
               </li>
 
               <li>
-                <a href="contact" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">Contact us</a>
+                <a href="contact" style="color: white;display:flex;margin-bottom:3%;font-weight:bold;">@lang('Contact us')</a>
               </li>
             </ul>
 
@@ -216,9 +227,9 @@
 
             <!-- Links -->
             <div class="row">
-                  <h5 class="text-uppercase">Contact us</h5>
+                  <h5 class="text-uppercase">@lang('Contact us')</h5>
             </div>
-        
+
 
             <div class="row">
            <div class="mapouter"><div class="gmap_canvas"><iframe width="250" height="200" id="gmap_canvas" src="https://maps.google.com/maps?q=%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D8%A9&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.emojilib.com">emojilib.com</a></div><style>.mapouter{position:relative;text-align:right;height:200px;width:250px;}.gmap_canvas {overflow:hidden;background:none!important;height:200px;width:250px;}</style></div>
@@ -245,21 +256,21 @@
     <!-- Footer Links -->
 
     <!-- Copyright -->
- 
+
     <!-- Copyright -->
 
   </footer>
 
      <div style="background-color:#3544ab" class="footer">
       <div class="container">
-        
-      
+
+
       <div class="row" style="margin-left:4%">
         <div class="col-lg-4 col-md-12 col-sm-12">
 <i style="color:white;font-size:20px;margin-left:-5%;margin-right:2%" class="fab fa-facebook-square"></i>
 <i style="color:white;font-size:20px;" class="fab fa-twitter"></i>
         </div>
-      <div class="col-lg-4 col-md-12 col-sm-12" style="color: white">All Rights Reserved To KIB ©2019
+      <div class="col-lg-4 col-md-12 col-sm-12" style="color: white">@lang('All Rights Reserved To KIB ©2019')
   </div>
       </div>
       </div>
@@ -272,7 +283,7 @@
 
     $(".filter-button").click(function(){
         var value = $(this).attr('data-filter');
-        
+
         if(value == "all")
         {
             //$('.filter').removeClass('hidden');
@@ -284,10 +295,10 @@
 //            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
             $(".filter").not('.'+value).hide('3000');
             $('.filter').filter('.'+value).show('3000');
-            
+
         }
     });
-    
+
     if ($(".filter-button").removeClass("active")) {
 $(this).removeClass("active");
 }
@@ -345,7 +356,7 @@ function closeNav() {
                 loop:false,
                 autoplay:true,
                 autoplayTimeout:2000,
-              
+
             });
 
     });
