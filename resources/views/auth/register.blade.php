@@ -5,7 +5,7 @@
 
 
 <div class="row">
-  <h2  style="color:#3544ab;text-transform: capitalize;margin-top: 2%;">@lang('User Register ') :</h2>
+  <h2  style="color:#3544ab;text-transform: capitalize;margin-top: 2%;">@lang('User Register') :</h2>
 </div>
 <form action="/user/register" method="post">
   @csrf
@@ -56,7 +56,7 @@
   </div>
 
     <div class="form-group col-6">
-    <label for="pwd">city</label>
+    <label for="pwd">@lang('city')</label>
     <select class="form-control" name="city_id"  id="city_id">
         <option selected disabled>@lang('Select Your City')</option>
         @foreach ($cities as $city)
@@ -82,7 +82,7 @@
 
 <div class="row">
 <button style="margin: 1%;
-    padding: 1% 3% 1% 3%;background-color:#3544ab;border-color:#3544ab" type="submit" class="btn btn-primary">Submit</button>
+    padding: 1% 3% 1% 3%;background-color:#3544ab;border-color:#3544ab" type="submit" class="btn btn-primary">@lang('register')</button>
 </div>
 
 <div class="row">

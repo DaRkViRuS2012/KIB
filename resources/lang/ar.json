@@ -35,5 +35,8 @@
     "Select Your City":"اختر مدينتك",
     "Select Your Main Service":"اختر الخدمة الاساسية",
     "User Login": "تسجيل دخول المستخدم",
-    "User Register":"تسجيل المستخدم"
+    "User Register":"تسجيل المستخدم",
+    "city":"المدينة",
+    "login":"تسجيل الدخول",
+    "register":"تسجيل"
 }

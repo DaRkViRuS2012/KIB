@@ -5,7 +5,7 @@
 
 
 <div class="row">
-  <h2  style="color:#3544ab;text-transform: capitalize;margin-top: 2%;">@lang('User Login '):</h2>
+  <h2  style="color:#3544ab;text-transform: capitalize;margin-top: 2%;">@lang('User Login'):</h2>
 </div>
 <form action="/user/login" method="post">
   @csrf
@@ -24,7 +24,7 @@
 
 <div class="row">
 <button style="margin: 1%;
-    padding: 1% 3% 1% 3%;background-color:#3544ab;border-color:#3544ab" type="submit" class="btn btn-primary">Submit</button>
+    padding: 1% 3% 1% 3%;background-color:#3544ab;border-color:#3544ab" type="submit" class="btn btn-primary">@lang('login')</button>
 </div>
 
 <div class="row">

@@ -35,6 +35,9 @@
     "Select Your City":"Select Your City",
     "Select Your Main Service":"Select Your Main Service",
     "User Login":"User Login ",
-    "User Register":"User Register "
+    "User Register":"User Register ",
+    "city":"City",
+    "register":"Register",
+    "login":"Login"
 
 }

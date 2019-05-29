@@ -136,10 +136,24 @@
 	 </nav>
   </header>
 </section>
-<section id="content">
+@if (Session::get('locale')=="ar")
+ <section dir="rtl" id="content">
+<style type="text/css">
+  
+  label
+  {
+    float: right;
+  }
+</style>
+  @yield('content')
+</section>
+@else
+ <section dir="ltr" id="content">
 
   @yield('content')
 </section>
+@endif
+
 <div class="container">
   <div class="row">
   @if ($errors->any())
