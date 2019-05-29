@@ -116,7 +116,7 @@
       </li>
       @else
         <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link" href="/user/login">Login</a>
         </li>
         @endif
       

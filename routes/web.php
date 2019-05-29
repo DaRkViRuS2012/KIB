@@ -11,78 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('main_site.index');
-});
-
-Route::get('user/register', 'UserController@create');
-Route::post('user/register', 'UserController@store');
-
-Route::get('user/login', 'UserController@login_page');
-Route::post('user/login', 'UserController@login');
-
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-
-Route::post('/login', 'Auth\LoginController@login')->name('logout');
-
-Route::post('/login', 'Auth\LoginController@login')->name('logout');
-
-Route::get('/account', 'UserController@account')->name('logout');
 
 
-Route::get('/galleries','SiteController@galleries');
+// Auth::routes();
 
 
-Route::get('/gallery/{gallery_id}', 'SiteController@gallery')->name('gallery');
 
 
-Route::get('/services', 'SiteController@services')->name('home');
-
-Route::get('/products', 'SiteController@products')->name('home');
-
-Route::get('/service/{id}', 'SiteController@services_single')->name('home');
-
-Route::get('/product/{id}/show', 'SiteController@product_sons')->name('home');
-
-Route::get('/service/{id}/show', 'SiteController@service_sons')->name('home');
 
 
-Route::get('/product/{id}', 'SiteController@product_single')->name('home');
+Route::group(['middleware' => 'checkval'], function() {
 
-Route::get('/application/create','SiteController@application_create');
-
-Route::post('/application/create','SiteController@application_store');
- 
-
-Route::get('/news', function() {
-    return view('main_site.news');
-});
-
-
-Route::get('/news_single', function() {
-    return view('main_site.news_single');
-});
-
-
-Route::get('/contact', function() {
-    return view('main_site.contact');
-});
-
-
-Route::get('/aboutus', function() {
-    return view('main_site.about_us');
-});
-
-Auth::routes();
-
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::get('/admin', function() {
+  Route::get('/admin', function() {
     return view('admin.index');
 });
-
 
 
 //*********************************************************************************************
@@ -207,10 +149,79 @@ Route::post('/admin/page/create','PageController@store');
 Route::get('/admin/page/update/{id}','PageController@edit');
 Route::post('/admin/page/update/{id}','PageController@update');
 Route::get('/admin/page/delete/{id}','PageController@delete');
+});
+
+
 //*********************************************************************************************
 Route::get('setlocale/{locale}', function ($locale) {
   if (in_array($locale, \Config::get('app.locales'))) {
     Session::put('locale', $locale);
   }
   return redirect()->back();
+});
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/', function () {
+    return view('main_site.index');
+});
+
+Route::get('user/register', 'UserController@create');
+Route::post('user/register', 'UserController@store');
+
+Route::get('user/login', 'UserController@login_page');
+Route::post('user/login', 'UserController@login');
+
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('/login', 'Auth\LoginController@login')->name('logout');
+
+Route::post('/login', 'Auth\LoginController@login')->name('logout');
+
+Route::get('/account', 'UserController@account')->name('logout');
+
+
+Route::get('/galleries','SiteController@galleries');
+
+
+Route::get('/gallery/{gallery_id}', 'SiteController@gallery')->name('gallery');
+
+
+Route::get('/services', 'SiteController@services')->name('home');
+
+Route::get('/products', 'SiteController@products')->name('home');
+
+Route::get('/service/{id}', 'SiteController@services_single')->name('home');
+
+Route::get('/product/{id}/show', 'SiteController@product_sons')->name('home');
+
+Route::get('/service/{id}/show', 'SiteController@service_sons')->name('home');
+
+
+Route::get('/product/{id}', 'SiteController@product_single')->name('home');
+
+Route::get('/application/create','SiteController@application_create');
+
+Route::post('/application/create','SiteController@application_store');
+ 
+
+Route::get('/news', function() {
+    return view('main_site.news');
+});
+
+
+Route::get('/news_single', function() {
+    return view('main_site.news_single');
+});
+
+
+Route::get('/contact', function() {
+    return view('main_site.contact');
+});
+
+
+Route::get('/aboutus', function() {
+    return view('main_site.about_us');
 });
