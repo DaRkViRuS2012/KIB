@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Session;
 class News extends Model
 {
           protected $fillable = [
@@ -58,4 +58,18 @@ class News extends Model
     	$news=News::find($id);
     	$news->delete();
     }
+
+       public function getTitle()
+{
+ $str =  Session::get('locale').'_title';
+ $title=$this[$str];
+ return $title;
+}
+
+   public function getBody()
+{
+ $str =  Session::get('locale').'_body';
+ $description=$this[$str];
+ return $description;
+}
 }

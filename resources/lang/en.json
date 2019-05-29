@@ -21,6 +21,20 @@
     "Choose what Type of Service you want:":"Choose what Type of Service you want:",
     "More ...":"More ...",
     "Links":"Links",
-    "Why You Should Choose ":"Why You Should Choose "
+    "Why You Should Choose ":"Why You Should Choose ",
+    "Havent you join us please register":">Haven't you join us please register",
+    "if you had join us please click to login":"if you had join us please click to login",
+    "First Name":"First Name",
+    "Fathers Name":"Fathers Name",
+    "Last Name":"Last Name",
+    "Email":"Email",
+    "Mobile":"Mobile",
+    "User Name":"User Name",
+    "Password":"Password",
+    "Birthdate":"Birthdate",
+    "Select Your City":"Select Your City",
+    "Select Your Main Service":"Select Your Main Service",
+    "User Login":"User Login ",
+    "User Register":"User Register "
 
 }

@@ -21,5 +21,19 @@
     "Choose what Type of Service you want:" : "اختار الخدمة التي تريدها:",
     "More ...":"...المزيد",
     "Links":"الروابط",
-    "Why You Should Choose ":"لماذا يجب ان تختار"
+    "Why You Should Choose ":"لماذا يجب ان تختار",
+    "Havent you join us please register":"ان لم تنضم الينا فاضغط للتسجيل",
+    "if you had join us please click to login":"ان كنت منضم الينا اضغط لتسجيل الدخول",
+    "First Name":"الاسم الاول",
+    "Fathers Name":"اسم الاب",
+    "Last Name":"الكنية",
+    "Email":"البريد الالكتروني",
+    "Mobile":"الهاتف الخيلوي",
+    "User Name":"اسم المستخدم",
+    "Password":"كلمة السر",
+    "Birthdate":"تاريخ الولادة",
+    "Select Your City":"اختر مدينتك",
+    "Select Your Main Service":"اختر الخدمة الاساسية",
+    "User Login": "تسجيل دخول المستخدم",
+    "User Register":"تسجيل المستخدم"
 }

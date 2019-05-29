@@ -10,6 +10,7 @@ use App\Application;
 use App\Media;
 use App\Option;
 use App\Partner;
+use App\News;
 use App\Sms_helper;
 use App\ApplicationOption;
 class SiteController extends Controller
@@ -133,6 +134,20 @@ public function galleries()
         }
         return redirect('/');
     }
+
+    public function news_index()
+    {
+        $news=News::news_index();
+        return view('main_site.news',compact('news'));
+    }
+
+
+       public function news_show($id)
+    {
+        $news=News::news_show($id);
+        return view('main_site.news_single',compact('news'));
+    }
+
 
  
 }

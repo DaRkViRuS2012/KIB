@@ -202,14 +202,10 @@ Route::get('/application/create','SiteController@application_create');
 Route::post('/application/create','SiteController@application_store');
  
 
-Route::get('/news', function() {
-    return view('main_site.news');
-});
+Route::get('/news','SiteController@news_index');
 
 
-Route::get('/news_single', function() {
-    return view('main_site.news_single');
-});
+Route::get('/news_single/{id}', 'SiteController@news_show');
 
 
 Route::get('/contact', function() {
