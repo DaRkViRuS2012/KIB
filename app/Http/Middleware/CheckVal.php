@@ -19,6 +19,6 @@ class CheckVal
         if(Auth::user()->role=='admin')
         return $next($request);
 
-    return redirect('/login');
+    return redirect('/user/login');
     }
 }
