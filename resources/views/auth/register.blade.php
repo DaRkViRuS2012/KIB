@@ -32,6 +32,10 @@
 
 
 
+ <div class="form-group col-4">
+    <label for="pwd">Mobile</label>
+    <input name="mobile" class="form-control" id="mobile" type="text">
+  </div>
   
 
 

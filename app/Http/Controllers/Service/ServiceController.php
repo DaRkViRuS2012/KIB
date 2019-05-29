@@ -74,7 +74,7 @@ class ServiceController extends Controller
         $ar_subtitle=$request['ar_subtitle'];                                     
         $ar_description=$request['ar_description'];                                      
         $en_description=$request['en_description'];                                      
-        $parent_id ='0';                                                                                                     
+        $parent_id ='0';                                                                          
         $company_id=$request['company_id'];                               
         $portal_link=$request['portal_link'];
         $content_type='service';
