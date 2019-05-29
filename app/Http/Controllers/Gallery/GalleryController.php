@@ -32,6 +32,18 @@ class GalleryController extends Controller
          return response()->json(['status' => True, 'data' => $galleries, 'message' => '','type'=>'array']);
     }
 
+           public function show_api($gallery_id)
+    {
+
+        // $gallery_id=$request['id'];
+        $gallery=Gallery::gallery_show($gallery_id);
+            foreach ($gallery->media as $media1) {
+                $media1->url=env('website_link').env('image_storage').$media1->url;
+        }
+        // return view('admin.gallery.index',compact('galleries'));
+         return response()->json(['status' => True, 'data' => $gallery, 'message' => '','type'=>'array']);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

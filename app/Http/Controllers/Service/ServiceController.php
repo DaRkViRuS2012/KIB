@@ -35,6 +35,16 @@ class ServiceController extends Controller
     public function get_sons_api($service_id)
     {
         $services=Service::service_index_sons($service_id);
+
+            foreach ($services as $service) {
+            foreach ($service->media as $media1) {
+                $media1->url=env('website_link').env('image_storage').$media1->url;
+            }
+
+           
+                $service->quotation->url=env('website_link').env('image_storage').$service->quotation->url;
+           
+        }
         return response()->json(['status' => True, 'data' => $services, 'message' => '','type'=>'array']);
     }
 

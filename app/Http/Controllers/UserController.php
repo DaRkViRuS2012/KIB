@@ -7,6 +7,7 @@ use App\City;
 use App\Sms_helper;
 use App\User;
 use Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
@@ -17,6 +18,30 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
  
+
+
+     protected function validator_register(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+             'username' => ['required', 'string', 'max:255','unique:users'],
+             'code' => ['required','unique:users'],
+             'mobile' => ['required', 'string', 'max:9','unique:users'],
+        ]);
+    }
+
+
+     protected function validator_login(array $data)
+    {
+        return Validator::make($data, [
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
+
+
     public function create()
     {
         $cities=City::city_all();
@@ -26,6 +51,11 @@ class UserController extends Controller
  
     public function store(Request $request)
     {
+        $validator = $this->validator_register($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
         $name=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
         $username=$request['username'];
         $email=$request['email'];
@@ -36,9 +66,13 @@ class UserController extends Controller
         $code=Sms_helper::RandomString();
         $mobile=$request['mobile'];
         $os='android';
+
         $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile);
         // Sms_helper::send_sms_post($user->mobile,$user->code);
-        Auth::loginUsingId($user->id);
+         Auth::loginUsingId($user->id);
+         return redirect('/home'); 
+
+       
     }
 
 
@@ -67,6 +101,12 @@ public function send_sms_post(Request $request)
 
 public function login(Request $request)
   {
+      $validator = $this->validator_login($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
+
     $email=$request['email'];
     $password=$request['password'];
       //$credentials = $request->only('email', 'password');

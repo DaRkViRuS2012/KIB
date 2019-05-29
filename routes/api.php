@@ -25,6 +25,8 @@ Route::get('/partners','PartnerController@index_api');
 
 Route::get('/galleries','GalleryController@index_api');
 
+Route::get('/galleries/{id}','GalleryController@show_api');
+
 Route::get('/news','NewsController@index_api');
 
 Route::get('/services','ServiceController@index_api');
