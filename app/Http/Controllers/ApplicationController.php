@@ -16,6 +16,11 @@ class ApplicationController extends Controller
     {
         //
     }
+    public function index_api()
+    {
+    $applications=Application::application_index();
+    return response()->json(['status' => True, 'data' => $applications, 'message' => '','type'=>'array']);
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -32,6 +32,8 @@ class ServiceController extends Controller
     }
 
 
+
+
     public function get_sons_api($service_id)
     {
         $services=Service::service_index_sons($service_id);
@@ -386,7 +388,7 @@ return redirect('/admin/service/index');
     {
          $products=Service::product_index();
             foreach ($products as $product) {
-            foreach ($product->media as $media1) {
+            foreach ($product->product_media as $media1) {
                 $media1->url=env('website_link').env('image_storage').$media1->url;
             }
         }

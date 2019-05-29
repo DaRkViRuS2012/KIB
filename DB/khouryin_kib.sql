@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 26, 2019 at 03:38 AM
--- Server version: 10.1.34-MariaDB
+-- Host: localhost:3306
+-- Generation Time: May 30, 2019 at 02:48 AM
+-- Server version: 5.7.26-log
 -- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `kib`
+-- Database: `khouryin_kib`
 --
 
 -- --------------------------------------------------------
@@ -54,8 +54,6 @@ INSERT INTO `about_us` (`id`, `description`, `address`, `lat`, `lang`, `created_
 
 CREATE TABLE `applications` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `applicant_name_en` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `applicant_name_ar` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `service_id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `date` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -63,13 +61,6 @@ CREATE TABLE `applications` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `applications`
---
-
-INSERT INTO `applications` (`id`, `applicant_name_en`, `applicant_name_ar`, `service_id`, `user_id`, `date`, `code`, `created_at`, `updated_at`) VALUES
-(20, 'hamza hossen yaghi', 'حمزة حسين ياغي', 5, 1, '2019-05-25 00:00:18', '789343', '2019-05-24 21:00:18', '2019-05-24 21:00:18');
 
 -- --------------------------------------------------------
 
@@ -248,7 +239,51 @@ INSERT INTO `media` (`id`, `url`, `media_type`, `content_id`, `content_type`, `c
 (51, '/1558487479.pdf', 'quotation', 2, 'service', '2019-05-21 22:11:19', '2019-05-21 22:11:19', NULL),
 (52, '/1558487548.pdf', 'quotation', 3, 'service', '2019-05-21 22:12:28', '2019-05-21 22:12:28', NULL),
 (55, '/1558490519bespoke carpentry 1.jpg', 'image', 10, 'product', '2019-05-21 23:01:59', '2019-05-21 23:01:59', NULL),
-(57, '/1558490961bespoke carpentry 1.jpg', 'image', 11, 'product', '2019-05-21 23:09:21', '2019-05-21 23:09:21', NULL);
+(57, '/1558490961bespoke carpentry 1.jpg', 'image', 11, 'product', '2019-05-21 23:09:21', '2019-05-21 23:09:21', NULL),
+(58, '/15585186301_e7X-rfqUmez-yI_DdsyOCw.jpeg', 'image', 12, 'service', '2019-05-22 06:50:30', '2019-05-22 06:50:30', NULL),
+(59, '/1558518630.pdf', 'quotation', 12, 'service', '2019-05-22 06:50:30', '2019-05-22 06:50:30', NULL),
+(60, '1558894494.jpg', 'image', 13, 'service', '2019-05-22 06:52:38', '2019-05-26 15:14:54', NULL),
+(61, '/1558518758.pdf', 'quotation', 13, 'service', '2019-05-22 06:52:38', '2019-05-22 06:52:38', NULL),
+(62, '/15585189031_e7X-rfqUmez-yI_DdsyOCw.jpeg', 'image', 14, 'service', '2019-05-22 06:55:03', '2019-05-22 06:55:03', NULL),
+(63, '/1558518903.pdf', 'quotation', 14, 'service', '2019-05-22 06:55:03', '2019-05-22 06:55:03', NULL),
+(64, '/1558519194197114_123000644521275_1514087001_n.jpg', 'image', 15, 'service', '2019-05-22 06:59:54', '2019-05-22 06:59:54', NULL),
+(65, '/1558519194.pdf', 'quotation', 15, 'service', '2019-05-22 06:59:54', '2019-05-22 06:59:54', NULL),
+(66, '/155851926362e1689077473530b980617881817f30.jpg', 'image', 16, 'service', '2019-05-22 07:01:03', '2019-05-22 07:01:03', NULL),
+(67, '/1558519263.pdf', 'quotation', 16, 'service', '2019-05-22 07:01:03', '2019-05-22 07:01:03', NULL),
+(68, '/1558519340197114_123000644521275_1514087001_n.jpg', 'image', 17, 'service', '2019-05-22 07:02:20', '2019-05-22 07:02:20', NULL),
+(69, '/1558519340.pdf', 'quotation', 17, 'service', '2019-05-22 07:02:20', '2019-05-22 07:02:20', NULL),
+(70, '/15585200731_e7X-rfqUmez-yI_DdsyOCw.jpeg', 'image', 18, 'service', '2019-05-22 07:14:33', '2019-05-22 07:14:33', NULL),
+(71, '/1558520073.pdf', 'quotation', 18, 'service', '2019-05-22 07:14:33', '2019-05-22 07:14:33', NULL),
+(72, '/15585212186201205-2016-08-19154114-1471610456-650-039f7e0c77-1471963830.jpg', 'image', 19, 'service', '2019-05-22 07:33:38', '2019-05-22 07:33:38', NULL),
+(73, '/1558521218.pdf', 'quotation', 19, 'service', '2019-05-22 07:33:38', '2019-05-22 07:33:38', NULL),
+(74, '/15585214200d3aba266b24344bfeecc7e7ba5f81a2.jpg', 'image', 20, 'service', '2019-05-22 07:37:00', '2019-05-22 07:37:00', NULL),
+(75, '/1558521420.pdf', 'quotation', 20, 'service', '2019-05-22 07:37:00', '2019-05-22 07:37:00', NULL),
+(76, '1558894559.jpg', 'image', 21, 'service', '2019-05-22 07:41:51', '2019-05-26 15:15:59', NULL),
+(77, '/1558521711.pdf', 'quotation', 21, 'service', '2019-05-22 07:41:51', '2019-05-22 07:41:51', NULL),
+(78, '/15585408080d3aba266b24344bfeecc7e7ba5f81a2.jpg', 'image', 22, 'service', '2019-05-22 13:00:08', '2019-05-22 13:00:08', NULL),
+(79, '/1558540808.pdf', 'quotation', 22, 'service', '2019-05-22 13:00:08', '2019-05-22 13:00:08', NULL),
+(80, '/15585408920d3aba266b24344bfeecc7e7ba5f81a2.jpg', 'image', 23, 'service', '2019-05-22 13:01:32', '2019-05-22 13:01:32', NULL),
+(81, '/1558540892.pdf', 'quotation', 23, 'service', '2019-05-22 13:01:32', '2019-05-22 13:01:32', NULL),
+(82, '/15585414381_e7X-rfqUmez-yI_DdsyOCw.jpeg', 'image', 24, 'product', '2019-05-22 13:10:38', '2019-05-22 13:10:38', NULL),
+(83, '/15588951171-cyLnRNls8F_Z9cqFBr1l5A.png', 'image', 25, 'service', '2019-05-26 15:25:17', '2019-05-26 15:25:17', NULL),
+(84, '/1558895117.pdf', 'quotation', 25, 'service', '2019-05-26 15:25:17', '2019-05-26 15:25:17', NULL),
+(85, '/15588952301-cyLnRNls8F_Z9cqFBr1l5A.png', 'image', 26, 'service', '2019-05-26 15:27:10', '2019-05-26 15:27:10', NULL),
+(86, '/1558895230.pdf', 'quotation', 26, 'service', '2019-05-26 15:27:10', '2019-05-26 15:27:10', NULL),
+(87, '/15588953561-cyLnRNls8F_Z9cqFBr1l5A.png', 'image', 27, 'service', '2019-05-26 15:29:16', '2019-05-26 15:29:16', NULL),
+(88, '/1558895356.pdf', 'quotation', 27, 'service', '2019-05-26 15:29:16', '2019-05-26 15:29:16', NULL),
+(89, '/15588954481-cyLnRNls8F_Z9cqFBr1l5A.png', 'image', 28, 'service', '2019-05-26 15:30:48', '2019-05-26 15:30:48', NULL),
+(90, '/1558895448.pdf', 'quotation', 28, 'service', '2019-05-26 15:30:48', '2019-05-26 15:30:48', NULL),
+(91, '/15588955321-cyLnRNls8F_Z9cqFBr1l5A.png', 'image', 29, 'service', '2019-05-26 15:32:12', '2019-05-26 15:32:12', NULL),
+(92, '/1558895532.pdf', 'quotation', 29, 'service', '2019-05-26 15:32:12', '2019-05-26 15:32:12', NULL),
+(93, '/15588960591-cyLnRNls8F_Z9cqFBr1l5A.png', 'image', 30, 'service', '2019-05-26 15:40:59', '2019-05-26 15:40:59', NULL),
+(94, '/1558896059.pdf', 'quotation', 30, 'service', '2019-05-26 15:40:59', '2019-05-26 15:40:59', NULL),
+(95, '/15588962531-cyLnRNls8F_Z9cqFBr1l5A.png', 'image', 31, 'service', '2019-05-26 15:44:13', '2019-05-26 15:44:13', NULL),
+(96, '/1558896253.pdf', 'quotation', 31, 'service', '2019-05-26 15:44:13', '2019-05-26 15:44:13', NULL),
+(97, '/15590450271_e7X-rfqUmez-yI_DdsyOCw.jpeg', 'image', 32, 'product', '2019-05-28 09:03:47', '2019-05-28 09:03:47', NULL),
+(98, '/15590451301-cyLnRNls8F_Z9cqFBr1l5A.png', 'image', 33, 'product', '2019-05-28 09:05:30', '2019-05-28 09:05:30', NULL),
+(99, '/15590460381-cyLnRNls8F_Z9cqFBr1l5A.png', 'image', 34, 'product', '2019-05-28 09:20:39', '2019-05-28 09:20:39', NULL),
+(100, '/15590461201-cyLnRNls8F_Z9cqFBr1l5A.png', 'image', 35, 'product', '2019-05-28 09:22:00', '2019-05-28 09:22:00', NULL),
+(101, '/15590465921-cyLnRNls8F_Z9cqFBr1l5A.png', 'image', 36, 'product', '2019-05-28 09:29:52', '2019-05-28 09:29:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -282,14 +317,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (27, '2019_03_21_230302_create_companies_table', 9),
 (31, '2019_05_10_214019_create_cities_table', 9),
 (32, '2019_05_06_125507_create_options_table', 10),
+(33, '2019_05_14_011211_create_applications_table', 11),
 (34, '2019_03_21_230422_create_banks_table', 12),
-(42, '2019_05_14_011211_create_applications_table', 14),
-(43, '2019_05_24_205119_create_partner_services_table', 14),
-(44, '2019_05_24_210813_create_application_options_table', 14),
-(45, '2019_05_21_181854_create_option_services_table', 15),
-(46, '2019_05_21_152639_create_prices_table', 16),
-(49, '2019_05_25_220349_create_portals_table', 17),
-(50, '2019_05_25_223552_create_pages_table', 17);
+(37, '2019_05_21_152639_create_prices_table', 13),
+(38, '2019_05_21_181854_create_option_services_table', 13);
 
 -- --------------------------------------------------------
 
@@ -353,7 +384,7 @@ CREATE TABLE `options` (
 
 INSERT INTO `options` (`id`, `title`, `type`, `value`, `service_id`, `created_at`, `updated_at`) VALUES
 (4, 'data', 'dropdown', 'hello@test', 5, '2019-05-17 21:47:14', '2019-05-19 21:26:20'),
-(11, 'data123', 'input', ' ', 5, '2019-05-24 20:53:43', '2019-05-24 20:53:43');
+(10, 'data123', 'input', '', 5, '2019-05-19 20:59:08', '2019-05-19 21:15:21');
 
 -- --------------------------------------------------------
 
@@ -366,24 +397,6 @@ CREATE TABLE `option_services` (
   `option_id` int(11) NOT NULL,
   `service_id` int(11) NOT NULL,
   `option_value` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pages`
---
-
-CREATE TABLE `pages` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `en_name` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `en_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ar_name` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ar_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `link` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -428,7 +441,6 @@ CREATE TABLE `partner_services` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `parnter_id` int(11) NOT NULL,
   `service_id` int(11) NOT NULL,
-  `option_value` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -471,7 +483,6 @@ CREATE TABLE `prices` (
   `min` int(11) NOT NULL,
   `max` int(11) NOT NULL,
   `value` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -493,7 +504,6 @@ CREATE TABLE `services` (
   `parent_id` int(11) NOT NULL,
   `active` int(11) NOT NULL,
   `company_id` int(11) DEFAULT NULL,
-  `portal_link` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -504,14 +514,25 @@ CREATE TABLE `services` (
 -- Dumping data for table `services`
 --
 
-INSERT INTO `services` (`id`, `en_title`, `ar_title`, `en_subtitle`, `ar_subtitle`, `ar_description`, `en_description`, `parent_id`, `active`, `company_id`, `portal_link`, `type`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Life insucrance', 'Life insucrance', 'Life insucrance', 'Life insucrance', 'Life insucranceLife insucranceLife insucranceLife insucranceLife insucrance', 'Life insucranceLife insucranceLife insucrance', 0, 1, 0, '/Life insucrance', 'service', '2019-05-21 22:07:58', '2019-05-21 22:07:58', NULL),
-(2, 'Life insucrance son', 'Life insucrance son', 'Life insucrance sonLife insucrance son', 'Life insucrance sonLife insucrance sonLife insucrance son', 'Life insucrance sonLife insucrance sonLife insucrance sonLife insucrance sonLife insucrance sonLife insucrance sonLife insucrance sonLife insucrance son', 'Life insucrance sonLife insucrance sonLife insucrance sonLife insucrance sonLife insucrance sonLife insucrance son', 1, 1, 0, 'Life insucrance son', 'service', '2019-05-21 22:11:19', '2019-05-21 22:11:19', NULL),
-(3, 'Life insucrance son2', 'Life insucrance son2', 'Life insucrance son2', 'Life insucrance son2', 'Life insucrance son2Life insucrance son2Life insucrance son2Life insucrance son2', 'Life insucrance son2Life insucrance son2Life insucrance son2', 1, 1, 0, 'Life insucrance son2', 'service', '2019-05-21 22:12:28', '2019-05-21 22:12:28', NULL),
-(4, 'insurace 2', 'insurace 2', 'insurace 2', 'insurace 2', 'insurace 2insurace 2insurace 2', 'insurace 2insurace 2insurace 2', 0, 1, 0, 'insurace 2insurace 2', 'service', '2019-05-21 22:33:29', '2019-05-21 22:33:29', NULL),
-(5, 'insurace 2 son1', 'insurace 2 son1', 'insurace 2 son1insurace 2 son1', 'insurace 2 son1insurace 2 son1insurace 2 son1', 'insurace 2 son1insurace 2 son1insurace 2 son1insurace 2 son1', 'insurace 2 son1insurace 2 son1insurace 2 son1', 4, 1, 0, 'insurace 2 son1', 'service', '2019-05-21 22:34:01', '2019-05-21 22:34:01', NULL),
-(10, 'sadasda', 'sadasda', 'sadasda', 'sadasda', 'sadasda', 'sadasda', 0, 1, 0, 'sadasda', 'product', '2019-05-21 23:01:59', '2019-05-21 23:01:59', NULL),
-(11, 'sadasdasadasdasadasda', 'sadasdasadasdasadasda', 'sadasdasadasdasadasda', 'sadasdasadasdasadasdasadasda', 'sadasdasadasdasadasda', 'sadasdasadasdasadasda', 10, 1, NULL, '0', 'sadasda', '2019-05-21 23:09:21', '2019-05-21 23:09:21', NULL);
+INSERT INTO `services` (`id`, `en_title`, `ar_title`, `en_subtitle`, `ar_subtitle`, `ar_description`, `en_description`, `parent_id`, `active`, `company_id`, `type`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(12, 'Medical insurance', 'تأمين صحي', 'Medical insurance', 'تأمين صحي', 'تغطية تأمينية تدفع مقابل المصاريف الطبية والجراحية التي يتحملها المؤمن عليه. يمكن أن يسدد التأمين الصحي للمؤمن له عن المصاريف التي تكبدها بسبب المرض أو الإصابة ، أو دفع  مباشر الى مقدم الخدمة الطبية من خلال شبكة مقدمي الخدمات', 'Insurance coverage that pays for medical and surgical expenses incurred by the insured. Health insurance can reimburse the insured for expenses incurred from illness or injury, or pay the care provider directly', 0, 1, NULL, 'service', '2019-05-22 06:50:30', '2019-05-26 15:54:40', NULL),
+(14, 'Life insurance', 'التأمين على الحياة', 'Life insurance', 'التأمين على الحياة', 'التأمين على الحياة هو عقد بين شركة تأمين وحامل بوليصة يضمن فيه المؤمن دفع استحقاقات الوفاة للمستفيدين المعينين عند وفاة المؤمن عليه. او دفع تعويض للمؤمن له في حال تعرضه لاصابة سببت له عجز  جزئي او كلي دائم او مؤقت', 'Life insurance is a contract between an insurer and a policyholder in which the insurer guarantees payment of a death benefit to named beneficiaries upon the death of the insured. The insurance company promises a death benefit in consideration of the payment of premium by the insured', 0, 1, 0, 'service', '2019-05-22 06:55:03', '2019-05-22 06:55:03', NULL),
+(15, 'Travel insurance', 'التأمين على السفر', 'Travel insurance', 'التأمين على السفر', 'التأمين على السفر هو تأمين يهدف إلى تغطية النفقات الطبية و الاضرار الناتجة عن إلغاء الرحلة و فقدان الأمتعة ا وحادث الطيران وغيرها من الخسائر المتكبدة أثناء السفر ، سواء على الصعيد الدولي أو المحلي.', 'Travel insurance is insurance that is intended to cover medical expenses, trip cancellation, lost luggage, flight accident and other losses incurred while traveling, either internationally or domestically.', 0, 1, 0, 'service', '2019-05-22 06:59:54', '2019-05-22 06:59:54', NULL),
+(16, 'Cyber risk insurance', 'التأمين ضد  الاخطار المرتبطة بالجرائم الالكترونية', 'Cyber risk insurance', 'التأمين ضد  الاخطار المرتبطة بالجرائم الالكترونية', 'التأمين ضد  الاخطار المرتبطة بالجرائم الالكترونية: هو تأمين يستخدم لحماية الشركات والمستخدمين الأفراد من المخاطر المستندة إلى الإنترنت ، وبشكل أعم من المخاطر المتعلقة بالبنية التحتية لأنشطة تكنولوجيا المعلومات وأنشطتها', 'Cyber risk insurance:  is insurance used to protect businesses and individual users from Internet-based risks, and more generally from risks relating to information technology infrastructure and activities', 0, 1, 0, 'service', '2019-05-22 07:01:03', '2019-05-22 07:01:03', NULL),
+(17, 'Motor insurance', 'التأمين على السيارات', 'Motor insurance', 'التأمين على السيارات', 'تأمين   يحمي سيارتك وسائقي السيارات الآخرين من المسؤولية في حالة وقوع حادث. يوفر تعويضًا ماليًا لتغطية أي إصابات تحدث للناس أو ممتلكاتهم', 'It protects you, your vehicle and other motorists against liability in case there is an accident. It provides financial compensation to cover any injuries caused to people or their property', 0, 1, 0, 'service', '2019-05-22 07:02:20', '2019-05-22 07:02:20', NULL),
+(18, 'Marine insurance', 'التأمين البحري و تأمين النقل', 'Marine insurance', 'التأمين البحري و تأمين النقل', 'يغطي فقدان أو تلف السفن ، البضائع ، المحطات الطرفية ، وأي نقل يتم بواسطته نقل الممتلكات أو حيازتها أو حجزها بين نقاط المنشأ والوجهة النهائية عندما يتم نقل البضائع عن طريق البريد أو البريد السريع ، يتم استخدام التأمين على الشحن بدلاً من ذلك.', 'covers the loss or damage of ships, cargo, terminals, and any transport by which the property is transferred, acquired, or held between the points of origin and the final destination. ... When goods are transported by mail or courier, shipping insurance is used instead', 0, 1, 0, 'service', '2019-05-22 07:14:33', '2019-05-22 07:14:33', NULL),
+(19, 'Property insurance', 'تأمين الممتلكات', 'Property insurance', 'تأمين الممتلكات', 'يوفر التأمين على الممتلكات و الحماية ضد معظم المخاطر على الممتلكات ، مثل الحريق والسرقة وبعض الأضرار الناجمة عن الطقس و العواصف  ويشمل ذلك أشكال التأمين المتخصصة مثل التأمين ضد الحريق أو التأمين ضد الفيضانات أو التأمين ضد الزلازل أو التأمين على المنازل أو تأمين المراجل .', 'Property insurance provides protection against most risks to property, such as fire, theft and some weather damage. This includes specialized forms of insurance such as fire insurance, flood insurance, earthquake insurance, home insurance, or boiler insurance.', 0, 1, 0, 'service', '2019-05-22 07:33:38', '2019-05-22 07:33:38', NULL),
+(20, 'Engineering insurance', 'التأمين الهندسي', 'Engineering insurance', 'التأمين الهندسي', 'يوفر تعويض مادي  للمخاطر التي قد يتعرض لها  مشروع البناء ، والآلات والمعدات  المرتبطة بالمشروع', 'Refers to the insurance that provides economic safeguard to the risks faced by the ongoing construction project, installation project, and machines and equipment in project operation', 0, 1, 0, 'service', '2019-05-22 07:37:00', '2019-05-22 07:37:00', NULL),
+(25, 'Individual insurance - Super insurance', 'التأمين الفردي - التأمين المميز', 'Individual insurance - Super insurance', 'التأمين الفردي - التأمين المميز', 'تغطية تأمينية تدفع مقابل المصاريف الطبية والجراحية التي يتحملها المؤمن عليه. يمكن أن يسدد التأمين الصحي للمؤمن له عن المصاريف التي تكبدها بسبب المرض أو الإصابة ، أو دفع  مباشر الى مقدم الخدمة الطبية من خلال شبكة مقدمي الخدمات', 'Insurance coverage that pays for medical and surgical expenses incurred by the insured. Health insurance can reimburse the insured for expenses incurred from illness or injury, or pay the care provider directly', 12, 1, 0, 'service', '2019-05-26 15:25:17', '2019-05-26 15:25:17', NULL),
+(26, 'Individual insurance - Your plan', 'التأمين الفردي - اختر خطتك', 'Individual insurance - Your plan', 'التأمين الفردي - اختر خطتك', 'تغطية تأمينية تدفع مقابل المصاريف الطبية والجراحية التي يتحملها المؤمن عليه. يمكن أن يسدد التأمين الصحي للمؤمن له عن المصاريف التي تكبدها بسبب المرض أو الإصابة ، أو دفع  مباشر الى مقدم الخدمة الطبية من خلال شبكة مقدمي الخدمات', 'Insurance coverage that pays for medical and surgical expenses incurred by the insured. Health insurance can reimburse the insured for expenses incurred from illness or injury, or pay the care provider directly', 12, 1, 0, 'service', '2019-05-26 15:27:10', '2019-05-26 15:27:10', NULL),
+(27, 'Family insurance  - My family insurance', 'التأمين العائلي - تأمين عائلتي', 'Family insurance  - My family insurance', 'التأمين العائلي - تأمين عائلتي', 'تغطية تأمينية تدفع مقابل المصاريف الطبية والجراحية التي يتحملها المؤمن عليه. يمكن أن يسدد التأمين الصحي للمؤمن له عن المصاريف التي تكبدها بسبب المرض أو الإصابة ، أو دفع  مباشر الى مقدم الخدمة الطبية من خلال شبكة مقدمي الخدمات', 'Insurance coverage that pays for medical and surgical expenses incurred by the insured. Health insurance can reimburse the insured for expenses incurred from illness or injury, or pay the care provider directly', 12, 1, 0, 'service', '2019-05-26 15:29:16', '2019-05-26 15:29:16', NULL),
+(28, 'Family insurance  - Super insurance', 'التأمين العائلي - التأمين المميز', 'Family insurance  - Super insurance', 'التأمين العائلي - التأمين المميز', 'تغطية تأمينية تدفع مقابل المصاريف الطبية والجراحية التي يتحملها المؤمن عليه. يمكن أن يسدد التأمين الصحي للمؤمن له عن المصاريف التي تكبدها بسبب المرض أو الإصابة ، أو دفع  مباشر الى مقدم الخدمة الطبية من خلال شبكة مقدمي الخدمات', 'Insurance coverage that pays for medical and surgical expenses incurred by the insured. Health insurance can reimburse the insured for expenses incurred from illness or injury, or pay the care provider directly', 12, 1, 0, 'service', '2019-05-26 15:30:48', '2019-05-26 15:30:48', NULL),
+(29, 'Group insurance', 'تأمين جماعي', 'Group insurance', 'تأمين جماعي', 'تغطية تأمينية تدفع مقابل المصاريف الطبية والجراحية التي يتحملها المؤمن عليه. يمكن أن يسدد التأمين الصحي للمؤمن له عن المصاريف التي تكبدها بسبب المرض أو الإصابة ، أو دفع  مباشر الى مقدم الخدمة الطبية من خلال شبكة مقدمي الخدمات', 'Insurance coverage that pays for medical and surgical expenses incurred by the insured. Health insurance can reimburse the insured for expenses incurred from illness or injury, or pay the care provider directly', 12, 1, 0, 'service', '2019-05-26 15:32:12', '2019-05-26 15:32:12', NULL),
+(30, 'Individual insurance', 'التأمين الفردي', 'Individual insurance', 'التأمين الفردي', 'التأمين على الحياة هو عقد بين شركة تأمين وحامل بوليصة يضمن فيه المؤمن دفع استحقاقات الوفاة للمستفيدين المعينين عند وفاة المؤمن عليه. او دفع تعويض للمؤمن له في حال تعرضه لاصابة سببت له عجز  جزئي او كلي دائم او مؤقت', 'Life insurance is a contract between an insurer and a policyholder in which the insurer guarantees payment of a death benefit to named beneficiaries upon the death of the insured. The insurance company promises a death benefit in consideration of the payment of premium by the insured', 14, 1, 0, 'service', '2019-05-26 15:40:59', '2019-05-26 15:40:59', NULL),
+(31, 'Family insurance', 'تأمين عائلي', 'Family insurance', 'تأمين عائلي', 'التأمين على الحياة هو عقد بين شركة تأمين وحامل بوليصة يضمن فيه المؤمن دفع استحقاقات الوفاة للمستفيدين المعينين عند وفاة المؤمن عليه. او دفع تعويض للمؤمن له في حال تعرضه لاصابة سببت له عجز  جزئي او كلي دائم او مؤقت', 'Life insurance is a contract between an insurer and a policyholder in which the insurer guarantees payment of a death benefit to named beneficiaries upon the death of the insured. The insurance company promises a death benefit in consideration of the payment of premium by the insured', 14, 1, 0, 'service', '2019-05-26 15:44:13', '2019-05-26 15:44:13', NULL),
+(34, 'Medical insurance', 'تأمين صحي', 'Medical insurance', 'تأمين صحي', 'تغطية تأمينية تدفع مقابل المصاريف الطبية والجراحية التي يتحملها المؤمن عليه. يمكن أن يسدد التأمين الصحي للمؤمن له عن المصاريف التي تكبدها بسبب المرض أو الإصابة ، أو دفع  مباشر الى مقدم الخدمة الطبية من خلال شبكة مقدمي الخدمات', 'Insurance coverage that pays for medical and surgical expenses incurred by the insured. Health insurance can reimburse the insured for expenses incurred from illness or injury, or pay the care provider directly', 0, 1, 0, 'product', '2019-05-28 09:20:38', '2019-05-28 09:20:38', NULL),
+(35, 'Medical insurance', 'تأمين صحي', 'Medical insurance', 'تأمين صحي', 'تغطية تأمينية تدفع مقابل المصاريف الطبية والجراحية التي يتحملها المؤمن عليه. يمكن أن يسدد التأمين الصحي للمؤمن له عن المصاريف التي تكبدها بسبب المرض أو الإصابة ، أو دفع  مباشر الى مقدم الخدمة الطبية من خلال شبكة مقدمي الخدمات', 'Insurance coverage that pays for medical and surgical expenses incurred by the insured. Health insurance can reimburse the insured for expenses incurred from illness or injury, or pay the care provider directly', 34, 1, NULL, 'https://google.com', '2019-05-28 09:22:00', '2019-05-28 09:22:00', NULL),
+(36, 'Life insurance', 'التأمين على الحياة', 'Life insurance', 'التأمين على الحياة', 'التأمين على الحياة هو عقد بين شركة تأمين وحامل بوليصة يضمن فيه المؤمن دفع استحقاقات الوفاة للمستفيدين المعينين عند وفاة المؤمن عليه. او دفع تعويض للمؤمن له في حال تعرضه لاصابة سببت له عجز  جزئي او كلي دائم او مؤقت', 'Life insurance is a contract between an insurer and a policyholder in which the insurer guarantees payment of a death benefit to named beneficiaries upon the death of the insured. The insurance company promises a death benefit in consideration of the payment of premium by the insured', 0, 1, 0, 'product', '2019-05-28 09:29:52', '2019-05-28 09:29:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -651,12 +672,6 @@ ALTER TABLE `option_services`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pages`
---
-ALTER TABLE `pages`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `partners`
 --
 ALTER TABLE `partners`
@@ -720,7 +735,7 @@ ALTER TABLE `about_us`
 -- AUTO_INCREMENT for table `applications`
 --
 ALTER TABLE `applications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `application_options`
@@ -768,13 +783,13 @@ ALTER TABLE `galleries`
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -792,18 +807,12 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `option_services`
 --
 ALTER TABLE `option_services`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pages`
---
-ALTER TABLE `pages`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -834,7 +843,7 @@ ALTER TABLE `prices`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `sliders`

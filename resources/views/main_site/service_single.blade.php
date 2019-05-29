@@ -12,12 +12,12 @@
 		@endforeach
 	</div>
 	<div class="col-6">
-		<p style="font-size: 15pt;">{{$service->en_description}}</p>
+		<p style="font-size: 15pt;">{{$service->getDescription()}}</p>
 	</div>
 	</div>
 	<div class="row">
 		<div class="col-6">
-			<p style="font-size:18pt;font-weight:bold;text-align: center;">{{$service->en_title}}</p>
+			<p style="font-size:18pt;font-weight:bold;text-align: center;">{{$service->getTitle()}}</p>
 		</div>
 	</div>
 	<div class="row">
