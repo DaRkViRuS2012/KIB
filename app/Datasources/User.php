@@ -104,7 +104,7 @@ class User extends Authenticatable
 
      public function is_admin()
      {
-       if($this->type=='admin')
+       if($this->role=='admin')
        {
          return true;
        }
@@ -117,7 +117,7 @@ class User extends Authenticatable
 
           public function is_user()
      {
-       if($this->type=='user')
+       if($this->role=='user')
        {
          return true;
        }

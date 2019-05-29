@@ -36,8 +36,8 @@ class UserController extends Controller
      protected function validator_login(array $data)
     {
         return Validator::make($data, [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string'],
         ]);
     }
 
@@ -118,12 +118,7 @@ public function login(Request $request)
         {
           return redirect('/admin');
         }
-        elseif($user->is_user()) {
-          return redirect('/');
-        }
-
-        else
-        return redirect('/company'); 
+     return redirect('/');
 
       }
       return redirect()->intended('/login')->withErrors(['the Email or Password wrong']);
