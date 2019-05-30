@@ -41,8 +41,7 @@ public function service_sons(Request $request)
     $id=$request['id'];
     $services=Service::service_index_fathers();
     $main_service=Service::service_show($id);
-    $partners=Partner::partner_index();
-    return view('main_site.service_sons',compact('services','partners','main_service'));
+    return view('main_site.service_sons',compact('services','main_service'));
 }
 
 

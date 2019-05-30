@@ -86,7 +86,7 @@
 <div class="container">
   <div class="row">
     <div id="owl" class=" col-lg-12 owl-carousel">
-      @foreach ($partners as $partner)
+      @foreach ($main_service->partner as $partner)
       <div class="col-lg-10 client">
         <img style="width: 100px !important;height: 100px !important;border-radius: 50%;" src="{{env('image_storage')}}/{{$partner->image}}" class="img-responsive item">
       </div>

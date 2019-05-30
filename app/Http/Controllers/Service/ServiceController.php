@@ -6,6 +6,7 @@ use App\Service;
 use Illuminate\Http\Request;
 use App\Company;
 use App\Media;
+use App\PartnerService;
 use Illuminate\Support\Facades\Storage;
 class ServiceController extends Controller
 {
@@ -27,6 +28,11 @@ class ServiceController extends Controller
             foreach ($service->media as $media1) {
                 $media1->url=env('website_link').env('image_storage').$media1->url;
             }
+
+                 foreach ($service->partner as $key => $partner1) {
+                $partner1->image=env('website_link').env('image_storage').'/'.$partner1->image;
+            }
+              $service->quotation->url=env('website_link').env('image_storage').$service->quotation->url;
         }
          return response()->json(['status' => True, 'data' => $services, 'message' => '','type'=>'array']);
     }
@@ -77,11 +83,17 @@ class ServiceController extends Controller
         $ar_description=$request['ar_description'];                                      
         $en_description=$request['en_description'];                                      
         $parent_id ='0';                                                                          
-        $company_id=$request['company_id'];                               
-        $portal_link=$request['portal_link'];
+        $company_id=$request['company_id'];
+        // $company_id= implode(',',$company_id);
+        // $test=explode(',', $company_id);
         $content_type='service';
         $type='service';
-        $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$company_id,$portal_link,$type);
+        $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type);
+
+            foreach ($company_id as $key => $company) {
+            PartnerService::partner_service_create($company,$service->id);
+      
+        }
                     if($request->hasFile('image')){
             foreach($request->file('image') as $file) {                    
             $imagename=$file->getClientOriginalName();
@@ -97,13 +109,11 @@ class ServiceController extends Controller
             $path_img=$file->storeAs('public/',time().'.pdf');
              $img_name=str_replace('public/', '', $path_img);
              Media::media_create($img_name,'quotation',$service->id,$content_type);
-             
+               return redirect('/admin/service/index');
         }
 
-        foreach ($company_id as $key => $company) {
-            PartnerService::partner_service_create($company,$service_id);
-        return redirect('/admin/service/index');
-        }
+    
+        
 
     return Redirect::back()->withErrors('The image input must not be empty');
     }
@@ -396,6 +406,7 @@ return redirect('/admin/service/index');
             foreach ($product->product_media as $media1) {
                 $media1->url=env('website_link').env('image_storage').$media1->url;
             }
+       
         }
          return response()->json(['status' => True, 'data' => $products, 'message' => '','type'=>'array']);
     }
