@@ -146,5 +146,27 @@ public function login(Request $request)
       return redirect()->intended('/login')->withErrors(['the Email or Password wrong']);
   }
 
+
+
+  public function login_api(Request $request)
+  {
+      $validator = $this->validator_login($request->input());
+         if ($validator->fails()) {
+           return response()->json(['status' => False, 'data' => '', 'message' => $validator->errors()->all(),'type'=>'error']);
+
+        }
+
+    $email=$request['email'];
+    $password=$request['password'];
+      //$credentials = $request->only('email', 'password');
+
+      if (Auth::attempt(['email' => $email, 'password' => $password])) {
+          // Authentication passed...
+        $user= User::where('email',$request->email)->first();
+        return $user;
+      }
+
+
+}
 }
 
