@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Portal;
 use Illuminate\Http\Request;
+use App\User;
 
 class PortalController extends Controller
 {
@@ -25,6 +26,7 @@ class PortalController extends Controller
      */
     public function create()
     {
+
         return view('admin.portal.create');
     }
 

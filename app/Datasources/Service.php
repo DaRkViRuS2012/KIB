@@ -10,6 +10,11 @@ class Service extends Model
         'en_title', 'ar_title','en_subtitle','ar_subtitle','en_description','ar_description','parent_id','','active','type'
     ];
 
+         public function prices()
+    {
+        return $this->hasMany('App\Price');
+    }
+
        public function media()
     {
         return $this->hasMany('App\Media','content_id')->where('content_type','service');
@@ -44,7 +49,7 @@ class Service extends Model
 
     public static function service_index()
     {
-    	$services=Service::where('type','service')->with('media','sons','options','quotation','partner')->get();
+    	$services=Service::where('type','service')->with('media','sons','options','prices','quotation','partner')->get();
     	return $services;
     }
 
@@ -52,13 +57,13 @@ class Service extends Model
 
     public static function service_show($id)
     {
-        $services=Service::where('type','service')->where('id',$id)->with('media','sons','options','quotation','partner')->first();
+        $services=Service::where('type','service')->where('id',$id)->with('media','sons','options','quotation','partner','prices')->first();
         return $services;
     }
 
     public static function product_show($id)
     {
-        $services=Service::where('type','product')->where('id',$id)->with('product_media','sons','options','quotation')->first();
+        $services=Service::where('type','product')->where('id',$id)->with('product_media','sons','options','quotation','prices')->first();
         return $services;
     }
 
@@ -72,7 +77,7 @@ class Service extends Model
 
      public static function service_index_fathers()
     {
-        $services=Service::where('parent_id','0')->where('type','service')->with('media','sons','quotation')->get();
+        $services=Service::where('parent_id','0')->where('type','service')->with('media','sons','quotation','prices')->get();
         return $services;
     }
 

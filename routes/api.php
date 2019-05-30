@@ -51,3 +51,5 @@ Route::get('/applications', 'ApplicationController@index_api');
 
 Route::get('/products', 'ServiceController@product_index_api');
 
+Route::post('/register', 'UserController@store_api');
+

@@ -23,7 +23,10 @@ class UserController extends Controller
      protected function validator_register(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'fname_en' => ['required', 'string', 'max:255'],
+             'father_name_en' => ['required', 'string', 'max:255'],
+              'lname_en' => ['required', 'string', 'max:255'],
+                'mobile' => ['required', 'string', 'max:9'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
              'username' => ['required', 'string', 'max:255','unique:users'],
@@ -65,10 +68,10 @@ class UserController extends Controller
         $city_id=$request['city_id'];
         $code=Sms_helper::RandomString();
         $mobile=$request['mobile'];
-        $os='android';
+        $os='web';
 
         $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile);
-        // Sms_helper::send_sms_post($user->mobile,$user->code);
+          Sms_helper::send_sms($user->mobile,$user->code); 
          Auth::loginUsingId($user->id);
          return redirect('/home'); 
 
@@ -76,12 +79,31 @@ class UserController extends Controller
     }
 
 
-public function send_sms_post(Request $request)
-{
-    $mobile=$request['mobile'];
-    $message=$request['message'];
-        Sms_helper::send_sms_post($mobile,$message);
-}
+
+        public function store_api(Request $request)
+    {
+        $validator = $this->validator_register($request->input());
+         if ($validator->fails()) {
+        return response()->json(['status' => False, 'data' => '', 'message' => $validator->errors()->all(),'type'=>'error']);
+        }
+        $name=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
+        $username=$request['username'];
+        $email=$request['email'];
+        $password=Hash::make($request['password']);
+        $birthdate=$request['birthdate'];
+        $fcmtoken=$request['fcmtoken'];
+        $city_id=$request['city_id'];
+        $code=Sms_helper::RandomString();
+        $mobile=$request['mobile'];
+        $os=$request['os'];
+
+        $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile);
+        Sms_helper::send_sms($user->mobile,$user->code); 
+         return response()->json(['status' => True, 'data' => $user, 'message' => '','type'=>'array']);
+
+       
+    }
+
 
 
    public function account()

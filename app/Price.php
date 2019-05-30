@@ -10,10 +10,10 @@ class Price extends Model
         'service_id','min','max','value','type',
     ];
 
-      public function company()
-    {
-    	return $this->hasMany('App\User','user_id')->where('type','company');
-    }
+    //   public function company()
+    // {
+    // 	return $this->hasMany('App\User','user_id')->where('type','company');
+    // }
 
           public function service()
     {

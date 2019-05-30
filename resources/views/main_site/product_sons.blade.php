@@ -8,7 +8,7 @@
       </div>
       <div class="list-group list-group-flush">
       	@foreach ($products as $product)
-        <a href="/product/{{$product->id}}/show" class="list-group-item list-group-item-action bg-light">{{$product->en_title}}</a>
+        <a href="/product/{{$product->id}}/show" class="list-group-item list-group-item-action bg-light">{{$product->getTitle()}}</a>
         @endforeach
       </div>
     </div>
@@ -37,8 +37,8 @@
                   <div class="card small_font" id="product">
   <img class="card-img-top" src="{{env('image_storage')}}/{{$product->product_media[0]->url}}" alt="Card image">
   <div class="card-body">
-    <h5 class="card-title">{{$product->en_title}}</h5>
-    <p class="card-text">{{ str_limit($product->en_description, $limit = 150, $end = '...') }}</p>
+    <h5 class="card-title">{{$product->getTitle()}}</h5>
+    <p class="card-text">{{ str_limit($product->getDescription(), $limit = 150, $end = '...') }}</p>
     <a href="/product/{{$product->id}}" id="product_button" href="#" class="btn btn-primary">More ...</a>
   </div>
 </div>
@@ -61,7 +61,7 @@
 <div class="container">
   <div class="row">
     <div id="owl" class=" col-lg-12 owl-carousel">
-      @foreach ($partners as $partner)
+      @foreach ($main_service->partner as $partner)
       <div class="col-lg-10 client">
         <img style="width: 100px !important;height: 100px !important;border-radius: 50%;" src="{{env('image_storage')}}/{{$partner->image}}" class="img-responsive item">
       </div>

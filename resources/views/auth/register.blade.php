@@ -34,7 +34,7 @@
 
  <div class="form-group col-4">
     <label for="pwd">@lang('Mobile')</label>
-    <input name="mobile" class="form-control" id="mobile" type="text">
+    <input name="mobile" class="form-control" id="mobile" type="text" placeholder="type your mobile nine digits example 993000000">
   </div>
 
 

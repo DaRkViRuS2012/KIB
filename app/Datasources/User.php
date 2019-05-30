@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username','birthdate','fcmtoken','os','role','city_id','code',
+        'name', 'email', 'password','username','birthdate','fcmtoken','os','role','city_id','code','mobile'
 
     ];
 
@@ -51,7 +51,13 @@ class User extends Authenticatable
         return $user;
     }
 
-    public static function user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code)
+
+    public static function company_index()
+    {
+        $companies=User::where('role','company')->get();
+    }
+
+    public static function user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile)
     {
         $user=new user;
         $user->name=$name;
@@ -63,6 +69,7 @@ class User extends Authenticatable
         $user->fcmtoken=$fcmtoken;
         $user->os=$os;
         $user->role='user';
+        $user->mobile=$mobile;
         $user->code=Sms_helper::RandomString();
         $user->city_id=$city_id;
         $user->save();
@@ -126,4 +133,20 @@ class User extends Authenticatable
          return false;
        }
      }
+
+
+          public function is_company()
+     {
+       if($this->role=='company')
+       {
+         return true;
+       }
+       else {
+         // code...
+         return false;
+       }
+     }
+
+
+
 }
