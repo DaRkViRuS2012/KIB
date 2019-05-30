@@ -97,7 +97,12 @@ class ServiceController extends Controller
             $path_img=$file->storeAs('public/',time().'.pdf');
              $img_name=str_replace('public/', '', $path_img);
              Media::media_create($img_name,'quotation',$service->id,$content_type);
-             return redirect('/admin/service/index');
+             
+        }
+
+        foreach ($company_id as $key => $company) {
+            PartnerService::partner_service_create($company,$service_id);
+        return redirect('/admin/service/index');
         }
 
     return Redirect::back()->withErrors('The image input must not be empty');
