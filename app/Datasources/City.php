@@ -22,6 +22,12 @@ class City extends Model
     	$cities=City::where('city_id',$id)->get();
         return $cities;
     }
+
+      public static function get_cities_api()
+    {
+        $cities=City::where('city_id','!=',0)->get();
+        return $cities;
+    }
     public static function city_index()
     {
     	$cities=City::all();

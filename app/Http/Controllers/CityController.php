@@ -32,8 +32,8 @@ class CityController extends Controller
 
         public function get_cities_api(Request $request)
     {
-        $city_id=$request['city_id'];
-        $cities=City::get_cities($city_id);
+        // $city_id=$request['city_id'];
+        $cities=City::get_cities_api();
          return response()->json(['status' => True, 'data' => $cities, 'message' => '','type'=>'array']);
     }
 

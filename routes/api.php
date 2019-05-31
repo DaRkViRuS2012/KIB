@@ -47,7 +47,7 @@ Route::get('/service/sub/{service_id}', 'ServiceController@get_sons_api');
 
 Route::get('/options/{service_id}','OptionController@get_by_service');
 
-Route::get('/city/{city_id}','CityController@get_cities_api');
+// Route::get('/city/{city_id}','CityController@get_cities_api');
 
 Route::get('/applications', 'ApplicationController@index_api');
 
@@ -57,5 +57,7 @@ Route::post('/register', 'UserController@store_api');
 
 Route::post('/login', 'UserController@login_api');
 
+
+Route::get('/cities','CityController@get_cities_api');
 
 

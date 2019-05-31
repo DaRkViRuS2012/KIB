@@ -140,6 +140,8 @@ public function galleries()
         $age=$this->calculate_age($birthdate);
         $service_info=Service::product_show($main_service_id);
         $service_title=$service_info->en_title;
+   
+        Sms_helper::send_sms($application->user->mobile,$application->code);
         $cost=0;
         if ($service_title=="Medical insurance") {
             $price=Price::price_show_by_service_id($service_id,$age);
@@ -157,7 +159,7 @@ public function galleries()
             $price=Price::price_show_by_service_id($service_id,$age);
             $cost=$price->value;
         }
-        return view('main_site.summary',compact('cost'));
+        return view('main_site.summary',compact('application','cost'));
     }
 
     public function news_index()

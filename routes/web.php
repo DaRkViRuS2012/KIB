@@ -169,7 +169,7 @@ Route::post('user/register', 'UserController@store');
 Route::get('user/login', 'UserController@login_page');
 Route::post('user/login', 'UserController@login');
 
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
 
 Route::get('/login', 'Auth\LoginController@login')->name('logout');
 
@@ -197,10 +197,7 @@ Route::get('/service/{id}/show', 'SiteController@service_sons')->name('home');
 
 Route::get('/product/{id}', 'SiteController@product_single')->name('home');
 
-Route::get('/application/create','SiteController@application_create');
 
-Route::post('/application/create','SiteController@application_store');
- 
 
 Route::get('/news','SiteController@news_index');
 
@@ -220,3 +217,12 @@ Route::get('/lang/{locale}', 'LocalizationController@index');
 
 
 Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ComplaintController@contactSaveData']);
+
+
+Route::group(['middleware' => 'checkuser'], function() {
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/application/create','SiteController@application_create');
+
+Route::post('/application/create','SiteController@application_store');
+ 
+});
