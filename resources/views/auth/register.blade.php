@@ -10,52 +10,52 @@
 <form action="/user/register" method="post">
   @csrf
 <div class="row">
-  <div class="form-group col-4">
+  <div class="form-group col-lg-4 col-sm-12">
     <label for="email">@lang('First Name')</label>
     <input name="fname_en" class="form-control" id="email" type="text">
   </div>
-  <div class="form-group col-4">
+  <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">@lang('Fathers Name')</label>
     <input name="father_name_en" class="form-control" id="pwd" type="text">
   </div>
 
-    <div class="form-group col-4">
+    <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">@lang('Last Name')</label>
     <input name="lname_en" class="form-control" id="pwd" type="text">
   </div>
 
 
-   <div class="form-group col-4">
+   <div class="form-group col-lg-4 col-sm-12">
     <label for="email">@lang('Email')</label>
     <input name="email" class="form-control" id="email" type="text">
   </div>
 
 
 
- <div class="form-group col-4">
+ <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">@lang('Mobile')</label>
     <input name="mobile" class="form-control" id="mobile" type="text" placeholder="type your mobile nine digits example 993000000">
   </div>
 
 
 
-  <div class="form-group col-4">
+  <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">@lang('User Name')</label>
     <input name="username" class="form-control" id="username" type="text">
   </div>
 
 
-   <div class="form-group col-4">
+   <div class="form-group col-lg-4 col-sm-12">
     <label for="email">@lang('Password')</label>
     <input name="password" class="form-control" id="email" type="password">
   </div>
 
-    <div class="form-group col-4">
+    <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">@lang('Birthdate')</label>
     <input name="birthdate" class="form-control" id="birthdate" type="date">
   </div>
 
-    <div class="form-group col-6">
+    <div class="form-group col-lg-6 col-sm-12">
     <label for="pwd">@lang('city')</label>
     <select class="form-control" name="city_id"  id="city_id">
         <option selected disabled>@lang('Select Your City')</option>
@@ -65,7 +65,7 @@
     </select>
   </div>
 </div>
-{{--     <div class="form-group col-4">
+{{--     <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">service</label>
     <select class="form-control" name="service_sons">
         <option selected disabled>@lang('Select Your Main Service')</option>

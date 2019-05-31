@@ -10,13 +10,13 @@
 <form action="/user/login" method="post">
   @csrf
 <div class="row">
-   <div class="form-group col-6">
+   <div class="form-group col-lg-6 col-sm-12">
     <label for="email">@lang('Email')</label>
     <input name="email" class="form-control" id="email" type="text">
   </div>
 </div>
 <div class="row">
-   <div class="form-group col-6">
+   <div class="form-group col-lg-6 col-sm-12">
     <label for="email">@lang('Password')</label>
     <input name="password" class="form-control" id="email" type="password">
   </div>

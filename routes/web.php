@@ -158,7 +158,7 @@ Route::get('/admin/page/delete/{id}','PageController@delete');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/', function () {
     return view('main_site.index');
 });
@@ -220,7 +220,7 @@ Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ComplaintController@
 
 
 Route::group(['middleware' => 'checkuser'], function() {
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
 Route::get('/application/create','SiteController@application_create');
 
 Route::post('/application/create','SiteController@application_store');
