@@ -62,8 +62,8 @@
                             @endif
                         <div class="form">
                          
-                            {{-- <form method="post" action="{{ route('contactus.store') }}"> --}}
-                                <form method="post" action="#">
+                            <form method="post" action="{{ route('contactus.store') }}">
+                             {{--    <form method="post" action="#"> --}}
                                 @csrf
                                 <div class="form-group">
                                     <label class="my-2">@lang('Name')</label>
@@ -75,13 +75,26 @@
                                 </div>
                         <div class="form-group">
   <label for="comment">@lang('Comment')</label>
-  <textarea class="form-control" rows="5" id="comment"></textarea>
+  <textarea class="form-control" rows="5" id="comment" name="message"></textarea>
 </div>
+
+                                          <div class="form-group">
+    <label for="exampleInputEmail1">type</label>
+    <select name="type" class="form-control">
+      <option disabled>Select  type</option>
+      <option value="enquiry">enquiry</option>
+      <option value="complaint">complaint</option>
+
+    </select>
+    
+  </div>
+
                                 <div class="input-group1">
                                     <input class="form-control" type="submit" value="@lang('Submit')" style="background-color: #3544ab;
     color: white;">
                                 </div>
-                            </form>
+
+              </form>
                             @if(session()->has('success'))
     <div style="margin-top:3%" class="alert alert-success">
         {{ session()->get('success') }}

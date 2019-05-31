@@ -217,4 +217,6 @@ Route::get('/aboutus','SiteController@about');
 
 
 Route::get('/lang/{locale}', 'LocalizationController@index');
-Route::get('/diff', 'PriceController@calculate');
+
+
+Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ComplaintController@contactSaveData']);
