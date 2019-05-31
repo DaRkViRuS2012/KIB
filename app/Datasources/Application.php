@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Application extends Model
 {
            protected $fillable = [
-      'applicant_name_en','applicant_name_ar', 'service_id','user_id','date','code'
+      'applicant_name_en','applicant_name_ar', 'service_id','user_id','date','code','birthdate',
 
        //options in application_option
     ];
@@ -32,7 +32,7 @@ class Application extends Model
     	$applications=Application::with('service','user','options')->get();
     	return $applications;
     }
-    public static function  application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code)
+    public static function  application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate)
     {
     	$application=new Application;
         $application->applicant_name_en=$applicant_name_en;
@@ -41,6 +41,7 @@ class Application extends Model
     	$application->user_id=$user_id;
     	$application->date=$date;
     	$application->code=$code;
+        $application->birthdate=$birthdate;
     	$application->save();
     	return $application;
     }

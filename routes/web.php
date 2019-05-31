@@ -219,3 +219,4 @@ Route::get('/aboutus', function() {
 
 
 Route::get('/lang/{locale}', 'LocalizationController@index');
+Route::get('/diff', 'PriceController@calculate');

@@ -34,6 +34,14 @@ class Price extends Model
     }
 
 
+         public static function price_show_by_service_id($service_id,$age)
+    {
+        $price=Price::where('service_id',$service_id)->with('service')->where('min','<=',$age)->where('max','>=',$age)->first();
+        return  $price;
+    }
+
+
+
         public static function price_create($service_id,$min,$max,$value,$type)
     {
     	$price=new Price;

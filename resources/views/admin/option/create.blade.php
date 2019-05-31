@@ -55,6 +55,12 @@
 </div>
 
 
+     <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} Attribute</label>
+    <input name="attr" class="form-control" id="comment" required>
+    
+  </div>
+
 
 
   <select class="form-control js-example-tokenizer" multiple="multiple" name="value[]">

@@ -36,25 +36,27 @@ class Option extends Model
 
 
 
-    public static  function option_create($title,$type,$value,$service_id)
+    public static  function option_create($title,$type,$value,$service_id,$attr)
     {
     	$option=new Option;
     	$option->title=$title;
     	$option->type=$type;
     	$option->value=$value;
     	$option->service_id=$service_id;
+        $option->attr=$attr;
     	$option->save();
     	return $option;
     }
 
 
-        public static function option_update($id,$title,$type,$value,$service_id)
+        public static function option_update($id,$title,$type,$value,$service_id,$attr)
     {
     	$option=Option::find($id);
     	$option->title=$title;
     	$option->type=$type;
     	$option->value=$value;
     	$option->service_id=$service_id;
+        $option->attr=$attr;
     	$option->save();
     	return $option;
     }

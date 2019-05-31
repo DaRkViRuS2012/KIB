@@ -4,8 +4,10 @@ use Illuminate\Http\Request;
 use App\Application;
 use App\Option;
 use App\User;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Service;
 use App\ApplicationOption;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -54,4 +56,6 @@ Route::get('/products', 'ServiceController@product_index_api');
 Route::post('/register', 'UserController@store_api');
 
 Route::post('/login', 'UserController@login_api');
+
+
 

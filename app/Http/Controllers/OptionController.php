@@ -46,7 +46,7 @@ class OptionController extends Controller
      */
     public function create()
     {
-        $services=Service::service_index();
+        $services=Service::product_index();
         return view('admin.option.create',compact('services'));
     }
 
@@ -61,6 +61,7 @@ class OptionController extends Controller
         $title=$request['title'];
         $type=$request['type'];
            $value=$request['value'];
+           $attr=$request['attr'];
         
         $service_id=$request['service'];
         if ($type=="input") {
@@ -74,7 +75,7 @@ class OptionController extends Controller
             }
             
         }
-        Option::option_create($title,$type,$value,$service_id);
+        Option::option_create($title,$type,$value,$service_id,$attr);
         return redirect('/admin/option/index');
 
     }

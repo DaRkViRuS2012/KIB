@@ -6,6 +6,8 @@ use App\Price;
 use App\Service;
 use Illuminate\Http\Request;
 
+use App\User;
+use Auth;
 class PriceController extends Controller
 {
     /**
@@ -101,4 +103,6 @@ class PriceController extends Controller
         Price::price_update($id);
         return redirect('/admin/price/index');
     }
+
+
 }

@@ -10,8 +10,11 @@ use App\Application;
 use App\Media;
 use App\Option;
 use App\Partner;
+use App\Price;
 use App\News;
 use App\Sms_helper;
+use Carbon\Carbon;
+use Auth;
 use App\ApplicationOption;
 class SiteController extends Controller
 {
@@ -108,29 +111,52 @@ public function galleries()
 
     public function application_create()
     {
-        $services=Service::service_index_fathers();
+        $services=Service::product_index_fathers();
         return view('main_site.application_create',compact('services'));
     }
 
     public function application_store(Request $request)
     {
+
         $applicant_name_en=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
         $applicant_name_ar=$request['fname_ar'].' '.$request['father_name_ar'].' '.$request['lname_ar'];
+        $main_service_id=$request['service'];
         $service_id=$request['sub_service'];
+        $birthdate=$request['birthdate'];
         $user_id=Auth::user()->id;
         $code=Sms_helper::RandomString();
         $date=date('Y-m-d H:i:s');
-        $service=Service::service_show($service_id);
-       $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code);
+        $service=Service::product_show($service_id);
+       $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate);
         foreach ($service->options as $key => $option) {
             $option_id=$option->id;
-            $name=$option->title;
+            $name=$option->attr;
             $application_id=$application->id;
             $option_name=$option->title;
             $option_value=$request[$name];
            ApplicationOption::application_option_create($option_id,$option_value,$application_id);
         }
-        return redirect('/');
+        $age=$this->calculate_age($birthdate);
+        $service_info=Service::product_show($main_service_id);
+        $service_title=$service_info->en_title;
+        $cost=0;
+        if ($service_title=="Medical insurance") {
+            $price=Price::price_show_by_service_id($service_id,$age);
+            $cost=$price->value;
+        }
+        elseif ($service_title=="Life insurance") {
+
+            $price=Price::price_show_by_service_id($service_id,$age);
+            $price_value=$price->value;
+            $value=$request['life_price'];
+            $cost=$value*$price_value;
+        }
+
+        elseif ($service_title=="Travel insurance") {
+            $price=Price::price_show_by_service_id($service_id,$age);
+            $cost=$price->value;
+        }
+        return view('main_site.summary',compact('cost'));
     }
 
     public function news_index()
@@ -146,6 +172,12 @@ public function galleries()
         return view('main_site.news_single',compact('news'));
     }
 
-
+    public function calculate_age($birthdate)
+    {
+        $from = Carbon::createFromFormat('Y-m-d',$birthdate);
+        $to = Carbon::createFromFormat('Y-m-d H:s:i', Carbon::now());
+        $diff_in_days = $to->DiffInYears($from);
+        return $diff_in_days;
+    }
  
 }

@@ -27,7 +27,7 @@ class Service extends Model
 
          public function product_media()
     {
-        return $this->hasMany('App\Media','content_id')->where('content_type','product');
+        return $this->hasMany('App\Media','content_id')->where('content_type','service');
     }
 
        public function quotation()

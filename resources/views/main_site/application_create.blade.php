@@ -39,6 +39,7 @@
     <input name="lname_ar" class="form-control" id="pwd" type="text">
   </div>
 
+
     <div class="form-group col-6">
     <label for="pwd">service</label>
     <select class="form-control" name="service" name="main_service" id="main_service">
@@ -57,6 +58,10 @@
     </select>
   </div>
 
+      <div class="form-group col-4">
+    <label for="pwd">Birthdate</label>
+    <input name="birthdate"  class="form-control" id="pwd" type="date">
+  </div>
 
 
 </div>
