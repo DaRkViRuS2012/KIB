@@ -40,6 +40,12 @@ class User extends Authenticatable
     ];
 
 
+      public function company()
+    {
+        return $this->hasMany('App\Portal');
+    }
+
+
     public function city()
     {
        return $this->belongsTo('App\City','city_id');
@@ -55,6 +61,7 @@ class User extends Authenticatable
     public static function company_index()
     {
         $companies=User::where('role','company')->get();
+        return $companies;
     }
 
     public static function user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile)

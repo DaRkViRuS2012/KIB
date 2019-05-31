@@ -22,29 +22,26 @@
 <form  class="container" action='/admin/{{Request::segment(2)}}/create' method="POST" enctype="multipart/form-data">
 	@csrf
 
-			<div class="form-group">
-		<label for="exampleInputEmail1">{{Request::segment(2)}} en_Title</label>
-		<input name="en_title" class="form-control"  id="comment" required>
-		
-	</div>
-
-				<div class="form-group">
-		<label for="exampleInputEmail1">{{Request::segment(2)}} ar_Title</label>
-		<input name="ar_title" class="form-control"  id="comment" required>
-		
-	</div>
 
 
-          <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} parent_id</label>
-    <select name="city_id" class="form-control">
+	
+
+         <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} company</label>
+    <select name="company_id" class="form-control">
       <option>Select Your company</option>
-      <option value=0>Father</option>
-      @foreach ($cities as $city)
-      <option value="{{$city->id}}">{{$city->en_title}}</option>
+      @foreach ($companies as $company)
+      <option value="{{$company->id}}">{{$company->name}}</option>
       @endforeach
       
     </select>
+
+
+          <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}}</label>
+    <input name="portal" class="form-control"  id="comment" required>
+    
+  </div>
     
   </div>
     <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Create {{Request::segment(2)}}</button>

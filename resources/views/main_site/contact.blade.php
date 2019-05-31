@@ -1,6 +1,6 @@
 @extends('layouts.main_layout')
 @section('content')
-{{-- <section class="banner-bottom-w3ls pt-lg-5 pt-md-3 pt-3">
+<section class="banner-bottom-w3ls pt-lg-5 pt-md-3 pt-3">
         <div class="inner-sec-wthreelayouts pt-md-5 pt-md-3 pt-3">
             <h2 class="tittle text-center mb-md-5 mb-4">Get In Touch</h2>
             <div class="container">
@@ -55,24 +55,30 @@
 
                     </div>
                     <div class="col-md-6 main_grid_contact">
+                           @if (Session::get('locale')=="en")
+                               <h4 class="mb-4 text-left">@lang('Send us a message')</h4><br>
+                               @else
+                               <h4 class="mb-4 text-right">@lang('Send us a message')</h4><br>
+                            @endif
                         <div class="form">
-                            <h4 class="mb-4 text-left">Send us a message</h4>
-                            <form method="post" {{-- action="{{ route('contactus.store') }}">
+                         
+                            {{-- <form method="post" action="{{ route('contactus.store') }}"> --}}
+                                <form method="post" action="#">
                                 @csrf
                                 <div class="form-group">
-                                    <label class="my-2">Name</label>
+                                    <label class="my-2">@lang('Name')</label>
                                     <input class="form-control" type="text" name="name" placeholder="" required="">
                                 </div>
                                 <div class="form-group">
-                                    <label>Email</label>
+                                    <label>@lang('Email')</label>
                                     <input class="form-control" type="email" name="email" placeholder="" required="">
                                 </div>
-                               {{--  <div class="form-group">
-                                    <label>Message</label>
-                                    <textarea id="textarea" name="message" cols="10" placeholder=""></textarea>
-                                </div>
+                        <div class="form-group">
+  <label for="comment">@lang('Comment')</label>
+  <textarea class="form-control" rows="5" id="comment"></textarea>
+</div>
                                 <div class="input-group1">
-                                    <input class="form-control" type="submit" value="Submit" style="background-color: #3544ab;
+                                    <input class="form-control" type="submit" value="@lang('Submit')" style="background-color: #3544ab;
     color: white;">
                                 </div>
                             </form>
@@ -86,10 +92,10 @@
                 </div>
             </div>
         </div>
-    </section> --}} 
-<center>
+    </section>  
+{{-- <center>
     <h1>
         Under Construction
     </h1>
-    </center>
+    </center> --}}
 @endsection

@@ -38,5 +38,9 @@
     "User Register":"تسجيل المستخدم",
     "city":"المدينة",
     "login":"تسجيل الدخول",
-    "register":"تسجيل"
+    "register":"تسجيل",
+    "Name":"الاسم",
+    "Comment":"التعليق",
+    "Send us a message":"ارسل لنا رسالة",
+    "Submit":"ارسال"
 }

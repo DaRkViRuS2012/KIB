@@ -19,35 +19,57 @@
 @endif
 
   <div class="col-6">
-<form  class="container" action='/admin/{{Request::segment(2)}}/create' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/{{Request::segment(2)}}/update' method="POST" enctype="multipart/form-data">
   @csrf
 
       <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} en_Title</label>
-    <input name="en_title" class="form-control"  id="comment" value="{{$city->en_title}}" required>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} min</label>
+    <input name="min" class="form-control"  id="comment" required value="{{$price->min}}">
     
   </div>
 
         <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} ar_Title</label>
-    <input name="ar_title" class="form-control"  id="comment" value="{{$city->ar_title}}" required>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} max</label>
+    <input name="max" class="form-control"  id="comment" required value="{{$price->max}}">
     
   </div>
 
 
-          <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} parent_id</label>
-    <select name="parent_id" class="form-control">
-      <option>Select Your company</option>
-      <option value="0">Father</option>
-      @foreach ($cities as $city)
-      <option value="{{$city->id}}">{{$city->en_title}}</option>
+      <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} value</label>
+    <input name="value" class="form-control"  id="comment" required value="{{$price->value}}">
+    
+  </div>
+
+
+
+        <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} service</label>
+    <select name="service_id" class="form-control">
+      <option>Select  service</option>
+      @foreach ($services as $service)
+      @if ($price->service_id==$service->id)
+       <option value="{{$service->id}}" selected>{{$service->en_title}}</option>
+       @else
+      @endif
+      <option value="{{$service->id}}">{{$service->en_title}}</option>
       @endforeach
       
     </select>
     
   </div>
-    <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Update {{Request::segment(2)}}</button>
+
+          <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} type</label>
+    <select name="type" class="form-control">
+      <option disabled>Select  type</option>
+      <option value="fixed">fixed</option>
+      <option value="rate">rate</option>
+      
+    </select>
+    
+  </div>
+    <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Create {{Request::segment(2)}}</button>
 </form>
   </div>
 @endsection

@@ -38,21 +38,25 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>en_title</th>
-                    <th>ar_title</th>
-                    <th>Parent_id</th>
+                    <th>service</th>
+                    <th>min</th>
+                    <th>max</th>
+                    <th>value</th>
+                    <th>type</th>
                     <th>operations</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($cities as $city)
+                  @foreach($prices as $price)
                   <tr>
-                    <td>{{$city->id}}</td>
-                  <td>{{$city->en_title }}</td>
-                  <td>{{$city->ar_title}}</td>
-                  <td>{{$city->parent_id}}</td>
+                    <td>{{$price->id}}</td>
+                  <td>{{$price->service->en_title }}</td>
+                  <td>{{$price->min}}</td>
+                   <td>{{$price->max}}</td>
+                    <td>{{$price->value}}</td>
+                  <td>{{$price->type}}</td>
                     <td style="width: 18%;"><div class="container">
-                      <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$city->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this city')" href="/admin/{{Request::segment(2)}}/delete/{{$city->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a></div>
+                      <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$price->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this price')" href="/admin/{{Request::segment(2)}}/delete/{{$price->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a></div>
                       </div>
                     <div>
                     </td>

@@ -10,10 +10,7 @@ class Price extends Model
         'service_id','min','max','value','type',
     ];
 
-    //   public function company()
-    // {
-    // 	return $this->hasMany('App\User','user_id')->where('type','company');
-    // }
+
 
           public function service()
     {
@@ -24,7 +21,7 @@ class Price extends Model
 
      public static function price_index()
     {
-    	$prices=Price::with('company','service')->get();
+    	$prices=Price::with('service')->get();
     	return  $prices;
     }
 
@@ -32,7 +29,7 @@ class Price extends Model
 
      public static function price_show($id)
     {
-        $price=Price::where('id',$id)->with('company','service')->first();
+        $price=Price::where('id',$id)->with('service')->first();
         return  $price;
     }
 

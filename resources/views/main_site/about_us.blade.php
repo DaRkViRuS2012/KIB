@@ -6,9 +6,7 @@
         <div class="container">
             <div class="inner-sec-wthreelayouts py-md-5 py-4">
                 <div class="row">
-                    <div class="col-lg-6 about-img">
-                        <img src="{{ asset('/img/1.jpg') }}" alt="" class="img-fluid">
-                    </div>
+                    
                     <div class="col-lg-6 about-right">
                         <h3>Profile</h3>
                         <h4>Khouri Insurance Brokerage Office</h4>
@@ -81,6 +79,9 @@ We make your insurance easy
                         </div> --}}
                         <!--/about-in-->
 
+                    </div>
+                    <div class="col-lg-6 about-img">
+                        <img src="{{ asset('/img/1.jpg') }}" alt="" class="img-fluid">
                     </div>
                 </div>
                 <!--/services-grids-->

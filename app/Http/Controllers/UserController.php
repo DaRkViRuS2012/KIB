@@ -166,6 +166,8 @@ public function login(Request $request)
         return $user;
       }
 
+      return response()->json(['status' => false, 'data' =>'', 'message' => 'The username or password are wronng','type'=>'error']);
+
 
 }
 }

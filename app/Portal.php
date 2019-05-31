@@ -11,9 +11,9 @@ class Portal extends Model
         'company_id','portal',
     ];
 
-      public function company()
+    public function company()
     {
-    	return $this->hasMany('App\User','user_id')->where('type','company');
+        return $this->belongsTo('App\User','company_id')->where('role','company');
     }
 
 
@@ -32,20 +32,20 @@ class Portal extends Model
 
         public static function portal_create($company_id,$portal)
     {
-    	$portal=new Portal;
-    	$portal->company_id=$company_id;
-    	$portal->portal=$portal;
-    	$portal->save();
-    	return $portal;
+    	$portal1=new Portal;
+    	$portal1->company_id=$company_id;
+    	$portal1->portal=$portal;
+    	$portal1->save();
+    	return $portal1;
     }
 
       public static function portal_update($id,$company_id,$portal)
     {
-    	$portal=Portal::find($id);
-    	$portal->company_id=$company_id;
-    	$portal->portal=$portal;
-    	$portal->save();
-    	return $portal;
+    	$portal1=Portal::find($id);
+    	$portal1->company_id=$company_id;
+    	$portal1->portal=$portal;
+    	$portal1->save();
+    	return $portal1;
     }
 
 

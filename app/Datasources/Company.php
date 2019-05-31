@@ -11,6 +11,7 @@ class Company extends Model
     ];
 
 
+
     public function services()
     {
         return $this->hasMany('App\Service');

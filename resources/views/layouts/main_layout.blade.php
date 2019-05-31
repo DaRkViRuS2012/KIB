@@ -78,7 +78,7 @@
 	 			</button>
 	 	<div class="collapse navbar-collapse" id="navbarResponsive">
 	 	 <ul class="navbar-nav ml-auto">
-	 			<li class="nav-item active">
+	 			<li class="nav-item">
 	 				<a class="nav-link" href="/">@lang("Home")
 	 							<span class="sr-only">(current)</span>
 	 						</a>
@@ -358,6 +358,22 @@ function closeNav() {
           $(this).toggleClass('open');
         }
       );
+
+
+          var href = window.location.href;
+                    $('nav a').each(function ($this, i) {
+                        console.log(href.indexOf($(this).attr('href')))
+                        if (href.indexOf($(this).attr('href')) >5) {
+                            $(this).addClass('active');
+                        } else {
+                            $(this).removeClass('active');
+                        }
+                    });
+
+
+
+  
+
 
 
 

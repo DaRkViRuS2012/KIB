@@ -77,6 +77,8 @@
             <a class="collapse-item" href="/admin/option/index">options</a>
             <a class="collapse-item" href="/admin/bank/index">Banks</a>
             <a class="collapse-item" href="/admin/product/index">Products</a>
+            <a class="collapse-item" href="/admin/portal/index">Portals</a>
+            <a class="collapse-item" href="/admin/price/index">Prices</a>
           </div>
         </div>
       </li>

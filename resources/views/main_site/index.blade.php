@@ -256,6 +256,16 @@
             
         }
     });
+
+              var href = window.location.href;
+                    $('nav a').each(function ($this, i) {
+                        console.log(href.indexOf($(this).attr('href')))
+                        if (href.indexOf($(this).attr('href')) >5) {
+                            $(this).addClass('active');
+                        } else {
+                            $(this).removeClass('active');
+                        }
+                    });
     
     if ($(".filter-button").removeClass("active")) {
 $(this).removeClass("active");
@@ -344,5 +354,6 @@ function closeNav() {
 .navbar-light .navbar-nav .nav-link {
     color: rgb(255, 255, 255);
 }
+
 </style>
 </html>

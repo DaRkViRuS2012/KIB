@@ -38,6 +38,10 @@
     "User Register":"User Register ",
     "city":"City",
     "register":"Register",
-    "login":"Login"
+    "login":"Login",
+    "Name":"Name",
+    "Comment":"Comment",
+    "Send us a message":"Send us a message",
+    "Submit":"Submit"
 
 }

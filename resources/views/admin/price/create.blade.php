@@ -35,6 +35,14 @@
 	</div>
 
 
+      <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} value</label>
+    <input name="value" class="form-control"  id="comment" required>
+    
+  </div>
+
+
+
         <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} service</label>
     <select name="service_id" class="form-control">
@@ -48,13 +56,12 @@
   </div>
 
           <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} service</label>
-    <select name="service_id" class="form-control">
-      <option>Select  service</option>
-      @foreach ($services as $service)
-      <option value="{{$service->id}}">{{$service->en_title}}</option>
-      @endforeach
-      
+    <label for="exampleInputEmail1">{{Request::segment(2)}} type</label>
+    <select name="type" class="form-control">
+      <option disabled>Select  type</option>
+      <option value="fixed">fixed</option>
+      <option value="rate">rate</option>
+
     </select>
     
   </div>

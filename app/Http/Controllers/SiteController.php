@@ -117,8 +117,7 @@ public function galleries()
         $applicant_name_en=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
         $applicant_name_ar=$request['fname_ar'].' '.$request['father_name_ar'].' '.$request['lname_ar'];
         $service_id=$request['sub_service'];
-        // $user_id=Auth::user()->id;
-        $user_id=1;
+        $user_id=Auth::user()->id;
         $code=Sms_helper::RandomString();
         $date=date('Y-m-d H:i:s');
         $service=Service::service_show($service_id);

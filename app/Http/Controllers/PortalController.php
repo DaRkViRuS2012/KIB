@@ -26,8 +26,8 @@ class PortalController extends Controller
      */
     public function create()
     {
-
-        return view('admin.portal.create');
+        $companies=User::company_index();
+        return view('admin.portal.create',compact('companies'));
     }
 
     /**
@@ -63,8 +63,9 @@ class PortalController extends Controller
      */
     public function edit(Portal $portal)
     {
+          $companies=User::company_index();
         $portal=Portal::portal_show($id);
-         return view('admin.portal.update',compact('portal'));
+         return view('admin.portal.update',compact('portal','companies'));
     }
 
     /**
@@ -91,7 +92,7 @@ class PortalController extends Controller
      */
     public function delete(Request $request)
     {
-        $id=$request['id']
+        $id=$request['id'];
          Portal::portal_delete($id);
         return redirect('/admin/portal/index');    
     }
