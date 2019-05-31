@@ -14,6 +14,7 @@ use App\Price;
 use App\News;
 use App\Sms_helper;
 use Carbon\Carbon;
+use App\Page;
 use Auth;
 use App\ApplicationOption;
 class SiteController extends Controller
@@ -178,6 +179,13 @@ public function galleries()
         $to = Carbon::createFromFormat('Y-m-d H:s:i', Carbon::now());
         $diff_in_days = $to->DiffInYears($from);
         return $diff_in_days;
+    }
+
+
+         public function about()
+    {
+        $page=Page::about_us();
+        return view('main_site.about_us',compact('page'));
     }
  
 }

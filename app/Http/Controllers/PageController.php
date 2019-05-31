@@ -55,14 +55,13 @@ class PageController extends Controller
             $en_description=$request['en_description'];
             $ar_description=$request['ar_description'];
             $link=$request['link'];
-            
     if($request->hasFile('img_name'))
         {  
             $file=$request->file('img_name');                  
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().$imagename);
             $img_name=str_replace('public/', '', $path_img);
-            Page::page_create($en_name,$en_description,$ar_name,$ar_description,$image,$link)
+            Page::page_create($en_name,$en_description,$ar_name,$ar_description,$img_name,$link);
 
             return redirect('/admin/page/index');
         }   
@@ -103,6 +102,7 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
+        $id=$request['id'];
         $en_name=$request['en_name'];
         $ar_name=$request['ar_name'];
         $en_description=$request['en_description'];

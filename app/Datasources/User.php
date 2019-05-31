@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username','birthdate','fcmtoken','os','role','city_id','code','mobile'
+        'name', 'email', 'password','username','birthdate','fcmtoken','os','role','city_id','code','mobile','token'
 
     ];
 
@@ -64,7 +64,7 @@ class User extends Authenticatable
         return $companies;
     }
 
-    public static function user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile)
+    public static function user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token)
     {
         $user=new user;
         $user->name=$name;
@@ -74,6 +74,7 @@ class User extends Authenticatable
         $user->password=$password;
         $user->birthdate=$birthdate;
         $user->fcmtoken=$fcmtoken;
+        $user->token=$token;
         $user->os=$os;
         $user->role='user';
         $user->mobile=$mobile;
@@ -93,6 +94,7 @@ class User extends Authenticatable
         $user->password=$password;
         $user->birthdate=$birthdate;
         $user->fcmtoken=$fcmtoken;
+        
         $user->os=$os;
         $user->city_id=$city_id;
         $user->mobile=$mobile;

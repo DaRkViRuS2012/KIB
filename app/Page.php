@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Media;
+use Session;
 class Page extends Model
 {
 	protected $fillable = [
@@ -14,15 +15,28 @@ class Page extends Model
 
          public static function page_index()
     {
-    	$pages=Page::with('media')->get();
+    	$pages=Page::all();
     	return  $pages;
     }
 
 
-           public function media()
+
+         public static function page_show($id)
     {
-        return $this->hasMany('App\Media','content_id')->where('content_type','page');
+        $pages=Page::find($id);
+        return  $pages;
     }
+
+
+
+         public static function about_us()
+    {
+        $page=Page::where('en_name','about')->first();
+        return  $page;
+    }
+
+
+
 
 
         public static function page_create($en_name,$en_description,$ar_name,$ar_description,$image,$link)
@@ -31,7 +45,7 @@ class Page extends Model
     	$page->en_name=$en_name;
     	$page->en_description=$en_description;
     	$page->ar_name=$ar_name;
-    	$page->ar_description;
+    	$page->ar_description=$ar_description;
     	$page->image=$image;
     	$page->link=$link;
     	$page->save();
@@ -55,9 +69,22 @@ class Page extends Model
        public static function page_delete($id)
     {
     	$page=Page::find($id);
-    	foreach ($page->media as $key => $media) {
-    		Media::media_delete($media->id);
-    	}
     	$page->delete();
     }
+
+
+        public function getName()
+{
+ $str =  Session::get('locale').'_name';
+ $title=$this[$str];
+ return $title;
+}
+
+   public function getDescription()
+{
+ $str = Session::get('locale').'_description';
+ $description=$this[$str];
+ return $description;
+}
+
 }

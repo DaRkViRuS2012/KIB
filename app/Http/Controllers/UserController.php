@@ -32,6 +32,7 @@ class UserController extends Controller
              'username' => ['required', 'string', 'max:255','unique:users'],
              'code' => ['unique:users'],
              'mobile' => ['required', 'string', 'max:9','unique:users'],
+             'token' => [ 'unique:users'],
         ]);
     }
 
@@ -68,9 +69,10 @@ class UserController extends Controller
         $city_id=$request['city_id'];
         $code=Sms_helper::RandomString();
         $mobile=$request['mobile'];
+        $token='0';
         $os='web';
 
-        $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile);
+        $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token);
           Sms_helper::send_sms($user->mobile,$user->code); 
          Auth::loginUsingId($user->id);
          return redirect('/home'); 
@@ -90,6 +92,7 @@ class UserController extends Controller
         $username=$request['username'];
         $email=$request['email'];
         $password=Hash::make($request['password']);
+        $token=str_replace("/","",Hash::make($name.$email));
         $birthdate=$request['birthdate'];
         $fcmtoken=$request['fcmtoken'];
         $city_id=$request['city_id'];
@@ -97,7 +100,7 @@ class UserController extends Controller
         $mobile=$request['mobile'];
         $os=$request['os'];
 
-        $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile);
+        $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token);
         Sms_helper::send_sms($user->mobile,$user->code); 
          return response()->json(['status' => True, 'data' => $user, 'message' => '','type'=>'array']);
 
@@ -163,7 +166,7 @@ public function login(Request $request)
       if (Auth::attempt(['email' => $email, 'password' => $password])) {
           // Authentication passed...
         $user= User::where('email',$request->email)->first();
-        return $user;
+    return response()->json(['status' => True, 'data' => $user, 'message' => '','type'=>'array']);
       }
 
       return response()->json(['status' => false, 'data' =>'', 'message' => 'The username or password are wronng','type'=>'error']);

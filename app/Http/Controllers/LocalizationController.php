@@ -6,8 +6,8 @@ class LocalizationController extends Controller
 {
     public function index($locale)
     {   
-    	if ($locale!=null) {
-    		# code...
+    	if ($locale==null) {
+    		$locale='en';
     	}
         App::setLocale($locale);
         //store the locale in session so that the middleware can register it

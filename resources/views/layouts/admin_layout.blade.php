@@ -79,6 +79,7 @@
             <a class="collapse-item" href="/admin/product/index">Products</a>
             <a class="collapse-item" href="/admin/portal/index">Portals</a>
             <a class="collapse-item" href="/admin/price/index">Prices</a>
+            <a class="collapse-item" href="/admin/page/index">pages</a>
           </div>
         </div>
       </li>
@@ -293,6 +294,19 @@
 
     </div>
     <!-- End of Content Wrapper -->
+<div class="container">
+  <div class="row">
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+</div>
+</div>
 
   </div>
       <!-- End of Main Content -->
@@ -335,6 +349,8 @@
         </div>
       </div>
     </div>
+
+
   </div>
 
   <!-- Bootstrap core JavaScript-->

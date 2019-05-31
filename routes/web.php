@@ -213,9 +213,7 @@ Route::get('/contact', function() {
 });
 
 
-Route::get('/aboutus', function() {
-    return view('main_site.about_us');
-});
+Route::get('/aboutus','SiteController@about');
 
 
 Route::get('/lang/{locale}', 'LocalizationController@index');
