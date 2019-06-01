@@ -31,20 +31,36 @@
         <div class="row">
         <div class="container-fluid">
         <div class="row" style="margin-top: 2%;margin-bottom: 2%;">
-        	@foreach ($products as $product)
-        		{{-- expr --}}
-        	
-                  <div class="card small_font" id="product">
-  <img class="card-img-top" src="{{env('image_storage')}}/{{$product->product_media[0]->url}}" alt="Card image">
+          @foreach ($main_service->sons as $product)
+            {{-- expr --}}
+
+<div class="card small_font" id="service">
+  <img class="card-img-top img-fluid" src="{{env('image_storage')}}/{{$product->media[0]->url}}" alt="Card image">
   <div class="card-body">
-    <h5 class="card-title">{{$product->getTitle()}}</h5>
-    <p class="card-text">{{ str_limit($product->getDescription(), $limit = 150, $end = '...') }}</p>
-    <a href="/product/{{$product->id}}" id="product_button" href="#" class="btn btn-primary">More ...</a>
+      <h5 class="card-title">{{$product->getTitle()}}</h5>
+      <p class="card-text">{{ str_limit($product->getDescription(), $limit = 150, $end = '...') }}</p>
+      @if ($product->parent_id==0)
+     <a href="/service/{{$product->id}}/show" id="service_button" href="#" class="btn btn-primary">More ...</a>
+      @else
+      <a href="/service/{{$product->id}}" id="service_button" href="#" class="btn btn-primary">More ...</a>
+      @endif
   </div>
 </div>
 
 
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @endforeach
         </div>
@@ -54,6 +70,7 @@
 
 
         </div>
+</div>
 </div>
     </div>
 
