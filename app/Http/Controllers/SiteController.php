@@ -189,5 +189,19 @@ public function galleries()
         $page=Page::about_us();
         return view('main_site.about_us',compact('page'));
     }
+
+    public function product_sons_api(Request $request)
+{
+    $id=$request['id'];
+    $products=Service::product_index_fathers();
+    $main_service=Service::service_index_sons($id);
+    foreach ($main_service as $key => $service) {
+            foreach ($service->media as $key => $image) {
+        $image->url=env('website_link').env('image_storage').$image->url;
+    }
+    }
+     return response()->json(['status' => True, 'data' => $main_service, 'message' => '','type'=>'array']);
+}
+
  
 }

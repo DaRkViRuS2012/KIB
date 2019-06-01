@@ -246,7 +246,7 @@
 
 
             <div class="row">
-           <div class="mapouter"><div class="gmap_canvas"><iframe width="250" height="200" id="gmap_canvas" src="https://maps.google.com/maps?q=%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D8%A9&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.emojilib.com">emojilib.com</a></div><style>.mapouter{position:relative;text-align:right;height:200px;width:250px;}.gmap_canvas {overflow:hidden;background:none!important;height:200px;width:250px;}</style></div>
+           <div class="mapouter"><div class="gmap_canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.99394132202!2d36.313586414586744!3d33.52754315264602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1518e6e5c377c23d%3A0x72e8071356c2e5c2!2sIbn+Al+Haytham+Park!5e0!3m2!1sen!2sid!4v1559386770886!5m2!1sen!2sid" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe><a href="https://www.emojilib.com">emojilib.com</a></div><style>.mapouter{position:relative;text-align:right;height:200px;width:250px;}.gmap_canvas {overflow:hidden;background:none!important;height:200px;width:250px;}</style></div>
 
           </div>
 
@@ -300,13 +300,10 @@
 
         if(value == "all")
         {
-            //$('.filter').removeClass('hidden');
             $('.filter').show('1000');
         }
         else
         {
-//            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
-//            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
             $(".filter").not('.'+value).hide('3000');
             $('.filter').filter('.'+value).show('3000');
 
@@ -348,19 +345,8 @@ function closeNav() {
 
     <script>
     $(document).ready(function () {
-      $(".dropdown").hover(
-        function () {
-          $('.dropdown-menu', this).stop(true, true).slideDown("fast");
-          $(this).toggleClass('open');
-        },
-        function () {
-          $('.dropdown-menu', this).stop(true, true).slideUp("fast");
-          $(this).toggleClass('open');
-        }
-      );
 
-
-          var href = window.location.href;
+                    var href = window.location.href;
                     $('nav a').each(function ($this, i) {
                         console.log(href.indexOf($(this).attr('href')))
                         if (href.indexOf($(this).attr('href')) >5) {
@@ -391,8 +377,6 @@ function closeNav() {
 
     });
   </script>
-  <!-- //dropdown smooth -->
-  <!-- fixed nav -->
   <script>
     $(window).scroll(function () {
       if ($(document).scrollTop() > 50) {

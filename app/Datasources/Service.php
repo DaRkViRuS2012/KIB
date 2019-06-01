@@ -91,13 +91,13 @@ class Service extends Model
 
       public static function service_index_sons($service_id)
     {
-        $services=Service::where('parent_id',$service_id)->with('media','sons','quotation')->get();
+        $services=Service::where('parent_id',$service_id)->with('media','sons','quotation','prices','options')->get();
         return $services;
     }
 
          public static function service_all_sons()
     {
-        $services=Service::where('parent_id','!=',0)->with('media','sons','quotation')->get();
+        $services=Service::where('parent_id','!=',0)->with('media','sons','quotation','prices','options')->get();
         return $services;
     }
 

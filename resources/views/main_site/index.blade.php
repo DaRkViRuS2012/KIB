@@ -17,7 +17,7 @@
 
   <link href="{{ asset('main_site/css/JiSlider.css') }}" rel="stylesheet">
 
-  <link rel="stylesheet" type="text/css" href="{{ asset('main_site/css/round_icons.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('main_site/css/round_icons.css')}}">
 
 </head>
 <body style="height:100vh;">

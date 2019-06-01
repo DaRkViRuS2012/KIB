@@ -160,6 +160,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/', function () {
+	  if(Session::get('locale')=="")
+  {
+    Session::put('locale', "en");
+  }
     return view('main_site.index');
 });
 

@@ -1,4 +1,4 @@
-<?php
+]<?php
 
 use Illuminate\Http\Request;
 use App\Application;
@@ -61,3 +61,4 @@ Route::post('/login', 'UserController@login_api');
 Route::get('/cities','CityController@get_cities_api');
 
 
+Route::get('/product/{id}/show', 'SiteController@product_sons_api')->name('home');

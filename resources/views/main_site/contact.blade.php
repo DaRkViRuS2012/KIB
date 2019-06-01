@@ -51,7 +51,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 map">
-                      <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=london&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.99394132202!2d36.313586414586744!3d33.52754315264602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1518e6e5c377c23d%3A0x72e8071356c2e5c2!2sIbn+Al+Haytham+Park!5e0!3m2!1sen!2sid!4v1559386770886!5m2!1sen!2sid" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
                     </div>
                     <div class="col-md-6 main_grid_contact">

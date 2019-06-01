@@ -411,4 +411,9 @@ return redirect('/admin/service/index');
          return response()->json(['status' => True, 'data' => $products, 'message' => '','type'=>'array']);
     }
 
+
+
+
+
+
 }
