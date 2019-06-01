@@ -147,11 +147,9 @@ class ServiceController extends Controller
         $portal_link=$request['portal_link'];
         $content_type='service';
         $type='service';
-        $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$company_id,$portal_link,$type);
-             dd($company_id);
+        $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type);
           if ($company_id){
             foreach ($company_id as $key => $company) {
-                dd($company);
                 PartnerService::partner_service_create($company,$service->id);
             }
         }
