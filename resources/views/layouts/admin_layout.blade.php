@@ -294,7 +294,12 @@
 
     </div>
     <!-- End of Content Wrapper -->
-<div class="container">
+
+
+  </div>
+
+
+  <div class="container">
   <div class="row">
   @if ($errors->any())
     <div class="alert alert-danger">
@@ -307,8 +312,6 @@
 @endif
 </div>
 </div>
-
-  </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
