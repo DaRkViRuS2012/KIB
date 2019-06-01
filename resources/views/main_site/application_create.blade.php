@@ -10,37 +10,37 @@
 <form action="/application/create" method="post">
   @csrf
 <div class="row">
-  <div class="form-group col-4">
+  <div class="form-group col-lg-4 col-sm-12">
     <label for="email">First Name</label>
     <input name="fname_en" class="form-control" id="email" type="text">
   </div>
-  <div class="form-group col-4">
+  <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">Father's Name</label>
     <input name="father_name_en" class="form-control" id="pwd" type="text">
   </div>
 
-    <div class="form-group col-4">
+    <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">Last Name</label>
     <input name="lname_en" class="form-control" id="pwd" type="text">
   </div>
 
 
-   <div class="form-group col-4">
+   <div class="form-group col-lg-4 col-sm-12">
     <label for="email">الاسم</label>
     <input name="fname_ar" class="form-control" id="email" type="text">
   </div>
-  <div class="form-group col-4">
+  <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">اسم الاب</label>
     <input name="father_name_ar" class="form-control" id="pwd" type="text">
   </div>
 
-    <div class="form-group col-4">
+    <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">الكنية</label>
     <input name="lname_ar" class="form-control" id="pwd" type="text">
   </div>
 
 
-    <div class="form-group col-6">
+    <div class="form-group col-lg-6 col-sm-12">
     <label for="pwd">service</label>
     <select class="form-control" name="service" name="main_service" id="main_service">
     	<option selected disabled>Select Your Main Service</option>
@@ -51,14 +51,14 @@
   </div>
 
 
-    <div class="form-group col-6">
+    <div class="form-group col-lg-6 col-sm-12">
     <label for="pwd">sub service</label>
     <select class="form-control" name="sub_service" id="sub_service">
       <option selected disabled>Select Your Main Service</option>
     </select>
   </div>
 
-      <div class="form-group col-4">
+      <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">Birthdate</label>
     <input name="birthdate"  class="form-control" id="pwd" type="date">
   </div>
@@ -69,7 +69,7 @@
   <div class="row" id="options">
     
   </div>
-{{--     <div class="form-group col-4">
+{{--     <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">service</label>
     <select class="form-control" name="service_sons">
     	<option selected disabled>Select Your Main Service</option>
