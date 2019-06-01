@@ -116,7 +116,65 @@ public function galleries()
         return view('main_site.application_create',compact('services'));
     }
 
+
+
+        public function application_create_mobile(Request $request)
+    {
+        $token=$request['token'];
+        $user=User::get_by_token($token);
+        $services=Service::product_index_fathers();
+        return view('main_site.application_create',compact('services','user'));
+    }
+
     public function application_store(Request $request)
+    {
+         $token=$request['token'];
+        $applicant_name_en=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
+        $applicant_name_ar=$request['fname_ar'].' '.$request['father_name_ar'].' '.$request['lname_ar'];
+        $main_service_id=$request['service'];
+        $service_id=$request['sub_service'];
+        $birthdate=$request['birthdate'];
+        $user_id=Auth::user()->id;
+        $code=Sms_helper::RandomString();
+        $date=date('Y-m-d H:i:s');
+        $service=Service::product_show($service_id);
+       $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate);
+        foreach ($service->options as $key => $option) {
+            $option_id=$option->id;
+            $name=$option->attr;
+            $application_id=$application->id;
+            $option_name=$option->title;
+            $option_value=$request[$name];
+           ApplicationOption::application_option_create($option_id,$option_value,$application_id);
+        }
+        $age=$this->calculate_age($birthdate);
+        $service_info=Service::product_show($main_service_id);
+        $service_title=$service_info->en_title;
+   
+        Sms_helper::send_sms($application->user->mobile,$application->code);
+        $cost=0;
+        if ($service_title=="Medical insurance") {
+            $price=Price::price_show_by_service_id($service_id,$age);
+            $cost=$price->value;
+        }
+        elseif ($service_title=="Life insurance") {
+
+            $price=Price::price_show_by_service_id($service_id,$age);
+            $price_value=$price->value;
+            $value=$request['life_price'];
+            $cost=$value*$price_value;
+        }
+
+        elseif ($service_title=="Travel insurance") {
+            $price=Price::price_show_by_service_id($service_id,$age);
+            $cost=$price->value;
+        }
+        return view('main_site.summary',compact('application','cost'));
+    }
+
+
+
+        public function application_store_mobile(Request $request)
     {
 
         $applicant_name_en=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];

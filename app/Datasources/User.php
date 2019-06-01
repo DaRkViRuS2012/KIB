@@ -64,6 +64,15 @@ class User extends Authenticatable
         return $companies;
     }
 
+
+       public static function user_get_by_token($token)
+    {
+        $user=User::where('token',$token)->with('city')->first();
+        return $user;
+    }
+
+
+
     public static function user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token)
     {
         $user=new user;

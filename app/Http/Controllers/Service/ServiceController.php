@@ -122,7 +122,7 @@ class ServiceController extends Controller
     public function create_son($parent_id)
     {
         $service=Service::service_show($parent_id);
-        $companies=Company::company_index();
+        $companies=Partner::partner_index();
         return view('admin.service.create_son',compact('service','companies'));
     }
 
@@ -142,12 +142,19 @@ class ServiceController extends Controller
         $ar_subtitle=$request['ar_subtitle'];                                     
         $ar_description=$request['ar_description'];                                      
         $en_description=$request['en_description'];                                      
-        $parent_id =$request['parent_id'];                                                                                                     
+        $parent_id =$request['parent_id'];                                                                                                 
         $company_id=$request['company_id'];                               
         $portal_link=$request['portal_link'];
         $content_type='service';
         $type='service';
         $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$company_id,$portal_link,$type);
+             dd($company_id);
+          if ($company_id){
+            foreach ($company_id as $key => $company) {
+                dd($company);
+                PartnerService::partner_service_create($company,$service->id);
+            }
+        }
                     if($request->hasFile('image')){
             foreach($request->file('image') as $file) {                    
             $imagename=$file->getClientOriginalName();

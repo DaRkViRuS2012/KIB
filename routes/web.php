@@ -230,3 +230,9 @@ Route::get('/application/create','SiteController@application_create');
 Route::post('/application/create','SiteController@application_store');
  
 });
+
+
+
+Route::get('/application/{token}/create','SiteController@application_create_mobile');
+
+Route::post('/application/{token}/create','SiteController@application_store_mobile');
