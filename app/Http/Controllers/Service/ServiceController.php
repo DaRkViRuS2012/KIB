@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Company;
 use App\Media;
 use App\PartnerService;
+use App\Partner;
 use Illuminate\Support\Facades\Storage;
 class ServiceController extends Controller
 {
@@ -64,7 +65,7 @@ class ServiceController extends Controller
     public function create()
     {
         $services=Service::service_index();
-        $companies=Company::company_index();
+        $companies=Partner::partner_index();
         return view('admin.service.create',compact('services','companies'));
     }
 
@@ -83,28 +84,28 @@ class ServiceController extends Controller
         $ar_description=$request['ar_description'];                                      
         $en_description=$request['en_description'];                                      
         $parent_id ='0';                                                                          
-        $company_id=$request['company_id'];
+        $company_id = $request['company_id'];
         // $company_id= implode(',',$company_id);
         // $test=explode(',', $company_id);
         $content_type='service';
         $type='service';
         $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type);
-
+        if ($company_id){
             foreach ($company_id as $key => $company) {
-            PartnerService::partner_service_create($company,$service->id);
-      
+                PartnerService::partner_service_create($company,$service->id);
+            }
         }
-                    if($request->hasFile('image')){
+        if($request->hasFile('image')){
             foreach($request->file('image') as $file) {                    
-            $imagename=$file->getClientOriginalName();
-            $path_img=$file->storeAs('public/',time().$imagename);
-             $img_name=str_replace('public/', '', $path_img);
-             Media::media_create($img_name,'image',$service->id,$content_type);
+                $imagename=$file->getClientOriginalName();
+                $path_img=$file->storeAs('public/',time().$imagename);
+                 $img_name=str_replace('public/', '', $path_img);
+                 Media::media_create($img_name,'image',$service->id,$content_type);
              }
         }
 
-                      if($request->hasFile('quotation')){
-                      $file=$request['quotation'];                  
+        if($request->hasFile('quotation')){
+            $file=$request['quotation'];                  
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().'.pdf');
              $img_name=str_replace('public/', '', $path_img);

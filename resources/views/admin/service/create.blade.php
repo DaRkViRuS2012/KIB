@@ -78,7 +78,7 @@
     <label for="exampleInputEmail1">{{Request::segment(2)}} Company</label>
     <select name="company_id[]" class="custom-select" multiple>
       @foreach ($companies as $company)
-      <option value="{{$company->id}}">{{$company->name}}</option>
+      <option value="{{$company->id}}">{{$company->title}}</option>
       @endforeach
 </select>
     
