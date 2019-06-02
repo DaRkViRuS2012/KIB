@@ -12,6 +12,19 @@ class CityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+   protected function validator_city(array $data)
+    {
+
+
+        return Validator::make($data, [
+            'ar_title' => ['required', 'string', 'max:255'],
+             'en_title' => ['required', 'string', 'max:255'],
+              'city_id' => ['required'],
+
+        ]);
+    }
+
     public function index()
     {
         $cities=City::city_index();
@@ -46,6 +59,11 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
+         $validator = $this->validator_city($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
         $ar_title=$request['ar_title'];
         $en_title=$request['en_title'];
         $city_id=$request['city_id'];
@@ -74,6 +92,7 @@ class CityController extends Controller
      */
     public function edit($id)
     {
+
        $cities=City::city_parent_index();
         $city=City::city_show($id);
         return view('admin.city.update',compact('city','cities'));
@@ -88,6 +107,11 @@ class CityController extends Controller
      */
     public function update(Request $request)
     {
+          $validator = $this->validator_city($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
         $id=$request['id'];
         $ar_title=$request['ar_title'];
         $en_title=$request['en_title'];

@@ -232,7 +232,7 @@ class ServiceController extends Controller
         $quotation_id=$request['quotation_id'];                                                                      
         $company_id=$request['company_id'];                               
         $portal_link=$request['portal_link'];
-        Service::service_create($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link);
+        Service::service_update($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id);
           return redirect('/admin/service/index');
     }
 
@@ -284,11 +284,11 @@ return redirect('/admin/service/index');
         $en_description=$request['en_description'];                                   
         $parent_id ='0';                                 
         $quotation_id=$request['quotation_id'];                               
-        $company_id=$request['company_id'];                               
-        $portal_link=$request['portal_link'];
-        $content_type='service';
+        $company_id='';                               
+        $portal_link='';
+        $content_type='product';
         $type='product';
-        $product=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$company_id,$portal_link,$type);
+        $product=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type);
                     if($request->hasFile('image')){
             foreach($request->file('image') as $file) {                    
             $imagename=$file->getClientOriginalName();
@@ -315,17 +315,17 @@ return redirect('/admin/service/index');
         $en_description=$request['en_description'];                                   
         $parent_id =$request['parent_id'];                                 
         $quotation_id=$request['quotation_id'];                                                                    
-        $company_id=$request['company_id'];                               
-        $portal_link=$request['portal_link'];
+        $company_id='';                               
+        $portal_link='';
         $type='product';
         $content_type='product';
-        $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link,$type);
+         $product=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type);
                     if($request->hasFile('image')){
             foreach($request->file('image') as $file) {                    
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().$imagename);
              $img_name=str_replace('public/', '', $path_img);
-             Media::media_create($img_name,'image',$service->id,$content_type);
+             Media::media_create($img_name,'image',$product->id,$content_type);
              }
             return redirect('/admin/product/index/'.$parent_id);
         }
