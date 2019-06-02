@@ -32,6 +32,14 @@ class Application extends Model
     	$applications=Application::with('service','user','options')->get();
     	return $applications;
     }
+
+
+        public static function application_show($id)
+    {
+        $application=Application::where('id',$id)->with('service','user','options')->first();
+        return $application;
+    }
+
     public static function  application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate)
     {
     	$application=new Application;

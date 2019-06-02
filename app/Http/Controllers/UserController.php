@@ -69,7 +69,7 @@ class UserController extends Controller
         $city_id=$request['city_id'];
         $code=Sms_helper::RandomString();
         $mobile=$request['mobile'];
-        $token='0';
+        $token=str_replace("/","",Hash::make($name.$email));
         $os='web';
 
         $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token);

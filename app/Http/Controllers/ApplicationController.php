@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Application;
 use Illuminate\Http\Request;
-
+use App\Option;
+use App\Service;
 class ApplicationController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        //
+         $applications=Application::application_index();
+         return view('admin.application.index',compact('applications'));
     }
     public function index_api()
     {
@@ -49,9 +51,12 @@ class ApplicationController extends Controller
      * @param  \App\Application  $application
      * @return \Illuminate\Http\Response
      */
-    public function show(Application $application)
+    public function show(Request $request)
     {
-        //
+        $id=$request['id'];
+        $application=Application::application_show($id);
+        // return $application;
+        return view('admin.application.application_single',compact('application'));
     }
 
     /**
