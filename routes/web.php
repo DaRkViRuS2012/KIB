@@ -149,9 +149,11 @@ Route::post('/admin/page/create','PageController@store');
 Route::get('/admin/page/update/{id}','PageController@edit');
 Route::post('/admin/page/update/{id}','PageController@update');
 Route::get('/admin/page/delete/{id}','PageController@delete');
+//*********************************************************************************************
+Route::get('/admin/application/index','ApplicationController@index');
+Route::get('/admin/application/{id}','ApplicationController@show');
+
 });
-
-
 //*********************************************************************************************
 
 
