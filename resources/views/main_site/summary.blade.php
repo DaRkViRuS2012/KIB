@@ -34,6 +34,30 @@
     <input name="service_name_ar" class="form-control" id="pwd" type="text" value="{{$application->service->ar_title}}" disabled>
   </div>
 
+
+
+
+  <div class="form-group col-lg-4 col-sm-12">
+    <label for="pwd">nationality</label>
+    <input name="nationality" class="form-control" id="pwd" type="text" value="{{$application->nationality}}" disabled>
+  </div>
+
+
+    <div class="form-group col-lg-4 col-sm-12">
+    <label for="pwd">@lang('national id')</label>
+    <input name="national_id" class="form-control" id="pwd" type="text" value="{{$application->national_id}}" disabled>
+  </div>
+
+<div class="form-group col-lg-4 col-sm-12">
+    <label for="pwd">@lang('martial_status')</label>
+    <input name="martial_status" class="form-control" id="pwd" type="text" value="{{$application->martial_status}}" disabled>
+  </div>
+
+<div class="form-group col-lg-4 col-sm-12">
+    <label for="pwd">@lang('work')</label>
+    <input name="work" class="form-control" id="pwd" type="text" value="{{$application->work}}" disabled>
+  </div>
+
   @foreach ($application->options as $option)
   	{{-- expr --}}
 

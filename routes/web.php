@@ -16,7 +16,7 @@
 // Auth::routes();
 
 
-
+use App\Service;
 
 
 
@@ -166,7 +166,9 @@ Route::get('/', function () {
   {
     Session::put('locale', "en");
   }
-    return view('main_site.index');
+  $services=Service::service_index_fathers();
+  return $services;
+    return view('main_site.index',compact('services'));
 });
 
 Route::get('user/register', 'UserController@create');
