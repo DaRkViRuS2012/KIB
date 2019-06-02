@@ -40,6 +40,31 @@
   </div>
 
 
+
+  <div class="form-group col-lg-4 col-sm-12">
+    <label for="pwd">nationality</label>
+    <input name="nationality" class="form-control" id="pwd" type="text">
+  </div>
+
+
+    <div class="form-group col-lg-4 col-sm-12">
+    <label for="pwd">@lang('national id')</label>
+    <input name="national_id" class="form-control" id="pwd" type="text">
+  </div>
+
+<div class="form-group col-lg-4 col-sm-12">
+    <label for="pwd">@lang('martial_status')</label>
+    <input name="martial_status" class="form-control" id="pwd" type="text">
+  </div>
+
+<div class="form-group col-lg-4 col-sm-12">
+    <label for="pwd">@lang('work')</label>
+    <input name="work" class="form-control" id="pwd" type="text">
+  </div>
+
+
+
+
     <div class="form-group col-lg-6 col-sm-12">
     <label for="pwd">service</label>
     <select class="form-control" name="service" name="main_service" id="main_service">

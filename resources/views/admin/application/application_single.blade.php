@@ -47,12 +47,6 @@
     <input name="service_name_ar" class="form-control" id="pwd" type="text" value="{{$application->service->ar_title}}" disabled>
   </div>
 
-
-     <div class="form-group col-6">
-    <label for="pwd">application user email</label>
-    <input name="service_name_ar" class="form-control" id="pwd" type="text" value="{{$application->user->email}}" disabled>
-  </div>
-
   @foreach ($application->options as $option)
   	{{-- expr --}}
 
@@ -75,9 +69,6 @@
 
 </div>
 
- <div class="row">
-<a style="color:#3544ab;margin: 1%;font-size: 20px;" href="/">click here if you want to back to main page</a>
-</div>
 
 {{--     <div class="form-group col-6">
     <label for="pwd">service</label>
@@ -94,10 +85,6 @@
     
   </div> --}}
 
-<div class="row">
-<button style="margin: 1%;
-    padding: 1% 3% 1% 3%;background-color:#3544ab;border-color:#3544ab" type="submit" class="btn btn-primary">Submit</button>	
-</div>
 
 </div>
 </div>

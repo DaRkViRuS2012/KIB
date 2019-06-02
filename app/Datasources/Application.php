@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Application extends Model
 {
            protected $fillable = [
-      'applicant_name_en','applicant_name_ar', 'service_id','user_id','date','code','birthdate',
+      'applicant_name_en','applicant_name_ar', 'service_id','user_id','date','code','birthdate','nationality','national_id','martial_status','work','cost',
 
        //options in application_option
     ];
@@ -40,7 +40,7 @@ class Application extends Model
         return $application;
     }
 
-    public static function  application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate)
+    public static function  application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work)
     {
     	$application=new Application;
         $application->applicant_name_en=$applicant_name_en;
@@ -50,6 +50,11 @@ class Application extends Model
     	$application->date=$date;
     	$application->code=$code;
         $application->birthdate=$birthdate;
+        $application->nationality=$nationality;
+        $application->national_id=$national_id;
+        $application->martial_status=$martial_status;
+        $application->work=$work;
+        $application->cost=0;
     	$application->save();
     	return $application;
     }
@@ -63,10 +68,22 @@ class Application extends Model
     	$application->user_id=$user_id;
     	$application->date=$date;
     	$application->code=$code;
-    	$application->save();
+        $application->nationality=$nationality;
+        $application->national_id=$national_id;
+        $application->martial_status=$martial_status;
+        $application->work=$work;
+        $application->cost=0;
+        $application->save();
     	return $application;
     }
 
+    public static function application_update_cost($id,$cost)
+    {
+        $application=Application::find($id);
+        $application->cost=$cost;
+        $application->save();
+        return $application;
+    }
 
          public static function application_delete($id)
     {

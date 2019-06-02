@@ -39,7 +39,7 @@
 
    <div class="form-group col-6">
     <label for="email">{{$option->title}}</label>
-    <input name="{{$option->attr}}" class="form-control" id="email" type="text" value="{{$option->app_option->value}}" disabled>
+    <input name="{{$option->attr}}" class="form-control" id="email" type="text" value="{{$option->app_option->option_value}}" disabled>
   </div>
     @endforeach
 
@@ -51,7 +51,7 @@
 
       <div class="form-group col-6">
     <label for="pwd">Cost</label>
-    <input name="birthdate"  class="form-control" id="pwd" type="text" value="{{$cost}}" disabled>
+    <input name="birthdate"  class="form-control" id="pwd" type="text" value="{{$application->cost}}" disabled>
   </div>
 
 </div>
