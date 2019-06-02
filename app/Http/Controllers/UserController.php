@@ -29,7 +29,7 @@ class UserController extends Controller
                 'mobile' => ['required', 'string', 'max:9'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
-             'username' => ['required', 'string', 'max:255'],
+             'username' => ['string', 'max:255'],
              'code' => ['unique:users'],
              'mobile' => ['required', 'string', 'max:9','unique:users'],
              'token' => [ 'unique:users'],
