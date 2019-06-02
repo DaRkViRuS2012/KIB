@@ -131,7 +131,7 @@ font-weight: bold;
   transition: margin-left .5s; /* If you want a transition effect */
   padding: 20px;
       background-color: #d6d6d6;
-    height: 400px;
+/*    height: 400px;*/
     overflow-y: scroll;
 }
 
