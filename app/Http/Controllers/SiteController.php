@@ -17,13 +17,40 @@ use Carbon\Carbon;
 use App\Page;
 use Auth;
 use App\ApplicationOption;
+use Illuminate\Support\Facades\Validator;
 class SiteController extends Controller
 {
+
+
+         protected function validator_application(array $data)
+    {
+
+
+        return Validator::make($data, [
+            'fname_en' => ['required', 'string', 'max:255'],
+             'father_name_en' => ['required', 'string', 'max:255'],            
+             'lname_en' => ['required', 'string', 'max:255'],
+             'fname_ar' => ['required', 'string', 'max:255'],            
+             'father_name_ar' => ['required', 'string', 'max:255'],
+             'lname_ar' => ['required', 'string', 'max:255'],
+              'birthdate' =>  ['required', 'date'],
+            'life_price' => ['required'],
+             'service' => ['required',],
+             'sub_service' => ['required'],
+             
+
+        ]);
+
+
+
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+
 public function services()
 {
     $services=Service::service_index_fathers();
@@ -128,7 +155,13 @@ public function galleries()
 
     public function application_store(Request $request)
     {
-         $token=$request['token'];
+
+             $validator = $this->validator_application($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
+
         $applicant_name_en=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
         $applicant_name_ar=$request['fname_ar'].' '.$request['father_name_ar'].' '.$request['lname_ar'];
         $main_service_id=$request['service'];
@@ -176,7 +209,7 @@ public function galleries()
 
         public function application_store_mobile(Request $request)
     {
-
+         $token=$request['token'];
         $applicant_name_en=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
         $applicant_name_ar=$request['fname_ar'].' '.$request['father_name_ar'].' '.$request['lname_ar'];
         $main_service_id=$request['service'];

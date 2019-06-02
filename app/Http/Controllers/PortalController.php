@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Portal;
 use Illuminate\Http\Request;
 use App\User;
-
+use Illuminate\Support\Facades\Validator;
 class PortalController extends Controller
 {
     /**
@@ -13,6 +13,19 @@ class PortalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     protected function validator_portal(array $data)
+    {
+
+
+        return Validator::make($data, [
+             'portal' => ['required',],
+             'company_id' => ['required'],
+             
+
+        ]);
+    }
+
     public function index()
     {
      $portals=Portal::portal_index();
@@ -38,6 +51,11 @@ class PortalController extends Controller
      */
     public function store(Request $request)
     {
+          $validator = $this->validator_portal($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
          $company_id=$request['company_id'];
          $portal=$request['portal'];
          Portal::portal_create($company_id,$portal);
@@ -77,6 +95,11 @@ class PortalController extends Controller
      */
     public function update(Request $request, Portal $portal)
     {
+          $validator = $this->validator_portal($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
         $id=$request['id'];
         $company_id=$request['company_id'];
          $portal=$request['portal'];

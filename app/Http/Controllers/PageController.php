@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+
+
 class PageController extends Controller
 {
     /**
@@ -12,6 +15,23 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+       protected function validator_page(array $data)
+    {
+
+
+        return Validator::make($data, [
+            'en_name' => ['required', 'string', 'max:255'],
+             'ar_name' => ['required', 'string', 'max:255'],
+              'en_description' =>  ['required', 'string', 'max:255'],
+            'ar_description' => ['required', 'string', 'max:255'],
+             'link' => ['required',],
+             'img_name' => ['required'],
+             
+
+        ]);
+    }
+
     public function index()
     {
         $pages=Page::page_index();
@@ -50,6 +70,11 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
+           $validator = $this->validator_page($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
             $en_name=$request['en_name'];
             $ar_name=$request['ar_name'];
             $en_description=$request['en_description'];
@@ -102,6 +127,11 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
+          $validator = $this->validator_page($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
         $id=$request['id'];
         $en_name=$request['en_name'];
         $ar_name=$request['ar_name'];

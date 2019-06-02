@@ -5,9 +5,26 @@ namespace App\Http\Controllers;
 use App\Option;
 use App\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class OptionController extends Controller
 {
+
+
+
+   protected function validator_option(array $data)
+    {
+
+
+        return Validator::make($data, [
+            'title' => ['required', 'string', 'max:255'],
+             'type' => ['required', 'string', 'max:255'],
+              'value' =>  ['required', 'string', 'max:255'],
+            'attr' => ['required', 'string', 'max:255'],
+             'service' => ['required',],
+
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -58,6 +75,12 @@ class OptionController extends Controller
      */
     public function store(Request $request)
     {
+
+          $validator = $this->validator_option($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
         $title=$request['title'];
         $type=$request['type'];
            $value=$request['value'];
@@ -113,6 +136,11 @@ class OptionController extends Controller
      */
     public function update(Request $request)
     {
+          $validator = $this->validator_option($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
         $id=$request['id'];
         $title=$request['title'];
         $type=$request['type'];

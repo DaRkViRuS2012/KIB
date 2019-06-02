@@ -8,8 +8,24 @@ use Illuminate\Http\Request;
 
 use App\User;
 use Auth;
+use Illuminate\Support\Facades\Validator;
 class PriceController extends Controller
 {
+
+         protected function validator_price(array $data)
+    {
+
+
+        return Validator::make($data, [
+             'service_id' => ['required',],
+             'min' => ['required'],
+                 'max' => ['required',],
+             'value' => ['required'],
+                 'type' => ['required',],
+              
+
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,6 +56,11 @@ class PriceController extends Controller
      */
     public function store(Request $request)
     {
+             $validator = $this->validator_price($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
         $service_id=$request['service_id'];
         $min=$request['min'];
         $max=$request['max'];
@@ -82,6 +103,11 @@ class PriceController extends Controller
      */
     public function update(Request $request, Price $price)
     {
+             $validator = $this->validator_price($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
         $id=$request['id'];
         $service_id=$request['service_id'];
         $min=$request['min'];
