@@ -35,14 +35,14 @@
             {{-- expr --}}
 
 <div class="card small_font" id="service">
-  <img class="card-img-top img-fluid" src="{{env('image_storage')}}/{{$product->media[0]->url}}" alt="Card image">
+  <img class="card-img-top img-fluid" src="{{env('image_storage')}}/{{$product->cover()}}" alt="Card image">
   <div class="card-body">
       <h5 class="card-title">{{$product->getTitle()}}</h5>
       <p class="card-text">{{ str_limit($product->getDescription(), $limit = 150, $end = '...') }}</p>
       @if ($product->parent_id==0)
-     <a href="/service/{{$product->id}}/show" id="service_button" href="#" class="btn btn-primary">More ...</a>
+     <a href="/product/{{$product->id}}/show" id="service_button" href="#" class="btn btn-primary">More ...</a>
       @else
-      <a href="/service/{{$product->id}}" id="service_button" href="#" class="btn btn-primary">More ...</a>
+      <a href="/product/{{$product->id}}" id="service_button" href="#" class="btn btn-primary">More ...</a>
       @endif
   </div>
 </div>

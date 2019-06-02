@@ -44,7 +44,7 @@ class PriceController extends Controller
      */
     public function create()
     {
-        $services=Service::service_all_sons();
+        $services=Service::product_all_sons();
         return view('admin.price.create',compact('services'));
     }
 

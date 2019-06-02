@@ -33,16 +33,10 @@ class SiteController extends Controller
              'fname_ar' => ['required', 'string', 'max:255'],            
              'father_name_ar' => ['required', 'string', 'max:255'],
              'lname_ar' => ['required', 'string', 'max:255'],
-              'birthdate' =>  ['required', 'date'],
-            'life_price' => ['required'],
+             'birthdate' =>  ['required', 'date'],
              'service' => ['required',],
              'sub_service' => ['required'],
-             
-
         ]);
-
-
-
     }
     /**
      * Display a listing of the resource.

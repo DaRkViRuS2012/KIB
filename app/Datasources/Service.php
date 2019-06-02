@@ -7,7 +7,7 @@ use Session;
 class Service extends Model
 {
      protected $fillable = [
-        'en_title', 'ar_title','en_subtitle','ar_subtitle','en_description','ar_description','parent_id','active','type'
+        'en_title', 'ar_title','en_subtitle','ar_subtitle','en_description','ar_description','parent_id','','active','type'
     ];
 
          public function prices()
@@ -15,9 +15,19 @@ class Service extends Model
         return $this->hasMany('App\Price');
     }
 
-       public function media()
+    public function media()
     {
         return $this->hasMany('App\Media','content_id')->where('content_type','service');
+    }
+
+    public function cover()
+    {
+        if ($this->media != null){
+            if (count($this->media) > 0){
+                return $this->media[0]->url;
+            }
+        }
+        return "";
     }
 
      public function partner()
@@ -25,9 +35,19 @@ class Service extends Model
         return $this->belongsToMany('App\Partner','partner_services')->as('partner')->withPivot('partner_id')->withTimestamps();
     }
 
-         public function product_media()
+    public function product_media()
     {
         return $this->hasMany('App\Media','content_id')->where('content_type','service');
+    }
+
+    public function product_cover()
+    {
+        if ($this->product_media != null){
+            if (count($this->product_media) > 0){
+                return $this->product_media[0]->url;
+            }
+        }
+        return "";
     }
 
        public function quotation()
@@ -95,9 +115,15 @@ class Service extends Model
         return $services;
     }
 
-         public static function service_all_sons()
+    public static function service_all_sons()
     {
-        $services=Service::where('parent_id','!=',0)->with('media','sons','quotation','prices','options')->get();
+        $services=Service::where('parent_id','!=',0)->where('type','service')->with('media','sons','quotation','prices','options')->get();
+        return $services;
+    }
+
+      public static function product_all_sons()
+    {
+        $services=Service::where('parent_id','!=',0)->where('type','product')->with('media','sons','quotation','prices','options')->get();
         return $services;
     }
 

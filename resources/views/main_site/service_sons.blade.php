@@ -44,7 +44,7 @@
             {{-- expr --}}
 
 <div class="card small_font" id="service">
-  <img class="card-img-top img-fluid" src="{{env('image_storage')}}/{{$service->media[0]->url}}" alt="Card image">
+  <img class="card-img-top img-fluid" src="{{env('image_storage')}}/{{$service->cover()}}" alt="Card image">
   <div class="card-body">
       <h5 class="card-title">{{$service->getTitle()}}</h5>
       <p class="card-text">{{ str_limit($service->getDescription(), $limit = 150, $end = '...') }}</p>

@@ -286,7 +286,7 @@ return redirect('/admin/service/index');
         $quotation_id=$request['quotation_id'];                               
         $company_id='';                               
         $portal_link='';
-        $content_type='product';
+        $content_type='service';
         $type='product';
         $product=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type);
                     if($request->hasFile('image')){
@@ -318,7 +318,7 @@ return redirect('/admin/service/index');
         $company_id='';                               
         $portal_link='';
         $type='product';
-        $content_type='product';
+        $content_type='service';
          $product=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type);
                     if($request->hasFile('image')){
             foreach($request->file('image') as $file) {                    

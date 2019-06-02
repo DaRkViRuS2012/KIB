@@ -4,7 +4,7 @@ function get_sub_service() {
 	var sub_services="";
 	    $.ajax({
      type: "GET",
-     url: '/api/service/sub/'+service_id,
+     url: '/api/product/sub/'+service_id,
      data: "check",
      success: function(response){
      	console.log(service_id);

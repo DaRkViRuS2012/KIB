@@ -61,4 +61,4 @@ Route::post('/login', 'UserController@login_api');
 Route::get('/cities','CityController@get_cities_api');
 
 
-Route::get('/product/{id}/show', 'SiteController@product_sons_api')->name('home');
+Route::get('/product/sub/{id}', 'SiteController@product_sons_api')->name('home');
