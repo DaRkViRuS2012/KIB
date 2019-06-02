@@ -223,6 +223,10 @@ Route::get('/lang/{locale}', 'LocalizationController@index');
 Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ComplaintController@contactSaveData']);
 
 
+Route::get('/application/{token}/create','SiteController@application_create_mobile');
+
+Route::post('/application/{token}/create','SiteController@application_store_mobile');
+
 Route::group(['middleware' => 'checkuser'], function() {
 
 Route::get('/application/create','SiteController@application_create');
@@ -232,7 +236,3 @@ Route::post('/application/create','SiteController@application_store');
 });
 
 
-
-Route::get('/application/{token}/create','SiteController@application_create_mobile');
-
-Route::post('/application/{token}/create','SiteController@application_store_mobile');

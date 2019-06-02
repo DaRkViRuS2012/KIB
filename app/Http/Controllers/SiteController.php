@@ -15,6 +15,7 @@ use App\News;
 use App\Sms_helper;
 use Carbon\Carbon;
 use App\Page;
+use App\User;
 use Auth;
 use App\ApplicationOption;
 use Illuminate\Support\Facades\Validator;
@@ -139,7 +140,7 @@ public function galleries()
 
 
 
-        public function application_create_mobile($token)
+    public function application_create_mobile($token)
     {
         $user=User::get_by_token($token);
         $services=Service::product_index_fathers();

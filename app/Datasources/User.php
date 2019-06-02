@@ -65,7 +65,7 @@ class User extends Authenticatable
     }
 
 
-       public static function user_get_by_token($token)
+       public static function get_by_token($token)
     {
         $user=User::where('token',$token)->with('city')->first();
         return $user;
