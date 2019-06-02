@@ -7,7 +7,7 @@ use Session;
 class Service extends Model
 {
      protected $fillable = [
-        'en_title', 'ar_title','en_subtitle','ar_subtitle','en_description','ar_description','parent_id','','active','type'
+        'en_title', 'ar_title','en_subtitle','ar_subtitle','en_description','ar_description','parent_id','active','type'
     ];
 
          public function prices()
