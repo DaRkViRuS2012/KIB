@@ -36,6 +36,16 @@ class SiteController extends Controller
              'birthdate' =>  ['required', 'date'],
              'service' => ['required',],
              'sub_service' => ['required'],
+             'nationality' => ['required', 'string', 'max:255'],
+             'national_id' => ['required', 'string', 'max:255'],
+             'martial_status' => ['required', 'string', 'max:255'],
+             'work' => ['required', 'string', 'max:255'],
+
+
+             
+
+
+
         ]);
     }
     /**
@@ -112,6 +122,15 @@ public function product_single($id)
 }
 
 
+public function application_single(Request $request)
+{
+         $id=$request['id'];
+        $application=Application::application_show($id);
+        // return $application;
+        return view('main_site.summary',compact('application'));
+}
+
+
 public function index()
 {
 	
@@ -161,11 +180,15 @@ public function galleries()
         $main_service_id=$request['service'];
         $service_id=$request['sub_service'];
         $birthdate=$request['birthdate'];
+        $nationality=$request['nationality'];
+        $national_id=$request['national_id'];
+        $martial_status=$request['martial_status'];
+        $work=$request['work'];
         $user_id=Auth::user()->id;
         $code=Sms_helper::RandomString();
         $date=date('Y-m-d H:i:s');
         $service=Service::product_show($service_id);
-       $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate);
+       $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work);
         foreach ($service->options as $key => $option) {
             $option_id=$option->id;
             $name=$option->attr;
@@ -196,7 +219,10 @@ public function galleries()
             $price=Price::price_show_by_service_id($service_id,$age);
             $cost=$price->value;
         }
-        return view('main_site.summary',compact('application','cost'));
+
+    Application::application_update_cost($application->id,$cost);
+        return redirect('application/single/'.$application->id);
+        // return view('main_site.summary',compact('application','cost'));
     }
 
 
@@ -209,11 +235,15 @@ public function galleries()
         $main_service_id=$request['service'];
         $service_id=$request['sub_service'];
         $birthdate=$request['birthdate'];
+        $nationality=$request['nationality'];
+        $national_id=$request['national_id'];
+        $martial_status=$request['martial_status'];
+        $work=$request['work'];
         $user_id=Auth::user()->id;
         $code=Sms_helper::RandomString();
         $date=date('Y-m-d H:i:s');
         $service=Service::product_show($service_id);
-       $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate);
+       $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work);
         foreach ($service->options as $key => $option) {
             $option_id=$option->id;
             $name=$option->attr;
@@ -244,7 +274,9 @@ public function galleries()
             $price=Price::price_show_by_service_id($service_id,$age);
             $cost=$price->value;
         }
-        return view('main_site.summary',compact('application','cost'));
+       Application::application_update_cost($application->id,$cost);
+        return redirect('application/single/'.$application->id);
+        // return view('main_site.summary',compact('application','cost'));
     }
 
     public function news_index()
