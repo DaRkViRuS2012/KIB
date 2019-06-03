@@ -1,11 +1,24 @@
-@extends('layouts.main_layout')
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-@section('content')
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<body>
 <div class="container">
 
 
 <div class="row">
-	<h2 style="color:#3544ab">Fill Your Application</h2>
+  <h2 style="color:#3544ab">Fill Your Application</h2>
 </div>
 <form action="/application/create" method="post">
   @csrf
@@ -67,7 +80,7 @@
 
 
 
-	<div class="form-group col-lg-6 col-sm-12">
+  <div class="form-group col-lg-6 col-sm-12">
 <label for="pwd">Issuing date تاريخ الاصدار</label>
 <input name="is_date"  class="form-control" id="pwd" type="date">
 </div>
@@ -79,15 +92,15 @@
 </div>
 </div>
 <!--
-	<div class="form-group col-lg-6 col-sm-12">
-	 <label for="pwd">service</label>
-	 <select class="form-control" name="service_sons">
-		 <option selected disabled>@lang('select')</option>
-		 @foreach ($services as $service)
+  <div class="form-group col-lg-6 col-sm-12">
+   <label for="pwd">service</label>
+   <select class="form-control" name="service_sons">
+     <option selected disabled>@lang('select')</option>
+     @foreach ($services as $service)
 
-			 <option value="{{$service->id}}">{{$service->en_title}}</option>
-		 @endforeach
-	 </select>
+       <option value="{{$service->id}}">{{$service->en_title}}</option>
+     @endforeach
+   </select>
 
 
  </div> -->
@@ -97,17 +110,17 @@
  <div class="form-group col-lg-6 col-sm-12">
  <label for="pwd">@lang('category') </label>
  <select class="form-control" name="service"  id="main_service">
-	 <option selected disabled>Select Your Main Service</option>
-	 @foreach ($services as $service)
-		 <option value="{{$service->id}}">{{$service->en_title}}</option>
-	 @endforeach
+   <option selected disabled>Select Your Main Service</option>
+   @foreach ($services as $service)
+     <option value="{{$service->id}}">{{$service->en_title}}</option>
+   @endforeach
  </select>
 </div>
 
 <div class="form-group col-lg-6 col-sm-12">
 <label for="pwd">@lang('product')</label>
 <select class="form-control" name="sub_service" id="sub_service">
-	<option selected disabled>@lang('select')</option>
+  <option selected disabled>@lang('select')</option>
 </select>
 </div>
 </div>
@@ -136,11 +149,12 @@
   $('#main_service').on('change', '', function (e) {
 get_sub_service();
 });
-	  $('#main_service').on('change', '', function (e) {
+    $('#main_service').on('change', '', function (e) {
 get_options();
 });
 
 
 
 </script>
-@endsection
+</body>
+</html>

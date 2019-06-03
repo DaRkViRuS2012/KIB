@@ -120,6 +120,10 @@ class User extends Authenticatable
     }
 
 
+
+
+
+
         public function RandomString()
 {
        $code=strval(rand(100000,999999));

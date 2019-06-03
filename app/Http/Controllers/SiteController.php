@@ -29,9 +29,9 @@ class SiteController extends Controller
 
         return Validator::make($data, [
             'fname_en' => ['required', 'string', 'max:255'],
-             'father_name_en' => ['required', 'string', 'max:255'],            
+             'father_name_en' => ['required', 'string', 'max:255'],
              'lname_en' => ['required', 'string', 'max:255'],
-             'fname_ar' => ['required', 'string', 'max:255'],            
+             'fname_ar' => ['required', 'string', 'max:255'],
              'father_name_ar' => ['required', 'string', 'max:255'],
              'lname_ar' => ['required', 'string', 'max:255'],
              'birthdate' =>  ['required', 'date'],
@@ -41,11 +41,7 @@ class SiteController extends Controller
              'national_id' => ['required', 'string', 'max:255'],
              'martial_status' => ['required', 'string', 'max:255'],
              'work' => ['required', 'string', 'max:255'],
-
-
-             
-
-
+            'is_date' =>  ['required', 'date'],
 
         ]);
     }
@@ -96,7 +92,7 @@ public function products()
     $products=Service::product_index_fathers();
     $partners=Partner::partner_index();
     $product;
-    
+
     if (count($products)> 0 ){
         $product = $products[0];
         //dd($service);
@@ -134,7 +130,7 @@ public function application_single(Request $request)
 
 public function index()
 {
-	
+
 }
 
 public function galleries()
@@ -163,7 +159,7 @@ public function galleries()
     {
         $user=User::get_by_token($token);
         $services=Service::product_index_fathers();
-        return view('main_site.application_create',compact('services','user'));
+        return view('main_site.application_create_mobile',compact('services','user'));
     }
 
     public function application_store(Request $request)
@@ -185,10 +181,11 @@ public function galleries()
         $martial_status=$request['martial_status'];
         $work=$request['work'];
         $user_id=Auth::user()->id;
+        $is_date=$request['is_date'];
         $code=Sms_helper::RandomString();
         $date=date('Y-m-d H:i:s');
         $service=Service::product_show($service_id);
-       $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work);
+        $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work,$is_date);
         foreach ($service->options as $key => $option) {
             $option_id=$option->id;
             $name=$option->attr;
@@ -200,7 +197,7 @@ public function galleries()
         $age=$this->calculate_age($birthdate);
         $service_info=Service::product_show($main_service_id);
         $service_title=$service_info->en_title;
-   
+
         Sms_helper::send_sms($application->user->mobile,$application->code);
         $cost=0;
         if ($service_title=="Medical insurance") {
@@ -239,11 +236,15 @@ public function galleries()
         $national_id=$request['national_id'];
         $martial_status=$request['martial_status'];
         $work=$request['work'];
-        $user_id=Auth::user()->id;
+        $user_id=$request['user_id'];
+        $is_date=$request['is_date'];
+        $token=$request['token'];
         $code=Sms_helper::RandomString();
         $date=date('Y-m-d H:i:s');
         $service=Service::product_show($service_id);
-       $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work);
+        $user=User::user_show($user_id);
+        if ($user->token==$token) {
+            $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work);
         foreach ($service->options as $key => $option) {
             $option_id=$option->id;
             $name=$option->attr;
@@ -255,7 +256,7 @@ public function galleries()
         $age=$this->calculate_age($birthdate);
         $service_info=Service::product_show($main_service_id);
         $service_title=$service_info->en_title;
-   
+
         Sms_helper::send_sms($application->user->mobile,$application->code);
         $cost=0;
         if ($service_title=="Medical insurance") {
@@ -276,7 +277,9 @@ public function galleries()
         }
        Application::application_update_cost($application->id,$cost);
         return redirect('application/single/'.$application->id);
-        // return view('main_site.summary',compact('application','cost'));
+        }
+      
+        return Redirect::back()->withErrors('You Are  Not Autorized');
     }
 
     public function news_index()
@@ -320,5 +323,5 @@ public function galleries()
      return response()->json(['status' => True, 'data' => $main_service, 'message' => '','type'=>'array']);
 }
 
- 
+
 }

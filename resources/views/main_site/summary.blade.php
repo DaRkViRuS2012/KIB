@@ -99,11 +99,6 @@
     
   </div> --}}
 
-<div class="row">
-<button style="margin: 1%;
-    padding: 1% 3% 1% 3%;background-color:#3544ab;border-color:#3544ab" type="submit" class="btn btn-primary">Submit</button>	
-</div>
-  
 </form>
 </div>
 

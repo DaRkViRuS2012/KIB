@@ -42,5 +42,10 @@
     "Name":"الاسم",
     "Comment":"التعليق",
     "Send us a message":"ارسل لنا رسالة",
-    "Submit":"ارسال"
+    "Submit":"ارسال",
+    "product":"المنتج",
+    "category":"الصنف",
+    "select":"اختر",
+    "required":"مطلوب"
+
 }

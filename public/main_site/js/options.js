@@ -23,7 +23,7 @@ function get_sub_service() {
 
 
 function get_options() {
-	var service_id = $('#sub_service').find(":selected").val();
+	var service_id = $('#main_service').find(":selected").val();
 	$('#options').empty();
 	var sub_services="";
 	    $.ajax({
@@ -36,7 +36,8 @@ function get_options() {
         console.log(sub_service);
         for (var i = sub_service.length - 1; i >= 0; i--) {
         	if (sub_service[i].type=='input') {
-        		sub_services+='<div class="form-group col-6"><label for="email">'+sub_service[i].title+'</label><input type="text" class="form-control" id="'+sub_service[i].title+'" name="'+sub_service[i].attr+'"></div>';
+                var required=sub_service[i].required == "yes" ? "Required" :"";
+        		sub_services+='<div class="form-group col-6"><label for="email">'+sub_service[i].title+'</label><input type="text" class="form-control" id="'+sub_service[i].title+'" name="'+sub_service[i].attr+'"'+required+'></div>';
         	}
         	else
         	{

@@ -42,6 +42,9 @@
     "Name":"Name",
     "Comment":"Comment",
     "Send us a message":"Send us a message",
-    "Submit":"Submit"
-
+    "Submit":"Submit",
+    "product":"Product",
+    "category":"Category",
+    "select":"Select",
+    "required":"Required"
 }

@@ -12,6 +12,20 @@ class SliderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
+             protected function validator_slider(array $data)
+    {
+
+
+        return Validator::make($data, [
+            'en_title' => ['required', 'string', 'max:255'],
+             'ar_title' => ['required', 'string', 'max:255'],
+             'en_sub_title' => ['required', 'string', 'max:255'],
+             'ar_sub_title' => ['required', 'string', 'max:255'],
+        ]);
+    }
     public function index()
     {
         $sliders=Slider::slider_index();

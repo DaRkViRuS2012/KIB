@@ -167,7 +167,7 @@ Route::get('/', function () {
     Session::put('locale', "en");
   }
   $services=Service::service_index_fathers();
-  return $services;
+  // return $services;
     return view('main_site.index',compact('services'));
 });
 
@@ -227,9 +227,9 @@ Route::get('/lang/{locale}', 'LocalizationController@index');
 Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ComplaintController@contactSaveData']);
 
 
-Route::get('/application/{token}/create','SiteController@application_create_mobile');
+Route::get('/application/{token}/{user_id}/create','SiteController@application_create_mobile');
 
-Route::post('/application/{token}/create','SiteController@application_store_mobile');
+Route::post('/application/{token}/{user_id}/create','SiteController@application_store_mobile');
 
 Route::group(['middleware' => 'checkuser'], function() {
 
@@ -238,6 +238,8 @@ Route::get('/application/create','SiteController@application_create');
 Route::post('/application/create','SiteController@application_store');
  
 });
+
+
 Route::get('/application/single/{id}','SiteController@application_single');
 
 

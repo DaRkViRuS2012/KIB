@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Option extends Model
 {
        protected $fillable = [
-       'title','type','value','service_id'
+       'title','type','value','service_id','required'
 
     ];
 
@@ -36,7 +36,7 @@ class Option extends Model
 
 
 
-    public static  function option_create($title,$type,$value,$service_id,$attr)
+    public static  function option_create($title,$type,$value,$service_id,$attr,$required)
     {
     	$option=new Option;
     	$option->title=$title;
@@ -44,12 +44,13 @@ class Option extends Model
     	$option->value=$value;
     	$option->service_id=$service_id;
         $option->attr=$attr;
+        $option->required=$required;
     	$option->save();
     	return $option;
     }
 
 
-        public static function option_update($id,$title,$type,$value,$service_id,$attr)
+        public static function option_update($id,$title,$type,$value,$service_id,$attr,$required)
     {
     	$option=Option::find($id);
     	$option->title=$title;
@@ -57,6 +58,7 @@ class Option extends Model
     	$option->value=$value;
     	$option->service_id=$service_id;
         $option->attr=$attr;
+        $option->required=$required;
     	$option->save();
     	return $option;
     }

@@ -19,9 +19,9 @@ class OptionController extends Controller
         return Validator::make($data, [
             'title' => ['required', 'string', 'max:255'],
              'type' => ['required', 'string', 'max:255'],
-              'value' =>  ['required', 'string', 'max:255'],
+              // 'value' =>  ['required', 'string', 'max:255'],
             'attr' => ['required', 'string', 'max:255'],
-             'service' => ['required',],
+             'service' => ['required'],
 
         ]);
     }
@@ -63,7 +63,7 @@ class OptionController extends Controller
      */
     public function create()
     {
-        $services=Service::product_index();
+        $services=Service::product_index_fathers();
         return view('admin.option.create',compact('services'));
     }
 
@@ -84,6 +84,10 @@ class OptionController extends Controller
         $title=$request['title'];
         $type=$request['type'];
            $value=$request['value'];
+           $required=$request['required'];
+           if ($required!='yes') {
+               $required='no';
+           }
            $attr=$request['attr'];
         
         $service_id=$request['service'];
@@ -98,7 +102,7 @@ class OptionController extends Controller
             }
             
         }
-        Option::option_create($title,$type,$value,$service_id,$attr);
+        Option::option_create($title,$type,$value,$service_id,$attr,$required);
         return redirect('/admin/option/index');
 
     }
