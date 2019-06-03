@@ -20,7 +20,7 @@
 <div class="row">
   <h2 style="color:#3544ab">Fill Your Application</h2>
 </div>
-<form action="/application/create" method="post">
+<form action="/application/{{$user->id}}/{{$user->token}}/create" method="post">
   @csrf
 <div class="row">
   <div class="form-group col-lg-4 col-sm-12">
