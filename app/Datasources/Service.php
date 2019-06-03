@@ -128,7 +128,7 @@ class Service extends Model
     }
 
 
-    public static function service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type)
+    public static function service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type,$icon)
     {
     	$service=new Service;
     	$service->en_title=$en_title;
@@ -145,7 +145,7 @@ class Service extends Model
     }
 
 
-        public static function service_update($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id)
+        public static function service_update($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$icon)
     {
     	$service=Service::find($id);
     	$service->en_title=$en_title;

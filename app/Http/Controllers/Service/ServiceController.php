@@ -87,6 +87,7 @@ class ServiceController extends Controller
         $company_id = $request['company_id'];
         // $company_id= implode(',',$company_id);
         // $test=explode(',', $company_id);
+        $icon=$request['icon'];
         $content_type='service';
         $type='service';
         $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type);

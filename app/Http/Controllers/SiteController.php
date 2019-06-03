@@ -155,8 +155,10 @@ public function galleries()
 
 
 
-    public function application_create_mobile($token)
+    public function application_create_mobile(Request $request)
     {
+        $token=$request['token'];
+        $user_id=$request['user_id'];
         $user=User::get_by_token($token);
         $services=Service::product_index_fathers();
         return view('main_site.application_create_mobile',compact('services','user'));
@@ -226,7 +228,7 @@ public function galleries()
 
         public function application_store_mobile(Request $request)
     {
-         $token=$request['token'];
+        $token=$request['token'];
         $applicant_name_en=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
         $applicant_name_ar=$request['fname_ar'].' '.$request['father_name_ar'].' '.$request['lname_ar'];
         $main_service_id=$request['service'];
@@ -244,7 +246,7 @@ public function galleries()
         $service=Service::product_show($service_id);
         $user=User::user_show($user_id);
         if ($user->token==$token) {
-            $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work);
+            $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work,$is_date);
         foreach ($service->options as $key => $option) {
             $option_id=$option->id;
             $name=$option->attr;
