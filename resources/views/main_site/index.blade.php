@@ -106,9 +106,6 @@
   </header>
 </section>
 <section id="content" style="height:100vh;">
-  <div class="container">
-    
-  
   <div class="row">
   <div class="banner-silder">
     <div id="JiSlider" class="jislider">
@@ -230,7 +227,7 @@
     </div>
   </div>
     </div>
-  </div>
+  
       
 </section>
 
