@@ -30,6 +30,14 @@ class Service extends Model
         return "";
     }
 
+    public function icon()
+    {
+        if ($this->icon != null){
+            return $this->icon;
+        }
+        return "";
+    }
+
      public function partner()
     {
         return $this->belongsToMany('App\Partner','partner_services')->as('partner')->withPivot('partner_id')->withTimestamps();
@@ -156,6 +164,7 @@ class Service extends Model
     	$service->en_description=$en_description;
     	$service->ar_description=$ar_description;
     	$service->parent_id=$parent_id;
+        $service->icon=$icon;
     	$service->save();
     	return $service;
     }

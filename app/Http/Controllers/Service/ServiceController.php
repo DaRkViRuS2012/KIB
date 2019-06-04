@@ -110,20 +110,20 @@ class ServiceController extends Controller
             $file=$request['quotation'];                  
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().'.pdf');
-             $img_name=str_replace('public/', '', $path_img);
-             Media::media_create($img_name,'quotation',$service->id,$content_type);
+            $img_name=str_replace('public/', '', $path_img);
+            Media::media_create($img_name,'quotation',$service->id,$content_type);
  
         }
 
 
-             if($request->hasFile('icon')){
-            $file=$request['quotation'];                  
+        if($request->hasFile('icon')){
+            $file=$request['icon'];                  
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().'.jpg');
-             $img_name=str_replace('public/', '', $path_img);
+            $img_name=str_replace('public/', '', $path_img);
             $service->icon=$img_name;
             $service->save();
-               return redirect('/admin/service/index');
+            return redirect('/admin/service/index');
         }
 
     
