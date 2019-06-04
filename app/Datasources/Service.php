@@ -7,7 +7,7 @@ use Session;
 class Service extends Model
 {
      protected $fillable = [
-        'en_title', 'ar_title','en_subtitle','ar_subtitle','en_description','ar_description','parent_id','','active','type'
+        'en_title', 'ar_title','en_subtitle','ar_subtitle','en_description','ar_description','parent_id','','active','type','icon',
     ];
 
          public function prices()
@@ -139,6 +139,7 @@ class Service extends Model
     	$service->ar_description=$ar_description;
     	$service->parent_id=$parent_id;
         $service->type=$type;
+        $service->icon=$icon;
     	$service->active=1;
     	$service->save();
     	return $service;

@@ -186,7 +186,7 @@ public function galleries()
         $is_date=$request['is_date'];
         $code=Sms_helper::RandomString();
         $date=date('Y-m-d H:i:s');
-        $service=Service::product_show($service_id);
+        $service=Service::product_show($main_service_id);
         $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work,$is_date);
         foreach ($service->options as $key => $option) {
             $option_id=$option->id;
@@ -264,7 +264,9 @@ public function galleries()
         if ($service_title=="Medical insurance") {
             $price=Price::price_show_by_service_id($service_id,$age);
             $cost=$price->value;
+
         }
+
         elseif ($service_title=="Life insurance") {
 
             $price=Price::price_show_by_service_id($service_id,$age);

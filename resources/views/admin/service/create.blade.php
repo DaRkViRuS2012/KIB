@@ -91,9 +91,17 @@
 
 
 
-
+<div class="form-group">
   <label for="exampleInputEmail1">Image</label>
   <input class="active" type="file" name="image[]" enctype="multipart/form-data" required multiple>
+</div>
+
+
+<div class="form-group">
+  <label for="exampleInputEmail1">icon</label>
+  <input class="active" type="file" name="icon" enctype="multipart/form-data" required>
+</div>
+
   <br><br>
   <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Create {{Request::segment(2)}}</button>
 </form>
