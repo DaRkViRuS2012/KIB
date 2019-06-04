@@ -203,20 +203,29 @@ public function galleries()
         Sms_helper::send_sms($application->user->mobile,$application->code);
         $cost=0;
         if ($service_title=="Medical insurance") {
-            $price=Price::price_show_by_service_id($main_service_id,$age);
-            $cost=$price->value;
+            $price=Price::price_show_by_service_id($service_id,$age);
+            if($price!=null)
+            {$cost=$price->value;}
+        else
+            {$cost=0;}
         }
         elseif ($service_title=="Life insurance") {
 
-            $price=Price::price_show_by_service_id($main_service_id,$age);
-            $price_value=$price->value;
-            $value=$request['life_price'];
-            $cost=$value*$price_value;
+            $price=Price::price_show_by_service_id($service_id,$age);
+            if($price!=null)
+            {$price_value=$price->value;
+                        $value=$request['life_price'];
+                        $cost=$value*$price_value;}
+                        else
+                        {$cost=0;}
         }
 
         elseif ($service_title=="Travel insurance") {
-            $price=Price::price_show_by_service_id($main_service_id,$age);
-            $cost=$price->value;
+            $price=Price::price_show_by_service_id($service_id,$age);
+            if($price!=null)
+            {$cost=$price->value;}
+        else
+        $cost=0;
         }
 
     Application::application_update_cost($application->id,$cost);
@@ -243,7 +252,7 @@ public function galleries()
         $token=$request['token'];
         $code=Sms_helper::RandomString();
         $date=date('Y-m-d H:i:s');
-        $service=Service::product_show($service_id);
+        $service=Service::product_show($main_service_id);
         $user=User::user_show($user_id);
         if ($user->token==$token) {
             $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work,$is_date);
