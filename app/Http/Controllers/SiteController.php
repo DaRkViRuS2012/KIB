@@ -41,7 +41,7 @@ class SiteController extends Controller
              'national_id' => ['required', 'string', 'max:255'],
              'martial_status' => ['required', 'string', 'max:255'],
              'work' => ['required', 'string', 'max:255'],
-            'is_date' =>  ['required', 'date'],
+            'is_date' =>  ['required'],
 
         ]);
     }
