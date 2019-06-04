@@ -43,10 +43,20 @@ function get_options() {
         	{
         		sub_services+='<div class="form-group col-6"><label for="pwd">'+sub_service[i].title+'</label><select class="form-control" id="'+sub_service[i].title+'" name="'+sub_service[i].attr+'"><option selected disabled>Select '+sub_service[i].title+'</option>';
         		var str=sub_service[i].value;
-        		var res = str.split("@");
+
+                if (str.indexOf('@') == -1) {
+                    var res=str;
+                    sub_services+= '<option value="'+res+'">'+res+'</option>';
+                }
+                else
+                {
+                var res = str.split("@");    
+                
+        		
         		for (var i = res.length - 1; i >= 0; i--) {
         			sub_services+= '<option value="'+res[i]+'">'+res[i]+'</option>';
         		}
+            }
         		sub_services+= '</select></div>';
         	}
         }
