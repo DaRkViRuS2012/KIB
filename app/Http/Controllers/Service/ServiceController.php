@@ -156,7 +156,7 @@ class ServiceController extends Controller
         $ar_description=$request['ar_description'];                                      
         $en_description=$request['en_description'];                                      
         $parent_id =$request['parent_id'];
-         $icon=$request['icon'];                                                                         
+                                                                            
         $company_id=$request['company_id'];                               
         $portal_link=$request['portal_link'];
         $content_type='service';
@@ -182,18 +182,10 @@ class ServiceController extends Controller
             $path_img=$file->storeAs('public/',time().'.pdf');
              $img_name=str_replace('public/', '', $path_img);
              Media::media_create($img_name,'quotation',$service->id,$content_type);
+               return redirect('/admin/service/index/'.$parent_id);
     
         }
 
-                     if($request->hasFile('icon')){
-            $file=$request['quotation'];                  
-            $imagename=$file->getClientOriginalName();
-            $path_img=$file->storeAs('public/',time().'.jpg');
-             $img_name=str_replace('public/', '', $path_img);
-            $service->icon=$img_name;
-            $service->save();
-           return redirect('/admin/service/index/'.$parent_id);
-        }
 
 
     return Redirect::back()->withErrors('The image input must not be empty');
@@ -257,7 +249,7 @@ class ServiceController extends Controller
         $quotation_id=$request['quotation_id'];                                                                      
         $company_id=$request['company_id'];                               
         $portal_link=$request['portal_link'];
-        
+
         Service::service_update($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id);
           return redirect('/admin/service/index');
     }
