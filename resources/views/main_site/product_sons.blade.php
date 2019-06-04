@@ -7,8 +7,13 @@
         <h5 class="medium_font">Choose what Type of product you want:</h5>
       </div>
       <div class="list-group list-group-flush">
-      	@foreach ($products as $product)
-        <a href="/product/{{$product->id}}/show" class="list-group-item list-group-item-action bg-light">{{$product->getTitle()}}</a>
+      	     @foreach ($products as $product)
+        @if ($product->id==$main_service->id)
+            <a style="background-color: #3544ab!important;color: white;" href="/product/{{$product->id}}/show" class="list-group-item list-group-item-action bg-light">{{$product->en_title}}</a>
+              @else
+               <a href="/product/{{$product->id}}/show" class="list-group-item list-group-item-action bg-light">{{$product->en_title}}</a>
+        @endif
+
         @endforeach
       </div>
     </div>
