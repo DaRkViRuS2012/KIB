@@ -203,19 +203,19 @@ public function galleries()
         Sms_helper::send_sms($application->user->mobile,$application->code);
         $cost=0;
         if ($service_title=="Medical insurance") {
-            $price=Price::price_show_by_service_id($service_id,$age);
+            $price=Price::price_show_by_service_id($main_service_id,$age);
             $cost=$price->value;
         }
         elseif ($service_title=="Life insurance") {
 
-            $price=Price::price_show_by_service_id($service_id,$age);
+            $price=Price::price_show_by_service_id($main_service_id,$age);
             $price_value=$price->value;
             $value=$request['life_price'];
             $cost=$value*$price_value;
         }
 
         elseif ($service_title=="Travel insurance") {
-            $price=Price::price_show_by_service_id($service_id,$age);
+            $price=Price::price_show_by_service_id($main_service_id,$age);
             $cost=$price->value;
         }
 
