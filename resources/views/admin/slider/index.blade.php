@@ -28,20 +28,29 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Title</th>
-                      <th>URL</th>
+
+                      
+
+
+
+                      <th>en_title</th>
+                      <th>ar_title</th>
+                      <th>en_sub_title</th>
+                      <th>ar_sub_title</th>
                       <th>image</th>
                       <th>Operations</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($partners as $partner)
+                    @foreach ($sliders as $slider)
                     <tr>
-                      <td>{{$partner->title}}</td>
-                      <td>{{$partner->url}}</td>
-                     <td><img class="img-responsive col-lg-4" src="{{env('image_storage')}}/{{$partner->image}}"></td>
+                      <td>{{$slider->en_title}}</td>
+                      <td>{{$slider->ar_title}}</td>
+                      <td>{{$slider->en_sub_title}}</td>
+                      <td>{{$slider->ar_sub_title}}</td>
+                     <td><img class="img-responsive col-lg-4" src="{{env('image_storage')}}/{{$slider->media[0]->url}}"></td>
                          <td style="width: 18%;"><div class="container">
-                      <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$partner->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this {{Request::segment(2)}} ')" href="/admin/{{Request::segment(2)}}/delete/{{$partner->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a></div>
+                      <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$slider->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this {{Request::segment(2)}} ')" href="/admin/{{Request::segment(2)}}/delete/{{$slider->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a></div>
                       </div>
                     <div>
                     </td>

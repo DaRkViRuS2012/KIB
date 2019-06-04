@@ -27,12 +27,6 @@
   <div class="col-6">
 <form  class="container" action='/admin/{{Request::segment(2)}}/create' method="POST" enctype="multipart/form-data">
   @csrf
-
-
-ar_title
-en_title
-en_sub_title
-ar_sub_title
         <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} Title</label>
     <input name="ar_title" class="form-control" id="comment" required>

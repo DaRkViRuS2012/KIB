@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Media;
 class SliderController extends Controller
 {
     /**
@@ -29,8 +30,8 @@ class SliderController extends Controller
     public function index()
     {
         $sliders=Slider::slider_index();
-        return compact('sliders');
-        // return view('admin.slider.index',compact('sliders'));
+        // return compact('sliders');
+        return view('admin.slider.index',compact('sliders'));
     }
 
     /**
@@ -57,9 +58,9 @@ class SliderController extends Controller
         $ar_sub_title=$request['ar_sub_title'];
         $content_type='slider';
         $media_type='image';
-        $slider=Slider::slider_create($en_title,$ar_title,$en_sub_title,$ar_sub_title);
-                      if($request->file('img_url')!= null){
 
+        $slider=Slider::slider_create($en_title,$ar_title,$en_sub_title,$ar_sub_title);
+        if($request->file('img_url')!= null){
             $path;
             if(request()->file('img_url')->isValid()){
                 $path = $request->file('img_url')->storeAs('public', time().'.jpg');
@@ -82,7 +83,7 @@ class SliderController extends Controller
      */
     public function show(Slider $slider)
     {
-        //
+        
 
     }
 
@@ -94,7 +95,8 @@ class SliderController extends Controller
      */
     public function edit(Slider $slider)
     {
-        //
+      $slider=Slider::slider_show($id);
+       return view('admin.slider.update',compact('slider'));
     }
 
     /**

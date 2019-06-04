@@ -14,7 +14,7 @@ class Slider extends Model
 
        public function media()
     {
-        return $this->hasMany('App\Media','content_id')->where('media_type','slider');
+        return $this->hasMany('App\Media','content_id')->where('content_type','slider');
     }
 
         public static function slider_index()
