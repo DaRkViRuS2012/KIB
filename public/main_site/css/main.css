@@ -934,7 +934,8 @@ a.button-style {
 
 .jislider__img
 {
-    border-radius: 50%;
+    background-repeat: no-repeat!important;
+    background-size: contain!important;
 }
 
 
