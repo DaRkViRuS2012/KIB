@@ -154,7 +154,7 @@ class Service extends Model
     }
 
 
-        public static function service_update($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$icon)
+    public static function service_update($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$icon)
     {
     	$service=Service::find($id);
     	$service->en_title=$en_title;
@@ -163,7 +163,7 @@ class Service extends Model
         $service->ar_subtitle=$ar_subtitle;
     	$service->en_description=$en_description;
     	$service->ar_description=$ar_description;
-    	$service->parent_id=$parent_id;
+    	// $service->parent_id=$parent_id;
         $service->icon=$icon;
     	$service->save();
     	return $service;

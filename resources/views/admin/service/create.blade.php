@@ -74,15 +74,14 @@
   </div>
 
  --}}
-            <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} Company</label>
-    <select name="company_id[]" class="custom-select" multiple>
-      @foreach ($companies as $company)
+<div class="form-group">
+  <label for="exampleInputEmail1">{{Request::segment(2)}} Company</label>
+  <select name="company_id[]" class="custom-select" multiple>
+    @foreach ($companies as $company)
       <option value="{{$company->id}}">{{$company->title}}</option>
-      @endforeach
-</select>
-    
-  </div>
+    @endforeach
+  </select>    
+</div>
 
 <div class="form-group">
  <label for="exampleInputEmail1">quotation</label>

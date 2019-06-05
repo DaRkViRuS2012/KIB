@@ -932,11 +932,11 @@ a.button-style {
 }
 
 
-/*.jislider__img
+.jislider__img
 {
     border-radius: 50%;
 }
-*/
+
 
 #loader
 {
@@ -1026,7 +1026,7 @@ navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.
       height: 24em;
       padding: 2.8em;
         /*2.8em = 2em*1.4 (2em = half the width of a link with img, 1.4 = sqrt(2))*/
-      border: dashed 1px;
+      /*border: dashed 1px;*/
       border-radius: 50%;
       margin: 1.75em auto 0;
       color: white;

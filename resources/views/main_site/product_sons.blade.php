@@ -9,9 +9,9 @@
       <div class="list-group list-group-flush">
       	     @foreach ($products as $product)
         @if ($product->id==$main_service->id)
-            <a style="background-color: #3544ab!important;color: white;" href="/product/{{$product->id}}/show" class="list-group-item list-group-item-action bg-light">{{$product->en_title}}</a>
+            <a style="background-color: #3544ab!important;color: white;" href="/product/{{$product->id}}/show" class="list-group-item list-group-item-action bg-light">{{$product->getTitle()}}</a>
               @else
-               <a href="/product/{{$product->id}}/show" class="list-group-item list-group-item-action bg-light">{{$product->en_title}}</a>
+               <a href="/product/{{$product->id}}/show" class="list-group-item list-group-item-action bg-light">{{$product->getTitle()}}</a>
         @endif
 
         @endforeach
@@ -36,7 +36,7 @@
         <div class="row">
         <div class="container-fluid">
                 <div class="row">
-      <h4 style="color: #3544ab;margin: 0 auto;" class="text-center">{{$main_service->getDescription()}}</h4>
+       <h5 style="margin: 0 auto;" class="text-center">{{$main_service->getDescription()}}</h5>
     </div>
         <div class="row" style="margin-top: 2%;margin-bottom: 2%;">
           @foreach ($main_service->sons as $product)

@@ -19,7 +19,7 @@
 @endif
 
   <div class="col-6">
-<form  class="container" action='/admin/{{Request::segment(2)}}/update' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/{{Request::segment(2)}}/update/{{$service->id}}' method="POST" enctype="multipart/form-data">
   @csrf
 
       <div class="form-group">
@@ -70,17 +70,29 @@
     </select>
     
   </div> --}}
-
+<div class="form-group">
+  <label for="exampleInputEmail1">{{Request::segment(2)}} Company</label>
+  <select name="company_id[]" class="custom-select" multiple>
+    @foreach ($companies as $company)
+      <option value="{{$company->id}}">{{$company->title}}</option>
+    @endforeach
+  </select>    
+</div>
 
 <div class="form-group">
  <label for="exampleInputEmail1">quotation</label>
-  <input class="active" type="file" name="quotation" enctype="multipart/form-data" required multiple>
+  <input class="active" type="file" name="quotation" enctype="multipart/form-data"  multiple>
 </div>
 
-
+<div class="form-group">
   <label for="exampleInputEmail1">Image</label>
-  <input class="active" type="file" name="image[]" enctype="multipart/form-data" required multiple>
+  <input class="active" type="file" name="image[]" enctype="multipart/form-data"  multiple>
   <br><br>
+</div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">icon</label>
+  <input class="active" type="file" name="icon" enctype="multipart/form-data" >
+</div>
   <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Update {{Request::segment(2)}}</button>
 </form>
   </div>

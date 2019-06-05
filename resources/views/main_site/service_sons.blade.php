@@ -10,9 +10,9 @@
       <div class="list-group list-group-flush">
         @foreach ($services as $service)
         @if ($service->id==$main_service->id)
-            <a style="background-color: #3544ab!important;color: white;" href="/service/{{$service->id}}/show" class="list-group-item list-group-item-action bg-light">{{$service->en_title}}</a>
+            <a style="background-color: #3544ab!important;color: white;" href="/service/{{$service->id}}/show" class="list-group-item list-group-item-action bg-light">{{$service->getTitle()}}</a>
               @else
-               <a href="/service/{{$service->id}}/show" class="list-group-item list-group-item-action bg-light">{{$service->en_title}}</a>
+               <a href="/service/{{$service->id}}/show" class="list-group-item list-group-item-action bg-light">{{$service->getTitle()}}</a>
         @endif
 
         @endforeach
@@ -28,9 +28,9 @@
     <ul class="dropdown-menu">
       @foreach ($services as $service)
        @if ($service->id==$main_service->id)
-      <li style="background-color: #3544ab!important;color: white;"><a style="color: white;" href="/service/{{$service->id}}/show">{{$service->en_title}}</a></li>
+      <li style="background-color: #3544ab!important;color: white;"><a style="color: white;" href="/service/{{$service->id}}/show">{{$service->getTitle()}}</a></li>
          @else
-          <li style="background-color:#ffffff;color:black"><a style="color: white;" href="/service/{{$service->id}}/show">{{$service->en_title}}</a></li>
+          <li style="background-color:#ffffff;color:black"><a style="color: white;" href="/service/{{$service->id}}/show">{{$service->getTitle()}}</a></li>
          @endif
       @endforeach
     </ul>
@@ -42,7 +42,7 @@
         <div class="row">
         <div class="container-fluid">
             <div class="row">
-      <h4 style="color: #3544ab;margin: 0 auto;" class="text-center">{{$main_service->getDescription()}}</h4>
+      <h5 style="margin: 0 auto;" class="text-center">{{$main_service->getDescription()}}</h5>
     </div>
         <div class="row" style="margin-top: 2%;margin-bottom: 2%;">
           @foreach ($main_service->sons as $service)

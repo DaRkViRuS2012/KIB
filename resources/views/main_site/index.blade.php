@@ -22,7 +22,7 @@
 </head>
 <body style="height:100vh;">
   <div id="loader">
-    <img src="{{ asset('main_site/img/logo.gif') }}" width="30%">
+    <img src="{{ asset('main_site/img/logo.gif') }}" width="10%">
   </div>
   <script type="text/javascript">
     var loader=document.getElementById("loader");

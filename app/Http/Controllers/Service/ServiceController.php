@@ -83,10 +83,8 @@ class ServiceController extends Controller
         $ar_subtitle=$request['ar_subtitle'];                                     
         $ar_description=$request['ar_description'];                                      
         $en_description=$request['en_description'];                                      
-        $parent_id ='0';                                                                          
+        $parent_id ='0';                                                                  
         $company_id = $request['company_id'];
-        // $company_id= implode(',',$company_id);
-        // $test=explode(',', $company_id);
         $icon=$request['icon'];
         $content_type='service';
         $type='service';
@@ -162,12 +160,14 @@ class ServiceController extends Controller
         $content_type='service';
         $type='service';
         $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type,$icon);
-          if ($company_id){
+        
+        if ($company_id){
             foreach ($company_id as $key => $company) {
                 PartnerService::partner_service_create($company,$service->id);
             }
         }
-                    if($request->hasFile('image')){
+        
+        if($request->hasFile('image')){
             foreach($request->file('image') as $file) {                    
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().$imagename);
@@ -176,13 +176,13 @@ class ServiceController extends Controller
              }
         }
 
-                      if($request->hasFile('quotation')){
-                      $file=$request['quotation'];                  
+        if($request->hasFile('quotation')){
+            $file=$request['quotation'];                  
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().'.pdf');
-             $img_name=str_replace('public/', '', $path_img);
-             Media::media_create($img_name,'quotation',$service->id,$content_type);
-               return redirect('/admin/service/index/'.$parent_id);
+            $img_name=str_replace('public/', '', $path_img);
+            Media::media_create($img_name,'quotation',$service->id,$content_type);
+        return redirect('/admin/service/index/'.$parent_id);
     
         }
 
@@ -192,13 +192,13 @@ class ServiceController extends Controller
     }
 
 
-        public function index_sons($parent_id)
+    public function index_sons($parent_id)
     {
         $service_sons=Service::service_index_sons($parent_id);
         return view('admin.service.index_sons',compact('service_sons','parent_id'));
     }
 
-        public function product_index_sons($parent_id)
+    public function product_index_sons($parent_id)
     {
         $product_sons=Service::service_index_sons($parent_id);
         return view('admin.product.index_sons',compact('product_sons','parent_id'));
@@ -226,7 +226,8 @@ class ServiceController extends Controller
     {
         $services=Service::service_index_fathers();
         $service=Service::service_show($id);
-        return view('admin.service.update',compact('service','services'));
+        $companies=Partner::partner_index();
+        return view('admin.service.update',compact('service','services','companies'));
     }
 
     /**
@@ -247,11 +248,47 @@ class ServiceController extends Controller
         $en_description=$request['en_description'];                                      
         $parent_id =$request['parent_id'];                                 
         $quotation_id=$request['quotation_id'];                                                                      
-        $company_id=$request['company_id'];                               
-        $portal_link=$request['portal_link'];
+        $company_id = $request['company_id'];
+        $icon=$request['icon'];
+        $content_type='service';
+        $type='service';
 
-        Service::service_update($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id);
-          return redirect('/admin/service/index');
+        $service=Service::service_update($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$type,$icon);
+           
+        if ($company_id){
+            foreach ($company_id as $key => $company) {
+                PartnerService::partner_service_create($company,$service->id);
+            }
+        }
+        if($request->hasFile('image')){
+            foreach($request->file('image') as $file) {                    
+                $imagename=$file->getClientOriginalName();
+                $path_img=$file->storeAs('public/',time().$imagename);
+                 $img_name=str_replace('public/', '', $path_img);
+                 Media::media_create($img_name,'image',$service->id,$content_type);
+             }
+        }
+
+        if($request->hasFile('quotation')){
+            $file=$request['quotation'];                  
+            $imagename=$file->getClientOriginalName();
+            $path_img=$file->storeAs('public/',time().'.pdf');
+            $img_name=str_replace('public/', '', $path_img);
+            Media::media_create($img_name,'quotation',$service->id,$content_type);
+ 
+        }
+
+
+        if($request->hasFile('icon')){
+            $file=$request['icon'];                  
+            $imagename=$file->getClientOriginalName();
+            $path_img=$file->storeAs('public/',time().'.jpg');
+            $img_name=str_replace('public/', '', $path_img);
+            $service->icon=$img_name;
+            $service->save();
+            return redirect('/admin/service/index');
+        }
+    return Redirect::back()->withErrors('The image input must not be empty');
     }
 
     /**
@@ -282,7 +319,7 @@ return redirect('/admin/service/index');
        public function product_create()
     {
         $services=Service::service_index();
-        $companies=Company::company_index();
+        $companies=Partner::partner_index();
         return view('admin.product.create',compact('services','companies'));
     }
 
