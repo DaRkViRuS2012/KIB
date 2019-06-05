@@ -35,6 +35,9 @@
       <div class="container">
         <div class="row">
         <div class="container-fluid">
+                <div class="row">
+      <h4 style="color: #3544ab;margin: 0 auto;" class="text-center">{{$main_service->getDescription()}}</h4>
+    </div>
         <div class="row" style="margin-top: 2%;margin-bottom: 2%;">
           @foreach ($main_service->sons as $product)
             {{-- expr --}}

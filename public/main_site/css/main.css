@@ -1048,5 +1048,8 @@ navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.
     .deg6{ transform: rotate(240deg) translate(12em) rotate(-240deg);}
     .deg7{ transform: rotate(280deg) translate(12em) rotate(-280deg);}
     .deg8{ transform: rotate(320deg) translate(12em) rotate(-320deg);} 
+    .deg-center{ transform: rotate(320deg) translate(0em) rotate(-320deg);}
+
+    
     
 

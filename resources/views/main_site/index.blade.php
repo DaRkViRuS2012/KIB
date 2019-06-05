@@ -137,7 +137,7 @@
                 </div>
                   <div class="w3l-slide-text col-lg-6">
                         <div class='circle-container'>
-      <a style="color: white!important" href='#' class='center'>why why why why </a>
+           <a href='#' class="deg-center"><img {{-- style="border-radius:50%!important"  --}} src="{{ asset('main_site/img/Logo.png') }}"></a>
 
       @foreach ($services as $key=> $service)
         {{-- expr --}}

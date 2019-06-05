@@ -34,6 +34,20 @@
 		
 	</div>
 
+          <div class="form-group">
+    <label for="exampleInputEmail1">Gallery en_description</label>
+    <textarea name="en_description" class="form-control"  id="comment" required></textarea>
+    
+  </div>
+
+
+          <div class="form-group">
+    <label for="exampleInputEmail1">Gallery ar_description</label>
+    <textarea name="ar_description" class="form-control"  id="comment" required></textarea>
+    
+  </div>
+
+
 
 
 

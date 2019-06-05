@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Media;
+use Session;
 class Gallery extends Model
 {
        protected $fillable = [
-        'ar_title', 'en_title',
+        'ar_title', 'en_title','en_description','ar_description'
     ];
 
 
@@ -30,20 +31,24 @@ class Gallery extends Model
     }
 
 
-        public static function gallery_create($ar_title,$en_title)
+        public static function gallery_create($ar_title,$en_title,$en_description,$ar_description)
     {
     	$gallery=new Gallery;
     	$gallery->ar_title=$ar_title;
     	$gallery->en_title=$en_title;
+        $gallery->en_description=$en_description;
+        $gallery->ar_description=$ar_description;
     	$gallery->save();
     	return $gallery;
     }
 
-      public static function gallery_update($id,$ar_title,$en_title)
+      public static function gallery_update($id,$ar_title,$en_title,$en_description,$ar_description)
     {
     	$gallery=Gallery::find($id);
     	$gallery->ar_title=$ar_title;
     	$gallery->en_title=$en_title;
+        $gallery->en_description=$en_description;
+        $gallery->ar_description=$ar_description;
     	$gallery->save();
     	return $gallery;
     }
@@ -56,5 +61,20 @@ class Gallery extends Model
         }
     	$gallery->delete();
     }
+
+        public function getTitle()
+{
+ $str =  Session::get('locale').'_title';
+ $title=$this[$str];
+ return $title;
+}
+
+   public function getDescription()
+{
+ $str =  Session::get('locale').'_description';
+ $description=$this[$str];
+ return $description;
+}
+
 
 }

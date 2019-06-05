@@ -6,6 +6,7 @@
       <div class="sidebar-heading">
         <h5 class="medium_font">@lang('Choose what Type of Service you want:')</h5>
       </div>
+
       <div class="list-group list-group-flush">
         @foreach ($services as $service)
         @if ($service->id==$main_service->id)
@@ -23,6 +24,7 @@
   <div class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="background-color:#3544ab;color:white;border-color: #3544ab;">@lang('Choose what Type of Service you want:')
     <span class="caret"></span></button>
+  
     <ul class="dropdown-menu">
       @foreach ($services as $service)
        @if ($service->id==$main_service->id)
@@ -39,6 +41,9 @@
       <div class="container">
         <div class="row">
         <div class="container-fluid">
+            <div class="row">
+      <h4 style="color: #3544ab;margin: 0 auto;" class="text-center">{{$main_service->getDescription()}}</h4>
+    </div>
         <div class="row" style="margin-top: 2%;margin-bottom: 2%;">
           @foreach ($main_service->sons as $service)
             {{-- expr --}}

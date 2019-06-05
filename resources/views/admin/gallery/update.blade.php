@@ -17,15 +17,30 @@
 
 			<div class="form-group">
 		<label for="exampleInputEmail1">Gallery en_Title</label>
-		<input name="en_title" class="form-control"  id="comment" required>
+		<input name="en_title" class="form-control"  id="comment" required value="{{$gallery->en_title}}">
 		
 	</div>
 
 				<div class="form-group">
 		<label for="exampleInputEmail1">Gallery ar_Title</label>
-		<input name="ar_title" class="form-control"  id="comment" required>
+		<input name="ar_title" class="form-control"  id="comment" required value="{{$gallery->ar_title}}">
 		
 	</div>
+
+
+          <div class="form-group">
+    <label for="exampleInputEmail1">Gallery en_description</label>
+    <textarea name="en_description" class="form-control"  id="comment" required>{{$gallery->en_description}}</textarea>
+    
+  </div>
+
+
+          <div class="form-group">
+    <label for="exampleInputEmail1">Gallery ar_description</label>
+    <textarea name="ar_description" class="form-control"  id="comment" required>{{$gallery->ar_description}}</textarea>
+    
+  </div>
+
 
 	<button  type="submit" class="btn btn-primary"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Update {{Request::segment(2)}}</button>
 </form>

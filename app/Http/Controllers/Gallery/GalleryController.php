@@ -9,6 +9,16 @@ use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
+
+         protected function validator_gallery(array $data)
+    {
+        return Validator::make($data, [
+            'en_title' => ['required', 'string', 'email', 'max:255'],
+            'ar_title' => ['required', 'string', 'email', 'max:255'],
+            'en_description' => ['required', 'string'],
+            'ar_description' => ['required', 'string'],
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -62,12 +72,19 @@ class GalleryController extends Controller
      */
   public function store(Request $request)
     {   
+           $validator = $this->validator_gallery($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
         $data=$request->all();
         $ar_title=$data['ar_title'];
         $en_title=$data['en_title'];
+        $en_description=$data['en_description'];
+        $ar_description=$data['ar_description'];
         $content_type='image';
         $media_type='gallery';
-        $gallery=Gallery::gallery_create($en_title,$ar_title);
+        $gallery=Gallery::gallery_create($ar_title,$en_title,$en_description,$ar_description);
 
                     if($request->hasFile('image')){
             foreach($request->file('image') as $file) {                    
@@ -115,10 +132,17 @@ class GalleryController extends Controller
      */
     public function update(Request $request)
     {
+           $validator = $this->validator_gallery($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
         $id=$request['id'];
         $ar_title=$request['ar_title'];
         $en_title=$request['en_title'];
-        Gallery::gallery_update($id,$en_title,$ar_title);
+        $en_description=$data['en_description'];
+        $ar_description=$data['ar_description'];
+        Gallery::gallery_update($id,$en_title,$ar_title,$en_description,$ar_description);
         return redirect('/admin/gallery/index'); 
     }
 

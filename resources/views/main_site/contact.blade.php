@@ -2,7 +2,7 @@
 @section('content')
 <section class="banner-bottom-w3ls pt-lg-5 pt-md-3 pt-3">
         <div class="inner-sec-wthreelayouts pt-md-5 pt-md-3 pt-3">
-            <h2 class="tittle text-center mb-md-5 mb-4">Get In Touch</h2>
+            <h2 class="tittle text-center mb-md-5 mb-4">@lang('Get In Touch')</h2>
             <div class="container">
                 <div class="address row mb-5">
                     <div class="col-lg-4 address-grid-w3l">
@@ -11,7 +11,7 @@
                                 <i class="far fa-map"></i>
                             </div>
                             <div class="col-md-9 address-right text-left">
-                                <h6 class="ad-info text-uppercase mb-2">Address</h6>
+                                <h6 class="ad-info text-uppercase mb-2">@lang('address')</h6>
                                 <p id="address1"> California, USA
 
                                 </p>
@@ -24,9 +24,10 @@
                                 <i class="far fa-envelope"></i>
                             </div>
                             <div class="col-md-9 address-right text-left">
-                                <h6 class="ad-info text-uppercase mb-2">Email</h6>
-                                <p id="email1">Email :
-                                    <a href="mailto:example@email.com"> mail@example.com</a>
+                                <h6 class="ad-info text-uppercase mb-2">@lang('email')</h6>
+                                <p id="email1">
+                                    <a href="mailto:example@email.com">khourybrokerage@gmail.com
+</a>
                                 </p>
                             </div>
 
@@ -38,8 +39,8 @@
                                 <i class="fas fa-mobile-alt"></i>
                             </div>
                             <div class="col-md-9 address-right text-left">
-                                <h6 class="ad-info text-uppercase mb-2">Phone</h6>
-                                <p id="phone1">+1 234 567 8901</p>
+                                <h6 class="ad-info text-uppercase mb-2">@lang('phone')</h6>
+                                <p id="phone1">+963-933-999850</p>
 
                             </div>
                         </div>
@@ -51,7 +52,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.99394132202!2d36.313586414586744!3d33.52754315264602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1518e6e5c377c23d%3A0x72e8071356c2e5c2!2sIbn+Al+Haytham+Park!5e0!3m2!1sen!2sid!4v1559386770886!5m2!1sen!2sid" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                      <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=london&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
 
                     </div>
                     <div class="col-md-6 main_grid_contact">
