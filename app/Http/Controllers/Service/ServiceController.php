@@ -138,7 +138,7 @@ class ServiceController extends Controller
     }
 
 
-        public function product_create_son($parent_id)
+    public function product_create_son($parent_id)
     {
         $product=Service::product_show($parent_id);
         $companies=Company::company_index();
@@ -316,7 +316,7 @@ return redirect('/admin/service/index');
     /////-------------------------------------- products section
 
 
-       public function product_create()
+    public function product_create()
     {
         $services=Service::service_index();
         $companies=Partner::partner_index();
@@ -342,9 +342,10 @@ return redirect('/admin/service/index');
         $company_id='';                               
         $portal_link='';
         $content_type='service';
+        $icon = '';
         $type='product';
-        $product=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type);
-                    if($request->hasFile('image')){
+        $product=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type,$icon);
+        if($request->hasFile('image')){
             foreach($request->file('image') as $file) {                    
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().$imagename);

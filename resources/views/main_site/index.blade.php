@@ -142,7 +142,7 @@
       @foreach ($services as $key=> $service)
         {{-- expr --}}
      
-      <a href='#' class='deg{{$key}}'><img {{-- style="border-radius:50%!important"  --}} src='{{env('image_storage')}}/{{$service->icon()}}'></a>
+      <a href='/service/{{$service->id}}/show' class='deg{{$key}}'><img {{-- style="border-radius:50%!important"  --}} src='{{env('image_storage')}}/{{$service->icon()}}'></a>
       @endforeach
 
     </div>

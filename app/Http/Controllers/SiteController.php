@@ -90,15 +90,15 @@ public function product_sons(Request $request)
 public function products()
 {
     $products=Service::product_index_fathers();
-    $partners=Partner::partner_index();
-    $product;
+    // $partners=Partner::partner_index();
+    // $product;
 
-    if (count($products)> 0 ){
-        $product = $products[0];
-        //dd($service);
-        return redirect('/product/'.$product->id.'/show');
-    }
-    return view('main_site.products',compact('products','partners'));
+    // if (count($products)> 0 ){
+    //     $product = $products[0];
+    //     //dd($service);
+    //     return redirect('/product/'.$product->id.'/show');
+    // }
+    return view('main_site.products',compact('products'));
 }
 
 
