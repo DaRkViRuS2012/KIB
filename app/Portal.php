@@ -30,6 +30,13 @@ class Portal extends Model
     }
 
 
+             public static function portal_by_company($company_id)
+    {
+        $portals=Portal::where('company_id',$company_id)->get();
+        return  $portals;
+    }
+
+
         public static function portal_create($company_id,$portal)
     {
     	$portal1=new Portal;

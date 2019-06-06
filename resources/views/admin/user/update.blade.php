@@ -1,5 +1,15 @@
-@extends('layouts.main_layout')
+@extends('layouts.admin_layout')
+@section('styles')
+    <!-- Custom fonts for this template -->
+  <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+  <!-- Custom styles for this template -->
+  <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+  <!-- Custom styles for this page -->
+  <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="container">
     
@@ -7,7 +17,7 @@
 <div class="row">
     <h2 style="color:#3544ab">Fill Your Application</h2>
 </div>
-<form action="/user/update" method="post">
+<form action="/admin/user/update/{{$user->id}}" method="post">
   @csrf
 <div class="row">
   <div class="form-group col-4">
@@ -33,11 +43,9 @@
 
 
 
-  
-
-  <div class="form-group col-4">
-    <label for="pwd">User Mobile</label>
-    <input name="mobile" class="form-control" id="username" type="text" value="{{$user->mobile}}">
+  <div class="form-group col-lg-4 col-sm-12">
+    <label for="pwd">@lang('Mobile')</label>
+    <input name="mobile" class="form-control" id="mobile" type="text" placeholder="type your mobile nine digits example 993000000" value="{{$user->mobile}}">
   </div>
 
 
@@ -62,7 +70,7 @@
     <select class="form-control" name="city_id"  id="city_id">
         <option selected disabled>Select Your City</option>
         @foreach ($cities as $city)
-        @if ($user->city->city_id==$city->id)
+        @if ($user->city_id==$city->id)
           <option value="{{$city->id}}" selected>{{$city->en_title}}</option>
         @else
          <option value="{{$city->id}}">{{$city->en_title}}</option>
@@ -71,6 +79,7 @@
         @endforeach
     </select>
   </div>
+
 </div>
 {{--     <div class="form-group col-4">
     <label for="pwd">service</label>
@@ -87,11 +96,28 @@
     
   </div> --}}
 
-<div class="row">
-<button style="margin: 1%;
-    padding: 1% 3% 1% 3%;background-color:#3544ab;border-color:#3544ab" type="submit" class="btn btn-primary">Submit</button>   
-</div>
+<button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Update {{Request::segment(2)}}</button>
+
   
 </form>
 </div>
+@endsection
+
+    @section('scripts')
+   <!-- Bootstrap core JavaScript-->
+  <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
+  <!-- Page level plugins -->
+  <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
 @endsection

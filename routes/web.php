@@ -27,6 +27,9 @@ Route::group(['middleware' => 'checkval'], function() {
 });
 
 
+
+
+
 //*********************************************************************************************
 Route::get('/admin/about/index','AboutUsController@index');
 Route::get('/admin/about/create','AboutUsController@create');
@@ -152,7 +155,20 @@ Route::get('/admin/page/delete/{id}','PageController@delete');
 //*********************************************************************************************
 Route::get('/admin/application/index','ApplicationController@index');
 Route::get('/admin/application/{id}','ApplicationController@show');
-
+//*********************************************************************************************
+Route::get('/admin/user/index','UserController@index');
+Route::get('/admin/user/create','UserController@admin_create');
+Route::post('/admin/user/create','UserController@admin_store');
+Route::get('/admin/user/update/{id}','UserController@admin_edit');
+Route::post('/admin/user/update/{id}','UserController@admin_update');
+Route::get('/admin/user/delete/{id}','UserController@admin_delete');
+//*********************************************************************************************
+Route::get('/admin/user/index','UserController@index');
+Route::get('/admin/user/create','UserController@admin_create');
+Route::post('/admin/user/create','UserController@admin_store');
+Route::get('/admin/user/update/{id}','UserController@admin_edit');
+Route::post('/admin/user/update/{id}','UserController@admin_update');
+Route::get('/admin/user/delete/{id}','UserController@admin_delete');
 });
 //*********************************************************************************************
 
@@ -242,4 +258,10 @@ Route::post('/application/create','SiteController@application_store');
 
 Route::get('/application/single/{id}','SiteController@application_single');
 
+
+Route::get('/company/portal/{id}','UserController@company_portal');
+
+  Route::get('/company', function() {
+    return view('company.index');
+});
 

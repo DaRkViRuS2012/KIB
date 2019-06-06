@@ -93,6 +93,48 @@ class User extends Authenticatable
         return $user;
     }
 
+
+        public static function admin_user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token,$role)
+    {
+        $user=new user;
+        $user->name=$name;
+        $user->username=$username;
+        $user->email=$email;
+        $user->active='1';
+        $user->password=$password;
+        $user->birthdate=$birthdate;
+        $user->fcmtoken=$fcmtoken;
+        $user->token=$token;
+        $user->os=$os;
+        $user->role=$role;
+        $user->mobile=$mobile;
+        $user->code=Sms_helper::RandomString();
+        $user->city_id=$city_id;
+        $user->save();
+        return $user;
+    }
+
+
+            public static function admin_user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token)
+    {
+       $user=User::find($id);
+        $user->name=$name;
+        $user->username=$username;
+        $user->email=$email;
+        $user->active='1';
+        $user->password=$password;
+        $user->birthdate=$birthdate;
+        $user->fcmtoken=$fcmtoken;
+        $user->token=$token;
+        $user->os=$os;
+        // $user->role=$role;
+        $user->mobile=$mobile;
+        $user->code=Sms_helper::RandomString();
+        $user->city_id=$city_id;
+        $user->save();
+        return $user;
+    }
+
        public static function user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile)
     {
         $user=User::find($id);
@@ -109,6 +151,13 @@ class User extends Authenticatable
         $user->mobile=$mobile;
         $user->save();
         return $user;
+    }
+
+
+    public  static function user_index()
+    {
+        $users=User::all();
+        return $users;
     }
 
 
