@@ -4,16 +4,46 @@
 	
 @foreach ($news as $news1)
     {{-- expr --}}
-
-	   <div class="col-md-10 blogShort">
-                     <h1>{{$news1->getTitle()}}</h1>
+    @if(Session::get('locale')=="en")
+        {{-- expr --}}
+    
+	   <div  class="row" style="margin-top:3%; margin-bottom: 3%;">
+                    <div class="col-3">
+                        
+                    
                      <img style="height: 300px;width:400px;" src="{{env('image_storage')}}/{{$news1->media[0]->url}}" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail" style="width:50%;height:50%">
+                     </div>
+                     <div class="col-9">
+                         
+                     
+                      <h1>{{$news1->getTitle()}}</h1>
                      <article><p>
-                        {{$news1->getBody()}}   
+                        {!! substr($news1->getBody(), 0, 500) !!}  
                          </p></article>
                      <a class="btn btn-blog pull-right marginBottom10" href="/news_single/{{$news1->id}}">READ MORE</a> 
                  </div>
+                </div>
+@else
 
+       <div dir="rtl" class="row" style="margin-top:3%; margin-bottom: 3%;">
+                    <div class="col-3">
+                        
+                    
+                     <img style="height: 300px;width:400px;" src="{{env('image_storage')}}/{{$news1->media[0]->url}}" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail" style="width:50%;height:50%">
+                     </div>
+                     <div class="col-9">
+                         
+                     
+                      <h1 class="text-right">{{$news1->getTitle()}}</h1>
+                     <article class="text-right"><p>
+                             {!! substr($news1->getBody(), 0, 500) !!}  
+                         </p></article>
+                     <a style="float:right;" class="btn btn-blog pull-right marginBottom10" href="/news_single/{{$news1->id}}">READ MORE</a> 
+                 </div>
+                </div>
+
+
+@endif
                
 @endforeach                 
 @endsection
