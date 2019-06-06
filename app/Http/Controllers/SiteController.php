@@ -169,7 +169,11 @@ public function galleries()
 
              $validator = $this->validator_application($request->input());
          if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput(); //TODO
+            // return back()->withErrors($validator)->withInput(); //TODO
+
+            return redirect()->back()
+                    ->withInput($request->input())
+                    ->withErrors($validator);
 
         }
 

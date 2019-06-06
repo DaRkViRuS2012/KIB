@@ -77,7 +77,7 @@ Route::get('/admin/service/index','ServiceController@index');
 Route::get('/admin/service/create','ServiceController@create');
 Route::post('/admin/service/create','ServiceController@store');
 Route::get('/admin/service/update/{id}','ServiceController@edit');
-Route::post('/admin/service/update/{service}','ServiceController@update');
+Route::post('/admin/service/update/{id}','ServiceController@update');
 Route::get('/admin/service/delete/{id}','ServiceController@delete');
 
 //*********************************************************************************************
@@ -264,4 +264,8 @@ Route::get('/company/portal/{id}','UserController@company_portal');
   Route::get('/company', function() {
     return view('company.index');
 });
+
+
+Route::get('user/active/{id}', 'UserController@active_view');
+Route::post('user/active/{id}', 'UserController@active');
 

@@ -136,6 +136,21 @@
    </nav>
   </header>
 </section>
+
+
+<div class="container">
+  <div class="row">
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+</div>
+</div>
 @if (Session::get('locale')=="ar")
  <section dir="rtl" id="content">
 <style type="text/css">
@@ -154,19 +169,7 @@
 </section>
 @endif
 
-<div class="container">
-  <div class="row">
-  @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-</div>
-</div>
+
 
 
 </body>
@@ -337,7 +340,7 @@ function closeNav() {
     $(window).on('load', function () {
       $('#JiSlider').JiSlider({
         color: '#fff',
-        start: 3,
+        start: 2,
         reverse: true
       }).addClass('ff')
     })

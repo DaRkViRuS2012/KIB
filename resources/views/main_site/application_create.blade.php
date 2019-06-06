@@ -12,54 +12,54 @@
 <div class="row">
   <div class="form-group col-lg-4 col-sm-12">
     <label for="email">First Name</label>
-    <input name="fname_en" class="form-control" id="email" type="text">
+    <input name="fname_en" class="form-control" id="email" type="text" value="{{ old('fname_en') }}">
   </div>
   <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">Father's Name</label>
-    <input name="father_name_en" class="form-control" id="pwd" type="text">
+    <input name="father_name_en" class="form-control" id="pwd" type="text" value="{{old('father_name_en')}}">
   </div>
 
     <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">Surname (Family Name)</label>
-    <input name="lname_en" class="form-control" id="pwd" type="text">
+    <input name="lname_en" class="form-control" id="pwd" type="text" value="{{old('lname_en')}}">
   </div>
 
 
    <div class="form-group col-lg-4 col-sm-12">
     <label for="email">الاسم</label>
-    <input name="fname_ar" class="form-control" id="email" type="text">
+    <input name="fname_ar" class="form-control" id="email" type="text" value="{{old('fname_ar')}}">
   </div>
   <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">اسم الاب</label>
-    <input name="father_name_ar" class="form-control" id="pwd" type="text">
+    <input name="father_name_ar" class="form-control" id="pwd" type="text" value="{{old('father_name_ar')}}">
   </div>
 
     <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">الكنية</label>
-    <input name="lname_ar" class="form-control" id="pwd" type="text">
+    <input name="lname_ar" class="form-control" id="pwd" type="text" value="{{old('lname_ar')}}">
   </div>
 
 
 
   <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">Nationality الجنسية</label>
-    <input name="nationality" class="form-control" id="pwd" type="text">
+    <input name="nationality" class="form-control" id="pwd" type="text" value="{{old('nationality')}}">
   </div>
 
 
     <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">National ID الرقم الوطني</label>
-    <input name="national_id" class="form-control" id="pwd" type="text">
+    <input name="national_id" class="form-control" id="pwd" type="text" value="{{old('national_id')}}">
   </div>
 
 <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">Martial Status الحالة الاجتماعية</label>
-    <input name="martial_status" class="form-control" id="pwd" type="text">
+    <input name="martial_status" class="form-control" id="pwd" type="text" value="{{old('martial_status')}}">
   </div>
 
 <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">Work المهنة</label>
-    <input name="work" class="form-control" id="pwd" type="text">
+    <input name="work" class="form-control" id="pwd" type="text" value="{{old('work')}}">
   </div>
 
 

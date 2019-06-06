@@ -142,7 +142,7 @@ class UserController extends Controller
         $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token);
           Sms_helper::send_sms($user->mobile,$user->code); 
          Auth::loginUsingId($user->id);
-         return redirect('/home'); 
+         return redirect('/'); 
 
        
     }
@@ -296,6 +296,15 @@ public function company_portal()
   $company_id=Auth::user()->id;
   $portals=Portal::portal_by_company($company_id);
   return view('company.portal_index',compact('portals'));
+}
+
+
+public function active_view(Request $request)
+{
+
+  $id=$request['id'];
+  $user=User::user_show($id);
+  return view('auth.active',compact('user'));
 }
 }
 
