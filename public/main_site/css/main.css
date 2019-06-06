@@ -257,7 +257,8 @@ position: fixed // or absolute
 }
 @media(max-width: 1440px) {
     .w3l-slide-text h3 {
-        font-size: 42px;
+        font-size: 35px;
+        
     }
 
     .w3l-slide-text p {

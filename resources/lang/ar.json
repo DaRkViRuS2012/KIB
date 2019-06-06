@@ -13,11 +13,11 @@
     "To Keep Your Family Safe" : "ابقي عائلتك آمنة",
     "Get A Qutation" : "احصل على ملف التوصيف",
     "We make your insurance easy": "لجعل حياتك اسهل",
-    "KIB":"كي.اي.بي",
+    "KIB":"خوري للوساطة التأمينية",
     "View Our Services":"عرض خدماتنا",
     "Why You Should Choose": "لماذا يجب ان تختار",
-    "Khouri Insurance Brokerage Office is specialized in insurance studies and consultations. We seek through our consultations and studies to ensure that customers receive the best insurance services in addition to the follow-up to any inquiries required by individuals and groups in all insurance fields": "كتب خوري لوساطة التأمين متخصص في الدراسات والاستشارات التأمينية. نسعى من خلال الاستشارات والدراسات الخاصة بنا لضمان حصول العملاء على أفضل خدمات التأمين بالإضافة إلى متابعة أي استفسارات يطلبها الأفراد والجماعات في جميع مجالات التأمين",
-    "All Rights Reserved To KIB ©2019" : "جميع الحقوق محفوظة كي.اي.بي ©2019",
+    "Khouri Insurance Brokerage Office is specialized in insurance studies and consultations. We seek through our consultations and studies to ensure that customers receive the best insurance services in addition to the follow-up to any inquiries required by individuals and groups in all insurance fields":"مكتب خوري لوساطة التأمين متخصص في الدراسات والاستشارات التأمينية. نسعى من خلال الاستشارات والدراسات الخاصة بنا لضمان حصول العملاء على أفضل خدمات التأمين بالإضافة إلى متابعة أي استفسارات يطلبها الأفراد والجماعات في جميع مجالات التأمين",
+    "All Rights Reserved To KIB ©2019" : "جميع الحقوق محفوظة خوري للوساطة التأمينية ©2019",
     "Choose what Type of Service you want:" : "اختار الخدمة التي تريدها:",
     "More ...":"...المزيد",
     "Links":"الروابط",
@@ -55,6 +55,10 @@
     "active":"تفعيل",
     "reason1":"براعة في التأمين",
     "reason2":"المصداقية في العمل",
-    "reason3":"خبرة في خدمة الزبائن"
+    "reason3":"خبرة في خدمة الزبائن",
+
+"thanks_code":"شكرا لتقديم حضرتك الطلب , كود التفعيل خاصتك هو :  ",
+"thanks_cost":"تكلفة طلب حضرتك هي : "
+
 
 }

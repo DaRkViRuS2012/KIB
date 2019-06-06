@@ -55,5 +55,7 @@
     "active":"Activate",
     "reason1":"PROFICIENTLY IN INSURANCE",
     "reason2":"Credibility in work",
-    "reason3":"Expertise of Customer  services"
+    "reason3":"Expertise of Customer  services",
+    "thanks_code":"thank you for your application , your code is : ",
+    "thanks_cost":"The cost of your application is : "
 }

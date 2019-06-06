@@ -67,18 +67,21 @@
   </div>
     @endforeach
 
-
-     <div class="form-group col-6">
-    <label for="pwd">Code</label>
-    <input name="birthdate"  class="form-control" id="pwd" type="text" value="{{$application->code}}" disabled>
-  </div>
-
-      <div class="form-group col-6">
-    <label for="pwd">Cost</label>
-    <input name="birthdate"  class="form-control" id="pwd" type="text" value="{{$application->cost}}" disabled>
-  </div>
+<div class="row">
+  
+</div>
 
 </div>
+
+
+<div class="row">
+<h5 style="color: #3544ab;">@lang('thanks_code')<span style="color: green;">{{$application->code}}</span> </h5>  
+</div>
+
+<div class="row">
+  <h5 style="color: #3544ab;">@lang('thanks_cost')<span style="color: green;">{{$application->cost}}</span> </h5>
+</div>
+
 
  <div class="row">
 <a style="color:#3544ab;margin: 1%;font-size: 20px;" href="/">click here if you want to back to main page</a>
