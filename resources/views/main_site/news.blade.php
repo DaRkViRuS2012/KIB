@@ -1,13 +1,14 @@
 @extends('layouts.main_layout')
 
 @section('content')
-	
+    
 @foreach ($news as $news1)
     {{-- expr --}}
+    <div class="container">
     @if(Session::get('locale')=="en")
         {{-- expr --}}
     
-	   <div  class="row" style="margin-top:3%; margin-bottom: 3%;">
+       <div  class="row" style="margin-top:3%; margin-bottom: 3%;">
                     <div class="col-3">
                         
                     
@@ -20,8 +21,11 @@
                      <article><p>
                         {!! substr($news1->getBody(), 0, 500) !!}  
                          </p></article>
-                     <a class="btn btn-blog pull-right marginBottom10" href="/news_single/{{$news1->id}}">READ MORE</a> 
+                     <div class="row">
+                              <a style="float:right;" class="btn btn-blog pull-right marginBottom10" href="/news_single/{{$news1->id}}">READ MORE</a> 
+                         </div>
                  </div>
+           
                 </div>
 @else
 
@@ -38,12 +42,16 @@
                      <article class="text-right"><p>
                              {!! substr($news1->getBody(), 0, 500) !!}  
                          </p></article>
-                     <a style="float:right;" class="btn btn-blog pull-right marginBottom10" href="/news_single/{{$news1->id}}">READ MORE</a> 
+                         <div class="row">
+                              <a style="float:left;" class="btn btn-blog pull-right marginBottom10" href="/news_single/{{$news1->id}}">ٌقراءة المزيد</a> 
+                         </div>
+                
                  </div>
+                     
                 </div>
 
 
 @endif
-               
+     </div>          
 @endforeach                 
 @endsection
