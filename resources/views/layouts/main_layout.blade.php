@@ -209,6 +209,8 @@
 </section>
 
 
+
+
 <div class="container">
   <div class="row">
   @if ($errors->any())
@@ -242,6 +244,18 @@
 
 
 
+                          @if(session()->has('success'))
+    <div class="alert alert-success">
+
+
+                  @if (Session::get('locale')=="en")
+                <h6 class="text-left">{{ session()->get('success') }}</h6>
+                @else
+                  <h6 class="text-right">{{ session()->get('success') }}</h6>
+                  @endif
+        
+    </div>
+@endif
 
 </body>
 

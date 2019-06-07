@@ -57,5 +57,10 @@
     "reason2":"Credibility in work",
     "reason3":"Expertise of Customer  services",
     "thanks_code":"thank you for your application , your code is : ",
-    "thanks_cost":"The cost of your application is : "
+    "thanks_cost":"The cost of your application is : ",
+    "thanks_sub":"thank you for your Application",
+    "thanks_email":"we'll contact with you throug mail soon",
+    "User Active":"Please Enter the Email and the Code",
+    "code":"Code",
+    "activated":"The user has been activated"
 }

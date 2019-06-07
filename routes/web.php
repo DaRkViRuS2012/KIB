@@ -245,15 +245,24 @@ Route::get('/application/{token}/{user_id}/create','SiteController@application_c
 
 Route::post('/application/{token}/{user_id}/create','SiteController@application_store_mobile');
 
+Route::get('/application/service/{token}/{user_id}/create','SiteController@application_service_create_mobile');
+
+Route::post('/application/service/{token}/{user_id}/create','SiteController@application_service_store_mobile');
+
 Route::group(['middleware' => 'checkuser'], function() {
 
 Route::get('/application/create','SiteController@application_create');
 
 Route::post('/application/create','SiteController@application_store');
+
+
+Route::get('/application/service/create','SiteController@application_service_create');
+
+Route::post('/application/service/create','SiteController@application_service_store');
  
 });
 
-
+Route::get('/application/service/single/{id}','SiteController@application_service_single');
 Route::get('/application/single/{id}','SiteController@application_single');
 
 
@@ -264,6 +273,6 @@ Route::get('/company/portal/{id}','UserController@company_portal');
 });
 
 
-Route::get('user/active/{id}', 'UserController@active_view');
-Route::post('user/active/{id}', 'UserController@active');
+Route::get('user/active', 'UserController@active_view');
+Route::post('user/active', 'UserController@active');
 

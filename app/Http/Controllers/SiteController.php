@@ -128,6 +128,17 @@ public function application_single(Request $request)
 }
 
 
+
+public function application_service_single(Request $request)
+{
+         $id=$request['id'];
+        $application=Application::application_show($id);
+        // return $application;
+        return view('main_site.summary_service',compact('application'));
+}
+
+
+
 public function index()
 {
 
@@ -155,6 +166,13 @@ public function galleries()
 
 
 
+    public function application_service_create()
+    {
+        $services=Service::service_index_fathers();
+        return view('main_site.application_service_create',compact('services'));
+    }
+
+
     public function application_create_mobile(Request $request)
     {
         $token=$request['token'];
@@ -163,6 +181,98 @@ public function galleries()
         $services=Service::product_index_fathers();
         return view('main_site.application_create_mobile',compact('services','user'));
     }
+
+
+    public function application_create_service_mobile(Request $request)
+    {
+        $token=$request['token'];
+        $user_id=$request['user_id'];
+        $user=User::get_by_token($token);
+        $services=Service::product_index_fathers();
+        return view('main_site.application_service_create_mobile',compact('services','user'));
+    }
+
+
+
+
+
+        public function application_service_store(Request $request)
+    {
+
+             $validator = $this->validator_application($request->input());
+         if ($validator->fails()) {
+            // return back()->withErrors($validator)->withInput(); //TODO
+
+            return redirect()->back()
+                    ->withInput($request->input())
+                    ->withErrors($validator);
+
+        }
+
+        $applicant_name_en=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
+        $applicant_name_ar=$request['fname_ar'].' '.$request['father_name_ar'].' '.$request['lname_ar'];
+        $main_service_id=$request['service'];
+        $service_id=$request['sub_service'];
+        $birthdate=$request['birthdate'];
+        $nationality=$request['nationality'];
+        $national_id=$request['national_id'];
+        $martial_status=$request['martial_status'];
+        $work=$request['work'];
+        $user_id=Auth::user()->id;
+        $is_date=$request['is_date'];
+        $code=Sms_helper::RandomString();
+        $date=date('Y-m-d H:i:s');
+        $service=Service::product_show($main_service_id);
+        $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work,$is_date);
+        // if ($service->options!=null) {
+        // foreach ($service->options as $key => $option) {
+        //     $option_id=$option->id;
+        //     $name=$option->attr;
+        //     $application_id=$application->id;
+        //     $option_name=$option->title;
+        //     $option_value=$request[$name];
+        //    ApplicationOption::application_option_create($option_id,$option_value,$application_id);
+        // }
+        // }
+        
+        return redirect('application/service/single/'.$application->id);
+        // $age=$this->calculate_age($birthdate);
+        // $service_info=Service::product_show($main_service_id);
+        // $service_title=$service_info->en_title;
+
+        // Sms_helper::send_sms($application->user->mobile,$application->code);
+        // $cost=0;
+        // if ($service_title=="Medical insurance") {
+        //     $price=Price::price_show_by_service_id($service_id,$age);
+        //     if($price!=null)
+        //     {$cost=$price->value;}
+        // else
+        //     {$cost=0;}
+        // }
+        // elseif ($service_title=="Life insurance") {
+
+        //     $price=Price::price_show_by_service_id($service_id,$age);
+        //     if($price!=null)
+        //     {$price_value=$price->value;
+        //                 $value=$request['life_price'];
+        //                 $cost=$value*$price_value;}
+        //                 else
+        //                 {$cost=0;}
+        // }
+
+        // elseif ($service_title=="Travel insurance") {
+        //     $price=Price::price_show_by_service_id($service_id,$age);
+        //     if($price!=null)
+        //     {$cost=$price->value;}
+        // else
+        // $cost=0;
+        // }
+
+    // Application::application_update_cost($application->id,$cost);
+
+        // return view('main_site.summary',compact('application','cost'));
+    }
+
 
     public function application_store(Request $request)
     {
@@ -298,6 +408,87 @@ public function galleries()
       
         return Redirect::back()->withErrors('You Are  Not Autorized');
     }
+
+
+
+
+           public function application_service_store(Request $request)
+    {
+
+             $validator = $this->validator_application($request->input());
+         if ($validator->fails()) {
+            // return back()->withErrors($validator)->withInput(); //TODO
+
+            return redirect()->back()
+                    ->withInput($request->input())
+                    ->withErrors($validator);
+
+        }
+
+        $applicant_name_en=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
+        $applicant_name_ar=$request['fname_ar'].' '.$request['father_name_ar'].' '.$request['lname_ar'];
+        $main_service_id=$request['service'];
+        $service_id=$request['sub_service'];
+        $birthdate=$request['birthdate'];
+        $nationality=$request['nationality'];
+        $national_id=$request['national_id'];
+        $martial_status=$request['martial_status'];
+        $work=$request['work'];
+        $user_id=Auth::user()->id;
+        $is_date=$request['is_date'];
+        $code=Sms_helper::RandomString();
+        $date=date('Y-m-d H:i:s');
+        $service=Service::product_show($main_service_id);
+        $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work,$is_date);
+        // if ($service->options!=null) {
+        // foreach ($service->options as $key => $option) {
+        //     $option_id=$option->id;
+        //     $name=$option->attr;
+        //     $application_id=$application->id;
+        //     $option_name=$option->title;
+        //     $option_value=$request[$name];
+        //    ApplicationOption::application_option_create($option_id,$option_value,$application_id);
+        // }
+        // }
+        
+        return redirect('application/service/single/'.$application->id);
+        // $age=$this->calculate_age($birthdate);
+        // $service_info=Service::product_show($main_service_id);
+        // $service_title=$service_info->en_title;
+
+        // Sms_helper::send_sms($application->user->mobile,$application->code);
+        // $cost=0;
+        // if ($service_title=="Medical insurance") {
+        //     $price=Price::price_show_by_service_id($service_id,$age);
+        //     if($price!=null)
+        //     {$cost=$price->value;}
+        // else
+        //     {$cost=0;}
+        // }
+        // elseif ($service_title=="Life insurance") {
+
+        //     $price=Price::price_show_by_service_id($service_id,$age);
+        //     if($price!=null)
+        //     {$price_value=$price->value;
+        //                 $value=$request['life_price'];
+        //                 $cost=$value*$price_value;}
+        //                 else
+        //                 {$cost=0;}
+        // }
+
+        // elseif ($service_title=="Travel insurance") {
+        //     $price=Price::price_show_by_service_id($service_id,$age);
+        //     if($price!=null)
+        //     {$cost=$price->value;}
+        // else
+        // $cost=0;
+        // }
+
+    // Application::application_update_cost($application->id,$cost);
+
+        // return view('main_site.summary',compact('application','cost'));
+    }
+
 
     public function news_index()
     {

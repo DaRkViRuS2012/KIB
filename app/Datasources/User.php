@@ -174,10 +174,26 @@ class User extends Authenticatable
     }
 
 
+         public static function user_update_token($user_id,$token)
+    {
+        $user=User::find($user_id);
+        $user->fcmtoken=$token;
+        $user->save();
+        return $user;
+    }
+
+
         public static function user_delete($id)
     {
         $user=User::find($id);
         $user->delete();
+    }
+
+
+          public static function user_by_email($email)
+    {
+        $user=User::where('email',$email)->first();
+        return $user;
     }
 
 

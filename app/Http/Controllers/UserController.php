@@ -265,7 +265,7 @@ public function login(Request $request)
      else
       {return redirect('/');}
     }
-          return redirect()->intended('/user/active/'.$user->id)->withErrors(['the user is not active ']);
+          return redirect()->intended('/user/active')->withErrors(['the user is not active ']);
       }
       return redirect()->intended('/login')->withErrors(['the Email or Password wrong']);
   }
@@ -298,17 +298,18 @@ public function login(Request $request)
 
 public function active(Request $request)
 {
-  $user_id=$request['id'];
+  $email=$request['email'];
   $code=$request['code'];
-  $user=User::user_show($user_id);
+  $user=User::user_by_email($email);
   if ($user!=null) {
     # code...
 
   if ($user->code==$code) {
-        User::user_active($user_id);
-          return redirect('/');
+    $id=$user->id;
+        User::user_active($id);
+          return back()->with('success', __('activated')); 
   }
-  return redirect()->intended('/user/active/'.$user_id)->withErrors(['The code you entered is wrong please try again']);
+  return redirect()->intended('/user/active')->withErrors(['The code you entered is wrong please try again']);
     }
 
       return redirect()->intended('/login')->withErrors(['the user is not exist']);
@@ -317,15 +318,16 @@ public function active(Request $request)
 
 public function active_api(Request $request)
 {
-  $user_id=$request['id'];
+  $email=$request['email'];
   $code=$request['code'];
-  $user=User::user_show($user_id);
+  $user=User::user_by_email($email);
   if ($user!=null) {
     # code...
 
   if ($user->code==$code) {
-        User::user_active($user_id);
-        return response()->json(['status' => true, 'data' =>$user, 'message' => 'The user has been activated','type'=>'succuess']);
+        $id=$user->id;
+        User::user_active($id);
+        return response()->json(['status' => true, 'data' =>$user, 'message' => __('activated'),'type'=>'succuess']);
 
   }
   return response()->json(['status' => false, 'data' =>'', 'message' => 'The code you entered is wrong please try again','type'=>'error']);
@@ -345,9 +347,17 @@ public function company_portal()
 public function active_view(Request $request)
 {
 
-  $id=$request['id'];
-  $user=User::user_show($id);
-  return view('auth.active',compact('user'));
+  return view('auth.active');
+}
+
+
+
+public function update_token_api(Request $request)
+{
+  $user_id=$request['user_id'];
+  $token=$request['token'];
+  $user=User::user_update_token($user_id,$token);
+ return response()->json(['status' => true, 'data' =>$user, 'message' => 'the token has been updated','type'=>'succuess']);
 }
 }
 

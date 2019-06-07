@@ -4,14 +4,19 @@
 <div class="container">
 
 
-<div class="row">
-  <h2  style="color:#3544ab;text-transform: capitalize;margin-top: 2%;">@lang('User Login'):</h2>
+<div style="margin-bottom:3%" class="row">
+  <h2  style="color:#3544ab;text-transform: capitalize;margin-top: 2%;">@lang('User Active'):</h2>
 </div>
-<form action="/user/active/{{Auth::user()->id}}" method="post">
+<form action="/user/active" method="post">
   @csrf
 <div class="row">
    <div class="form-group col-lg-6 col-sm-12">
     <label for="email">@lang('Email')</label>
+    <input name="email" class="form-control" id="email" type="text">
+  </div>
+
+    <div class="form-group col-lg-6 col-sm-12">
+    <label for="email">@lang('code')</label>
     <input name="code" class="form-control" id="email" type="text">
   </div>
 </div>
