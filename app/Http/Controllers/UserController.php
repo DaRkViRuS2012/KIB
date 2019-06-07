@@ -325,7 +325,7 @@ public function active_api(Request $request)
 
   if ($user->code==$code) {
         User::user_active($user_id);
-        return response()->json(['status' => true, 'data' =>$user, 'message' => 'The user has been activated','type'=>'error']);
+        return response()->json(['status' => true, 'data' =>$user, 'message' => 'The user has been activated','type'=>'succuess']);
 
   }
   return response()->json(['status' => false, 'data' =>'', 'message' => 'The code you entered is wrong please try again','type'=>'error']);
