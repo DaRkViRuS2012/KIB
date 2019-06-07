@@ -266,6 +266,10 @@ Route::get('/application/service/single/{id}','SiteController@application_servic
 Route::get('/application/single/{id}','SiteController@application_single');
 
 
+Route::get('/application/service/single/mobile/{id}','SiteController@application_service_single_mobile');
+Route::get('/application/single/mobile/{id}','SiteController@application_single_mobile');
+
+
 Route::get('/company/portal/{id}','UserController@company_portal');
 
   Route::get('/company', function() {

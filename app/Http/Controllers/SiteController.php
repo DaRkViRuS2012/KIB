@@ -139,6 +139,26 @@ public function application_service_single(Request $request)
 
 
 
+public function application_single_mobile(Request $request)
+{
+         $id=$request['id'];
+        $application=Application::application_show($id);
+        // return $application;
+        return view('main_site.summary_mobile',compact('application'));
+}
+
+
+
+public function application_service_single_mobile(Request $request)
+{
+         $id=$request['id'];
+        $application=Application::application_show($id);
+        // return $application;
+        return view('main_site.summary_service_mobile',compact('application'));
+}
+
+
+
 public function index()
 {
 

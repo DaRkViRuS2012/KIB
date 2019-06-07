@@ -65,3 +65,7 @@ Route::get('/product/sub/{id}', 'SiteController@product_sons_api')->name('home')
 
 
 Route::post('/user/active','UserController@active_api');
+
+
+Route::post('/user/update_token','UserController@update_token_api');
+
