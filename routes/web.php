@@ -13,10 +13,11 @@
 
 
 
-// Auth::routes();
+Auth::routes();
 
 
 use App\Service;
+
 
 
 
@@ -195,9 +196,6 @@ Route::post('user/login', 'UserController@login');
 
 
 
-Route::get('/login', 'Auth\LoginController@login')->name('logout');
-
-Route::post('/login', 'Auth\LoginController@login')->name('logout');
 
 Route::get('/account', 'UserController@account')->name('logout');
 
