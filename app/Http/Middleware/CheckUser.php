@@ -15,8 +15,13 @@ class CheckUser
      */
    public function handle($request, Closure $next)
     {
-        if (Auth::check()) 
-        return $next($request);
+        if (Auth::check()) {
+
+    if(Auth::user()->active=='1')
+        return $next($request);   
+    else
+        return redirect('user/active/'.Auth::user()->id);
+        }
 
     return redirect('/user/login');
     }

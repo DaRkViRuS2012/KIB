@@ -15,12 +15,18 @@
 
 <link rel="stylesheet" type="text/css" href="{{ asset('main_site/css/main.css') }}">
 
+<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
   <link href="{{ asset('main_site/css/JiSlider.css') }}" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="{{ asset('main_site/css/round_icons.css')}}">
 
 </head>
-<body style="height:100vh;">
+
+   @if (Session::get('locale')=="ar")
+<body style="height:100vh;font-family: 'Amiri', serif !important;">
+  @else
+  <body style="height:100vh;">
+  @endif
   <div id="loader">
     <img src="{{ asset('main_site/img/logo.gif') }}" width="10%">
   </div>
@@ -168,11 +174,6 @@
       </ul>
     </div>
     @endif
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
   </div>
 </nav>
   </header>
@@ -180,32 +181,95 @@
 <section id="content" style="height:100vh;">
   <div class="row">
   <div class="banner-silder">
-    <div id="JiSlider" class="jislider">
+    @if (Session::get('locale')=="en")
+    <div style="width:100%;height:100%" id="JiSlider" class="jislider">
       <ul>
-        <li>
-           @if (Session::get('locale')=="en")
-           <div  class="w3layouts-banner-top">
-            @else
-          <div dir="rtl" class="w3layouts-banner-top">
-            @endif
+
+
+
+
+               <li>
+          <div class="w3layouts-banner-top">
+
+ 
             <div class="bs-slider-overlay">
               <div class="container">
                 <!-- Slide Text Layer -->
                 <div class="w3l-slide-text col-lg-6">
-                  <h3 style="color:#414141" data-animation="animated zoomInRight">@lang('Have The Right Insurance')</h3>
-                  <p class="aos-init aos-animate" data-aos="fade-down">@lang('To Keep Your Family Safe')</p>
-                  <a  href="services.html" target="_blank" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">@lang('Get A Qutation')</a>
+                  <h3 style="color:#ffffff;font-size: 32px!important;" data-animation="animated zoomInRight">@lang('Have The Right Insurance')</h3>
+                  <p style="font-size:18px;" class="aos-init aos-animate" data-aos="fade-down">@lang('To Keep Your Family Safe')</p>
+                 {{--  <a  href="services.html" target="_blank" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">@lang('Get A Qutation')</a> --}}
                 </div>
               </div>
             </div>
           </div>
         </li>
-        <li>
-          @if (Session::get('locale')=="en")
+
+
+         <li>
+
+          <div class="w3layouts-banner-top w3layouts-banner-top2">
+            
+
+            <div class="bs-slider-overlay">
+              <div class="container">
+                <!-- Slide Text Layer -->
+                <div class="w3l-slide-text col-lg-7">
+                  <h3 data-animation="animated zoomInRight">@lang('Why You Should Choose ')<span style="color:#202e9c">@lang('KIB')</span></h3>
+                  <p>
+  <a style="font-size:18px;color:#ffffff;font-weight:bold" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
+     <span class="right"></span>
+    @lang("Reason1")
+  </a>
+</p>
+<div class="collapse" id="collapseExample1">
+  <div class="card card-body" style="background-color: transparent;color: white;">
+    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+  </div>
+</div>
+
+
+                <p>
+
+  <a style="font-size:18px;color:#ffffff;font-weight:bold" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+      <span class="right" ></span>
+    @lang("Reason2")
+  </a>
+</p>
+<div class="collapse" id="collapseExample2">
+  <div class="card card-body" style="background-color: transparent;color: white;">
+    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+  </div>
+</div>
+
+                <p style="margin-bottom:100px">
+
+  <a style="font-size:18px;color:#ffffff;font-weight:bold" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
+       <span class="right"></span>
+    @lang("Reason3")
+  </a>
+</p>
+<div class="collapse" id="collapseExample3">
+  <div class="card card-body" style="background-color: transparent;color: white;">
+    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+  </div>
+</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+
+      
+       
+
+
+          <li>
+  
           <div class="w3layouts-banner-top w3layouts-banner-top1">
-            @else
-            <div dir="rtl" class="w3layouts-banner-top w3layouts-banner-top1">
-              @endif
+
+  
             <div class="bs-slider-overlay">
               <div class="container">
                 <div class="row">
@@ -217,7 +281,7 @@
                 </div>
                   <div class="w3l-slide-text col-lg-6">
                         <div class='circle-container'>
-           <a href='#' class="deg-center"><img {{-- style="border-radius:50%!important"  --}} src="{{ asset('main_site/img/Logo.png') }}"></a>
+           <a href='#' class="deg-center"><img style="width: 100px;height: 100px;" {{-- style="border-radius:50%!important"  --}} src="{{ asset('main_site/img/Logo.png') }}"></a>
 
       @foreach ($services as $key=> $service)
         {{-- expr --}}
@@ -233,61 +297,6 @@
             </div>
           </div>
         </li>
-        <li>
-            @if (Session::get('locale')=="en")
-          <div class="w3layouts-banner-top w3layouts-banner-top2">
-            @else
-            <div dir="rtl" class="w3layouts-banner-top w3layouts-banner-top2">
-              @endif
-            <div class="bs-slider-overlay">
-              <div class="container">
-                <!-- Slide Text Layer -->
-                <div class="w3l-slide-text col-lg-7">
-                  <h3 data-animation="animated zoomInRight">@lang('Why You Should Choose ')<span style="color:#202e9c">@lang('KIB')</span></h3>
-                  <p>
-  <a style="font-size:18px;color:#414141;font-weight:bold" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
-     <span class="right"></span>
-    Reason1
-  </a>
-</p>
-<div class="collapse" id="collapseExample1">
-  <div class="card card-body" style="background-color: transparent;color: white;">
-    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-  </div>
-</div>
-
-
-                <p>
-
-  <a style="font-size:18px;color:#414141;font-weight:bold" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
-      <span class="right" ></span>
-    Reason2
-  </a>
-</p>
-<div class="collapse" id="collapseExample2">
-  <div class="card card-body" style="background-color: transparent;color: white;">
-    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-  </div>
-</div>
-
-                <p style="margin-bottom:100px">
-
-  <a style="font-size:18px;color:#414141;font-weight:bold" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
-       <span class="right"></span>
-    Reason3
-  </a>
-</p>
-<div class="collapse" id="collapseExample3">
-  <div class="card card-body" style="background-color: transparent;color: white;">
-    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-  </div>
-</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-
 
 {{-- @foreach ($sliders as $key => $slider) --}}
   
@@ -309,6 +318,157 @@
         {{-- @endforeach --}}
       </ul>
     </div>
+
+
+<!-- slider 2 -->
+
+@else
+   <div style="width:100%;height:100%" id="JiSlider" class="jislider">
+      <ul>
+
+
+ <li>
+  
+        
+
+            <div dir="rtl" style="text-align:right;" class="w3layouts-banner-top w3layouts-banner-top1">
+            <div class="bs-slider-overlay">
+              <div class="container">
+                <div class="row">
+                <!-- Slide Text Layer -->
+                <div class="w3l-slide-text col-lg-6">
+                   <h3 style="color:#3544ab;" data-animation="animated zoomInRight">@lang('KIB')</h3>
+                  <p class="aos-init aos-animate" data-aos="fade-down">@lang('We make your insurance easy')</p>
+                  <a href="/services" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">@lang('View Our Services')</a>
+                </div>
+                  <div class="w3l-slide-text col-lg-6">
+                        <div class='circle-container'>
+           <a href='#' class="deg-center"><img style="width: 100px;height: 100px;" {{-- style="border-radius:50%!important"  --}} src="{{ asset('main_site/img/Logo.png') }}"></a>
+
+      @foreach ($services as $key=> $service)
+        {{-- expr --}}
+     
+      <a href='/service/{{$service->id}}/show' class='deg{{$key}}'><img {{-- style="border-radius:50%!important"  --}} src='{{env('image_storage')}}/{{$service->icon()}}'></a>
+      @endforeach
+
+    </div>
+                </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </li>
+
+
+
+         <li>
+
+
+            
+
+            <div dir="rtl" style="text-align: right;" class="w3layouts-banner-top w3layouts-banner-top2">
+            <div class="bs-slider-overlay">
+              <div class="container">
+                <!-- Slide Text Layer -->
+                <div class="w3l-slide-text col-lg-7">
+                  <h3 data-animation="animated zoomInRight">@lang('Why You Should Choose ')<span style="color:#202e9c">@lang('KIB')</span></h3>
+                  <p>
+  <a style="font-size:18px;color:#ffffff;font-weight:bold" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
+     <span class="right"></span>
+    @lang("Reason1")
+  </a>
+</p>
+<div class="collapse" id="collapseExample1">
+  <div class="card card-body" style="background-color: transparent;color: white;">
+    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+  </div>
+</div>
+
+
+                <p>
+
+  <a style="font-size:18px;color:#ffffff;font-weight:bold" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+      <span class="right" ></span>
+    @lang("Reason2")
+  </a>
+</p>
+<div class="collapse" id="collapseExample2">
+  <div class="card card-body" style="background-color: transparent;color: white;">
+    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+  </div>
+</div>
+
+                <p style="margin-bottom:100px">
+
+  <a style="font-size:18px;color:#ffffff;font-weight:bold" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
+       <span class="right"></span>
+    @lang("Reason3")
+  </a>
+</p>
+<div class="collapse" id="collapseExample3">
+  <div class="card card-body" style="background-color: transparent;color: white;">
+    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+  </div>
+</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+
+      
+       
+
+
+         
+
+
+
+
+               <li>
+
+            <div dir="rtl" style="text-align:right;" class="w3layouts-banner-top">
+ 
+            <div class="bs-slider-overlay">
+              <div class="container">
+                <!-- Slide Text Layer -->
+                <div class="w3l-slide-text col-lg-6">
+                  <h3 style="color:#ffffff;font-size: 32px!important;" data-animation="animated zoomInRight">@lang('Have The Right Insurance')</h3>
+                  <p style="font-size:18px;" class="aos-init aos-animate" data-aos="fade-down">@lang('To Keep Your Family Safe')</p>
+                 {{--  <a  href="services.html" target="_blank" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">@lang('Get A Qutation')</a> --}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+{{-- @foreach ($sliders as $key => $slider) --}}
+  
+
+{{--                 <li>
+          <div class="w3layouts-banner-top{{$key+4}}" style="background: url({{env('image_storage')}}/{{$slider->media->url}}) no-repeat 0px 0px;background-size: cover;-webkit-background-size: cover;-moz-background-size:cover;-o-background-size: cover;-moz-background-size: cover;">
+            <div class="bs-slider-overlay">
+              <div class="container">
+                <!-- Slide Text Layer -->
+                <div class="w3l-slide-text col-lg-6">
+                  <h3 style="color:#414141" data-animation="animated zoomInRight">{{$slider->en_title}}</h3>
+                  <p class="aos-init aos-animate" data-aos="fade-down">{{$slider->en_sub_title}}</p>
+                  <a  href="services.html" target="_blank" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">Get A Qutation</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li> --}}
+        {{-- @endforeach --}}
+      </ul>
+    </div>
+@endif
+
+
+
+
   </div>
     </div>
   
@@ -373,17 +533,38 @@ function closeNav() {
 <!-- Latest compiled JavaScript -->
 
 <script src="{{ asset('main_site/js/JiSlider.js') }}"></script>
+
+@if (Session::get('locale')=="en")
   <script>
 
 
     $(window).on('load', function () {
       $('#JiSlider').JiSlider({
         color: '#fff',
+        start: 1,
+        time:3000,
+        auto:true,
+        stay:10000,
+        reverse: false
+      }).addClass('ff')
+    })
+  </script>
+
+@else
+    <script>
+
+    $(window).on('load', function () {
+      $('#JiSlider').JiSlider({
+        color: '#fff',
         start: 3,
+        time:3000,
+        auto:true,
+        stay:10000,
         reverse: true
       }).addClass('ff')
     })
   </script>
+@endif
 
     <script>
     $(document).ready(function () {
@@ -441,4 +622,24 @@ function closeNav() {
 }
 
 </style>
+
+  @if (Session::get('locale')=="ar")
+  
+  <style type="text/css">
+    .right:after {
+    content: '';
+    display: inline-block;
+    margin-top: 7px;
+    /* margin-left: 0px; */
+    margin: 7px!important;
+    width: 1em;
+    height: 1em;
+    border-top: 0.2em solid #202e9c;
+    border-right: 0.2em solid #202e9c;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+  </style>
+@endif
 </html>

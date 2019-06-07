@@ -79,7 +79,7 @@ class User extends Authenticatable
         $user->name=$name;
         $user->username=$username;
         $user->email=$email;
-        $user->active='1';
+        $user->active='0';
         $user->password=$password;
         $user->birthdate=$birthdate;
         $user->fcmtoken=$fcmtoken;
@@ -154,12 +154,24 @@ class User extends Authenticatable
     }
 
 
+
+
+
     public  static function user_index()
     {
         $users=User::all();
         return $users;
     }
 
+
+
+       public static function user_active($user_id)
+    {
+        $user=User::find($user_id);
+        $user->active='1';
+        $user->save();
+        return $user;
+    }
 
 
         public static function user_delete($id)

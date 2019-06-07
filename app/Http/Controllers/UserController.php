@@ -252,6 +252,9 @@ public function login(Request $request)
       if (Auth::attempt(['email' => $email, 'password' => $password])) {
           // Authentication passed...
         $user= User::where('email',$request->email)->first();
+        if ($user->active=='1') {
+          # code...
+        
         if($user->is_admin())
         {
           return redirect('/admin');
@@ -261,6 +264,8 @@ public function login(Request $request)
      } 
      else
       {return redirect('/');}
+    }
+          return redirect()->intended('/user/active/'.$user->id)->withErrors(['the user is not active ']);
       }
       return redirect()->intended('/login')->withErrors(['the Email or Password wrong']);
   }
@@ -290,6 +295,44 @@ public function login(Request $request)
 
 }
 
+
+public function active(Request $request)
+{
+  $user_id=$request['id'];
+  $code=$request['code'];
+  $user=User::user_show($user_id);
+  if ($user!=null) {
+    # code...
+
+  if ($user->code==$code) {
+        User::user_active($user_id);
+          return redirect('/');
+  }
+  return redirect()->intended('/user/active/'.$user_id)->withErrors(['The code you entered is wrong please try again']);
+    }
+
+      return redirect()->intended('/login')->withErrors(['the user is not exist']);
+}
+
+
+public function active_api(Request $request)
+{
+  $user_id=$request['id'];
+  $code=$request['code'];
+  $user=User::user_show($user_id);
+  if ($user!=null) {
+    # code...
+
+  if ($user->code==$code) {
+        User::user_active($user_id);
+        return response()->json(['status' => true, 'data' =>$user, 'message' => 'The user has been activated','type'=>'error']);
+
+  }
+  return response()->json(['status' => false, 'data' =>'', 'message' => 'The code you entered is wrong please try again','type'=>'error']);
+    }
+
+     return response()->json(['status' => false, 'data' =>'', 'message' => 'The User is not exist','type'=>'error']);
+}
 
 public function company_portal()
 {
