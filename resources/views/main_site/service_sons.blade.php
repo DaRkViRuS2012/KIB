@@ -12,7 +12,7 @@
         @if ($service->id==$main_service->id)
             <a style="background-color: #3544ab!important;color: white;" href="/service/{{$service->id}}/show" class="list-group-item list-group-item-action bg-light">{{$service->getTitle()}}</a>
               @else
-               <a href="/service/{{$service->id}}/show" class="list-group-item list-group-item-action bg-light">{{$service->getTitle()}}</a>
+               <a style="color:#495057;" href="/service/{{$service->id}}/show" class="list-group-item list-group-item-action bg-light">{{$service->getTitle()}}</a>
         @endif
 
         @endforeach
