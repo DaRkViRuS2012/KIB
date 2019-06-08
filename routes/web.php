@@ -17,7 +17,14 @@ Auth::routes();
 
 
 use App\Service;
+use App\NotificationHelper;
+use App\NotificationService;
 
+
+
+Route::get('/sendnotify', function() {
+   NotificationService::SendToTopic('android','hello this is a test','test for notfication');
+});
 
 
 
@@ -26,8 +33,6 @@ Route::group(['middleware' => 'checkval'], function() {
   Route::get('/admin', function() {
     return view('admin.index');
 });
-
-
 
 
 

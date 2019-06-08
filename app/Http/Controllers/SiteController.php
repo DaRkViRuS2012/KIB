@@ -432,7 +432,7 @@ public function galleries()
 
 
 
-           public function application_service_store(Request $request)
+           public function application_service_mobile_store(Request $request)
     {
 
              $validator = $this->validator_application($request->input());

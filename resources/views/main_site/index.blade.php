@@ -195,8 +195,8 @@
             <div class="bs-slider-overlay">
               <div class="container">
                 <!-- Slide Text Layer -->
-                <div class="w3l-slide-text col-lg-6">
-                  <h3 style="color:#ffffff;font-size: 32px!important;" data-animation="animated zoomInRight">@lang('Have The Right Insurance')</h3>
+                <div class="w3l-slide-text col-lg-9">
+                  <h3 style="color:#ffffff;font-size: 28px!important;" data-animation="animated zoomInRight">@lang('Have The Right Insurance')</h3>
                   <p style="font-size:18px;" class="aos-init aos-animate" data-aos="fade-down">@lang('To Keep Your Family Safe')</p>
                  {{--  <a  href="services.html" target="_blank" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">@lang('Get A Qutation')</a> --}}
                 </div>
@@ -214,7 +214,7 @@
             <div class="bs-slider-overlay">
               <div class="container">
                 <!-- Slide Text Layer -->
-                <div class="w3l-slide-text col-lg-7">
+                <div class="w3l-slide-text col-lg-9">
                   <h3 data-animation="animated zoomInRight">@lang('Why You Should Choose ')<span style="color:#202e9c">@lang('KIB')</span></h3>
                   <p>
   <a style="font-size:18px;color:#ffffff;font-weight:bold" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -274,7 +274,7 @@
               <div class="container">
                 <div class="row">
                 <!-- Slide Text Layer -->
-                <div class="w3l-slide-text col-lg-6">
+                <div class="w3l-slide-text col-lg-9">
                    <h3 style="color:#3544ab;" data-animation="animated zoomInRight">@lang('KIB')</h3>
                   <p class="aos-init aos-animate" data-aos="fade-down">@lang('We make your insurance easy')</p>
                   <a href="/services" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">@lang('View Our Services')</a>
