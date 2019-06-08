@@ -66,25 +66,28 @@
   </script>
 <section id="navbar">
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
-   <div class="container-fluid">
-     @if (Session::get('locale')=="en")
-    
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-   
-    <div class="collapse navbar-collapse col-8" id="navbarResponsive">
-     <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+  <div class="row">
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+ 
+   @if (Session::get('locale')=="en")
+ 
+  <div  class="collapse navbar-collapse col-lg-11"  id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
           <a class="nav-link" href="/">@lang("Home")
                 <span class="sr-only">(current)</span>
               </a>
         </li>
 
-            <li class="nav-item">
+         <li class="nav-item">
           <a class="nav-link" href="/aboutus">@lang("About us")</a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="/services">@lang("Services")</a>
         </li>
@@ -100,8 +103,6 @@
           <li class="nav-item">
           <a class="nav-link" href="/news">@lang("News")</a>
         </li>
-
-     
 
         <li class="nav-item">
           <a class="nav-link" href="/contact">@lang("Contact us")</a>
@@ -121,7 +122,7 @@
           <a class="nav-link" href="/user/login">@lang('Login')</a>
         </li>
         @endif
-        @if (Session::get('locale')=="ar")
+          @if (Session::get('locale')=="ar")
           <li class="nav-item">
           <a class="nav-link" href="/lang/en">EN</a>
         </li>
@@ -131,26 +132,33 @@
         </li>
         @endif
       </ul>
-    </div>
+  </div>
+    <div style="left: 60%;" class="col-lg-1">
+     <a class="navbar-brand" href="#">
+        <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
+        </a>
+ </div>
+@else
+     <div class="col-lg-1">
+     <a class="navbar-brand" href="#">
+        <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
+        </a>
+ </div>
 
-    <div class="col-1">
-    <a class="navbar-brand" href="#">
-        <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
-        </a>
-        </div>
-    @else
-          <div class="col-1">
-    <a class="navbar-brand" href="#">
-        <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
-        </a>
-        </div>
-     <div dir="rtl" class="collapse navbar-collapse col-8" id="navbarResponsive">
+  
+
+              <div dir="rtl" style="left:60%;"  class="collapse navbar-collapse col-lg-11"  id="navbarNav">
+
+
+
      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/">@lang("Home")
                 <span class="sr-only">(current)</span>
               </a>
         </li>
+
+        
          <li class="nav-item">
           <a class="nav-link" href="/aboutus">@lang("About us")</a>
         </li>
@@ -170,7 +178,6 @@
           <a class="nav-link" href="/news">@lang("News")</a>
         </li>
 
-        
 
         <li class="nav-item">
           <a class="nav-link" href="/contact">@lang("Contact us")</a>
@@ -190,7 +197,7 @@
           <a class="nav-link" href="/user/login">@lang('Login')</a>
         </li>
         @endif
-        @if (Session::get('locale')=="ar")
+          @if (Session::get('locale')=="ar")
           <li class="nav-item">
           <a class="nav-link" href="/lang/en">EN</a>
         </li>
@@ -203,11 +210,147 @@
     </div>
 
     @endif
-   </div>
-   </nav>
+
+  </div>
+</nav>
+{{--    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+  <div class="container-fluid collapse navbar-collapse">
+    
+     @if (Session::get('locale')=="en")
+        <div  class="collapse navbar-collapse col-lg-11" id="navbarResponsive">
+     <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">@lang("Home")
+                <span class="sr-only">(current)</span>
+              </a>
+        </li>
+
+         <li class="nav-item">
+          <a class="nav-link" href="/aboutus">@lang("About us")</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/services">@lang("Services")</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/products">@lang("Buy Insurance")</a>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="/galleries">@lang("Galleries")</a>
+        </li>
+
+          <li class="nav-item">
+          <a class="nav-link" href="/news">@lang("News")</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">@lang("Contact us")</a>
+        </li>
+        @if (Auth::check())
+           <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user"></i> {{Auth::user()->name}} </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+          <a class="dropdown-item" href="/account">@lang('My account')</a>
+          <a class="dropdown-item" href="/logout">@lang('Log out')</a>
+        </div>
+      </li>
+      @else
+      <li class="nav-item">
+          <a class="nav-link" href="/user/login">@lang('Login')</a>
+        </li>
+        @endif
+          @if (Session::get('locale')=="ar")
+          <li class="nav-item">
+          <a class="nav-link" href="/lang/en">EN</a>
+        </li>
+        @else
+         <li class="nav-item">
+          <a class="nav-link" href="/lang/ar">عربي</a>
+        </li>
+        @endif
+      </ul>
+    </div>
+    <div class="col-1">
+    <a class="navbar-brand" href="#">
+        <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
+        </a>
+        </div>
+
+        @else
+
+            <div class="col-1">
+    <a class="navbar-brand" href="#">
+        <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
+        </a>
+        </div>
+
+               <div dir="rtl" class="collapse navbar-collapse col-8" id="navbarResponsive">
+     <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">@lang("Home")
+                <span class="sr-only">(current)</span>
+              </a>
+        </li>
+
+        
+         <li class="nav-item">
+          <a class="nav-link" href="/aboutus">@lang("About us")</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/services">@lang("Services")</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/products">@lang("Buy Insurance")</a>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="/galleries">@lang("Galleries")</a>
+        </li>
+
+          <li class="nav-item">
+          <a class="nav-link" href="/news">@lang("News")</a>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">@lang("Contact us")</a>
+        </li>
+        @if (Auth::check())
+           <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user"></i> {{Auth::user()->name}} </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+          <a class="dropdown-item" href="/account">@lang('My account')</a>
+          <a class="dropdown-item" href="/logout">@lang('Log out')</a>
+        </div>
+      </li>
+      @else
+      <li class="nav-item">
+          <a class="nav-link" href="/user/login">@lang('Login')</a>
+        </li>
+        @endif
+          @if (Session::get('locale')=="ar")
+          <li class="nav-item">
+          <a class="nav-link" href="/lang/en">EN</a>
+        </li>
+        @else
+         <li class="nav-item">
+          <a class="nav-link" href="/lang/ar">عربي</a>
+        </li>
+        @endif
+      </ul>
+    </div>
+    @endif
+  </div>
+</nav> --}}
   </header>
 </section>
-
 
 
 

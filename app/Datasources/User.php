@@ -135,13 +135,13 @@ class User extends Authenticatable
         return $user;
     }
 
-       public static function user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile)
+       public static function user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$mobile)
     {
         $user=User::find($id);
         $user->name=$name;
         $user->username=$username;
         $user->email=$email;
-        $user->active='1';
+        // $user->active='1';
         $user->password=$password;
         $user->birthdate=$birthdate;
         $user->fcmtoken=$fcmtoken;

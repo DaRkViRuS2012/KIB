@@ -145,7 +145,13 @@ position: fixed // or absolute
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
+
+
+
 }
+
+
+
 
 
 #service
@@ -452,6 +458,13 @@ a.button-style {
         padding-left: 0em;
         padding-top: 10em;
     }
+
+
+    .bs-slider-overlay {
+background-color: rgba(0, 0, 0, 0.40);
+    height: 190vw!important;
+
+}
 
     .view.view-fifth i {
         font-size: 3em;

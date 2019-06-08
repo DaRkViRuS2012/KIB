@@ -36,6 +36,8 @@ class UserController extends Controller
              'code' => ['unique:users'],
              'mobile' => ['required', 'string', 'max:9','unique:users'],
              'token' => [ 'unique:users'],
+                   'birthdate' => [ 'unique:users'],
+
         ]);
     }
 
@@ -52,6 +54,7 @@ class UserController extends Controller
              'username' => ['string', 'max:255'],
              'code' => ['unique:users'],
              'token' => [ 'unique:users'],
+                   'birthdate' => [ 'unique:users'],
         ]);
     }
 
@@ -146,6 +149,37 @@ class UserController extends Controller
 
        
     }
+
+
+ 
+      public function update(Request $request)
+    {
+        $validator = $this->validator_register($request->input());
+         if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput(); //TODO
+
+        }
+        $name=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
+        $username=$request['username'];
+        $email=$request['email'];
+        $password=Hash::make($request['password']);
+        $birthdate=$request['birthdate'];
+        $fcmtoken=$request['fcmtoken'];
+        $city_id=$request['city_id'];
+        // $code=Sms_helper::RandomString();
+        $mobile=$request['mobile'];
+        $token=str_replace("/","",Hash::make($name.$email));
+        $os='web';
+
+        $user=User::user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$mobile);
+          Sms_helper::send_sms($user->mobile,$user->code); 
+         // Auth::loginUsingId($user->id);
+         return redirect('/'); 
+
+       
+    }
+
+   
 
 
 

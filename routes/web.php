@@ -203,7 +203,9 @@ Route::post('user/login', 'UserController@login');
 
 
 
-Route::get('/account', 'UserController@account')->name('logout');
+Route::get('/account', 'UserController@account')->name('account');
+
+Route::post('/account', 'UserController@update')->name('account');
 
 
 Route::get('/galleries','SiteController@galleries');

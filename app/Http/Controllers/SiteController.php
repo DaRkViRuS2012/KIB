@@ -195,6 +195,7 @@ public function galleries()
 
     public function application_create_mobile(Request $request)
     {
+        
         $token=$request['token'];
         $user_id=$request['user_id'];
         $user=User::get_by_token($token);
