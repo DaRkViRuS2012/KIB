@@ -81,6 +81,8 @@
             <a class="collapse-item" href="/admin/price/index">Prices</a>
             <a class="collapse-item" href="/admin/page/index">Pages</a>
             <a class="collapse-item" href="/admin/user/index">Users</a>
+              <a class="collapse-item" href="/admin/notification/index">Notifications</a>
+    
           </div>
         </div>
       </li>

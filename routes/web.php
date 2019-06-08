@@ -22,9 +22,6 @@ use App\NotificationService;
 
 
 
-Route::get('/sendnotify', function() {
-   NotificationService::SendToTopic('android','hello this is a test','test for notfication');
-});
 
 
 
@@ -175,6 +172,10 @@ Route::post('/admin/user/create','UserController@admin_store');
 Route::get('/admin/user/update/{id}','UserController@admin_edit');
 Route::post('/admin/user/update/{id}','UserController@admin_update');
 Route::get('/admin/user/delete/{id}','UserController@admin_delete');
+//*********************************************************************************************
+Route::get('/admin/notification/index','NotificationController@index');
+Route::get('/sendnotify', 'NotificationController@create');
+Route::post('/sendnotify', 'NotificationController@store');
 });
 //*********************************************************************************************
 
