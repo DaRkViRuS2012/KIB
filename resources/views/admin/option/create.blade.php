@@ -47,7 +47,7 @@
 <select class="form-control"  name="service">
   <option selected disabled>choose the service</option>
   @foreach ($services as $service)
-    <option value="{{$service->id}}">{{$service->en_title}}</option>
+    <option value="{{$service->id}}">{{$service->en_title}}{{$service->type}}</option>
 
   @endforeach
     

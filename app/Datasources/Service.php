@@ -75,6 +75,14 @@ class Service extends Model
     }
 
 
+
+        public static function index()
+    {
+        $services=Service::where('parent_id','0')->with('media','sons','options','prices','quotation','partner')->get();
+        return $services;
+    }
+
+
     public static function service_index()
     {
     	$services=Service::where('type','service')->with('media','sons','options','prices','quotation','partner')->get();

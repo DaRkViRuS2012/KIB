@@ -374,8 +374,9 @@ return redirect('/admin/service/index');
         $company_id='';                               
         $portal_link='';
         $type='product';
-        $content_type='service';
-         $product=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type);
+        $icon=" ";
+        $content_type='product';
+         $product=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type,$icon);
                     if($request->hasFile('image')){
             foreach($request->file('image') as $file) {                    
             $imagename=$file->getClientOriginalName();
