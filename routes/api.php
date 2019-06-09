@@ -23,7 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/aboutus','AboutUsController@index_api');
+Route::get('/aboutus','SiteController@aboutApi');
 
 Route::get('/contacts','ContactController@index_api');
 
