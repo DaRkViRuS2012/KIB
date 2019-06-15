@@ -204,7 +204,6 @@ Route::post('user/login', 'UserController@login');
 
 
 Route::get('/account', 'UserController@account')->name('account');
-
 Route::post('/account', 'UserController@update')->name('account');
 
 
@@ -234,10 +233,8 @@ Route::get('/news','SiteController@news_index');
 
 Route::get('/news_single/{id}', 'SiteController@news_show');
 
+Route::get('/contact','SiteController@contact');
 
-Route::get('/contact', function() {
-   return view('main_site.contact'); 
-});
 
 
 Route::get('/aboutus','SiteController@about');
