@@ -55,8 +55,8 @@ class NewsController extends Controller
         $en_title=$data['en_title'];
         $en_body=$data['en_body'];
         $ar_body=$data['ar_body'];
-        $content_type='image';
-        $media_type='news';
+        $content_type='news';
+        $media_type='image';
         $news=News::news_create($en_title,$ar_title,$en_body,$ar_body);
 
                     if($request->hasFile('image')){

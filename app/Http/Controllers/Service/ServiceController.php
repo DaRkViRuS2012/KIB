@@ -8,6 +8,7 @@ use App\Company;
 use App\Media;
 use App\PartnerService;
 use App\Partner;
+use Redirect;
 use Illuminate\Support\Facades\Storage;
 class ServiceController extends Controller
 {
@@ -104,14 +105,14 @@ class ServiceController extends Controller
              }
         }
 
-        if($request->hasFile('quotation')){
-            $file=$request['quotation'];                  
-            $imagename=$file->getClientOriginalName();
-            $path_img=$file->storeAs('public/',time().'.pdf');
-            $img_name=str_replace('public/', '', $path_img);
-            Media::media_create($img_name,'quotation',$service->id,$content_type);
+        // if($request->hasFile('quotation')){
+        //     $file=$request['quotation'];                  
+        //     $imagename=$file->getClientOriginalName();
+        //     $path_img=$file->storeAs('public/',time().'.pdf');
+        //     $img_name=str_replace('public/', '', $path_img);
+        //     Media::media_create($img_name,'quotation',$service->id,$content_type);
  
-        }
+        // }
 
 
         if($request->hasFile('icon')){
@@ -154,7 +155,7 @@ class ServiceController extends Controller
         $ar_description=$request['ar_description'];                                      
         $en_description=$request['en_description'];                                      
         $parent_id =$request['parent_id'];
-                                                                            
+        $icon="";                                                      
         $company_id=$request['company_id'];                               
         $portal_link=$request['portal_link'];
         $content_type='service';
@@ -173,18 +174,19 @@ class ServiceController extends Controller
             $path_img=$file->storeAs('public/',time().$imagename);
              $img_name=str_replace('public/', '', $path_img);
              Media::media_create($img_name,'image',$service->id,$content_type);
+             return redirect('/admin/service/index/'.$parent_id);
              }
         }
 
-        if($request->hasFile('quotation')){
-            $file=$request['quotation'];                  
-            $imagename=$file->getClientOriginalName();
-            $path_img=$file->storeAs('public/',time().'.pdf');
-            $img_name=str_replace('public/', '', $path_img);
-            Media::media_create($img_name,'quotation',$service->id,$content_type);
-        return redirect('/admin/service/index/'.$parent_id);
+        // if($request->hasFile('quotation')){
+        //     $file=$request['quotation'];                  
+        //     $imagename=$file->getClientOriginalName();
+        //     $path_img=$file->storeAs('public/',time().'.pdf');
+        //     $img_name=str_replace('public/', '', $path_img);
+        //     Media::media_create($img_name,'quotation',$service->id,$content_type);
+        // return redirect('/admin/service/index/'.$parent_id);
     
-        }
+        // }
 
 
 
@@ -247,7 +249,7 @@ class ServiceController extends Controller
         $ar_description=$request['ar_description'];                                      
         $en_description=$request['en_description'];                                      
         $parent_id =$request['parent_id'];                                 
-        $quotation_id=$request['quotation_id'];                                                                      
+        // $quotation_id=$request['quotation_id'];                                                                      
         $company_id = $request['company_id'];
         $icon=$request['icon'];
         $content_type='service';
@@ -269,14 +271,14 @@ class ServiceController extends Controller
              }
         }
 
-        if($request->hasFile('quotation')){
-            $file=$request['quotation'];                  
-            $imagename=$file->getClientOriginalName();
-            $path_img=$file->storeAs('public/',time().'.pdf');
-            $img_name=str_replace('public/', '', $path_img);
-            Media::media_create($img_name,'quotation',$service->id,$content_type);
+        // if($request->hasFile('quotation')){
+        //     $file=$request['quotation'];                  
+        //     $imagename=$file->getClientOriginalName();
+        //     $path_img=$file->storeAs('public/',time().'.pdf');
+        //     $img_name=str_replace('public/', '', $path_img);
+        //     Media::media_create($img_name,'quotation',$service->id,$content_type);
  
-        }
+        // }
 
 
         if($request->hasFile('icon')){
@@ -288,7 +290,8 @@ class ServiceController extends Controller
             $service->save();
             return redirect('/admin/service/index');
         }
-    return Redirect::back()->withErrors('The image input must not be empty');
+         return redirect('/admin/service/index'); 
+    // return Redirect::back()->withErrors('The image input must not be empty');
     }
 
     /**
@@ -306,7 +309,10 @@ class ServiceController extends Controller
         Storage::delete('public'.$image->url);
         }
         service::service_delete($id);
-return redirect('/admin/service/index'); 
+ if ($service->parent_id==0) {
+        return redirect('/admin/service/index'); 
+        }
+        return redirect('/admin/service/index/'.$service->parent_id);
     }
 
 
@@ -338,10 +344,10 @@ return redirect('/admin/service/index');
         $ar_description=$request['ar_description'];                                      
         $en_description=$request['en_description'];                                   
         $parent_id ='0';                                 
-        $quotation_id=$request['quotation_id'];                               
+        // $quotation_id=$request['quotation_id'];                               
         $company_id='';                               
         $portal_link='';
-        $content_type='service';
+        $content_type='product';
         $icon = '';
         $type='product';
         $product=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type,$icon);
@@ -370,11 +376,11 @@ return redirect('/admin/service/index');
         $ar_description=$request['ar_description'];                                      
         $en_description=$request['en_description'];                                   
         $parent_id =$request['parent_id'];                                 
-        $quotation_id=$request['quotation_id'];                                                                    
+        // $quotation_id=$request['quotation_id'];                                                                    
         $company_id='';                               
         $portal_link='';
-        $type='product';
         $icon=" ";
+        $type='product';
         $content_type='product';
          $product=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type,$icon);
                     if($request->hasFile('image')){
@@ -409,7 +415,7 @@ return redirect('/admin/service/index');
     public function product_edit($id)
     {
         $services=Service::service_index_fathers();
-        $service=Service::service_show($id);
+        $service=Service::product_show($id);
         return view('admin.product.update',compact('service','services'));
     }
 
@@ -430,11 +436,14 @@ return redirect('/admin/service/index');
         $ar_description=$request['ar_description'];                                      
         $en_description=$request['en_description'];                                      
         $parent_id =$request['parent_id'];                                 
-        $quotation_id=$request['quotation_id'];                                                                      
+        // $quotation_id=$request['quotation_id'];                                                                      
         $company_id=$request['company_id'];                               
         $portal_link=$request['portal_link'];
-        Service::service_create($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$quotation_id,$company_id,$portal_link);
-          return redirect('/admin/service/index');
+        $service=Service::service_update($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$company_id,$portal_link);
+        if ($service->parent_id==0) {
+         return redirect('/admin/product/index');
+        }
+          return redirect('/admin/product/index/'.$service->parent_id);
     }
 
     /**
@@ -452,13 +461,16 @@ return redirect('/admin/service/index');
             Storage::delete('public'.$image->url);
         }
         service::service_delete($id);
+        if ($service->parent_id==0) {
         return redirect('/admin/product/index'); 
+        }
+        return redirect('/admin/product/index/'.$service->parent_id); 
     }
 
 
     public function product_index()
     {
-        $products=Service::product_index();
+        $products=Service::product_index_fathers();
         return view('admin.product.index',compact('products'));
     }
 

@@ -60,7 +60,7 @@ class User extends Authenticatable
 
     public static function company_index()
     {
-        $companies=User::where('role','company')->get();
+        $companies=User::where('role','company')->with('city')->get();
         return $companies;
     }
 
@@ -135,14 +135,14 @@ class User extends Authenticatable
         return $user;
     }
 
-       public static function user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$mobile)
+       public static function user_update($id,$name,$email,$birthdate,$fcmtoken,$os,$city_id,$mobile)
     {
         $user=User::find($id);
         $user->name=$name;
-        $user->username=$username;
+        // $user->username=$username;
         $user->email=$email;
         // $user->active='1';
-        $user->password=$password;
+        // $user->password=$password;
         $user->birthdate=$birthdate;
         $user->fcmtoken=$fcmtoken;
         
@@ -159,7 +159,7 @@ class User extends Authenticatable
 
     public  static function user_index()
     {
-        $users=User::all();
+        $users=User::with('city')->get();
         return $users;
     }
 

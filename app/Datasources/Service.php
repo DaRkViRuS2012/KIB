@@ -30,6 +30,19 @@ class Service extends Model
         return "";
     }
 
+
+
+    public function proudct_cover()
+    {
+        if ($this->product_media != null){
+            if (count($this->product_media) > 0){
+                return $this->product_media[0]->url;
+            }
+        }
+        return "";
+    }
+
+
     public function icon()
     {
         if ($this->icon != null){
@@ -45,7 +58,7 @@ class Service extends Model
 
     public function product_media()
     {
-        return $this->hasMany('App\Media','content_id')->where('content_type','service');
+        return $this->hasMany('App\Media','content_id')->where('content_type','product');
     }
 
     public function product_cover()
@@ -72,14 +85,6 @@ class Service extends Model
         public function sons()
     {
     	return $this->HasMany('App\Service','parent_id');
-    }
-
-
-
-        public static function index()
-    {
-        $services=Service::where('parent_id','0')->with('media','sons','options','prices','quotation','partner')->get();
-        return $services;
     }
 
 
@@ -140,6 +145,18 @@ class Service extends Model
       public static function product_all_sons()
     {
         $services=Service::where('parent_id','!=',0)->where('type','product')->with('media','sons','quotation','prices','options')->get();
+        return $services;
+    }
+
+            public static function index()
+    {
+        $services=Service::where('parent_id','0')->with('media','sons','options','prices','quotation','partner')->get();
+        return $services;
+    }
+
+               public static function sons_index()
+    {
+        $services=Service::where('parent_id','!=','0')->with('media','sons','options','prices','quotation','partner')->get();
         return $services;
     }
 

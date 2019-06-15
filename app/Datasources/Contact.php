@@ -17,7 +17,45 @@ class Contact extends Model
     }
 
 
-      public static function contact_show($id)
+   
+
+          public static function phones()
+    {
+        $contact=Contact::where('type','phone')->get();
+        return  $contact;
+    }
+
+          public static function facebook()
+    {
+        $contact=Contact::where('type','facebook')->get();
+        return  $contact;
+    }
+
+              public static function twitter()
+    {
+        $contact=Contact::where('type','twitter')->get();
+        return  $contact;
+    }
+
+
+        public static function instagram()
+    {
+        $contact=Contact::where('type','twitter')->get();
+        return  $contact;
+    }
+
+
+        public static function email()
+    {
+        $contact=Contact::where('type','email')->get();
+        return  $contact;
+    }
+
+
+
+
+
+          public static function contact_show($id)
     {
         $contact=Contact::find($id);
         return  $contact;

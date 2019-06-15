@@ -58,7 +58,7 @@ class Page extends Model
     	$page->en_name=$en_name;
     	$page->en_description=$en_description;
     	$page->ar_name=$ar_name;
-    	$page->ar_description;
+    	$page->ar_description=$ar_description;
     	$page->image=$image;
     	$page->link=$link;
     	$page->save();

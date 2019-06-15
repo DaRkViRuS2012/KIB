@@ -21,9 +21,17 @@ class ContactController extends Controller
     
         public function index_api()
     {
-         $contacts=Contact::contact_index();
-        return response()->json(['status' => True, 'data' => $contacts, 'message' => '']);
+        $phones=Contact::phones();
+        $facebook=Contact::facebook();
+        $twitter=Contact::twitter();
+        $instagram=Contact::instagram();
+        $email=Contact::email();
+        return response()->json(['status' => True, 'data' => compact('phones','facebook','twitter','instagram','email'), 'message' => '']);
     }
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -94,10 +102,10 @@ class ContactController extends Controller
      * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(Request $request)
     {
         $id=$request['id'];
-        Contact::delete($id);
+        Contact::contact_delete($id);
         return redirect('/admin/contact/index');
     }
 }

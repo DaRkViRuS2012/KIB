@@ -19,10 +19,12 @@ class CheckUser
 
     if(Auth::user()->active=='1')
         return $next($request);   
-    else
-        return redirect('user/active/'.Auth::user()->id);
-        }
 
+    else
+    	session(['link' => url()->previous()]);
+        return redirect('user/active');
+        }
+	session(['link' => url()->previous()]);
     return redirect('/user/login');
     }
 }

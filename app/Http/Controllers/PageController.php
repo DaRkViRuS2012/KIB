@@ -6,8 +6,7 @@ use App\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-
-
+Use Redirect;
 class PageController extends Controller
 {
     /**
@@ -16,6 +15,8 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
+
        protected function validator_page(array $data)
     {
 
@@ -23,8 +24,8 @@ class PageController extends Controller
         return Validator::make($data, [
             'en_name' => ['required', 'string', 'max:255'],
              'ar_name' => ['required', 'string', 'max:255'],
-              'en_description' =>  ['required', 'string', 'max:255'],
-            'ar_description' => ['required', 'string', 'max:255'],
+              'en_description' =>  ['required', 'string'],
+            'ar_description' => ['required', 'string'],
              'link' => ['required',],
              'img_name' => ['required'],
              
@@ -32,6 +33,20 @@ class PageController extends Controller
         ]);
     }
 
+
+        protected function validator_update(array $data)
+    {
+
+
+        return Validator::make($data, [
+            'en_name' => ['required', 'string', 'max:255'],
+             'ar_name' => ['required', 'string', 'max:255'],
+              'en_description' =>  ['required', 'string'],
+            'ar_description' => ['required', 'string'],
+             'link' => ['required',],
+
+        ]);
+    }
     public function index()
     {
         $pages=Page::page_index();
@@ -70,7 +85,7 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-           $validator = $this->validator_page($request->input());
+            $validator = $this->validator_page($request->input());
          if ($validator->fails()) {
             return back()->withErrors($validator)->withInput(); //TODO
 
@@ -80,6 +95,7 @@ class PageController extends Controller
             $en_description=$request['en_description'];
             $ar_description=$request['ar_description'];
             $link=$request['link'];
+
     if($request->hasFile('img_name'))
         {  
             $file=$request->file('img_name');                  
@@ -127,7 +143,8 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
-          $validator = $this->validator_page($request->input());
+
+            $validator = $this->validator_update($request->input());
          if ($validator->fails()) {
             return back()->withErrors($validator)->withInput(); //TODO
 
@@ -138,19 +155,21 @@ class PageController extends Controller
         $en_description=$request['en_description'];
         $ar_description=$request['ar_description'];
         $link=$request['link'];
+        $image=$request['img_name'];
     if($request->hasFile('img_name'))
         {  
             $file=$request->file('img_name');                  
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().$imagename);
             $img_name=str_replace('public/', '', $path_img);
-            Page::page_update($id,$en_name,$en_description,$ar_name,$ar_description,$image,$link);
+            Page::page_update($id,$en_name,$en_description,$ar_name,$ar_description,$img_name,$link);
 
             return redirect('/admin/page/index');
         }   
 
         $page=Page::page_show($id);
           Page::page_update($id,$en_name,$en_description,$ar_name,$ar_description,$page->image,$link);
+          
            return redirect('/admin/page/index');
     }
 

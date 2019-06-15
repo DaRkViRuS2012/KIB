@@ -8,7 +8,6 @@ class Application extends Model
 {
            protected $fillable = [
       'applicant_name_en','applicant_name_ar', 'service_id','user_id','date','code','birthdate','nationality','national_id','martial_status','work','cost','is_date'
-       //options in application_option
     ];
 
     public function service()

@@ -6,6 +6,7 @@ use App\Gallery;
 use App\Media;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class GalleryController extends Controller
 {
@@ -13,8 +14,8 @@ class GalleryController extends Controller
          protected function validator_gallery(array $data)
     {
         return Validator::make($data, [
-            'en_title' => ['required', 'string', 'email', 'max:255'],
-            'ar_title' => ['required', 'string', 'email', 'max:255'],
+            'en_title' => ['required', 'string', 'max:255'],
+            'ar_title' => ['required', 'string', 'max:255'],
             'en_description' => ['required', 'string'],
             'ar_description' => ['required', 'string'],
         ]);
@@ -82,8 +83,8 @@ class GalleryController extends Controller
         $en_title=$data['en_title'];
         $en_description=$data['en_description'];
         $ar_description=$data['ar_description'];
-        $content_type='image';
-        $media_type='gallery';
+        $content_type='gallery';
+        $media_type='image';
         $gallery=Gallery::gallery_create($ar_title,$en_title,$en_description,$ar_description);
 
                     if($request->hasFile('image')){

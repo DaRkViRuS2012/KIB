@@ -17,7 +17,7 @@ class Bank extends Model
 
     public static function bank_index()
     {
-    	$banks=Bank::with('location')->get();
+    	$banks=Bank::with('city')->get();
     	return $banks;
     }
 
@@ -45,5 +45,11 @@ class Bank extends Model
     {
     	$bank=Bank::find($id);
     	$bank->delete();
+    }
+
+        public static function bank_show($id)
+    {
+        $bank=Bank::find($id);
+        return $bank;
     }
 }

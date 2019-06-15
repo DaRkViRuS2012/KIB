@@ -236,7 +236,7 @@ Route::get('/news_single/{id}', 'SiteController@news_show');
 
 
 Route::get('/contact', function() {
-    return view('main_site.contact');
+   return view('main_site.contact'); 
 });
 
 

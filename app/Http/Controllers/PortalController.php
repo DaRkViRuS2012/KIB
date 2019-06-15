@@ -8,11 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\Validator;
 class PortalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
 
      protected function validator_portal(array $data)
     {
@@ -25,7 +21,11 @@ class PortalController extends Controller
 
         ]);
     }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
      $portals=Portal::portal_index();
@@ -79,8 +79,9 @@ class PortalController extends Controller
      * @param  \App\Portal  $portal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Portal $portal)
+    public function edit(Request $request)
     {
+        $id=$request['id'];
           $companies=User::company_index();
         $portal=Portal::portal_show($id);
          return view('admin.portal.update',compact('portal','companies'));

@@ -65,7 +65,8 @@ class BankController extends Controller
     public function edit($id)
     {
         $bank=Bank::bank_show($id);
-        return view('admin.bank.update',compact('bank'));
+        $cities=City::city_index();
+        return view('admin.bank.update',compact('bank','cities'));
     }
 
     /**

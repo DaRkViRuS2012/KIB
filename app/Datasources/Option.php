@@ -24,13 +24,13 @@ class Option extends Model
 
     public static function option_index()
     {
-    	$options=Option::with('service')->get();
+    	$options=Option::with('service')->orderBy('attr', 'DESC')->get();
     	return $options;
     }
 
      public static function get_by_service($id)
     {
-        $options=Option::where('service_id',$id)->get();
+        $options=Option::where('service_id',$id)->orderBy('attr', 'DESC')->get();
         return $options;
     }
 
@@ -50,15 +50,15 @@ class Option extends Model
     }
 
 
-        public static function option_update($id,$title,$type,$value,$service_id,$attr,$required)
+        public static function option_update($id,$title,$type,$value,$service_id)
     {
     	$option=Option::find($id);
     	$option->title=$title;
     	$option->type=$type;
     	$option->value=$value;
     	$option->service_id=$service_id;
-        $option->attr=$attr;
-        $option->required=$required;
+        // $option->attr=$attr;
+        // $option->required=$required;
     	$option->save();
     	return $option;
     }

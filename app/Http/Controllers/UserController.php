@@ -36,8 +36,8 @@ class UserController extends Controller
              'code' => ['unique:users'],
              'mobile' => ['required', 'string', 'max:9','unique:users'],
              'token' => [ 'unique:users'],
-                   'birthdate' => [ 'unique:users'],
-
+             'birthdate' => [ 'required'],
+             
         ]);
     }
 
@@ -50,11 +50,11 @@ class UserController extends Controller
               'lname_en' => ['required', 'string', 'max:255'],
                 'mobile' => ['required', 'string', 'max:9'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', 'string', 'min:8'],
-             'username' => ['string', 'max:255'],
-             'code' => ['unique:users'],
-             'token' => [ 'unique:users'],
-                   'birthdate' => [ 'unique:users'],
+            // 'password' => ['required', 'string', 'min:8'],
+             // 'username' => ['string', 'max:255'],
+             // 'code' => ['unique:users'],
+             // 'token' => [ 'unique:users'],
+             'birthdate' => [ 'required'],
         ]);
     }
 
@@ -130,6 +130,9 @@ class UserController extends Controller
             return back()->withErrors($validator)->withInput(); //TODO
 
         }
+        if (Auth::check()) {
+         return back()->withErrors("you can't register while you already logged in , please logout");
+        }
         $name=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
         $username=$request['username'];
         $email=$request['email'];
@@ -144,25 +147,29 @@ class UserController extends Controller
 
         $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token);
           Sms_helper::send_sms($user->mobile,$user->code); 
-         Auth::loginUsingId($user->id);
-         return redirect('/'); 
+         //Auth::loginUsingId($user->id);
+         return redirect('/user/active'); 
 
        
     }
 
 
- 
+
+
+
+
       public function update(Request $request)
     {
-        $validator = $this->validator_register($request->input());
+        $validator = $this->validator_update($request->input());
          if ($validator->fails()) {
             return back()->withErrors($validator)->withInput(); //TODO
 
         }
+        $id=Auth::user()->id;
         $name=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
-        $username=$request['username'];
+        // $username=$request['username'];
         $email=$request['email'];
-        $password=Hash::make($request['password']);
+        // $password=Hash::make($request['password']);
         $birthdate=$request['birthdate'];
         $fcmtoken=$request['fcmtoken'];
         $city_id=$request['city_id'];
@@ -171,8 +178,8 @@ class UserController extends Controller
         $token=str_replace("/","",Hash::make($name.$email));
         $os='web';
 
-        $user=User::user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$mobile);
-          Sms_helper::send_sms($user->mobile,$user->code); 
+        $user=User::user_update($id,$name,$email,$birthdate,$fcmtoken,$os,$city_id,$mobile);
+          // Sms_helper::send_sms($user->mobile,$user->code); 
          // Auth::loginUsingId($user->id);
          return redirect('/'); 
 
@@ -180,6 +187,7 @@ class UserController extends Controller
     }
 
    
+    
 
 
 
@@ -203,6 +211,7 @@ class UserController extends Controller
 
         $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token);
         Sms_helper::send_sms($user->mobile,$user->code); 
+     
          return response()->json(['status' => True, 'data' => $user, 'message' => '','type'=>'array']);
 
        
@@ -212,11 +221,14 @@ class UserController extends Controller
 
    public function account()
     {
-        $id=Auth::id();
+      if (Auth::check()) {
+          $id=Auth::id();
         $cities=City::city_all();
         $user=User::user_show($id);
         $name=explode(' ',$user->name);
         return view('main_site.account',compact('user','name','cities'));
+      }
+      return back()->withErrors('you must be logged in'); //TODO
     }
 
 
@@ -279,6 +291,10 @@ public function login(Request $request)
 
         }
 
+        if (Auth::check()) {
+           return redirect()->back()->withErrors(['the user is already login']);
+        }
+
     $email=$request['email'];
     $password=$request['password'];
       //$credentials = $request->only('email', 'password');
@@ -297,7 +313,13 @@ public function login(Request $request)
       return redirect('/company');
      } 
      else
-      {return redirect('/');}
+
+      { if (session('link')!=null) {
+      	return redirect(session('link'));
+      }
+      return redirect('/');
+      }
+      
     }
           return redirect()->intended('/user/active')->withErrors(['the user is not active ']);
       }
@@ -321,7 +343,13 @@ public function login(Request $request)
       if (Auth::attempt(['email' => $email, 'password' => $password])) {
           // Authentication passed...
         $user= User::where('email',$request->email)->first();
+        if ($user->active=='1') {
     return response()->json(['status' => True, 'data' => $user, 'message' => '','type'=>'array']);
+    
+        }
+
+
+     return response()->json(['status' => false, 'data' => '', 'message' => 'the user needs to be activated','type'=>'error']);
       }
 
       return response()->json(['status' => false, 'data' =>'', 'message' => 'The username or password are wronng','type'=>'error']);

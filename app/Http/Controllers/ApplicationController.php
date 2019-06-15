@@ -6,6 +6,7 @@ use App\Application;
 use Illuminate\Http\Request;
 use App\Option;
 use App\Service;
+use App\User;
 class ApplicationController extends Controller
 {
     /**
@@ -16,6 +17,7 @@ class ApplicationController extends Controller
     public function index()
     {
          $applications=Application::application_index();
+         // return $applications;
          return view('admin.application.index',compact('applications'));
     }
     public function index_api()

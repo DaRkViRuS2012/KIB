@@ -25,6 +25,20 @@ class OptionController extends Controller
 
         ]);
     }
+
+       protected function validator_option_update(array $data)
+    {
+
+
+        return Validator::make($data, [
+            'title' => ['required', 'string', 'max:255'],
+             'type' => ['required', 'string', 'max:255'],
+              // 'value' =>  ['required', 'string', 'max:255'],
+            // 'attr' => ['required', 'string', 'max:255'],
+             'service' => ['required'],
+
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -63,7 +77,7 @@ class OptionController extends Controller
      */
     public function create()
     {
-        $services=Service::product_index_fathers();
+        $services=Service::index();
         return view('admin.option.create',compact('services'));
     }
 
@@ -127,7 +141,7 @@ class OptionController extends Controller
     public function edit($id)
     {
         $option=Option::option_show($id);
-        $services=Service::service_index();
+        $services=Service::index();
         return view('admin.option.update',compact('option','services'));
     }
 
@@ -140,7 +154,7 @@ class OptionController extends Controller
      */
     public function update(Request $request)
     {
-          $validator = $this->validator_option($request->input());
+          $validator = $this->validator_option_update($request->input());
          if ($validator->fails()) {
             return back()->withErrors($validator)->withInput(); //TODO
 
