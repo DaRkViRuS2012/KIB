@@ -134,7 +134,6 @@ public function application_single(Request $request)
        return view('main_site.summary',compact('application'));
         }
     }
-      return view('main_site.summary',compact('application'));
 
 
          return back()->withErrors("you're not Authorized");
@@ -446,7 +445,7 @@ public function galleries()
         }
 
        Application::application_update_cost($application->id,$cost);
-        return redirect('application/single/'.$application->id);
+        return redirect('application/single/mobile/'.$application->id);
         }
 
         return Redirect::back()->withErrors('You Are  Not Autorized');
@@ -494,7 +493,7 @@ public function galleries()
         // }
         // }
 
-        return redirect('application/service/single/'.$application->id);
+        return redirect('application/service/single/mobile/'.$application->id);
         // $age=$this->calculate_age($birthdate);
         // $service_info=Service::product_show($main_service_id);
         // $service_title=$service_info->en_title;
