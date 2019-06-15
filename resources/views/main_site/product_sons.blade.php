@@ -11,7 +11,7 @@
         @if ($product->id==$main_service->id)
             <a style="background-color: #3544ab!important;color: white;" href="/product/{{$product->id}}/show" class="list-group-item list-group-item-action bg-light">{{$product->getTitle()}}</a>
               @else
-               <a href="/product/{{$product->id}}/show" class="list-group-item list-group-item-action bg-light">{{$product->getTitle()}}</a>
+               <a style="color:#495057;" href="/product/{{$product->id}}/show" class="list-group-item list-group-item-action bg-light">{{$product->getTitle()}}</a>
         @endif
 
         @endforeach
@@ -36,14 +36,18 @@
         <div class="row">
         <div class="container-fluid">
                 <div class="row">
-       <h5 style="margin: 0 auto;" class="text-center">{{$main_service->getDescription()}}</h5>
+                   @if(Session::get('locale')=="en")
+       <h5 style="margin: 0 auto;" class="text-left">{{$main_service->getDescription()}}</h5>
+       @else
+       <h5 style="margin: 0 auto;" class="text-right">{{$main_service->getDescription()}}</h5>
+       @endif
     </div>
         <div class="row" style="margin-top: 2%;margin-bottom: 2%;">
           @foreach ($main_service->sons as $product)
             {{-- expr --}}
 
 <div class="card small_font" id="service">
-  <img class="card-img-top img-fluid" src="{{env('image_storage')}}/{{$product->cover()}}" alt="Card image">
+  <img style="height:200px;" class="card-img-top img-fluid" src="{{env('image_storage')}}/{{$product->product_cover()}}" alt="Card image">
   <div class="card-body">
       <h5 class="card-title">{{$product->getTitle()}}</h5>
       <p class="card-text">{{ str_limit($product->getDescription(), $limit = 150, $end = '...') }}</p>
@@ -82,13 +86,16 @@
 </div>
     </div>
 
-    <section id="clients">
+     <section id="clients">
 <div class="container">
   <div class="row">
     <div id="owl" class=" col-lg-12 owl-carousel">
       @foreach ($main_service->partner as $partner)
       <div class="col-lg-10 client">
-        <img style="width: 100px !important;height: 100px !important;border-radius: 50%;" src="{{env('image_storage')}}/{{$partner->image}}" class="img-responsive item">
+        <a target="blank" href="{{$partner->url}}"><img style="width: 100px !important;height: 100px !important;border-radius: 50%;" src="{{env('image_storage')}}/{{$partner->image}}" class="img-responsive item"></a>
+        <h5 style="text-align: center;
+    margin-left: 36%;
+    margin-top: 4%;">{{$partner->title}}</h5>
       </div>
       @endforeach
     </div>
@@ -96,6 +103,7 @@
  </div>
 
 </section>
+
 
 
 @endsection

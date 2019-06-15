@@ -24,39 +24,39 @@
 
       <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} en_Title</label>
-    <input name="en_title" class="form-control"  id="comment" required>
+    <input name="en_title" class="form-control"  id="comment" required value="{{old('en_title')}}">
     
   </div>
 
         <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} ar_Title</label>
-    <input name="ar_title" class="form-control"  id="comment" required>
+    <input name="ar_title" class="form-control"  id="comment" required value="{{old('ar_title')}}">
     
   </div>
 
           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} en subtitle</label>
-    <input name="en_subtitle" class="form-control"  id="comment" required>
+    <input name="en_subtitle" class="form-control"  id="comment" required value="{{old('en_subtitle')}}">
     
   </div>
 
           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} ar subtitle</label>
-    <input name="ar_subtitle" class="form-control"  id="comment" required>
+    <input name="ar_subtitle" class="form-control"  id="comment" required value="{{old('ar_subtitle')}}">
     
   </div>
 
 
           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} en description</label>
-    <textarea name="en_description" rows="5" class="form-control"  id="comment" required></textarea>
+    <textarea name="en_description" rows="5" class="form-control"  id="comment" required>{{old('en_description')}}</textarea>
     
   </div>
 
 
           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} ar description</label>
-    <textarea name="ar_description" rows="5" class="form-control"  id="comment" required></textarea>
+    <textarea name="ar_description" rows="5" class="form-control"  id="comment" required>{{old('ar_description')}}</textarea>
     
   </div>
 
@@ -87,16 +87,16 @@
 
 
 
-
+{{-- 
 <div class="form-group">
- <label for="exampleInputEmail1">quotation</label>
-  <input class="active" type="file" name="quotation" enctype="multipart/form-data" required multiple>
+ <label for="exampleInputEmail1">Service Icon</label>
+  <input class="active" type="file" name="icon" enctype="multipart/form-data" required multiple>
 </div>
 
+ --}}
 
 
-
-  <label for="exampleInputEmail1">Image</label>
+  <label for="exampleInputEmail1">Service Image</label>
   <input class="active" type="file" name="image[]" enctype="multipart/form-data" required multiple>
   <br><br>
   <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Create {{Request::segment(2)}}</button>

@@ -157,7 +157,7 @@
 
                                 <tr>
                                     <td align="center" height="70" style="height:70px;">
-                                        <a href="" style="display: block; border-style: none !important; border: 0 !important;"><img width="100" border="0" style="display: block; width: 100px;" src="{{ asset('/images/NRDIC-4-1-1.gif')}} " alt="" /></a>
+                                        <a href="" style="display: block; border-style: none !important; border: 0 !important;"><img width="100" border="0" style="display: block; width: 100px;" src="http://khouryinsurance.com/main_site/img/Logo.png" alt="" /></a>
                                     </td>
                                 </tr>
                             </table>
@@ -226,6 +226,11 @@
 
                                           <p style="line-height: 24px; margin-bottom:20px;">
                                            the message of the email was <br> <span style="color: red">{{$type}}</span>
+                                        </p>
+
+
+                                             <p style="line-height: 24px; margin-bottom:20px;">
+                                           the message of the email was <br> <span style="color: red">{{$service}}</span>
                                         </p>
                                         <p style="line-height: 24px">
                                            Best Regards</br>

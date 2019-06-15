@@ -23,25 +23,29 @@
   @csrf
 
       <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} en_Title</label>
-    <input name="en_title" class="form-control"  id="comment" value="{{$bank->en_title}}" required>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} English Name</label>
+    <input name="en_name" class="form-control"  id="comment" value="{{$bank->en_name}}" required>
     
   </div>
 
         <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} ar_Title</label>
-    <input name="ar_title" class="form-control"  id="comment" value="{{$bank->ar_title}}" required>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} Arabic Name</label>
+    <input name="ar_name" class="form-control"  id="comment" value="{{$bank->ar_name}}" required>
     
   </div>
 
 
           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} city</label>
-    <select name="parent_id" class="form-control">
+    <select name="city_id" class="form-control">
       <option>Select Your company</option>
       <option value="0">Father</option>
       @foreach ($cities as $city)
+      @if ($city->id==$bank->city_id)
+      <option value="{{$city->id}}" selected>{{$city->en_title}}</option>
+      @else
       <option value="{{$city->id}}">{{$city->en_title}}</option>
+      @endif
       @endforeach
       
     </select>

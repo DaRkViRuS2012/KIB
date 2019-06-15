@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.green.min.css">
 
 
-<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+
 
 
 <!-- jQuery library -->
@@ -51,12 +51,7 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js.map"></script>
 </head>
-
-   @if (Session::get('locale')=="ar")
-<body style="font-family: 'Amiri', serif !important;    letter-spacing:0px!important;">
-  @else
-  <body>
-    @endif
+<body>
    <div id="loader">
     <img src="{{ asset('main_site/img/logo.gif') }}" width="10%">
   </div>
@@ -71,7 +66,7 @@
   </script>
 <section id="navbar">
   <header>
-{{--     <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
    <div class="container-fluid">
      @if (Session::get('locale')=="en")
     
@@ -209,158 +204,13 @@
 
     @endif
    </div>
-   </nav> --}}
-
-
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
-  <div class="row">
-     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
- 
-   @if (Session::get('locale')=="en")
- 
-  <div  class="collapse navbar-collapse col-lg-11"  id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">@lang("Home")
-                <span class="sr-only">(current)</span>
-              </a>
-        </li>
-
-         <li class="nav-item">
-          <a class="nav-link" href="/aboutus">@lang("About us")</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="/services">@lang("Services")</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/products">@lang("Buy Insurance")</a>
-        </li>
-
-
-        <li class="nav-item">
-          <a class="nav-link" href="/galleries">@lang("Galleries")</a>
-        </li>
-
-          <li class="nav-item">
-          <a class="nav-link" href="/news">@lang("News")</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="/contact">@lang("Contact us")</a>
-        </li>
-        @if (Auth::check())
-           <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user"></i> {{Auth::user()->name}} </a>
-        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-          <a class="dropdown-item" href="/account">@lang('My account')</a>
-          <a class="dropdown-item" href="/logout">@lang('Log out')</a>
-        </div>
-      </li>
-      @else
-      <li class="nav-item">
-          <a class="nav-link" href="/user/login">@lang('Login')</a>
-        </li>
-        @endif
-          @if (Session::get('locale')=="ar")
-          <li class="nav-item">
-          <a class="nav-link" href="/lang/en">EN</a>
-        </li>
-        @else
-         <li class="nav-item">
-          <a class="nav-link" href="/lang/ar">عربي</a>
-        </li>
-        @endif
-      </ul>
-  </div>
-    <div style="left: 41%;" class="col-lg-1">
-     <a class="navbar-brand" href="#">
-        <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
-        </a>
- </div>
-@else
-     <div class="col-lg-1">
-     <a class="navbar-brand" href="#">
-        <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
-        </a>
- </div>
-
-  
-
-              <div dir="rtl" style="left:60%;"  class="collapse navbar-collapse col-lg-11"  id="navbarNav">
-
-
-
-     <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">@lang("Home")
-                <span class="sr-only">(current)</span>
-              </a>
-        </li>
-
-        
-         <li class="nav-item">
-          <a class="nav-link" href="/aboutus">@lang("About us")</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/services">@lang("Services")</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/products">@lang("Buy Insurance")</a>
-        </li>
-
-
-        <li class="nav-item">
-          <a class="nav-link" href="/galleries">@lang("Galleries")</a>
-        </li>
-
-          <li class="nav-item">
-          <a class="nav-link" href="/news">@lang("News")</a>
-        </li>
-
-
-        <li class="nav-item">
-          <a class="nav-link" href="/contact">@lang("Contact us")</a>
-        </li>
-        @if (Auth::check())
-           <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user"></i> {{Auth::user()->name}} </a>
-        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-          <a class="dropdown-item" href="/account">@lang('My account')</a>
-          <a class="dropdown-item" href="/logout">@lang('Log out')</a>
-        </div>
-      </li>
-      @else
-      <li class="nav-item">
-          <a class="nav-link" href="/user/login">@lang('Login')</a>
-        </li>
-        @endif
-          @if (Session::get('locale')=="ar")
-          <li class="nav-item">
-          <a class="nav-link" href="/lang/en">EN</a>
-        </li>
-        @else
-         <li class="nav-item">
-          <a class="nav-link" href="/lang/ar">عربي</a>
-        </li>
-        @endif
-      </ul>
-    </div>
-
-    @endif
-
-  </div>
-</nav>
+   </nav>
   </header>
 </section>
+
+
+
+
 <div class="container">
   <div class="row">
   @if ($errors->any())
@@ -374,8 +224,6 @@
 @endif
 </div>
 </div>
-
-
 @if (Session::get('locale')=="ar")
  <section dir="rtl" id="content">
 <style type="text/css">
@@ -395,10 +243,8 @@
 @endif
 
 
+
                           @if(session()->has('success'))
-                          <div class="container">
-                            
-                          
     <div class="alert alert-success">
 
 
@@ -408,7 +254,6 @@
                   <h6 class="text-right">{{ session()->get('success') }}</h6>
                   @endif
         
-    </div>
     </div>
 @endif
 
@@ -423,12 +268,7 @@
       <div class="row">
 
         <!-- Grid column -->
-        @if (Session::get('locale')=="ar")
-        <div dir="rtl" class="col-md-12 col-lg-3 mt-md-0 mt-3" style="margin-left:5%;direction:rtl!important;text-align: -webkit-auto;">
-          @else
-          <div class="col-md-12 col-lg-3 mt-md-0 mt-3" style="margin-left:5%">
-          @endif
-
+        <div class="col-md-12 col-lg-3 mt-md-0 mt-3" style="margin-left:5%">
 
           <!-- Content -->
           <div class="row" style="margin-bottom:5%">
@@ -449,18 +289,10 @@
         <hr class="clearfix w-100 d-md-none pb-3">
 
         <!-- Grid column -->
-        @if (Session::get('locale')=="ar")
-        <div dir="rtl" class="col-md-12 col-lg-3 mb-md-0 mb-3" style="margin-left:5%;direction:rtl!important;text-align: -webkit-auto;">
-          @else
-          <div class="col-md-12 col-lg-3 mb-md-0 mb-3" style="margin-left:5%">
-          @endif
+        <div class="col-md-12 col-lg-3 mb-md-0 mb-3" style="margin-left:5%">
 
             <!-- Links -->
-             @if (Session::get('locale')=="ar")
-            <h5 style="text-align: -webkit-auto;" class="text-uppercase">@lang('Links')</h5>
-            @else
             <h5 class="text-uppercase">@lang('Links')</h5>
-            @endif
 
 
             <ul class="list-unstyled">
@@ -493,11 +325,7 @@
           <!-- Grid column -->
 
           <!-- Grid column -->
-           @if (Session::get('locale')=="ar")
-          <div dir="rtl" class="col-md-12 col-lg-3 mb-md-0 mb-3" style="margin-left:5%;direction:rtl!important;text-align: -webkit-auto;">
-            @else
-            <div class="col-md-12 col-lg-3 mb-md-0 mb-3" style="margin-left:5%">
-            @endif
+          <div class="col-md-12 col-lg-3 mb-md-0 mb-3" style="margin-left:5%">
 
             <!-- Links -->
             <div class="row">
@@ -506,27 +334,20 @@
 
 
             <div class="row">
-           <div class="mapouter"><div class="gmap_canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.987055473199!2d36.31597801520131!3d33.52772218075193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDMxJzM5LjgiTiAzNsKwMTknMDUuNCJF!5e0!3m2!1sen!2sus!4v1559850822811!5m2!1sen!2sus" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe><a href="https://www.emojilib.com">emojilib.com</a></div><style>.mapouter{position:relative;text-align:right;height:200px;width:250px;}.gmap_canvas {overflow:hidden;background:none!important;height:200px;width:250px;}</style></div>
+           <div class="mapouter"><div class="gmap_canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.99394132202!2d36.313586414586744!3d33.52754315264602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1518e6e5c377c23d%3A0x72e8071356c2e5c2!2sIbn+Al+Haytham+Park!5e0!3m2!1sen!2sid!4v1559386770886!5m2!1sen!2sid" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe><a href="https://www.emojilib.com">emojilib.com</a></div><style>.mapouter{position:relative;text-align:right;height:200px;width:250px;}.gmap_canvas {overflow:hidden;background:none!important;height:200px;width:250px;}</style></div>
 
           </div>
 
           <div class="row">
-                                              <a style="color: white" id="email" href="mailto:info@khouryinsurance.com">info@khouryinsurance.com
-
-
-</a>
-          </div>
-
-          <div class="row">
-             @if (Session::get('locale')=="ar")
-            <p style="direction: ltr;" id="phone">
-              +963-969-876-543
+            <p id="email">
+              email@gmail.com
             </p>
-            @else
+          </div>
+
+          <div class="row">
             <p id="phone">
-              +963-969-876-543
+              +96300000000
             </p>
-            @endif
           </div>
           <!-- Grid column -->
 
@@ -604,10 +425,7 @@ function closeNav() {
     $(window).on('load', function () {
       $('#JiSlider').JiSlider({
         color: '#fff',
-        start: 1,
-        time:3000,
-        auto:true,
-        stay:10000,
+        start: 2,
         reverse: true
       }).addClass('ff')
     })

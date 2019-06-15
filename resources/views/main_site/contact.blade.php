@@ -12,7 +12,7 @@
                             </div>
                             <div class="col-md-9 address-right text-left">
                                 <h6 class="ad-info text-uppercase mb-2">@lang('address')</h6>
-                                <p id="address1"> California, USA
+                                <p id="address1"> @lang('address-det')
 
                                 </p>
                             </div>
@@ -25,10 +25,12 @@
                             </div>
                             <div class="col-md-9 address-right text-left">
                                 <h6 class="ad-info text-uppercase mb-2">@lang('email')</h6>
-                                <p id="email1">
-                                    <a href="mailto:example@email.com">khourybrokerage@gmail.com
+                                {{-- <p id="email1"> --}}
+                                    <a id="email1" href="mailto:info@khouryinsurance.com">info@khouryinsurance.com
+
+
 </a>
-                                </p>
+                               {{--  </p> --}}
                             </div>
 
                         </div>
@@ -40,7 +42,7 @@
                             </div>
                             <div class="col-md-9 address-right text-left">
                                 <h6 class="ad-info text-uppercase mb-2">@lang('phone')</h6>
-                                <p id="phone1">+963-933-999850</p>
+                                <p dir="ltr" id="phone1">+963-969-876-543</p>
 
                             </div>
                         </div>
@@ -52,7 +54,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 map">
-                      <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=london&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.987055473199!2d36.31597801520131!3d33.52772218075193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDMxJzM5LjgiTiAzNsKwMTknMDUuNCJF!5e0!3m2!1sen!2sus!4v1559850822811!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
                     </div>
                     <div class="col-md-6 main_grid_contact">
@@ -90,17 +92,25 @@
     
   </div>
 
+
+                                          <div class="form-group">
+    <label for="exampleInputEmail1">Service</label>
+    <select name="service_id" class="form-control">
+      <option disabled>Select  service</option>
+      @foreach ($services as $service)
+         <option value="{{$service->en_title}}/ {{$service->type}}">{{$service->en_title}}/ {{$service->type}}</option>
+      @endforeach
+    </select>
+    
+  </div>
+
                                 <div class="input-group1">
                                     <input class="form-control" type="submit" value="@lang('Submit')" style="background-color: #3544ab;
     color: white;">
                                 </div>
 
               </form>
-                            @if(session()->has('success'))
-    <div style="margin-top:3%" class="alert alert-success">
-        {{ session()->get('success') }}
-    </div>
-@endif
+
                         </div>
                     </div>
                 </div>

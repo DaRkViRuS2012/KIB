@@ -79,10 +79,10 @@
   </select>    
 </div>
 
-<div class="form-group">
+<!-- <div class="form-group">
  <label for="exampleInputEmail1">quotation</label>
   <input class="active" type="file" name="quotation" enctype="multipart/form-data"  multiple>
-</div>
+</div> -->
 
 <div class="form-group">
   <label for="exampleInputEmail1">Image</label>

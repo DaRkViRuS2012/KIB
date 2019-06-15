@@ -19,7 +19,7 @@
 @endif
 
   <div class="col-6">
-<form  class="container" action='/admin/{{Request::segment(2)}}/create' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/{{Request::segment(2)}}/update/{{$portal->id}}' method="POST" enctype="multipart/form-data">
   @csrf
 
    
@@ -28,14 +28,19 @@
     <select name="company_id" class="form-control">
       <option>Select Your company</option>
       @foreach ($companies as $company)
-      <option value="{{$company->id}}">{{$company->en_title}}</option>
+      @if ($company->id==$portal->company_id)
+      <option value="{{$company->id}}" selected>{{$company->name}}</option>
+      @else
+      <option value="{{$company->id}}">{{$company->name}}</option>
+      @endif
+      
       @endforeach
       
     </select>
 
           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}}</label>
-    <input name="en_title" class="form-control"  id="comment" required>
+    <input name="portal" class="form-control" value="{{$portal->portal}}"  id="comment" required>
     
   </div>
     

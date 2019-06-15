@@ -66,6 +66,7 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
+          	<a class="collapse-item" href="/admin/application/index">Applications </a>
             <a class="collapse-item" href="/admin/about/index">About us </a>
             <a class="collapse-item" href="/admin/company/index">Company</a>
             <a class="collapse-item" href="/admin/contact/index">Contact</a>
@@ -244,7 +245,7 @@
                 {{-- expr --}}
               
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->username}}</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
                 <img class="img-profile rounded-circle" src="https://itjen.kemkes.go.id/public/assets/admin/avatar.png">
               </a>
               @else

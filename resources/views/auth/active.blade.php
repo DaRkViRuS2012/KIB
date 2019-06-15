@@ -17,7 +17,7 @@
 
     <div class="form-group col-lg-6 col-sm-12">
     <label for="email">@lang('code')</label>
-    <input name="code" class="form-control" id="email" type="text">
+    <input name="code" class="form-control" id="code" type="password">
   </div>
 </div>
 

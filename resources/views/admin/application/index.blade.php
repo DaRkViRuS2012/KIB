@@ -43,6 +43,7 @@
                     <th>applicant english name </th>
                     <th>applicant arabic name </th>
                     <th>service</th>
+                    <th>type</th>
                     <th>user</th>
                     <th>birthdate</th>
                     <th>code</th>
@@ -57,6 +58,7 @@
                     <td>{{$application->applicant_name_en}}</td>
                     <td>{{$application->applicant_name_ar}}</td>
                     <td>{{$application->service->en_title}}</td>
+                    <td>{{$application->service->type}}</td>
                     <td>{{$application->user->name}}</td>
                      <td>{{$application->birthdate}}</td>
                       <td>{{$application->code}}</td>

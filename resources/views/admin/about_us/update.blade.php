@@ -25,7 +25,7 @@
 @endif
 
   <div class="col-6">
-<form  class="container" action='/admin/about us/update/{{$aboutus->id}}' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/about/update/{{$aboutus->id}}' method="POST" enctype="multipart/form-data">
   @csrf
 
         <div class="form-group">

@@ -9,8 +9,8 @@
     "My account" : "My account" ,
     "Log out" : "Log out" ,
     "Login" : "Login" ,
-    "Have The Right Insurance" : "Welcome To <br >Khoury Insurance Brokerage" ,
-    "To Keep Your Family Safe" : "To Keep Your Family Safe" ,
+    "Have The Right Insurance" : "Welcome To <br> Khoury Insurance Brokerage" ,
+    "To Keep Your Family Safe" : "We Know How To Care" ,
     "Get A Qutation" : "Get A Qutation",
     "We make your insurance easy": "We make your insurance easy",
     "KIB": "KIB",
@@ -22,7 +22,7 @@
     "More ...":"More ...",
     "Links":"Links",
     "Why You Should Choose ":"Why You Should Choose ",
-    "Havent you join us please register":">Haven't you join us please register",
+    "Havent you join us please register":"Haven't you join us please register",
     "if you had join us please click to login":"if you had join us please click to login",
     "First Name":"First Name",
     "Fathers Name":"Fathers Name",
@@ -62,5 +62,7 @@
     "thanks_email":"we'll contact with you throug mail soon",
     "User Active":"Please Enter the Email and the Code",
     "code":"Code",
-    "activated":"The user has been activated"
+    "activated":"The user has been activated",
+    "address-det":"Damascus - Kourniesh al tijarah",
+    "address":"Address"
 }

@@ -9,7 +9,7 @@
             <div class="row" style="margin-top: 2%;margin-bottom: 2%;">
               @foreach ($products as $product)  	
                 <div class="card small_font" id="service">
-                 <img class="card-img-top img-fluid" src="{{env('image_storage')}}/{{$product->cover()}}" alt="Card image">
+                 <img class="card-img-top img-fluid" src="{{env('image_storage')}}/{{$product->proudct_cover()}}" alt="Card image">
                  <div class="card-body">
                    <h5 class="card-title">{{$product->getTitle()}}</h5>
                    <p class="card-text">{{ str_limit($product->getDescription(), $limit = 150, $end = '...') }}</p>

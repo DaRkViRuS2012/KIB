@@ -22,7 +22,7 @@
   <label for="exampleInputEmail1">Image</label>
   <input class="active" type="file" name="image" enctype="multipart/form-data">
   <br><br>
-  <button  type="submit" class="btn btn-primary"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Add Image to media</button>
+  <button  type="submit" class="btn btn-primary"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Update Media</button>
 </form>
   </div>
 @endsection

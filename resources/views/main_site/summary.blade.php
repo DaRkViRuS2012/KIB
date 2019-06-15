@@ -67,22 +67,21 @@
   </div>
     @endforeach
 
-<div class="row">
+
+
+
+</div>
+<div class="container">
   
-</div>
-
-</div>
-
 
 <div class="row">
-<h5 style="color: #3544ab;">@lang('thanks_code')<span style="color: green;">{{$application->code}}</span> </h5>  
+<h5 style="color: #3544ab; font-weight:bold;">@lang('thanks_code')<span style="color: green;">{{$application->code}}</span> </h5>  
 </div>
 
 <div class="row">
-  <h5 style="color: #3544ab;">@lang('thanks_cost')<span style="color: green;">{{$application->cost}}</span> </h5>
+  <h5 style="color: #3544ab; font-weight:bold;">@lang('thanks_cost')<span style="color: green;">{{$application->cost}}</span> </h5>
 </div>
-
-
+</div>
  <div class="row">
 <a style="color:#3544ab;margin: 1%;font-size: 20px;" href="/">click here if you want to back to main page</a>
 </div>

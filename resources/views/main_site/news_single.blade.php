@@ -4,8 +4,8 @@
 <div class="container">
 
         @if(Session::get('locale')=="en")
-     <div class="row">
-            <div class="col-md-6">
+	 <div class="row">
+	 		<div class="col-md-6">
                      <h1>{{$news->getTitle()}}</h1>
                      <img style="width:600px;height:400px" src="{{env('image_storage')}}/{{$news->media[0]->url}}" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
                      </div>

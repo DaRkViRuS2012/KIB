@@ -45,6 +45,13 @@
 </select>
 </div>
 
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} Attribute</label>
+    <input name="attr" class="form-control" id="comment" required value="{{$option->attr}}">
+    
+  </div>
+
      <div class="form-group">
 <label for="exampleInputEmail1">{{Request::segment(2)}} Service</label>
 <select class="form-control"  name="service">
@@ -53,7 +60,7 @@
   @if ($option->service->en_title==$service->en_title)
        <option value="{{$service->id}}" selected>{{$service->en_title}}</option>
   @else
-  <option value="{{$service->id}}">{{$service->en_title}}</option>
+  <option value="{{$service->id}}">{{$service->en_title}} / {{$service->type}}</option>
   @endif
 
   @endforeach
@@ -103,7 +110,7 @@
     <script type="text/javascript">
       $(".js-example-tokenizer").select2({
     tags: true,
-    tokenSeparators: [',', ' ']
+    tokenSeparators: [',']
 })
     </script>
 @endsection

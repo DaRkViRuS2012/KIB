@@ -23,14 +23,14 @@
 	@csrf
 
 			<div class="form-group">
-		<label for="exampleInputEmail1">{{Request::segment(2)}} en_Title</label>
-		<input name="en_title" class="form-control"  id="comment" required>
+		<label for="exampleInputEmail1">{{Request::segment(2)}} english name</label>
+		<input name="en_name" class="form-control"  id="comment" required>
 		
 	</div>
 
 				<div class="form-group">
-		<label for="exampleInputEmail1">{{Request::segment(2)}} ar_Title</label>
-		<input name="ar_title" class="form-control"  id="comment" required>
+		<label for="exampleInputEmail1">{{Request::segment(2)}} arabic name</label>
+		<input name="ar_name" class="form-control"  id="comment" required>
 		
 	</div>
 

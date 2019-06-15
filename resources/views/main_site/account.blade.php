@@ -7,7 +7,7 @@
 <div class="row">
     <h2 style="color:#3544ab">Fill Your Application</h2>
 </div>
-<form action="/user/update" method="post">
+<form action="/account" method="post">
   @csrf
 <div class="row">
   <div class="form-group col-4">
@@ -41,17 +41,17 @@
   </div>
 
 
-  <div class="form-group col-4">
+{{--   <div class="form-group col-4">
     <label for="pwd">User Name</label>
-    <input name="username" class="form-control" id="username" type="text" value="{{$user->username}}">
-  </div>
+    <input name="username" class="form-control" id="username" type="text" value="{{$user->username}}" hidden> 
+  </div> --}}
 
-
+{{-- 
    <div class="form-group col-4">
     <label for="email">Password</label>
-    <input name="password" class="form-control" id="email" type="password" value="{{$user->password}}">
+    <input name="password" class="form-control" id="email" type="password" value="{{$user->password}}" hidden>
   </div>
-
+ --}}
     <div class="form-group col-4">
     <label for="pwd">Birthdate</label>
     <input name="birthdate" class="form-control" id="birthdate" type="date" value="{{$user->birthdate}}">
@@ -60,7 +60,7 @@
     <div class="form-group col-6">
     <label for="pwd">city</label>
     <select class="form-control" name="city_id"  id="city_id">
-        <option selected disabled>Select Your City</option>
+        <option  disabled>Select Your City</option>
         @foreach ($cities as $city)
         @if ($user->city->city_id==$city->id)
           <option value="{{$city->id}}" selected>{{$city->en_title}}</option>

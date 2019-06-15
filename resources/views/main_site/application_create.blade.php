@@ -67,7 +67,7 @@
 
 
 
-	<div class="form-group col-lg-6 col-sm-12">
+  <div class="form-group col-lg-6 col-sm-12">
 <label for="pwd">Issuing date تاريخ الاصدار</label>
 <input name="is_date"  class="form-control" id="pwd" type="date">
 </div>

@@ -38,10 +38,14 @@
           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} parent_id</label>
     <select name="city_id" class="form-control">
-      <option>Select Your company</option>
+      <option>Select Parent Country</option>
       <option value="0">Father</option>
-      @foreach ($cities as $city)
-      <option value="{{$city->id}}">{{$city->en_title}}</option>
+      @foreach ($cities as $city1)
+      @if ($city->city_id==$city1->id)
+         <option value="{{$city1->id}}" selected>{{$city1->en_title}}</option>
+      @else
+      <option value="{{$city1->id}}">{{$city1->en_title}}</option>
+      @endif
       @endforeach
       
     </select>

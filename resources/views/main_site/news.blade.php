@@ -1,14 +1,14 @@
 @extends('layouts.main_layout')
 
 @section('content')
-    
+	
 @foreach ($news as $news1)
     {{-- expr --}}
     <div class="container">
     @if(Session::get('locale')=="en")
         {{-- expr --}}
     
-       <div  class="row" style="margin-top:3%; margin-bottom: 3%;">
+	   <div  class="row" style="margin-top:3%; margin-bottom: 3%;">
                     <div class="col-3">
                         
                     
