@@ -34,7 +34,7 @@ class ServiceController extends Controller
                  foreach ($service->partner as $key => $partner1) {
                 $partner1->image=env('website_link').env('image_storage').'/'.$partner1->image;
             }
-              $service->quotation->url=env('website_link').env('image_storage').$service->quotation->url;
+              // $service->quotation->url=env('website_link').env('image_storage').$service->quotation->url;
         }
          return response()->json(['status' => True, 'data' => $services, 'message' => '','type'=>'array']);
     }
@@ -51,9 +51,9 @@ class ServiceController extends Controller
                 $media1->url=env('website_link').env('image_storage').$media1->url;
             }
 
-           
-                $service->quotation->url=env('website_link').env('image_storage').$service->quotation->url;
-           
+
+                // $service->quotation->url=env('website_link').env('image_storage').$service->quotation->url;
+
         }
         return response()->json(['status' => True, 'data' => $services, 'message' => '','type'=>'array']);
     }
@@ -79,12 +79,12 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $en_title =$request['en_title'];
-        $ar_title=$request['ar_title'];                                        
-        $en_subtitle=$request['en_subtitle'];                                     
-        $ar_subtitle=$request['ar_subtitle'];                                     
-        $ar_description=$request['ar_description'];                                      
-        $en_description=$request['en_description'];                                      
-        $parent_id ='0';                                                                  
+        $ar_title=$request['ar_title'];
+        $en_subtitle=$request['en_subtitle'];
+        $ar_subtitle=$request['ar_subtitle'];
+        $ar_description=$request['ar_description'];
+        $en_description=$request['en_description'];
+        $parent_id ='0';
         $company_id = $request['company_id'];
         $icon=$request['icon'];
         $content_type='service';
@@ -97,7 +97,7 @@ class ServiceController extends Controller
             }
         }
         if($request->hasFile('image')){
-            foreach($request->file('image') as $file) {                    
+            foreach($request->file('image') as $file) {
                 $imagename=$file->getClientOriginalName();
                 $path_img=$file->storeAs('public/',time().$imagename);
                  $img_name=str_replace('public/', '', $path_img);
@@ -106,17 +106,17 @@ class ServiceController extends Controller
         }
 
         // if($request->hasFile('quotation')){
-        //     $file=$request['quotation'];                  
+        //     $file=$request['quotation'];
         //     $imagename=$file->getClientOriginalName();
         //     $path_img=$file->storeAs('public/',time().'.pdf');
         //     $img_name=str_replace('public/', '', $path_img);
         //     Media::media_create($img_name,'quotation',$service->id,$content_type);
- 
+
         // }
 
 
         if($request->hasFile('icon')){
-            $file=$request['icon'];                  
+            $file=$request['icon'];
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().'.jpg');
             $img_name=str_replace('public/', '', $path_img);
@@ -125,8 +125,8 @@ class ServiceController extends Controller
             return redirect('/admin/service/index');
         }
 
-    
-        
+
+
 
     return Redirect::back()->withErrors('The image input must not be empty');
     }
@@ -149,27 +149,27 @@ class ServiceController extends Controller
         public function store_son(Request $request)
     {
         $en_title =$request['en_title'];
-        $ar_title=$request['ar_title'];                                        
-        $en_subtitle=$request['en_subtitle'];                                     
-        $ar_subtitle=$request['ar_subtitle'];                                     
-        $ar_description=$request['ar_description'];                                      
-        $en_description=$request['en_description'];                                      
+        $ar_title=$request['ar_title'];
+        $en_subtitle=$request['en_subtitle'];
+        $ar_subtitle=$request['ar_subtitle'];
+        $ar_description=$request['ar_description'];
+        $en_description=$request['en_description'];
         $parent_id =$request['parent_id'];
-        $icon="";                                                      
-        $company_id=$request['company_id'];                               
+        $icon="";
+        $company_id=$request['company_id'];
         $portal_link=$request['portal_link'];
         $content_type='service';
         $type='service';
         $service=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type,$icon);
-        
+
         if ($company_id){
             foreach ($company_id as $key => $company) {
                 PartnerService::partner_service_create($company,$service->id);
             }
         }
-        
+
         if($request->hasFile('image')){
-            foreach($request->file('image') as $file) {                    
+            foreach($request->file('image') as $file) {
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().$imagename);
              $img_name=str_replace('public/', '', $path_img);
@@ -179,13 +179,13 @@ class ServiceController extends Controller
         }
 
         // if($request->hasFile('quotation')){
-        //     $file=$request['quotation'];                  
+        //     $file=$request['quotation'];
         //     $imagename=$file->getClientOriginalName();
         //     $path_img=$file->storeAs('public/',time().'.pdf');
         //     $img_name=str_replace('public/', '', $path_img);
         //     Media::media_create($img_name,'quotation',$service->id,$content_type);
         // return redirect('/admin/service/index/'.$parent_id);
-    
+
         // }
 
 
@@ -196,13 +196,13 @@ class ServiceController extends Controller
 
     public function index_sons($parent_id)
     {
-        $service_sons=Service::service_index_sons($parent_id);
+        $service_sons=Service::admin_service_index_sons($parent_id);
         return view('admin.service.index_sons',compact('service_sons','parent_id'));
     }
 
     public function product_index_sons($parent_id)
     {
-        $product_sons=Service::service_index_sons($parent_id);
+        $product_sons=Service::admin_service_index_sons($parent_id);
         return view('admin.product.index_sons',compact('product_sons','parent_id'));
     }
 
@@ -243,27 +243,27 @@ class ServiceController extends Controller
     {
         $id=$request['id'];
         $en_title =$request['en_title'];
-        $ar_title=$request['ar_title'];                                        
-        $en_subtitle=$request['en_subtitle'];                                     
-        $ar_subtitle=$request['ar_subtitle'];                                     
-        $ar_description=$request['ar_description'];                                      
-        $en_description=$request['en_description'];                                      
-        $parent_id =$request['parent_id'];                                 
-        // $quotation_id=$request['quotation_id'];                                                                      
+        $ar_title=$request['ar_title'];
+        $en_subtitle=$request['en_subtitle'];
+        $ar_subtitle=$request['ar_subtitle'];
+        $ar_description=$request['ar_description'];
+        $en_description=$request['en_description'];
+        $parent_id =$request['parent_id'];
+        // $quotation_id=$request['quotation_id'];
         $company_id = $request['company_id'];
         $icon=$request['icon'];
         $content_type='service';
         $type='service';
 
         $service=Service::service_update($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$type,$icon);
-           
+
         if ($company_id){
             foreach ($company_id as $key => $company) {
                 PartnerService::partner_service_create($company,$service->id);
             }
         }
         if($request->hasFile('image')){
-            foreach($request->file('image') as $file) {                    
+            foreach($request->file('image') as $file) {
                 $imagename=$file->getClientOriginalName();
                 $path_img=$file->storeAs('public/',time().$imagename);
                  $img_name=str_replace('public/', '', $path_img);
@@ -272,17 +272,17 @@ class ServiceController extends Controller
         }
 
         // if($request->hasFile('quotation')){
-        //     $file=$request['quotation'];                  
+        //     $file=$request['quotation'];
         //     $imagename=$file->getClientOriginalName();
         //     $path_img=$file->storeAs('public/',time().'.pdf');
         //     $img_name=str_replace('public/', '', $path_img);
         //     Media::media_create($img_name,'quotation',$service->id,$content_type);
- 
+
         // }
 
 
         if($request->hasFile('icon')){
-            $file=$request['icon'];                  
+            $file=$request['icon'];
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().'.jpg');
             $img_name=str_replace('public/', '', $path_img);
@@ -290,7 +290,7 @@ class ServiceController extends Controller
             $service->save();
             return redirect('/admin/service/index');
         }
-         return redirect('/admin/service/index'); 
+         return redirect('/admin/service/index');
     // return Redirect::back()->withErrors('The image input must not be empty');
     }
 
@@ -300,7 +300,7 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-  
+
 
       public function delete($id)
     {
@@ -310,7 +310,7 @@ class ServiceController extends Controller
         }
         service::service_delete($id);
  if ($service->parent_id==0) {
-        return redirect('/admin/service/index'); 
+        return redirect('/admin/service/index');
         }
         return redirect('/admin/service/index/'.$service->parent_id);
     }
@@ -338,21 +338,21 @@ class ServiceController extends Controller
     public function product_store(Request $request)
     {
         $en_title =$request['en_title'];
-        $ar_title=$request['ar_title'];                                        
-        $en_subtitle=$request['en_subtitle'];                                     
-        $ar_subtitle=$request['ar_subtitle'];                                     
-        $ar_description=$request['ar_description'];                                      
-        $en_description=$request['en_description'];                                   
-        $parent_id ='0';                                 
-        // $quotation_id=$request['quotation_id'];                               
-        $company_id='';                               
+        $ar_title=$request['ar_title'];
+        $en_subtitle=$request['en_subtitle'];
+        $ar_subtitle=$request['ar_subtitle'];
+        $ar_description=$request['ar_description'];
+        $en_description=$request['en_description'];
+        $parent_id ='0';
+        // $quotation_id=$request['quotation_id'];
+        $company_id='';
         $portal_link='';
         $content_type='product';
         $icon = '';
         $type='product';
         $product=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type,$icon);
         if($request->hasFile('image')){
-            foreach($request->file('image') as $file) {                    
+            foreach($request->file('image') as $file) {
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().$imagename);
              $img_name=str_replace('public/', '', $path_img);
@@ -370,21 +370,21 @@ class ServiceController extends Controller
         public function product_store_son(Request $request)
     {
         $en_title =$request['en_title'];
-        $ar_title=$request['ar_title'];                                        
-        $en_subtitle=$request['en_subtitle'];                                     
-        $ar_subtitle=$request['ar_subtitle'];                                     
-        $ar_description=$request['ar_description'];                                      
-        $en_description=$request['en_description'];                                   
-        $parent_id =$request['parent_id'];                                 
-        // $quotation_id=$request['quotation_id'];                                                                    
-        $company_id='';                               
+        $ar_title=$request['ar_title'];
+        $en_subtitle=$request['en_subtitle'];
+        $ar_subtitle=$request['ar_subtitle'];
+        $ar_description=$request['ar_description'];
+        $en_description=$request['en_description'];
+        $parent_id =$request['parent_id'];
+        // $quotation_id=$request['quotation_id'];
+        $company_id='';
         $portal_link='';
         $icon=" ";
         $type='product';
         $content_type='product';
          $product=Service::service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type,$icon);
                     if($request->hasFile('image')){
-            foreach($request->file('image') as $file) {                    
+            foreach($request->file('image') as $file) {
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().$imagename);
              $img_name=str_replace('public/', '', $path_img);
@@ -430,14 +430,14 @@ class ServiceController extends Controller
     {
         $id=$request['id'];
         $en_title =$request['en_title'];
-        $ar_title=$request['ar_title'];                                        
-        $en_subtitle=$request['en_subtitle'];                                     
-        $ar_subtitle=$request['ar_subtitle'];                                     
-        $ar_description=$request['ar_description'];                                      
-        $en_description=$request['en_description'];                                      
-        $parent_id =$request['parent_id'];                                 
-        // $quotation_id=$request['quotation_id'];                                                                      
-        $company_id=$request['company_id'];                               
+        $ar_title=$request['ar_title'];
+        $en_subtitle=$request['en_subtitle'];
+        $ar_subtitle=$request['ar_subtitle'];
+        $ar_description=$request['ar_description'];
+        $en_description=$request['en_description'];
+        $parent_id =$request['parent_id'];
+        // $quotation_id=$request['quotation_id'];
+        $company_id=$request['company_id'];
         $portal_link=$request['portal_link'];
         $service=Service::service_update($id,$en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$company_id,$portal_link);
         if ($service->parent_id==0) {
@@ -452,7 +452,7 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-  
+
 
     public function product_delete($id)
     {
@@ -462,9 +462,9 @@ class ServiceController extends Controller
         }
         service::service_delete($id);
         if ($service->parent_id==0) {
-        return redirect('/admin/product/index'); 
+        return redirect('/admin/product/index');
         }
-        return redirect('/admin/product/index/'.$service->parent_id); 
+        return redirect('/admin/product/index/'.$service->parent_id);
     }
 
 
@@ -481,12 +481,26 @@ class ServiceController extends Controller
             foreach ($product->product_media as $media1) {
                 $media1->url=env('website_link').env('image_storage').$media1->url;
             }
-       
+
         }
          return response()->json(['status' => True, 'data' => $products, 'message' => '','type'=>'array']);
     }
 
 
+
+public function active(Request $request)
+{
+  $id=$request['id'];
+  $service=Service::service_active($id);
+
+  if ($service->type=='product') {
+    return redirect('admin/product/index')->with('success', 'Done Activating');
+  }
+  else {
+    return redirect('admin/service/index')->with('success', 'Done Activating');
+  }
+
+}
 
 
 

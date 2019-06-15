@@ -15,7 +15,7 @@
 
       <a style="margin:1%" href="/admin/{{Request::segment(2)}}/create/{{$parent_id}}" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Add New Sub  {{Request::segment(2)}}</a>
 
-     
+
 
       <div class="container-fluid">
 
@@ -59,6 +59,12 @@
                   <td>{{$service->ar_description}}</td>
                     <td style="width: 18%;"><div class="container">
                       <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$service->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this service')" href="/admin/{{Request::segment(2)}}/delete/{{$service->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a></div>
+                      @if($service->active==1)
+                      <a style="margin-left:1%" href="/admin/service/active/{{$service->id}}"><button class="btn btn-danger" aria-hidden="true">Deactivate</button></a>
+                      @else
+                      <a style="margin-left:1%" href="/admin/service/active/{{$service->id}}"><button class="btn btn-primary" aria-hidden="true">Activate</button></a>
+                      @endif
+
                       </div>
                     <div>
                     </td>
@@ -70,7 +76,7 @@
           </div>
         </div>
 
-   
+
 
       </div>
       <!-- /.container-fluid -->

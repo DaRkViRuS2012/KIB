@@ -176,6 +176,9 @@ Route::get('/admin/user/delete/{id}','UserController@admin_delete');
 Route::get('/admin/notification/index','NotificationController@index');
 Route::get('/sendnotify', 'NotificationController@create');
 Route::post('/sendnotify', 'NotificationController@store');
+
+
+Route::get('/admin/service/active/{id}','ServiceController@active');
 });
 //*********************************************************************************************
 
@@ -225,8 +228,21 @@ Route::get('/service/{id}/show', 'SiteController@service_sons')->name('home');
 
 
 Route::get('/product/{id}', 'SiteController@product_single')->name('home');
+//************************************************************************************************************
+
+//Applications Confrim on Cancel
 
 
+Route::get('/application/confirm/{id}', 'SiteController@application_confirm')->name('home');
+
+Route::get('/application/unconfirm/{id}', 'SiteController@application_cancel')->name('home');
+
+Route::get('/application/confirm/service/{id}', 'SiteController@application_service_confirm')->name('home');
+
+Route::get('/application/unconfirm/service/{id}', 'SiteController@application_service_cancel')->name('home');
+
+
+//************************************************************************************************************
 
 Route::get('/news','SiteController@news_index');
 
@@ -264,7 +280,7 @@ Route::post('/application/create','SiteController@application_store');
 Route::get('/application/service/create','SiteController@application_service_create');
 
 Route::post('/application/service/create','SiteController@application_service_store');
- 
+
 });
 
 Route::get('/application/service/single/{id}','SiteController@application_service_single');
@@ -284,4 +300,3 @@ Route::get('/company/portal/{id}','UserController@company_portal');
 
 Route::get('user/active', 'UserController@active_view');
 Route::post('user/active', 'UserController@active');
-

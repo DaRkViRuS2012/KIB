@@ -68,14 +68,14 @@
     @endforeach
 
 <div class="row">
-  
+
 </div>
 
 </div>
 
 
 <div class="row">
-<h5 style="color: #3544ab;">@lang('thanks_sub')</h5>  
+<h5 style="color: #3544ab;">@lang('thanks_sub')</h5>
 </div>
 
 <div class="row">
@@ -87,6 +87,19 @@
 <a style="color:#3544ab;margin: 1%;font-size: 20px;" href="/">click here if you want to back to main page</a>
 </div>
 
+@if($application->confirm==0)
+<div class="col-lg-8" style="margin-top:5%;margin-bottom:5%;">
+
+
+  <a href="/application/confirm/service/{{$application->id}}" class="btn btn-primary">Confirm</a>
+
+
+  <a href="/application/unconfirm/service/{{$application->id}}" class="btn btn-danger">Cancel</a>
+
+
+</div>
+@endif
+
 {{--     <div class="form-group col-6">
     <label for="pwd">service</label>
     <select class="form-control" name="service_sons">
@@ -95,11 +108,11 @@
       @foreach ($ as $element)
         <option value="{{$service->id}}">{{$service->en_title}}</option>
       @endforeach
-      
+
       @endforeach
     </select>
 
-    
+
   </div> --}}
 
 </form>
@@ -114,7 +127,7 @@ get_sub_service();
     $('#sub_service').on('change', '', function (e) {
 get_options();
 });
-  
+
 
 
 </script>

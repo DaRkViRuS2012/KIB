@@ -18,7 +18,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
- 
+
 
 
 
@@ -37,7 +37,7 @@ class UserController extends Controller
              'mobile' => ['required', 'string', 'max:9','unique:users'],
              'token' => [ 'unique:users'],
              'birthdate' => [ 'required'],
-             
+
         ]);
     }
 
@@ -114,15 +114,15 @@ class UserController extends Controller
         $os='web';
 
         $user=User::admin_user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token,$role);
-          // Sms_helper::send_sms($user->mobile,$user->code); 
+          // Sms_helper::send_sms($user->mobile,$user->code);
          // Auth::loginUsingId($user->id);
-         return redirect('/admin/user/index'); 
+         return redirect('/admin/user/index');
 
-       
+
     }
 
 
- 
+
     public function store(Request $request)
     {
         $validator = $this->validator_register($request->input());
@@ -146,11 +146,11 @@ class UserController extends Controller
         $os='web';
 
         $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token);
-          Sms_helper::send_sms($user->mobile,$user->code); 
+          Sms_helper::send_sms($user->mobile,$user->code);
          //Auth::loginUsingId($user->id);
-         return redirect('/user/active'); 
+         return redirect('/user/active');
 
-       
+
     }
 
 
@@ -179,15 +179,15 @@ class UserController extends Controller
         $os='web';
 
         $user=User::user_update($id,$name,$email,$birthdate,$fcmtoken,$os,$city_id,$mobile);
-          // Sms_helper::send_sms($user->mobile,$user->code); 
+          // Sms_helper::send_sms($user->mobile,$user->code);
          // Auth::loginUsingId($user->id);
-         return redirect('/'); 
+         return redirect('/');
 
-       
+
     }
 
-   
-    
+
+
 
 
 
@@ -210,11 +210,11 @@ class UserController extends Controller
         $os=$request['os'];
 
         $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token);
-        Sms_helper::send_sms($user->mobile,$user->code); 
-     
+        Sms_helper::send_sms($user->mobile,$user->code);
+
          return response()->json(['status' => True, 'data' => $user, 'message' => '','type'=>'array']);
 
-       
+
     }
 
 
@@ -264,18 +264,18 @@ class UserController extends Controller
         $os='web';
 
         $user=User::admin_user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token);
-          // Sms_helper::send_sms($user->mobile,$user->code); 
+          // Sms_helper::send_sms($user->mobile,$user->code);
          // Auth::loginUsingId($user->id);
-         return redirect('/admin/user/index'); 
+         return redirect('/admin/user/index');
 
-       
+
     }
 
     public function admin_delete(Request $request)
     {
       $id=$request['id'];
       User::user_delete($id);
-        return redirect('/admin/user/index'); 
+        return redirect('/admin/user/index');
     }
 
     public function login_page()
@@ -301,26 +301,28 @@ public function login(Request $request)
 
       if (Auth::attempt(['email' => $email, 'password' => $password])) {
           // Authentication passed...
-        $user= User::where('email',$request->email)->first();
+        $user= User::where('email',$request->email)->orWhere('username',$request->email)->first();
         if ($user->active=='1') {
           # code...
-        
+
         if($user->is_admin())
         {
           return redirect('/admin');
         }
      else if ($user->is_company()) {
       return redirect('/company');
-     } 
+     }
      else
 
-      { if (session('link')!=null) {
+      {
+       if (session('link')!=null) {
       	return redirect(session('link'));
       }
       return redirect('/');
       }
-      
+
     }
+          Auth::logout();
           return redirect()->intended('/user/active')->withErrors(['the user is not active ']);
       }
       return redirect()->intended('/login')->withErrors(['the Email or Password wrong']);
@@ -345,7 +347,7 @@ public function login(Request $request)
         $user= User::where('email',$request->email)->first();
         if ($user->active=='1') {
     return response()->json(['status' => True, 'data' => $user, 'message' => '','type'=>'array']);
-    
+
         }
 
 
@@ -369,7 +371,7 @@ public function active(Request $request)
   if ($user->code==$code) {
     $id=$user->id;
         User::user_active($id);
-          return back()->with('success', __('activated')); 
+          return back()->with('success', __('activated'));
   }
   return redirect()->intended('/user/active')->withErrors(['The code you entered is wrong please try again']);
     }
@@ -422,4 +424,3 @@ public function update_token_api(Request $request)
  return response()->json(['status' => true, 'data' =>$user, 'message' => 'the token has been updated','type'=>'succuess']);
 }
 }
-

@@ -128,14 +128,14 @@ public function application_single(Request $request)
         $application=Application::application_show($id);
         // return $application;
         if (Auth::check()) {
-          
-        
+
+
         if ($application->user_id==Auth::user()->id) {
        return view('main_site.summary',compact('application'));
         }
     }
       return view('main_site.summary',compact('application'));
- 
+
 
          return back()->withErrors("you're not Authorized");
 }
@@ -209,7 +209,7 @@ public function galleries()
 
     public function application_create_mobile(Request $request)
     {
-        
+
         $token=$request['token'];
         $user_id=$request['user_id'];
         $user=User::get_by_token($token);
@@ -269,7 +269,7 @@ public function galleries()
            ApplicationOption::application_option_create($option_id,$option_value,$application_id);
         }
         }
-        
+
         return redirect('application/service/single/'.$application->id);
         // $age=$this->calculate_age($birthdate);
         // $service_info=Service::product_show($main_service_id);
@@ -448,7 +448,7 @@ public function galleries()
        Application::application_update_cost($application->id,$cost);
         return redirect('application/single/'.$application->id);
         }
-      
+
         return Redirect::back()->withErrors('You Are  Not Autorized');
     }
 
@@ -493,7 +493,7 @@ public function galleries()
         //    ApplicationOption::application_option_create($option_id,$option_value,$application_id);
         // }
         // }
-        
+
         return redirect('application/service/single/'.$application->id);
         // $age=$this->calculate_age($birthdate);
         // $service_info=Service::product_show($main_service_id);
@@ -585,6 +585,37 @@ public function galleries()
     {
         $services=Service::sons_index();
         return view('main_site.contact',compact('services'));
+    }
+
+
+    public function application_cancel(Request $request)
+    {
+      $id=$request['id'];
+      $application=Application::application_delete($id);
+
+      return redirect('/application/create');
+    }
+
+    public function application_service_cancel(Request $request)
+    {
+      $id=$request['id'];
+      $application=Application::application_delete($id);
+      return redirect('/application/service/create');
+    }
+
+
+    public function application_confirm(Request $request)
+    {
+      $id=$request['id'];
+      $application=Application::confirm($id);
+        return redirect('/application/single/'.$application->id);
+    }
+
+    public function application_service_confirm(Request $request)
+    {
+      $id=$request['id'];
+      $application=Application::confirm($id);
+      return redirect('/application/service/single/'.$application->id);
     }
 
 

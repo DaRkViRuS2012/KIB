@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Application extends Model
 {
            protected $fillable = [
-      'applicant_name_en','applicant_name_ar', 'service_id','user_id','date','code','birthdate','nationality','national_id','martial_status','work','cost','is_date'
+      'applicant_name_en','applicant_name_ar', 'service_id','user_id','date','code','birthdate','nationality','national_id','martial_status','work','cost','is_date','confirm'
     ];
 
     public function service()
@@ -27,7 +27,7 @@ class Application extends Model
 
     public static function application_index()
     {
-    	$applications=Application::with('service','user','options')->get();
+    	$applications=Application::where('confirm',1)->with('service','user','options')->get();
     	return $applications;
     }
 
@@ -36,6 +36,15 @@ class Application extends Model
     {
         $application=Application::where('id',$id)->with('service','user','options')->first();
         return $application;
+    }
+
+
+    public static function confirm($id)
+    {
+      $application=Application::find($id);
+      $application->confirm=1;
+      $application->save();
+      return $application;
     }
 
     public static function  application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work,$is_date)
@@ -52,6 +61,7 @@ class Application extends Model
       $application->national_id=$national_id;
       $application->martial_status=$martial_status;
       $application->work=$work;
+      $application->confirm=0;
       $application->cost=0;
       $application->is_date=$is_date;
       $application->save();
