@@ -77,6 +77,8 @@
 <label for="pwd">Date of Birth (DD-MM-YY) تاريخ الميلاد</label>
 <input name="birthdate"  class="form-control" id="pwd" type="date">
 </div>
+
+
 </div>
 <!--
 	<div class="form-group col-lg-6 col-sm-12">
@@ -92,8 +94,8 @@
 
  </div> -->
  <div class="row">
-   
- 
+
+
  <div class="form-group col-lg-6 col-sm-12">
  <label for="pwd">@lang('category') </label>
  <select class="form-control" name="service"  id="main_service">
@@ -110,6 +112,30 @@
 	<option selected disabled>@lang('select')</option>
 </select>
 </div>
+</div>
+
+
+
+<div class="form-group" id="family_div" hidden>
+	<label for='sel1'>Family Members:</label>
+	<select class='form-control' id='family_members' name='family_members'>
+		<option disabled selected>select your family members number</option>
+		<option value='1'>1</option>
+		<option value='2'>2</option>
+		<option value='3'>3</option>
+		<option value='4'>4</option>
+		<option value='5'>5</option>
+		<option value='6'>6</option>
+		<option value='7'>7</option>
+		<option value='8'>8</option>
+		<option value='9'>9</option>
+		<option value='10'>10</option>
+		</select>
+</div>
+
+
+<div id="birthdates">
+
 </div>
 
 
@@ -139,6 +165,18 @@ get_sub_service();
 	  $('#main_service').on('change', '', function (e) {
 get_options();
 });
+
+
+
+$('#sub_service').on('change', '', function (e) {
+show_the_num();
+});
+
+
+$('#family_members').on('change', '', function (e) {
+get_family_members();
+});
+
 
 
 

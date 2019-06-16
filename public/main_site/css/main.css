@@ -1,4 +1,9 @@
-    
+
+
+body
+{
+FONT-FAMILY: sans-serif;
+}    
 .gallery-title
 {
     font-size: 36px;
@@ -145,13 +150,7 @@ position: fixed // or absolute
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
-
-
-
 }
-
-
-
 
 
 #service
@@ -189,7 +188,7 @@ position: fixed // or absolute
 
 .w3layouts-banner-top {
     background: url(../img/5.jpg) repeat 0px 0px;
-    background-size: 100% 100%;
+    background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -198,7 +197,7 @@ position: fixed // or absolute
 
 .w3layouts-banner-top1 {
     background: url(../img/2.jpg) repeat 0px 0px;
-    background-size: 100% 100%;
+    background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -207,7 +206,7 @@ position: fixed // or absolute
 
 .w3layouts-banner-top2 {
     background: url(../img/7.jpg) repeat 0px 0px;
-    background-size: 100% 100%;
+    background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -216,7 +215,7 @@ position: fixed // or absolute
 
 .w3layouts-banner-top3 {
     background: url(../img/4.jpg) repeat 0px 0px;
-    background-size: 100% 100%;
+    background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -225,7 +224,7 @@ position: fixed // or absolute
 
 .w3layouts-banner-top4 {
     background: url(../img/3.jpg) repeat 0px 0px;
-    background-size: 100% 100%;
+    background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -261,30 +260,7 @@ position: fixed // or absolute
     width: 498px;
     box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.34);
 }
-@media(max-width: 1440px) {
-    .w3l-slide-text h3 {
-        font-size: 35px;
-        
-    }
 
-    .w3l-slide-text p {
-        font-size: 14px;
-    }
-
-    .w3l-slide-text {
-        padding-top: 14em;
-    }
-
-    .text-info-sec img {
-        left: 22%;
-    }
-
-    #service
-{    width: 30%;
-    margin-left: 10px;
-    margin-bottom: 3%;
-}
-}
 
 
 
@@ -312,7 +288,7 @@ a.button-style {
 
 @media(max-width: 1440px) {
     .w3l-slide-text h3 {
-        font-size: 42px;
+        font-size: 32px;
     }
 
     .w3l-slide-text p {
@@ -455,17 +431,15 @@ a.button-style {
 
 @media(max-width: 991px) {
     .w3l-slide-text {
-        padding-left: 0em;
-        padding-top: 10em;
+        padding-left: 0%;
+         padding-top: 30em;
     }
-
 
     .bs-slider-overlay {
 background-color: rgba(0, 0, 0, 0.40);
     height: 190vw!important;
 
 }
-
     .view.view-fifth i {
         font-size: 3em;
     }
@@ -473,6 +447,10 @@ background-color: rgba(0, 0, 0, 0.40);
     .view-fifth h4 {
         font-size: 26px;
         padding: 1.5em 1em;
+    }
+
+        .w3l-slide-text h3 {
+        font-size: 34px!important;
     }
 
     .subscribe-info-w3l input[type="email"] {
@@ -572,7 +550,7 @@ background-color: rgba(0, 0, 0, 0.40);
 
 @media(max-width: 768px) {
     #service
-{    width: 45%;
+{    width: 45%!important;
     margin-left: 20px;
     margin-bottom: 3%;
 }
@@ -743,7 +721,12 @@ background-color: rgba(0, 0, 0, 0.40);
         padding: 4em 3em 3em;
         margin-top: 17em;
     }
-
+    
+    #service {
+    width: 46% !important;
+    margin-left: 10px;
+    margin-bottom: 3%;
+}
     .text-info-sec img {
         left: 10%;
         width: 80%;
@@ -796,6 +779,13 @@ background-color: rgba(0, 0, 0, 0.40);
         padding: 3em 3em 3em;
         margin-top: 16em;
     }
+    
+    
+        #service {
+    width: 46% !important;
+    margin-left: 10px;
+    margin-bottom: 3%;
+}
 
     .w3l-slide-text p {
         font-size: 11px;
@@ -861,6 +851,13 @@ background-color: rgba(0, 0, 0, 0.40);
         font-size: 11px;
         width: 274px;
     }
+    
+    
+        #service {
+    width: 46% !important;
+    margin-left: 10px;
+    margin-bottom: 3%;
+}
 
     .w3l-slide-text h3 {
         font-size: 19px;
@@ -1068,3 +1065,26 @@ navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.
     
     
 
+@media(max-width: 1440px) {
+    .w3l-slide-text h3 {
+        font-size: 32px;
+    }
+
+    .w3l-slide-text p {
+        font-size: 14px;
+    }
+
+    .w3l-slide-text {
+        padding-top: 14em;
+    }
+
+    .text-info-sec img {
+        left: 22%;
+    }
+
+    #service
+{    width: 30%;
+    margin-left: 10px;
+    margin-bottom: 3%;
+}
+}

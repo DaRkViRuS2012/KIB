@@ -19,7 +19,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services=Service::service_index_fathers();
+        $services=Service::admin_service_index_fathers();
         return view('admin.service.index',compact('services'));
     }
 
@@ -470,7 +470,7 @@ class ServiceController extends Controller
 
     public function product_index()
     {
-        $products=Service::product_index_fathers();
+        $products=Service::admin_product_index_fathers();
         return view('admin.product.index',compact('products'));
     }
 

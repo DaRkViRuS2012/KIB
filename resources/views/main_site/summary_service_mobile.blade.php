@@ -100,6 +100,7 @@
 <a style="color:#3544ab;margin: 1%;font-size: 20px;" href="/">click here if you want to back to main page</a>
 </div>
 
+
 @if($application->confirm==0)
 <div class="col-lg-8" style="margin-top:5%;margin-bottom:5%;">
 

@@ -48,7 +48,7 @@ for (var i = phones.length - 1; i >= 0; i--) {
     $("#phone1").html(phone_value);
     $("#email").html(email_value);
     $("#email").attr("href",'mailto:'+email_value);
-    $("#email").css("color", "white");
+    $("#email").css("color", "black");
     $("#phone").html(phone_value);
 
      }

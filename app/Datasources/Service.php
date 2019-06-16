@@ -118,12 +118,25 @@ class Service extends Model
 
      public static function service_index_fathers()
     {
-        $services=Service::where('parent_id','0')->where('type','service')->with('media','sons','prices')->get();
+        $services=Service::where('parent_id','0')->where('active',1)->where('type','service')->with('media','sons','prices')->get();
         return $services;
     }
 
 
+    public static function admin_service_index_fathers()
+   {
+       $services=Service::where('parent_id','0')->where('type','service')->with('media','sons','prices')->get();
+       return $services;
+   }
+
+
     public static function product_index_fathers()
+    {
+        $services=Service::where('parent_id','0')->where('active',1)->where('type','product')->with('product_media','sons')->get();
+        return $services;
+    }
+
+    public static function admin_product_index_fathers()
     {
         $services=Service::where('parent_id','0')->where('type','product')->with('product_media','sons')->get();
         return $services;

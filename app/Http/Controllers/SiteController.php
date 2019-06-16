@@ -15,6 +15,7 @@ use App\News;
 use App\Sms_helper;
 use Carbon\Carbon;
 use App\Page;
+use Redirect;
 use App\User;
 use Auth;
 use App\ApplicationOption;
@@ -73,7 +74,12 @@ public function service_sons(Request $request)
     $id=$request['id'];
     $services=Service::service_index_fathers();
     $main_service=Service::service_show($id);
+    if ($main_service) {
     return view('main_site.service_sons',compact('services','main_service'));
+    }
+    abort(404);
+
+
 }
 
 
@@ -217,7 +223,7 @@ public function galleries()
     }
 
 
-    public function application_create_service_mobile(Request $request)
+    public function application_service_create_mobile(Request $request)
     {
         $token=$request['token'];
         $user_id=$request['user_id'];
@@ -347,25 +353,69 @@ public function galleries()
         $age=$this->calculate_age($birthdate);
         $service_info=Service::product_show($main_service_id);
         $service_title=$service_info->en_title;
+        $sub_service_ob=Service::product_show($service_id);
+        $sub_service_title=$sub_service_ob->en_title;
+        // $sub_service_ob=Service::product_show($sub_service);
+        // $sub_service_title=$sub_service_ob->en_title;
 
         // Sms_helper::send_sms($application->user->mobile,$application->code);
         $cost=0;
-        if ($service_title=="Medical insurance") {
+        if (strpos($service_title, 'Medical') !== false) {
+
+          if (strpos($sub_service_title, 'Family') !== false) {
+
+            $members=$request['family_members'];
+
+            for ($i=0; $i <$members ; $i++) {
+
+              $birthdates=$request['birthdate'.$i];
+                $age_family=$this->calculate_age($birthdates);
+              $price=Price::price_show_by_service_id($service_id,$age_family);
+              if($price!=null){
+                $cost+=$price->value;
+              }
+
+
+            }
+          }else{
             $price=Price::price_show_by_service_id($service_id,$age);
             if($price!=null)
             {$cost=$price->value;}
         else
             {$cost=0;}
         }
-        elseif ($service_title=="Life insurance") {
+      }
+        elseif (strpos($service_title, 'Life') !== false) {
 
+          if (strpos($sub_service_title, 'Family') !== false) {
+
+            $members=$request['family_members'];
+
+            for ($i=0; $i <$members ; $i++) {
+
+              $birthdates=$request['birthdate'.$i];
+                $age_family=$this->calculate_age($birthdates);
+              $price=Price::price_show_by_service_id($service_id,$age_family);
+              if($price!=null){
+                $price_value=$price->value;
+
+                $value=$request['life_price'];
+                $cost+=$value*$price_value;
+                }
+
+
+            }
+          }else{
             $price=Price::price_show_by_service_id($service_id,$age);
-            if($price!=null)
-            {$price_value=$price->value;
-                        $value=$request['life_price'];
-                        $cost=$value*$price_value;}
-                        else
-                        {$cost=0;}
+            if($price!=null){
+              $price_value=$price->value;
+              $value=$request['life_price'];
+              $cost=$value*$price_value;
+              }
+        }
+
+
+
         }
 
         elseif ($service_title=="Travel insurance") {
@@ -415,25 +465,66 @@ public function galleries()
         $age=$this->calculate_age($birthdate);
         $service_info=Service::product_show($main_service_id);
         $service_title=$service_info->en_title;
-
+        $sub_service_ob=Service::product_show($service_id);
+        $sub_service_title=$sub_service_ob->en_title;
         // Sms_helper::send_sms($application->user->mobile,$application->code);
-            $cost=0;
-        if ($service_title=="Medical insurance") {
+        $cost=0;
+        if (strpos($service_title, 'Medical') !== false) {
+
+          if (strpos($sub_service_title, 'Family') !== false) {
+
+            $members=$request['family_members'];
+
+            for ($i=0; $i <$members ; $i++) {
+
+              $birthdates=$request['birthdate'.$i];
+                $age_family=$this->calculate_age($birthdates);
+              $price=Price::price_show_by_service_id($service_id,$age_family);
+              if($price!=null){
+                $cost+=$price->value;
+              }
+
+
+            }
+          }else{
             $price=Price::price_show_by_service_id($service_id,$age);
             if($price!=null)
             {$cost=$price->value;}
         else
             {$cost=0;}
         }
-        elseif ($service_title=="Life insurance") {
+      }
+        elseif (strpos($service_title, 'Life') !== false) {
 
+          if (strpos($sub_service_title, 'Family') !== false) {
+
+            $members=$request['family_members'];
+
+            for ($i=0; $i <$members ; $i++) {
+
+              $birthdates=$request['birthdate'.$i];
+                $age_family=$this->calculate_age($birthdates);
+              $price=Price::price_show_by_service_id($service_id,$age_family);
+              if($price!=null){
+                $price_value=$price->value;
+
+                $value=$request['life_price'];
+                $cost+=$value*$price_value;
+                }
+
+
+            }
+          }else{
             $price=Price::price_show_by_service_id($service_id,$age);
-            if($price!=null)
-            {$price_value=$price->value;
-                        $value=$request['life_price'];
-                        $cost=$value*$price_value;}
-                        else
-                        {$cost=0;}
+            if($price!=null){
+              $price_value=$price->value;
+              $value=$request['life_price'];
+              $cost=$value*$price_value;
+              }
+        }
+
+
+
         }
 
         elseif ($service_title=="Travel insurance") {
@@ -454,7 +545,7 @@ public function galleries()
 
 
 
-    public function application_service_mobile_store(Request $request)
+    public function application_service_store_mobile(Request $request)
     {
 
              $validator = $this->validator_application($request->input());
@@ -476,7 +567,7 @@ public function galleries()
         $national_id=$request['national_id'];
         $martial_status=$request['martial_status'];
         $work=$request['work'];
-        $user_id=Auth::user()->id;
+        $user_id=$request['user_id'];
         $is_date=$request['is_date'];
         $code=Sms_helper::RandomString();
         $date=date('Y-m-d H:i:s');
@@ -591,9 +682,9 @@ public function galleries()
     {
       $id=$request['id'];
       $application=Application::application_delete($id);
-
       return redirect('/application/create');
     }
+
 
     public function application_service_cancel(Request $request)
     {

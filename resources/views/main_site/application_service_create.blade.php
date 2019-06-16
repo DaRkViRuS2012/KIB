@@ -92,8 +92,8 @@
 
  </div> -->
  <div class="row">
-   
- 
+
+
  <div class="form-group col-lg-6 col-sm-12">
  <label for="pwd">@lang('category') </label>
  <select class="form-control" name="service"  id="main_service">
@@ -111,7 +111,6 @@
 </select>
 </div>
 </div>
-
 
 
 
