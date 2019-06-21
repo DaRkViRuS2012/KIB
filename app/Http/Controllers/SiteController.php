@@ -18,6 +18,7 @@ use App\Page;
 use Redirect;
 use App\User;
 use Auth;
+use Mail;
 use App\ApplicationOption;
 use Illuminate\Support\Facades\Validator;
 class SiteController extends Controller
@@ -52,6 +53,15 @@ class SiteController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+      public function application_send($id)
+   {
+   
+              Mail::send('emails.application', ['application_id' => $id], function ($m) use ($id) {
+            $m->from('KIB@khouryinsurance.com', 'New Application');
+
+            $m->to("info@khouryinsurance.com","KIB")->subject('New Service Application');
+        });
+   }
 
 public function services()
 {
@@ -132,7 +142,12 @@ public function application_single(Request $request)
          $id=$request['id'];
 
         $application=Application::application_show($id);
+
         // return $application;
+        if ($application==null) 
+             abort(404);
+            # code...
+        else{
         if (Auth::check()) {
 
 
@@ -140,7 +155,10 @@ public function application_single(Request $request)
        return view('main_site.summary',compact('application'));
         }
     }
+}
 
+  
+   
 
          return back()->withErrors("you're not Authorized");
 }
@@ -178,10 +196,7 @@ public function application_service_single_mobile(Request $request)
 
 
 
-public function index()
-{
 
-}
 
 public function galleries()
 {
@@ -264,6 +279,7 @@ public function galleries()
         $date=date('Y-m-d H:i:s');
         $service=Service::service_show($main_service_id);
         $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work,$is_date);
+         
         if ($service->options!=null) {
         foreach ($service->options as $key => $option) {
             $option_id=$option->id;
@@ -355,6 +371,7 @@ public function galleries()
         $service_title=$service_info->en_title;
         $sub_service_ob=Service::product_show($service_id);
         $sub_service_title=$sub_service_ob->en_title;
+        
         // $sub_service_ob=Service::product_show($sub_service);
         // $sub_service_title=$sub_service_ob->en_title;
 
@@ -366,7 +383,7 @@ public function galleries()
 
             $members=$request['family_members'];
 
-            for ($i=0; $i <$members ; $i++) {
+            for ($i=1; $i <$members+1 ; $i++) {
 
               $birthdates=$request['birthdate'.$i];
                 $age_family=$this->calculate_age($birthdates);
@@ -391,7 +408,7 @@ public function galleries()
 
             $members=$request['family_members'];
 
-            for ($i=0; $i <$members ; $i++) {
+            for ($i=1; $i <$members+1 ; $i++) {
 
               $birthdates=$request['birthdate'.$i];
                 $age_family=$this->calculate_age($birthdates);
@@ -454,6 +471,7 @@ public function galleries()
         $user=User::user_show($user_id);
         if ($user->token==$token) {
             $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work,$is_date);
+             
         foreach ($service->options as $key => $option) {
             $option_id=$option->id;
             $name=$option->attr;
@@ -475,7 +493,7 @@ public function galleries()
 
             $members=$request['family_members'];
 
-            for ($i=0; $i <$members ; $i++) {
+            for ($i=1; $i <$members+1 ; $i++) {
 
               $birthdates=$request['birthdate'.$i];
                 $age_family=$this->calculate_age($birthdates);
@@ -500,7 +518,7 @@ public function galleries()
 
             $members=$request['family_members'];
 
-            for ($i=0; $i <$members ; $i++) {
+            for ($i=1; $i <$members+1 ; $i++) {
 
               $birthdates=$request['birthdate'.$i];
                 $age_family=$this->calculate_age($birthdates);
@@ -573,6 +591,7 @@ public function galleries()
         $date=date('Y-m-d H:i:s');
         $service=Service::product_show($main_service_id);
         $application=Application::application_create($applicant_name_en,$applicant_name_ar,$service_id,$user_id,$date,$code,$birthdate,$nationality,$national_id,$martial_status,$work,$is_date);
+         
         // if ($service->options!=null) {
         // foreach ($service->options as $key => $option) {
         //     $option_id=$option->id;
@@ -685,6 +704,17 @@ public function galleries()
       return redirect('/application/create');
     }
 
+    public function application_cancel_mobile(Request $request)
+    {
+      $id=$request['id'];
+
+      $application=Application::application_show($id);
+      $token=$application->user->token;
+      $user_id=$application->user->id;
+      $application->delete();
+      return redirect('/application/'.$token.'/'.$user_id.'/create');
+    }
+
 
     public function application_service_cancel(Request $request)
     {
@@ -693,11 +723,23 @@ public function galleries()
       return redirect('/application/service/create');
     }
 
+    public function application_service_cancel_mobile(Request $request)
+    {
+      $id=$request['id'];
+
+      $application=Application::application_show($id);
+      $token=$application->user->token;
+      $user_id=$application->user->id;
+      $application->delete();
+      return redirect('/application/service/'.$token.'/'.$user_id.'/create');
+    }
+
 
     public function application_confirm(Request $request)
     {
       $id=$request['id'];
       $application=Application::confirm($id);
+      $this->application_send($application->id);
         return redirect('/application/single/'.$application->id);
     }
 
@@ -705,7 +747,25 @@ public function galleries()
     {
       $id=$request['id'];
       $application=Application::confirm($id);
+      $this->application_send($application->id);
       return redirect('/application/service/single/'.$application->id);
+    }
+
+
+    public function application_confirm_mobile(Request $request)
+    {
+      $id=$request['id'];
+      $application=Application::confirm($id);
+      $this->application_send($application->id);
+        return redirect('/application/single/mobile/'.$application->id);
+    }
+
+    public function application_service_confirm_mobile(Request $request)
+    {
+      $id=$request['id'];
+      $application=Application::confirm($id);
+      $this->application_send($application->id);
+      return redirect('/application/service/single/mobile/'.$application->id);
     }
 
 

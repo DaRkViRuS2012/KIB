@@ -558,6 +558,22 @@
     </div>
 <script type="text/javascript" src="{{ asset('main_site/js/contact.js')}}">
 </script>
+
+
+
+<script type="text/javascript" src="{{ asset('main_site/js/push.js')}}">
+</script>
+<script type="text/javascript" src="{{ asset('main_site/js/push.min.js')}}">
+</script>
+<script type="text/javascript" src="{{ asset('main_site/js/serviceWorker.min.js')}}">
+</script>
+
+
+
+
+
+
+
 <script type="text/javascript">
     $(document).ready(function(){
       social();
@@ -581,6 +597,39 @@
 $(this).removeClass("active");
 }
 $(this).addClass("active");
+
+// Notification.permission;
+return  Push.create("Hello world!", {
+    body: "How's it hangin'?",
+    icon: 'http://khouryinsurance.com/main_site/img/Logo.png',
+    timeout: 4000,
+    onClick: function () {
+        window.focus();
+        this.close();
+    }
+});
+
+
+ if (!("Notification" in window)) {
+    console.log("This browser does not support desktop notification");
+  }
+
+  // Let's check whether notification permissions have alredy been granted
+  else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+    var notification = new Notification("Hi there!");
+  }
+
+  // Otherwise, we need to ask the user for permission
+  else if (Notification.permission !== 'denied' || Notification.permission === "default") {
+    Notification.requestPermission(function (permission) {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        var notification = new Notification("Hi there!");
+      }
+    });
+  }
+
 
 });
 

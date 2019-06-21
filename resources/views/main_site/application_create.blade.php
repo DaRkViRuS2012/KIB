@@ -12,54 +12,54 @@
 <div class="row">
   <div class="form-group col-lg-4 col-sm-12">
     <label for="email">First Name</label>
-    <input name="fname_en" class="form-control" id="email" type="text" value="{{ old('fname_en') }}">
+    <input name="fname_en" class="form-control" id="email" type="text" value="{{ old('fname_en') }}" required>
   </div>
   <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">Father's Name</label>
-    <input name="father_name_en" class="form-control" id="pwd" type="text" value="{{old('father_name_en')}}">
+    <input name="father_name_en" class="form-control" id="pwd" type="text" value="{{old('father_name_en')}}" required>
   </div>
 
     <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">Surname (Family Name)</label>
-    <input name="lname_en" class="form-control" id="pwd" type="text" value="{{old('lname_en')}}">
+    <input name="lname_en" class="form-control" id="pwd" type="text" value="{{old('lname_en')}}" required>
   </div>
 
 
    <div class="form-group col-lg-4 col-sm-12">
     <label for="email">الاسم</label>
-    <input name="fname_ar" class="form-control" id="email" type="text" value="{{old('fname_ar')}}">
+    <input name="fname_ar" class="form-control" id="email" type="text" value="{{old('fname_ar')}}" required>
   </div>
   <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">اسم الاب</label>
-    <input name="father_name_ar" class="form-control" id="pwd" type="text" value="{{old('father_name_ar')}}">
+    <input name="father_name_ar" class="form-control" id="pwd" type="text" value="{{old('father_name_ar')}}" required>
   </div>
 
     <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">الكنية</label>
-    <input name="lname_ar" class="form-control" id="pwd" type="text" value="{{old('lname_ar')}}">
+    <input name="lname_ar" class="form-control" id="pwd" type="text" value="{{old('lname_ar')}}" required>
   </div>
 
 
 
   <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">Nationality الجنسية</label>
-    <input name="nationality" class="form-control" id="pwd" type="text" value="{{old('nationality')}}">
+    <input name="nationality" class="form-control" id="pwd" type="text" value="{{old('nationality')}}" required>
   </div>
 
 
     <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">National ID الرقم الوطني</label>
-    <input name="national_id" class="form-control" id="pwd" type="text" value="{{old('national_id')}}">
+    <input name="national_id" class="form-control" id="pwd" type="text" value="{{old('national_id')}}" required>
   </div>
 
 <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">Martial Status الحالة الاجتماعية</label>
-    <input name="martial_status" class="form-control" id="pwd" type="text" value="{{old('martial_status')}}">
+    <input name="martial_status" class="form-control" id="pwd" type="text" value="{{old('martial_status')}}" required>
   </div>
 
 <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">Work المهنة</label>
-    <input name="work" class="form-control" id="pwd" type="text" value="{{old('work')}}">
+    <input name="work" class="form-control" id="pwd" type="text" value="{{old('work')}}" required>
   </div>
 
 
@@ -69,13 +69,13 @@
 
   <div class="form-group col-lg-6 col-sm-12">
 <label for="pwd">Issuing date تاريخ الاصدار</label>
-<input name="is_date"  class="form-control" id="pwd" type="date">
+<input name="is_date"  class="form-control" id="pwd" type="date" required>
 </div>
 
 
 <div class="form-group col-lg-6  col-sm-12">
 <label for="pwd">Date of Birth (DD-MM-YY) تاريخ الميلاد</label>
-<input name="birthdate"  class="form-control" id="pwd" type="date">
+<input name="birthdate"  class="form-control" id="pwd" type="date" required>
 </div>
 
 
@@ -83,7 +83,7 @@
 <!--
 	<div class="form-group col-lg-6 col-sm-12">
 	 <label for="pwd">service</label>
-	 <select class="form-control" name="service_sons">
+	 <select class="form-control" name="service_sons" required>
 		 <option selected disabled>@lang('select')</option>
 		 @foreach ($services as $service)
 
@@ -98,7 +98,7 @@
 
  <div class="form-group col-lg-6 col-sm-12">
  <label for="pwd">@lang('category') </label>
- <select class="form-control" name="service"  id="main_service">
+ <select class="form-control" name="service"  id="main_service" required>
 	 <option selected disabled>Select Your Main Service</option>
 	 @foreach ($services as $service)
 		 <option value="{{$service->id}}">{{$service->en_title}}</option>
@@ -108,7 +108,7 @@
 
 <div class="form-group col-lg-6 col-sm-12">
 <label for="pwd">@lang('product')</label>
-<select class="form-control" name="sub_service" id="sub_service">
+<select class="form-control" name="sub_service" id="sub_service" required>
 	<option selected disabled>@lang('select')</option>
 </select>
 </div>
@@ -118,7 +118,7 @@
 
 <div class="form-group" id="family_div" hidden>
 	<label for='sel1'>Family Members:</label>
-	<select class='form-control' id='family_members' name='family_members'>
+	<select class='form-control' id='family_members' name='family_members' required>
 		<option disabled selected>select your family members number</option>
 		<option value='1'>1</option>
 		<option value='2'>2</option>

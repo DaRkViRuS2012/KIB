@@ -87,7 +87,7 @@ function get_family_members() {
 		console.log(family_members);
 var html="";
 html+="<div class='form-group'>";
-		for (var i = 0; i < family_members; i++) {
+		for (var i = 1; i < family_members+1; i++) {
 			html+="<div class='form-group'>";
 			html+="<label for='sel1'>Member "+i+" Birthdate</label>"
 		html+="<input name='birthdate"+i+"'  class='form-control' id='birthdate"+i+"' type='date'>";

@@ -111,7 +111,7 @@
         <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
         </a>
  </div>
- 
+
 @else
 
 
@@ -129,7 +129,7 @@
               </a>
         </li>
 
-        
+
          <li class="nav-item">
           <a class="nav-link" href="/aboutus">@lang("About us")</a>
         </li>
@@ -199,7 +199,7 @@
                <li>
           <div class="w3layouts-banner-top">
 
- 
+
             <div class="bs-slider-overlay">
               <div class="container">
                 <!-- Slide Text Layer -->
@@ -217,7 +217,7 @@
          <li>
 
           <div class="w3layouts-banner-top w3layouts-banner-top2">
-            
+
 
             <div class="bs-slider-overlay">
               <div class="container">
@@ -269,15 +269,15 @@
         </li>
 
 
-      
-       
+
+
 
 
           <li>
-  
+
           <div class="w3layouts-banner-top w3layouts-banner-top1">
 
-  
+
             <div class="bs-slider-overlay">
               <div class="container">
                 <div class="row">
@@ -293,7 +293,7 @@
 
       @foreach ($services as $key=> $service)
         {{-- expr --}}
-     
+
       <a href='/service/{{$service->id}}/show' class='deg{{$key}}'><img {{-- style="border-radius:50%!important"  --}} src='{{env('image_storage')}}/{{$service->icon()}}'></a>
       @endforeach
 
@@ -306,16 +306,15 @@
           </div>
         </li>
 
-{{-- @foreach ($sliders as $key => $slider) --}}
-  
+@foreach ($sliders as $key => $slider)
 
-{{--                 <li>
-          <div class="w3layouts-banner-top{{$key+4}}" style="background: url({{env('image_storage')}}/{{$slider->media->url}}) no-repeat 0px 0px;background-size: cover;-webkit-background-size: cover;-moz-background-size:cover;-o-background-size: cover;-moz-background-size: cover;">
+              <li>
+          <div class="w3layouts-banner-top{{$key+4}}" style="background: url({{env('image_storage')}}/{{$slider->media[0]->url}}) no-repeat 0px 0px;background-size: cover;-webkit-background-size: cover;-moz-background-size:cover;-o-background-size: cover;-moz-background-size: cover;">
             <div class="bs-slider-overlay">
               <div class="container">
                 <!-- Slide Text Layer -->
                 <div class="w3l-slide-text col-lg-6">
-                  <h3 style="color:#414141" data-animation="animated zoomInRight">{{$slider->en_title}}</h3>
+                  <h3 style="color:##3544ab" data-animation="animated zoomInRight">{{$slider->en_title}}</h3>
                   <p class="aos-init aos-animate" data-aos="fade-down">{{$slider->en_sub_title}}</p>
                   <a  href="services.html" target="_blank" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">Get A Qutation</a>
                 </div>
@@ -323,7 +322,7 @@
             </div>
           </div>
         </li> --}}
-        {{-- @endforeach --}}
+         @endforeach
       </ul>
     </div>
 
@@ -336,8 +335,8 @@
 
 
  <li>
-  
-        
+
+
 
             <div dir="rtl" style="text-align:right;" class="w3layouts-banner-top w3layouts-banner-top1">
             <div class="bs-slider-overlay">
@@ -355,7 +354,7 @@
 
       @foreach ($services as $key=> $service)
         {{-- expr --}}
-     
+
       <a href='/service/{{$service->id}}/show' class='deg{{$key}}'><img {{-- style="border-radius:50%!important"  --}} src='{{env('image_storage')}}/{{$service->icon()}}'></a>
       @endforeach
 
@@ -373,7 +372,7 @@
          <li>
 
 
-            
+
 
             <div dir="rtl" style="text-align: right;" class="w3layouts-banner-top w3layouts-banner-top2">
             <div class="bs-slider-overlay">
@@ -426,11 +425,11 @@
         </li>
 
 
-      
-       
 
 
-         
+
+
+
 
 
 
@@ -438,7 +437,7 @@
                <li>
 
             <div dir="rtl" style="text-align:right;" class="w3layouts-banner-top">
- 
+
             <div class="bs-slider-overlay">
               <div class="container">
                 <!-- Slide Text Layer -->
@@ -453,7 +452,7 @@
         </li>
 
 {{-- @foreach ($sliders as $key => $slider) --}}
-  
+
 
 {{--                 <li>
           <div class="w3layouts-banner-top{{$key+4}}" style="background: url({{env('image_storage')}}/{{$slider->media->url}}) no-repeat 0px 0px;background-size: cover;-webkit-background-size: cover;-moz-background-size:cover;-o-background-size: cover;-moz-background-size: cover;">
@@ -479,8 +478,8 @@
 
   </div>
     </div>
-  
-      
+
+
 </section>
 
 
@@ -494,7 +493,7 @@
 
     $(".filter-button").click(function(){
         var value = $(this).attr('data-filter');
-        
+
         if(value == "all")
         {
             //$('.filter').removeClass('hidden');
@@ -506,7 +505,7 @@
 //            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
             $(".filter").not('.'+value).hide('3000');
             $('.filter').filter('.'+value).show('3000');
-            
+
         }
     });
 
@@ -519,7 +518,7 @@
                             $(this).removeClass('active');
                         }
                     });
-    
+
     if ($(".filter-button").removeClass("active")) {
 $(this).removeClass("active");
 }
@@ -632,7 +631,7 @@ function closeNav() {
 </style>
 
   @if (Session::get('locale')=="ar")
-  
+
   <style type="text/css">
     .right:after {
     content: '';

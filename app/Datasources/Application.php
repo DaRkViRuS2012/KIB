@@ -96,7 +96,7 @@ class Application extends Model
 
          public static function application_delete($id)
     {
-    	$application=Application::find($id);
+      $application=Application::where('id',$id)->with('service','user','options')->first();
     	$application->delete();
     }
 

@@ -88,11 +88,11 @@
 
 
 <div class="row">
-<h5 style="color: #3544ab;">@lang('thanks_code')<span style="color: green;">{{$application->code}}</span> </h5>
+<h4 style="color: #3544ab;">@lang('thanks_code')<span style="color: green;">{{$application->code}}</span> </h4>
 </div>
 
 <div class="row">
-  <h5 style="color: #3544ab;">@lang('thanks_cost')<span style="color: green;">{{$application->cost}}</span> </h5>
+  <h4 style="color: #3544ab;">@lang('thanks_cost')<span style="color: green;">{{$application->cost}}</span> </h4>
 </div>
 
 
@@ -104,10 +104,10 @@
 <div class="col-lg-8" style="margin-top:5%;margin-bottom:5%;">
 
 
-  <a href="/application/confirm/{{$application->id}}" class="btn btn-primary">Confirm</a>
+  <a href="/application/confirm/mobile/{{$application->id}}" class="btn btn-primary">Confirm</a>
 
 
-  <a href="/application/unconfirm/{{$application->id}}" class="btn btn-danger">Cancel</a>
+  <a href="/application/unconfirm/mobile/{{$application->id}}" class="btn btn-danger">Cancel</a>
 
 
 </div>

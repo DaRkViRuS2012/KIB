@@ -72,7 +72,7 @@ class GalleryController extends Controller
      * @return \Illuminate\Http\Response
      */
   public function store(Request $request)
-    {   
+    {
            $validator = $this->validator_gallery($request->input());
          if ($validator->fails()) {
             return back()->withErrors($validator)->withInput(); //TODO
@@ -88,12 +88,12 @@ class GalleryController extends Controller
         $gallery=Gallery::gallery_create($ar_title,$en_title,$en_description,$ar_description);
 
                     if($request->hasFile('image')){
-            foreach($request->file('image') as $file) {                    
+            foreach($request->file('image') as $file) {
             $imagename=$file->getClientOriginalName();
             $path_img=$file->storeAs('public/',time().$imagename);
              $img_name=str_replace('public/', '', $path_img);
              Media::media_create($img_name,$media_type,$gallery->id,$content_type);
-            
+
              }
              return redirect('/admin/gallery/index');
         }
@@ -141,10 +141,10 @@ class GalleryController extends Controller
         $id=$request['id'];
         $ar_title=$request['ar_title'];
         $en_title=$request['en_title'];
-        $en_description=$data['en_description'];
-        $ar_description=$data['ar_description'];
+        $en_description=$request['en_description'];
+        $ar_description=$request['ar_description'];
         Gallery::gallery_update($id,$en_title,$ar_title,$en_description,$ar_description);
-        return redirect('/admin/gallery/index'); 
+        return redirect('/admin/gallery/index');
     }
 
     /**
@@ -160,6 +160,6 @@ class GalleryController extends Controller
         Storage::delete('public'.$image->url);
         }
         Gallery::gallery_delete($id);
-return redirect('/admin/gallery/index'); 
+return redirect('/admin/gallery/index');
     }
 }

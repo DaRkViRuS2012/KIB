@@ -88,11 +88,11 @@
 
 
 <div class="row">
-<h5 style="color: #3544ab;">@lang('thanks_sub')</h5>
+<h4 style="color: #3544ab;">@lang('thanks_sub')</h4>
 </div>
 
 <div class="row">
-  <h5 style="color: #3544ab;">@lang('thanks_email')</h5>
+  <h4 style="color: #3544ab;">@lang('thanks_email')</h4>
 </div>
 
 
@@ -104,10 +104,10 @@
 @if($application->confirm==0)
 <div class="col-lg-8" style="margin-top:5%;margin-bottom:5%;">
 
-  <a href="/application/confirm/service/{{$application->id}}" class="btn btn-primary">Confirm</a>
+  <a href="/application/confirm/service/mobile/{{$application->id}}" class="btn btn-primary">Confirm</a>
 
 
-  <a href="/application/unconfirm/service/{{$application->id}}" class="btn btn-danger">Cancel</a>
+  <a href="/application/unconfirm/service/mobile/{{$application->id}}" class="btn btn-danger">Cancel</a>
 
 </div>
 @endif

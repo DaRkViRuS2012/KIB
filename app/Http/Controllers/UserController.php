@@ -65,7 +65,7 @@ class UserController extends Controller
      protected function validator_login(array $data)
     {
         return Validator::make($data, [
-            'email' => ['required', 'string', 'email', 'max:255'],
+            'email' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string'],
         ]);
     }
@@ -299,7 +299,7 @@ public function login(Request $request)
     $password=$request['password'];
       //$credentials = $request->only('email', 'password');
 
-      if (Auth::attempt(['email' => $email, 'password' => $password])) {
+      if (Auth::attempt(['email' => $email, 'password' => $password])||Auth::attempt(['username' => $email, 'password' => $password])) {
           // Authentication passed...
         $user= User::where('email',$request->email)->orWhere('username',$request->email)->first();
         if ($user->active=='1') {

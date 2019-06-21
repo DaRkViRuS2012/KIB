@@ -12,33 +12,33 @@
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 @endsection
 	<div class="col-6">
-<form  class="container" action='/admin/galleries/update/{{$gallery->id}}' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/gallery/update/{{$gallery->id}}' method="POST" enctype="multipart/form-data">
 	@csrf
 
 			<div class="form-group">
 		<label for="exampleInputEmail1">Gallery en_Title</label>
 		<input name="en_title" class="form-control"  id="comment" required value="{{$gallery->en_title}}">
-		
+
 	</div>
 
 				<div class="form-group">
 		<label for="exampleInputEmail1">Gallery ar_Title</label>
 		<input name="ar_title" class="form-control"  id="comment" required value="{{$gallery->ar_title}}">
-		
+
 	</div>
 
 
           <div class="form-group">
     <label for="exampleInputEmail1">Gallery en_description</label>
     <textarea name="en_description" class="form-control"  id="comment" required>{{$gallery->en_description}}</textarea>
-    
+
   </div>
 
 
           <div class="form-group">
     <label for="exampleInputEmail1">Gallery ar_description</label>
     <textarea name="ar_description" class="form-control"  id="comment" required>{{$gallery->ar_description}}</textarea>
-    
+
   </div>
 
 

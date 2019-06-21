@@ -75,11 +75,11 @@
 
 
 <div class="row">
-<h5 style="color: #3544ab;">@lang('thanks_sub')</h5>
+<h4 style="color: #3544ab;">@lang('thanks_sub')</h4>
 </div>
 
 <div class="row">
-  <h5 style="color: #3544ab;">@lang('thanks_email')</h5>
+  <h4 style="color: #3544ab;">@lang('thanks_email')</h4>
 </div>
 
 

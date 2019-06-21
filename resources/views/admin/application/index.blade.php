@@ -17,7 +17,7 @@
 
 
 
-     
+
 
       <div class="container-fluid">
 
@@ -77,7 +77,7 @@
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
 
-   
+
 
       </div>
       <!-- /.container-fluid -->
@@ -95,31 +95,41 @@
     <!-- /.content-wrapper -->
     @endsection
 
-    @section('scripts')
-   <!-- Bootstrap core JavaScript-->
-  <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-  <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+@section('scripts')
+<!-- Bootstrap core JavaScript-->
+<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-  <!-- Custom scripts for all applications-->
-  <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
-  <!-- application level plugins -->
-  <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<!-- Page level plugins -->
+<!-- <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script> -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/b-1.5.6/datatables.min.css"/>
 
-  <!-- application level custom scripts -->
-  <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/b-1.5.6/datatables.min.js"></script>
+<!-- Page level custom scripts -->
+<script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
 
+<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
     <script src="{{ asset('js/dropzone.js') }}"></script>
-
-    <script type="text/javascript">
-      $(".js-example-tokenizer").select2({
-    tags: true,
-    tokenSeparators: [',', ' ']
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+<script type="text/javascript">
+  $(".js-example-tokenizer").select2({
+tags: true,
+tokenSeparators: [',', ' ']
 })
-    </script>
+</script>
+
 @endsection

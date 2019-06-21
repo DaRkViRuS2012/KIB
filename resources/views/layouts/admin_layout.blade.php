@@ -28,7 +28,7 @@
 <!-- Bootstrap theme -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.min.css"/>
 
-<!-- 
+<!--
     RTL version
 -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.rtl.min.css"/>
@@ -38,6 +38,8 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.rtl.min.css"/>
 <!-- Bootstrap theme -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.rtl.min.css"/>
+
+
 
 <body id="page-top">
 
@@ -82,8 +84,9 @@
             <a class="collapse-item" href="/admin/price/index">Prices</a>
             <a class="collapse-item" href="/admin/page/index">Pages</a>
             <a class="collapse-item" href="/admin/user/index">Users</a>
+            <a class="collapse-item" href="/admin/slider/index">Sliders</a>
               <a class="collapse-item" href="/admin/notification/index">Notifications</a>
-    
+
           </div>
         </div>
       </li>
@@ -243,7 +246,7 @@
             <li class="nav-item dropdown no-arrow">
               @if (Auth::check())
                 {{-- expr --}}
-              
+
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
                 <img class="img-profile rounded-circle" src="https://itjen.kemkes.go.id/public/assets/admin/avatar.png">
@@ -278,7 +281,7 @@
 
           </ul>
 
-          
+
 
         </nav>
 
@@ -299,7 +302,7 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-    
+
         <!-- /.container-fluid -->
 
 <div id="main_content">
@@ -367,6 +370,9 @@
 <div>
   @yield('scripts')
 </div>
+
+
+
 </body>
 
 </html>

@@ -75,11 +75,11 @@
 
 
 <div class="row">
-<h5 style="color: #3544ab; font-weight:bold;">@lang('thanks_code')<span style="color: green;">{{$application->code}}</span> </h5>
+<h4 style="color: #3544ab; font-weight:bold;">@lang('thanks_code')<span style="color: green;">{{$application->code}}</span> </h4>
 </div>
 
 <div class="row">
-  <h5 style="color: #3544ab; font-weight:bold;">@lang('thanks_cost')<span style="color: green;">{{$application->cost}}</span> </h5>
+  <h4 style="color: #3544ab; font-weight:bold;">@lang('thanks_cost')<span style="color: green;">{{$application->cost}}</span> </h4>
 </div>
 </div>
  <div class="row">
