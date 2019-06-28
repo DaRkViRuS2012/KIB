@@ -40,6 +40,16 @@ class NotificationController extends Controller
         $title=$request['title'];
         $body=$request['body'];
          NotificationService::SendToTopic('android',$body,$title);
+         echo "Push.Permission.GRANTED;
+return  Push.create('".$title."', {
+    body: '".$body."',
+    icon: 'http://khouryinsurance.com/main_site/img/Logo.png',
+    timeout: 4000,
+    onClick: function () {
+        window.focus();
+        this.close();
+    }
+});";
         // Notification::notification_create($title,$body,$user_id=null);
         return redirect('/admin/notification/index');
     }

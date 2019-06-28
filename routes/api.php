@@ -45,6 +45,9 @@ Route::get('/sms','UserController@send_sms_post');
 
 Route::get('/service/sub/{service_id}', 'ServiceController@get_sons_api');
 
+
+Route::get('/sons', 'ServiceController@get_all_sons');
+
 Route::get('/options/{service_id}','OptionController@get_by_service');
 
 // Route::get('/city/{city_id}','CityController@get_cities_api');

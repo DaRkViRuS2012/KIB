@@ -91,6 +91,18 @@
         </div>
       </li>
 
+
+
+             <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#sub_services" aria-expanded="true" aria-controls="sub_services">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Applications</span>
+        </a>
+        <div id="sub_services" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+
+        </div>
+      </li>
+
     </ul>
     <!-- End of Sidebar -->
 
@@ -322,6 +334,9 @@
 
 
 
+
+
+
       <!-- End of Main Content -->
 
       <!-- Footer -->
@@ -372,7 +387,42 @@
 </div>
 
 
+          
+         
+        
 
+<script type="text/javascript">
+  function get_sons() {
+  $('#sub_service').empty();
+  var sub_services="";
+      $.ajax({
+     type: "GET",
+     url: '/api/sons',
+     data: "check",
+     success: function(response){
+        var sub_service=response.data;
+        console.log(sub_service);
+        sub_services+='<div id="sub_servicessss" class="bg-white py-2 collapse-inner rounded">'
+        for (var i = sub_service.length - 1; i >= 0; i--) {
+          sub_services+='<a class="collapse-item" href="/admin/application/index/'+sub_service[i].id+'">'+sub_service[i].en_title+'</a>';
+        }
+        sub_services+='</div>';
+
+         $("#sub_services").append(sub_services);
+         console.log(sub_services);
+     }
+});
+}
+</script>
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+      get_sons();
+});
+
+</script>
 </body>
 
 </html>

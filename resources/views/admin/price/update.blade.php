@@ -19,7 +19,7 @@
 @endif
 
   <div class="col-6">
-<form  class="container" action='/admin/{{Request::segment(2)}}/update' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/{{Request::segment(2)}}/update/{{$price->id}}' method="POST" enctype="multipart/form-data">
   @csrf
 
       <div class="form-group">
@@ -46,13 +46,12 @@
         <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} service</label>
     <select name="service_id" class="form-control">
-      <option>Select  service</option>
       @foreach ($services as $service)
       @if ($price->service_id==$service->id)
        <option value="{{$service->id}}" selected>{{$service->en_title}}</option>
        @else
+        <option value="{{$service->id}}">{{$service->en_title}}</option>
       @endif
-      <option value="{{$service->id}}">{{$service->en_title}}</option>
       @endforeach
       
     </select>
@@ -69,7 +68,7 @@
     </select>
     
   </div>
-    <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Create {{Request::segment(2)}}</button>
+    <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Update {{Request::segment(2)}}</button>
 </form>
   </div>
 @endsection

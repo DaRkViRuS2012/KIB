@@ -89,40 +89,21 @@
   </div>
 
 </div>
-
-
-{{--     <div class="form-group col-6">
-    <label for="pwd">service</label>
-    <select class="form-control" name="service_sons">
-    	<option selected disabled>Select Your Main Service</option>
-    	@foreach ($services as $service)
-    	@foreach ($ as $element)
-    		<option value="{{$service->id}}">{{$service->en_title}}</option>
-    	@endforeach
-    	
-    	@endforeach
-    </select>
-
-    
-  </div> --}}
-
-
+<div class="row">
+	<a class="btn btn-primary" href="/admin/application/print/{{$application->id}}">Print</a>
 </div>
 </div>
 
 
-<script type="text/javascript" src="{{ asset('main_site/js/options.js') }}"></script>
-<script type="text/javascript">
-  $('#main_service').on('change', '', function (e) {
-get_sub_service();
-});
-	  $('#sub_service').on('change', '', function (e) {
-get_options();
-});
-  
+<!---------------------->
 
 
-</script>
+
+ 
+
+
+
+
 @endsection
 
 
@@ -153,3 +134,46 @@ get_options();
     tokenSeparators: [',', ' ']
 })
     </script>
+
+    <script type="text/javascript" src="{{ asset('main_site/js/options.js') }}"></script>
+<script type="text/javascript">
+  $('#main_service').on('change', '', function (e) {
+get_sub_service();
+});
+    $('#sub_service').on('change', '', function (e) {
+get_options();
+});
+  
+document.getElementById("btnPrint").onclick = function () {
+    printElement(document.getElementById("printThis"));
+}
+
+function printElement(elem, append, delimiter) {
+    var domClone = elem.cloneNode(true);
+
+    var $printSection = document.getElementById("printSection");
+
+    if (!$printSection) {
+        $printSection = document.createElement("div");
+        $printSection.id = "printSection";
+        document.body.appendChild($printSection);
+    }
+
+    if (append !== true) {
+        $printSection.innerHTML = "";
+    }
+
+    else if (append === true) {
+        if (typeof (delimiter) === "string") {
+            $printSection.innerHTML += delimiter;
+        }
+        else if (typeof (delimiter) === "object") {
+            $printSection.appendChild(delimiter);
+        }
+    }
+
+    $printSection.appendChild(domClone);
+}​
+
+</script>
+@endsection

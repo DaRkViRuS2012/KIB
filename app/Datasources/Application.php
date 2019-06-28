@@ -32,6 +32,16 @@ class Application extends Model
     }
 
 
+        public static function application_index_by_service($service_id)
+    {
+      $applications=Application::where('confirm',1)->where('service_id',$service_id)->with('service','user','options')->get();
+      return $applications;
+    }
+
+
+    
+
+
         public static function application_show($id)
     {
         $application=Application::where('id',$id)->with('service','user','options')->first();

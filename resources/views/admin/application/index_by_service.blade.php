@@ -39,7 +39,7 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th style="width:10%;">#</th>
+                     <th style="width:10%;">#</th>
                     <th >applicant english name </th>
                     <th style="width:20%;">applicant arabic name </th>
                     <th style="width:20%">service</th>
@@ -53,13 +53,16 @@
                     <th>birthdate</th>
                     <th>code</th>
                     <th>application date</th>
+                    @foreach ($applications[0]->options as $option)
+                    <th>{{$option->title}}</th>
+                    @endforeach
                      <th>Operations</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach($applications as $application)
                   <tr>
-                    <td style="width:10%">{{$application->id }}</td>
+                 <td style="width:10%">{{$application->id }}</td>
                     <td style="width:20%">{{$application->applicant_name_en}}</td>
                     <td style="width:20%">{{$application->applicant_name_ar}}</td>
                     {{-- <td>{{$application->applicant_name_ar}}</td> --}}
@@ -74,6 +77,13 @@
                      <td>{{$application->birthdate}}</td>
                       <td>{{$application->code}}</td>
                        <td>{{$application->date}}</td>
+                    @foreach ($application->options as $option)
+                    @if ($option->app_option->option_value==null)
+                      <td>NULL</td>
+                    @else
+                    <td>{{$option->app_option->option_value}}</td>
+                    @endif
+                    @endforeach
                     <td style="width: 17%;"><div class="container">
                       <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/{{$application->id}}"><button class="btn btn-primary" aria-hidden="true">View App details</button></a>
                         <a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this bank')" href="/admin/{{Request::segment(2)}}/delete/{{$application->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a>

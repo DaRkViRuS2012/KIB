@@ -6,6 +6,7 @@ use App\Application;
 use Illuminate\Http\Request;
 use App\Option;
 use App\Service;
+use App\ApplicationOption;
 use App\User;
 class ApplicationController extends Controller
 {
@@ -19,6 +20,15 @@ class ApplicationController extends Controller
          $applications=Application::application_index();
          // return $applications;
          return view('admin.application.index',compact('applications'));
+    }
+
+
+        public function index_by_service(Request $request)
+    {
+        $service_id=$request['service_id'];
+         $applications=Application::application_index_by_service($service_id);
+         // return $applications;
+         return view('admin.application.index_by_service',compact('applications'));
     }
     public function index_api()
     {
@@ -61,6 +71,16 @@ class ApplicationController extends Controller
         return view('admin.application.application_single',compact('application'));
     }
 
+
+
+        public function print(Request $request)
+    {
+        $id=$request['id'];
+        $application=Application::application_show($id);
+        // return $application;
+        return view('admin.application.application_print',compact('application'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -90,8 +110,11 @@ class ApplicationController extends Controller
      * @param  \App\Application  $application
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Application $application)
+    public function delete(Request $request)
     {
-        //
+        $id=$request['id'];
+        ApplicationOption::application_option_delete($id);
+        Application::application_delete($id);
+        return redirect('/admin/application/index');
     }
 }

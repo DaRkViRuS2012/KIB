@@ -90,7 +90,7 @@ class PriceController extends Controller
     public function edit($id)
     {
         $services=Service::service_all_sons();
-        $prices=Price::price_show($id);
+        $price=Price::price_show($id);
         return view('admin.price.update',compact('services','price'));
     }
 
@@ -114,7 +114,7 @@ class PriceController extends Controller
         $max=$request['max'];
         $value=$request['value'];
         $type=$request['type'];
-        Price::price_update($service_id,$min,$max,$value,$type);
+        Price::price_update($id,$service_id,$min,$max,$value,$type);
         return redirect('/admin/price/index');
     }
 
@@ -126,7 +126,7 @@ class PriceController extends Controller
      */
     public function delete($id)
     {
-        Price::price_update($id);
+        Price::price_delete($id);
         return redirect('/admin/price/index');
     }
 

@@ -45,4 +45,15 @@ class ApplicationOption extends Model
         return $application_option;
     }
 
+
+
+    public static function application_option_delete($application_id)
+    {
+        $application_options=ApplicationOption::where('application_id',$application_id)->get();
+        foreach ($application_options as $key => $application_option) {
+            $application_option->delete();
+        }
+    }
+
+
 }

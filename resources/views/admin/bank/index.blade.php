@@ -40,7 +40,7 @@
                     <th>#</th>
                     <th>en_title</th>
                     <th>ar_title</th>
-                    <th>City Name</th>
+                    <!-- <th>City Name</th> -->
                     <th>operations</th>
                   </tr>
                 </thead>
@@ -50,7 +50,7 @@
                     <td>{{$bank->id}}</td>
                   <td>{{$bank->en_name }}</td>
                   <td>{{$bank->ar_name}}</td>
-                  <td>{{$bank->city->en_title}}</td>
+                  
                     <td style="width: 18%;"><div class="container">
                       <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$bank->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this bank')" href="/admin/{{Request::segment(2)}}/delete/{{$bank->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a></div>
                       </div>

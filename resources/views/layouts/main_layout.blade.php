@@ -561,16 +561,16 @@
 
 
 
-<script type="text/javascript" src="{{ asset('main_site/js/push.js')}}">
-</script>
-<script type="text/javascript" src="{{ asset('main_site/js/push.min.js')}}">
-</script>
+
 <script type="text/javascript" src="{{ asset('main_site/js/serviceWorker.min.js')}}">
 </script>
 
 
 
-
+<script type="text/javascript" src="{{ asset('main_site/js/push.js')}}">
+</script>
+<script type="text/javascript" src="{{ asset('main_site/js/push.min.js')}}">
+</script>
 
 
 
@@ -598,16 +598,6 @@ $(this).removeClass("active");
 }
 $(this).addClass("active");
 
-// Notification.permission;
-return  Push.create("Hello world!", {
-    body: "How's it hangin'?",
-    icon: 'http://khouryinsurance.com/main_site/img/Logo.png',
-    timeout: 4000,
-    onClick: function () {
-        window.focus();
-        this.close();
-    }
-});
 
 
  if (!("Notification" in window)) {

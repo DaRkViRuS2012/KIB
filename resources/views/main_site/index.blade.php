@@ -49,7 +49,7 @@
 
    @if (Session::get('locale')=="en")
 
-  <div class="collapse navbar-collapse col-lg-8"  id="navbarNav">
+  <div class="collapse navbar-collapse col-lg-9"  id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <a class="nav-link" href="/">@lang("Home")
@@ -121,7 +121,7 @@
         </a>
  </div>
 
-              <div dir="rtl" class="collapse navbar-collapse col-lg-8 offset-lg-3"  id="navbarNav">
+              <div dir="rtl" class="collapse navbar-collapse col-lg-9 offset-lg-2"  id="navbarNav">
      <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <a class="nav-link" href="/">@lang("Home")

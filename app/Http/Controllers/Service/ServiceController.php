@@ -207,6 +207,23 @@ class ServiceController extends Controller
     }
 
 
+
+        public function get_all_sons()
+    {
+        $product_sons=Service::product_all_sons();
+                 return response()->json(['status' => True, 'data' => $product_sons, 'message' => '','type'=>'array']);
+
+    }
+
+
+
+
+    
+
+
+    
+
+
     /**
      * Display the specified resource.
      *

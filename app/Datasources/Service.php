@@ -164,7 +164,7 @@ class Service extends Model
 
       public static function product_all_sons()
     {
-        $services=Service::where('parent_id','!=',0)->where('type','product')->with('media','sons','prices','options')->get();
+        $services=Service::where('parent_id','!=',0)->where('active',1)->where('type','product')->with('media','sons','prices','options')->get();
         return $services;
     }
 
@@ -179,6 +179,9 @@ class Service extends Model
         $services=Service::where('parent_id','!=','0')->where('active',1)->with('media','sons','options','prices','partner')->get();
         return $services;
     }
+
+
+
 
 
     public static function service_create($en_title,$ar_title,$en_subtitle,$ar_subtitle,$en_description,$ar_description,$parent_id,$type,$icon)

@@ -19,8 +19,7 @@ Auth::routes();
 use App\Service;
 use App\NotificationHelper;
 use App\NotificationService;
-
-
+use App\Slider;
 
 
 
@@ -158,6 +157,10 @@ Route::get('/admin/page/delete/{id}','PageController@delete');
 //*********************************************************************************************
 Route::get('/admin/application/index','ApplicationController@index');
 Route::get('/admin/application/{id}','ApplicationController@show');
+Route::get('/admin/application/print/{id}','ApplicationController@print');
+Route::get('/admin/application/delete/{id}','ApplicationController@delete');
+Route::get('/admin/application/index/{service_id}','ApplicationController@index_by_service');
+
 //*********************************************************************************************
 Route::get('/admin/user/index','UserController@index');
 Route::get('/admin/user/create','UserController@admin_create');
@@ -192,9 +195,10 @@ Route::get('/', function () {
   {
     Session::put('locale', "en");
   }
+  $sliders=Slider::slider_index();
   $services=Service::service_index_fathers();
   // return $services;
-    return view('main_site.index',compact('services'));
+    return view('main_site.index',compact('services','sliders'));
 });
 
 Route::get('user/register', 'UserController@create');
@@ -234,12 +238,18 @@ Route::get('/product/{id}', 'SiteController@product_single')->name('home');
 
 
 Route::get('/application/confirm/{id}', 'SiteController@application_confirm')->name('home');
+Route::get('/application/confirm/mobile/{id}', 'SiteController@application_confirm_mobile')->name('home');
 
 Route::get('/application/unconfirm/{id}', 'SiteController@application_cancel')->name('home');
 
+Route::get('/application/unconfirm/mobile/{id}', 'SiteController@application_cancel_mobile')->name('home');
+
 Route::get('/application/confirm/service/{id}', 'SiteController@application_service_confirm')->name('home');
+Route::get('/application/confirm/service/mobile/{id}', 'SiteController@application_service_confirm_mobile')->name('home');
 
 Route::get('/application/unconfirm/service/{id}', 'SiteController@application_service_cancel')->name('home');
+
+Route::get('/application/unconfirm/service/mobile/{id}', 'SiteController@application_service_cancel_mobile')->name('home');
 
 
 //************************************************************************************************************

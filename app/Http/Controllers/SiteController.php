@@ -209,7 +209,11 @@ public function galleries()
     {
         $gallery_id=$request['gallery_id'];
         $gallery=Gallery::gallery_show($gallery_id);
+        if ($gallery!=null) {
        return view('main_site.gallery',compact('gallery'));
+        }
+       
+       abort(404);
     }
 
     public function application_create()
@@ -652,7 +656,11 @@ public function galleries()
     public function news_show($id)
     {
         $news=News::news_show($id);
-        return view('main_site.news_single',compact('news'));
+        if ($news!=null) {
+        	return view('main_site.news_single',compact('news'));
+        }
+          abort(404);
+        
     }
 
     public function calculate_age($birthdate)
