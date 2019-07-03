@@ -72,3 +72,6 @@ Route::post('/user/active','UserController@active_api');
 
 Route::post('/user/update_token','UserController@update_token_api');
 
+
+Route::post('/application/create/{values?}','SiteController@application_service_store_api')->where('values', '(.*)');
+

@@ -9,7 +9,7 @@ class Notification extends Model
     
 
         protected $fillable = [
-        'title', 'body','user_id',
+        'title', 'body','user_id','active'
     ];
 
 
@@ -19,14 +19,26 @@ class Notification extends Model
     	$notification->title=$title;
     	$notification->body=$body;
     	$notification->user_id=$user_id;
+        $notification->active='1';
     	$notification->save();
     	return $notification;
     }
 
 
+
+    public static function notification_deactivate($notification_id)
+    {
+        $notification=Notification::find($notification_id);
+        $notification->active='0';
+        // $notification->body=$body;
+        // $notification->user_id=$user_id;
+        // $notification->save();
+        return $notification;
+    }
+
     public static function notification_index()
     {
-        $notifications=Notification::all();
+        $notifications=Notification::where('active',1)->get();
         return $notifications;
     }
 }

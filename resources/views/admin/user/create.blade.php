@@ -17,52 +17,52 @@
 <div class="row">
   <h2  style="color:#3544ab;text-transform: capitalize;margin-top: 2%;">Admin User create</h2>
 </div>
-<form action="/admin/user/create" method="post">
+<form action="/admin/user/create" method="POST" enctype="multipart/form-data">
   @csrf
 <div class="row">
   <div class="form-group col-lg-4 col-sm-12">
     <label for="email">@lang('First Name')</label>
-    <input name="fname_en" class="form-control" id="email" type="text">
+    <input name="fname_en" class="form-control" id="email" type="text" value="{{old('fname_en')}}">
   </div>
   <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">@lang('Fathers Name')</label>
-    <input name="father_name_en" class="form-control" id="pwd" type="text">
+    <input name="father_name_en" class="form-control" id="pwd" type="text" value="{{old('father_name_en')}}">
   </div>
 
     <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">@lang('Last Name')</label>
-    <input name="lname_en" class="form-control" id="pwd" type="text">
+    <input name="lname_en" class="form-control" id="pwd" type="text" value="{{old('lname_en')}}">
   </div>
 
 
    <div class="form-group col-lg-4 col-sm-12">
     <label for="email">@lang('Email')</label>
-    <input name="email" class="form-control" id="email" type="text">
+    <input name="email" class="form-control" id="email" type="text" value="{{old('email')}}">
   </div>
 
 
 
  <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">@lang('Mobile')</label>
-    <input name="mobile" class="form-control" id="mobile" type="text" placeholder="type your mobile nine digits example 993000000">
+    <input name="mobile" class="form-control" id="mobile" type="text" value="{{old('mobile')}}" placeholder="type your mobile nine digits example 993000000">
   </div>
 
 
 
   <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">@lang('User Name')</label>
-    <input name="username" class="form-control" id="username" type="text">
+    <input name="username" class="form-control" id="username" type="text" value="{{old('username')}}">
   </div>
 
 
    <div class="form-group col-lg-4 col-sm-12">
     <label for="email">@lang('Password')</label>
-    <input name="password" class="form-control" id="email" type="password">
+    <input name="password" class="form-control" id="email" type="password" value="{{old('password')}}">
   </div>
 
     <div class="form-group col-lg-4 col-sm-12">
     <label for="pwd">@lang('Birthdate')</label>
-    <input name="birthdate" class="form-control" id="birthdate" type="date">
+    <input name="birthdate" class="form-control" id="birthdate" type="date" value="{{old('birthdate')}}">
   </div>
 
     <div class="form-group col-lg-6 col-sm-12">
@@ -80,7 +80,7 @@
 
      <div class="form-group col-lg-6 col-sm-12">
     <label for="pwd">User Role</label>
-    <select class="form-control" name="role"  id="role">
+    <select class="form-control" name="role"  id="role" value="{{old('role')}}">
         <option selected disabled>Select User Role</option>
         <option value="user">user</option>
         <option value="admin">admin</option>
@@ -105,6 +105,13 @@
 
 
   </div> --}}
+
+
+  <div class="form-group">
+  <label for="exampleInputEmail1">Image</label>
+  <input class="active" type="file" name="image" enctype="multipart/form-data">
+</div>
+
 
 
   <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Create {{Request::segment(2)}}</button>

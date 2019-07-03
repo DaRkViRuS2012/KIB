@@ -87,13 +87,13 @@
 
 
 
-{{-- 
+
 <div class="form-group">
  <label for="exampleInputEmail1">Service Icon</label>
   <input class="active" type="file" name="icon" enctype="multipart/form-data" required multiple>
 </div>
 
- --}}
+
 
 
   <label for="exampleInputEmail1">Service Image</label>

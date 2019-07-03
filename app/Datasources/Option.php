@@ -75,6 +75,10 @@ class Option extends Model
     	$option->delete();
     }
 
-
+         public static function option_by_service_by_attr($service_id,$attr)
+    {
+    $option=Option::where('service_id',$service_id)->where('attr',$attr)->with('service')->first();
+        return $option;
+    }
 
 }

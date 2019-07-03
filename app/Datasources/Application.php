@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Application extends Model
 {
            protected $fillable = [
-      'applicant_name_en','applicant_name_ar', 'service_id','user_id','date','code','birthdate','nationality','national_id','martial_status','work','cost','is_date','confirm'
+      'applicant_name_en','applicant_name_ar', 'service_id','user_id','date','code','birthdate','nationality','national_id','martial_status','work','cost','is_date','confirm','paid'
     ];
 
     public function service()
@@ -49,6 +49,13 @@ class Application extends Model
     }
 
 
+            public static function application_show_by_code($code)
+    {
+        $application=Application::where('code',$code)->with('service','user','options')->first();
+        return $application;
+    }
+
+
     public static function confirm($id)
     {
       $application=Application::find($id);
@@ -73,6 +80,7 @@ class Application extends Model
       $application->work=$work;
       $application->confirm=0;
       $application->cost=0;
+      $application->paid='1';
       $application->is_date=$is_date;
       $application->save();
     	return $application;
@@ -110,5 +118,16 @@ class Application extends Model
     	$application->delete();
     }
 
+
+             public static function application_pay($id,$code)
+    {
+      $application=Application::where('id',$id)->with('service','user','options')->first();
+      if($application->code==$code) {
+      	$application->pay='1';
+      	return $application;
+      }
+    	return false;
+    }
+    
 
 }

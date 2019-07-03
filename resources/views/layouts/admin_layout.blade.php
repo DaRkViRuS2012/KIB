@@ -404,7 +404,7 @@
         console.log(sub_service);
         sub_services+='<div id="sub_servicessss" class="bg-white py-2 collapse-inner rounded">'
         for (var i = sub_service.length - 1; i >= 0; i--) {
-          sub_services+='<a class="collapse-item" href="/admin/application/index/'+sub_service[i].id+'">'+sub_service[i].en_title+'</a>';
+          sub_services+='<a class="collapse-item" href="/admin/application/index/'+sub_service[i].id+'">'+sub_service[i].en_title+'/'+sub_service[i].type+'</a>';
         }
         sub_services+='</div>';
 

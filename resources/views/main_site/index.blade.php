@@ -106,7 +106,7 @@
         @endif
       </ul>
   </div>
-     <div class="col-lg-1 offset-lg-3">
+     <div class="col-lg-1 offset-lg-2">
      <a class="navbar-brand" href="#">
         <img src="{{ asset('main_site/img/Logo.png') }}" class="rounded-circle img-responsive" style="width:60px;height:60px">
         </a>

@@ -25,10 +25,24 @@ class ApplicationController extends Controller
 
         public function index_by_service(Request $request)
     {
+
+        $sons;
         $service_id=$request['service_id'];
-         $applications=Application::application_index_by_service($service_id);
+        $service=Service::service_index_sons($service_id);
+        for ($i=0; $i < $service->count(); $i++) { 
+            $sons[$i]=$service[$i]->id;
+        }
+        $applications = Application::whereIn('service_id',$sons)->with('service','user','options')->get();
+        // dd($applications);
+        // $applications=Application::where()
+        //  $applications=Application::application_index_by_service($service_id);
          // return $applications;
+        if ($applications->count()==0) {
+        return view('admin.error');
+                
+        }
          return view('admin.application.index_by_service',compact('applications'));
+      
     }
     public function index_api()
     {
@@ -70,6 +84,30 @@ class ApplicationController extends Controller
         // return $application;
         return view('admin.application.application_single',compact('application'));
     }
+
+
+        public function show_api(Request $request)
+    {
+        $id=$request['id'];
+        $application=Application::application_show($id);
+        return response()->json(['status' => True, 'data' => $application, 'message' => '','type'=>'object']);
+        // return $application;
+        // return view('admin.application.application_single',compact('application'));
+    }
+
+
+
+            public function show_by_code_api(Request $request)
+    {
+        $code=$request['code'];
+        $application=Application::application_show_by_code($code);
+        return response()->json(['status' => True, 'data' => $application, 'message' => '','type'=>'object']);
+        // return $application;
+        // return view('admin.application.application_single',compact('application'));
+    }
+
+
+
 
 
 

@@ -20,7 +20,7 @@ class OptionController extends Controller
             'title' => ['required', 'string', 'max:255'],
              'type' => ['required', 'string', 'max:255'],
               // 'value' =>  ['required', 'string', 'max:255'],
-            'attr' => ['required', 'string', 'max:255'],
+            'attr' => ['required', 'string', 'max:255','unique:options'],
              'service' => ['required'],
 
         ]);

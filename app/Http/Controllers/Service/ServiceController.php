@@ -17,6 +17,23 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
+
+     protected function service_validator(array $data)
+    {
+        return Validator::make($data, [
+            'en_title' => ['required'],
+             'ar_title' => ['required'],
+              'en_subtitle' => ['required'],
+            'ar_subtitle' => ['required'],
+            'ar_description' => ['required'],
+             'en_description' => ['required',],
+             'company_id' => ['required'],
+        ]);
+    }
+
     public function index()
     {
         $services=Service::admin_service_index_fathers();
@@ -155,7 +172,7 @@ class ServiceController extends Controller
         $ar_description=$request['ar_description'];
         $en_description=$request['en_description'];
         $parent_id =$request['parent_id'];
-        $icon="";
+        $icon=$request['icon'];
         $company_id=$request['company_id'];
         $portal_link=$request['portal_link'];
         $content_type='service';
@@ -174,9 +191,21 @@ class ServiceController extends Controller
             $path_img=$file->storeAs('public/',time().$imagename);
              $img_name=str_replace('public/', '', $path_img);
              Media::media_create($img_name,'image',$service->id,$content_type);
-             return redirect('/admin/service/index/'.$parent_id);
+            
              }
         }
+
+
+            if($request->hasFile('icon')){
+            $file=$request['icon'];
+            $imagename=$file->getClientOriginalName();
+            $path_img=$file->storeAs('public/',time().'.jpg');
+            $img_name=str_replace('public/', '', $path_img);
+            $service->icon=$img_name;
+            $service->save();
+            return redirect('/admin/service/index/'.$parent_id);
+        }
+
 
         // if($request->hasFile('quotation')){
         //     $file=$request['quotation'];
@@ -210,7 +239,7 @@ class ServiceController extends Controller
 
         public function get_all_sons()
     {
-        $product_sons=Service::product_all_sons();
+        $product_sons=Service::fathers();
                  return response()->json(['status' => True, 'data' => $product_sons, 'message' => '','type'=>'array']);
 
     }

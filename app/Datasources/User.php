@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username','birthdate','fcmtoken','os','role','city_id','code','mobile','token'
+        'name', 'email', 'password','username','birthdate','fcmtoken','os','role','city_id','code','mobile','token','image'
 
     ];
 
@@ -94,7 +94,7 @@ class User extends Authenticatable
     }
 
 
-        public static function admin_user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token,$role)
+        public static function admin_user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token,$role,$image)
     {
         $user=new user;
         $user->name=$name;
@@ -110,12 +110,13 @@ class User extends Authenticatable
         $user->mobile=$mobile;
         $user->code=Sms_helper::RandomString();
         $user->city_id=$city_id;
+        $user->image=$image;
         $user->save();
         return $user;
     }
 
 
-            public static function admin_user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token)
+            public static function admin_user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token,$image)
     {
        $user=User::find($id);
         $user->name=$name;
@@ -131,6 +132,7 @@ class User extends Authenticatable
         $user->mobile=$mobile;
         $user->code=Sms_helper::RandomString();
         $user->city_id=$city_id;
+        $user->image=$image;
         $user->save();
         return $user;
     }

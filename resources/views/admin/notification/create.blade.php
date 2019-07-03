@@ -16,7 +16,7 @@
 @endsection
 @section('content')
 	
-<form  class="container" action='/sendnotify' method="POST" enctype="multipart/form-data">
+<form class="container" action="/sendnotify" method="POST"  enctype="multipart/form-data">
   @csrf
 	  <div class="form-group">
     <label for="exampleInputEmail1">Notification title</label>
@@ -54,8 +54,45 @@
 
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 
+
+
+<script type="text/javascript" src="{{ asset('main_site/js/push.js')}}">
+</script>
+<script type="text/javascript" src="{{ asset('main_site/js/push.min.js')}}">
+</script>
+
+
 <script type="text/javascript">
   $(document).ready(function() {
   $('.summernote').summernote();
 });
+
+
+
+//   function create_notification() {
+//         var title=$('#title').val();
+//         var body=$('#body').val();
+//         var data = {"title":title,
+//         "body":body};
+//         console.log(data);
+
+//         $.ajax({
+//         type: 'POST',
+//         data: data,
+//         url:'/api/notification/add',
+//         success: function(){
+//           Push.Permission.GRANTED;
+//           Push.create(title, {
+//     body: body,
+//     icon: 'http://khouryinsurance.com/main_site/img/Logo.png',
+//     timeout: 4000,
+//     onClick: function () {
+//         window.focus();
+//         this.close();
+//     }
+// });
+//         }
+//         });   
+//   }
+
 </script>

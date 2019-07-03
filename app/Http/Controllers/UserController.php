@@ -11,6 +11,7 @@ use Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {
     /**
@@ -37,6 +38,26 @@ class UserController extends Controller
              'mobile' => ['required', 'string', 'max:9','unique:users'],
              'token' => [ 'unique:users'],
              'birthdate' => [ 'required'],
+
+        ]);
+    }
+    
+    
+    
+     protected function admin_validator_register(array $data)
+    {
+        return Validator::make($data, [
+            'fname_en' => ['required', 'string', 'max:255'],
+             'father_name_en' => ['required', 'string', 'max:255'],
+              'lname_en' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+             'username' => ['string', 'max:255'],
+             'code' => ['unique:users'],
+             'mobile' => ['required', 'string', 'max:9','unique:users'],
+             'token' => [ 'unique:users'],
+             'birthdate' => [ 'required'],
+             //'image' => [ 'required'],
 
         ]);
     }
@@ -80,6 +101,13 @@ class UserController extends Controller
 
 
 
+          public function index_api()
+          {
+          $users=User::user_index();
+     return response()->json(['status' => True, 'data' => $users, 'message' => '','type'=>'array']);
+          }
+
+
           public function admin_create()
           {
           $cities=City::city_all();
@@ -95,7 +123,7 @@ class UserController extends Controller
 
               public function admin_store(Request $request)
     {
-        $validator = $this->validator_register($request->input());
+        $validator = $this->admin_validator_register($request->input());
          if ($validator->fails()) {
             return back()->withErrors($validator)->withInput(); //TODO
 
@@ -110,13 +138,27 @@ class UserController extends Controller
         $role=$request['role'];
         $code=Sms_helper::RandomString();
         $mobile=$request['mobile'];
+        //$image=request->file('image');
         $token=str_replace("/","",Hash::make($name.$email));
         $os='web';
 
-        $user=User::admin_user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token,$role);
+                if($request->file('image')){
+            $file=$request['image'];
+            $imagename=$file->getClientOriginalName();
+            $path_img=$file->storeAs('public/',time().'.jpg');
+            $img_name=str_replace('public/', '', $path_img);
+            $user=User::admin_user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token,$role,$img_name);
+           return redirect('/admin/user/index');
+                }
+                $img_name='';
+        
+               $user=User::admin_user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token,$role,$img_name);
+           return redirect('/admin/user/index');
+
+        
           // Sms_helper::send_sms($user->mobile,$user->code);
          // Auth::loginUsingId($user->id);
-         return redirect('/admin/user/index');
+        // return redirect('/admin/user/index');
 
 
     }

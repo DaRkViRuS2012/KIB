@@ -40,19 +40,34 @@ class NotificationController extends Controller
         $title=$request['title'];
         $body=$request['body'];
          NotificationService::SendToTopic('android',$body,$title);
-         echo "Push.Permission.GRANTED;
-return  Push.create('".$title."', {
-    body: '".$body."',
+        $notification= Notification::notification_create($title,$body,$user_id=null);
+
+        echo "<script>Push.Permission.GRANTED;
+          Push.create(".$title.", {
+    body: ".$body.",
     icon: 'http://khouryinsurance.com/main_site/img/Logo.png',
     timeout: 4000,
     onClick: function () {
         window.focus();
         this.close();
     }
-});";
-        // Notification::notification_create($title,$body,$user_id=null);
+});</script>";
         return redirect('/admin/notification/index');
+        // return $notification;
     }
+
+
+
+        public function deactive(Request $request)
+    {
+        // $title=$request['title'];
+        $id=$request['id'];
+         // NotificationService::SendToTopic('android',$body,$title);
+        $notification= Notification::notification_deactivate($id);
+return $notification
+        // return $notification;
+    }
+
 
     /**
      * Display the specified resource.

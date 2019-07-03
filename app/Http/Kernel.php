@@ -19,6 +19,9 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
+
+
+
     ];
 
     /**
@@ -37,6 +40,8 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\Locale::class,
             \App\Http\Middleware\Localization::class,
+
+
         ],
 
         'api' => [
@@ -65,6 +70,7 @@ class Kernel extends HttpKernel
          'checkval' => \App\Http\Middleware\CheckVal::class,
          'checkuser' => \App\Http\Middleware\CheckUser::class,
         'setlocale' => \App\Http\Middleware\SetLocale::class,
+        'https'=> \App\Http\Middleware\HttpsProtocol::class,
     ];
 
     /**

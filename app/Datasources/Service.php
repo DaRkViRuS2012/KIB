@@ -123,6 +123,12 @@ class Service extends Model
     }
 
 
+     public static function fathers()
+    {
+        $services=Service::where('parent_id','0')->where('active',1)->with('media','sons','prices')->get();
+        return $services;
+    }
+
     public static function admin_service_index_fathers()
    {
        $services=Service::where('parent_id','0')->where('type','service')->with('media','sons','prices')->get();

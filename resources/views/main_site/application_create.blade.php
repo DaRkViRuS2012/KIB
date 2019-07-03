@@ -69,13 +69,13 @@
 
   <div class="form-group col-lg-6 col-sm-12">
 <label for="pwd">Issuing date تاريخ الاصدار</label>
-<input name="is_date"  class="form-control" id="pwd" type="date" required>
+<input name="is_date"  class="form-control" id="pwd" type="date" required value="{{old('is_date')}}">
 </div>
 
 
 <div class="form-group col-lg-6  col-sm-12">
 <label for="pwd">Date of Birth (DD-MM-YY) تاريخ الميلاد</label>
-<input name="birthdate"  class="form-control" id="pwd" type="date" required>
+<input name="birthdate"  class="form-control" id="pwd" type="date" required value="{{old('birthdate')}}">
 </div>
 
 
