@@ -574,6 +574,49 @@
 
 
 
+  <script type="text/javascript">
+    
+function notification_send() {
+  console.log('begin sending');
+  //setTimeout(notification_send, 5000);
+      $.ajax({
+     type: "GET",
+     url: '/api/notification/pending',
+    //data: "check",
+     success: function(response){
+      var notifications=response.data;
+      console.log('the length of notifications is'+notifications.length);
+      for (var i = 0; i < notifications.length; i++) {
+
+            Push.Permission.GRANTED;
+          Push.create(notifications[i].title, {
+    body: notifications[i].body,
+    icon: 'http://khouryinsurance.com/main_site/img/Logo.png',
+    timeout: 4000,
+    onClick: function () {
+        window.focus();
+        this.close();
+    }
+});;
+deactivate_not(notifications[i].id);
+      }
+     }
+});
+}
+
+function deactivate_not(id) {
+        $.ajax({
+     type: "GET",
+     url: '/api/notification/deactive/'+id,
+   //  data: "check",
+     success: function(response){
+     
+     }
+});
+}
+
+  </script>
+
 <script type="text/javascript">
     $(document).ready(function(){
       social();
@@ -600,25 +643,26 @@ $(this).addClass("active");
 
 
 
- if (!("Notification" in window)) {
-    console.log("This browser does not support desktop notification");
-  }
+ // if (!("Notification" in window)) {
+ //    console.log("This browser does not support desktop notification");
+ //  }
 
-  // Let's check whether notification permissions have alredy been granted
-  else if (Notification.permission === "granted") {
-    // If it's okay let's create a notification
-    var notification = new Notification("Hi there!");
-  }
+ //  // Let's check whether notification permissions have alredy been granted
+ //  else if (Notification.permission === "granted") {
+ //    // If it's okay let's create a notification
+ //    var notification = new Notification("Hi there!");
+ //  }
 
-  // Otherwise, we need to ask the user for permission
-  else if (Notification.permission !== 'denied' || Notification.permission === "default") {
-    Notification.requestPermission(function (permission) {
-      // If the user accepts, let's create a notification
-      if (permission === "granted") {
-        var notification = new Notification("Hi there!");
-      }
-    });
-  }
+ //  // Otherwise, we need to ask the user for permission
+ //  else if (Notification.permission !== 'denied' || Notification.permission === "default") {
+ //    Notification.requestPermission(function (permission) {
+ //      // If the user accepts, let's create a notification
+ //      if (permission === "granted") {
+ //        var notification = new Notification("Hi there!");
+ //      }
+ //    });
+ //  }
+
 
 
 });
@@ -654,6 +698,8 @@ function closeNav() {
 
     <script>
     $(document).ready(function () {
+
+      window.setInterval(notification_send, 3000);
 
                     var href = window.location.href;
                     $('nav a').each(function ($this, i) {
@@ -695,4 +741,7 @@ function closeNav() {
       }
     });
   </script>
+
+
+
 </html>

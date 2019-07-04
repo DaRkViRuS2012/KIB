@@ -106,7 +106,7 @@ $msg = array
     // echo "<pre>";print_r($result);exit;
     curl_close ( $ch );
 
-      NotificationService::store($title,$body,$Token->client_id);
+      //NotificationService::store($title,$body,$Token->client_id);
 
     // echo $result;
   }
@@ -164,7 +164,7 @@ $msg = array
     // echo "<pre>";print_r($result);exit;
     curl_close ( $ch );
     // echo $result;
-    NotificationService::store($title,$body);
+    //NotificationService::store($title,$body);
   }
   /**
    * Store a newly created resource in storage.
@@ -172,7 +172,7 @@ $msg = array
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public static function store($title,$body,$client_id=NULL)
+  /*public static function store($title,$body,$client_id=NULL)
   {
       Notification::create([
         'title'=>$title,
@@ -181,6 +181,6 @@ $msg = array
       ]);
 
 
-  }
+  }*/
 
 }

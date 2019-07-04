@@ -19,6 +19,15 @@ class NotificationController extends Controller
         return view('admin.notification.index',compact('notifications'));
     }
 
+
+
+
+        public function pending_api()
+    {
+        $notifications=Notification::notification_pending();
+        return response()->json(['status' => True, 'data' => $notifications, 'message' => '','type'=>'array']);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -37,21 +46,11 @@ class NotificationController extends Controller
      */
     public function store(Request $request)
     {
+
         $title=$request['title'];
         $body=$request['body'];
          NotificationService::SendToTopic('android',$body,$title);
-        $notification= Notification::notification_create($title,$body,$user_id=null);
-
-        echo "<script>Push.Permission.GRANTED;
-          Push.create(".$title.", {
-    body: ".$body.",
-    icon: 'http://khouryinsurance.com/main_site/img/Logo.png',
-    timeout: 4000,
-    onClick: function () {
-        window.focus();
-        this.close();
-    }
-});</script>";
+         Notification::notification_create($title,$body,$user_id=null);
         return redirect('/admin/notification/index');
         // return $notification;
     }
@@ -64,7 +63,7 @@ class NotificationController extends Controller
         $id=$request['id'];
          // NotificationService::SendToTopic('android',$body,$title);
         $notification= Notification::notification_deactivate($id);
-return $notification
+        return $notification;
         // return $notification;
     }
 

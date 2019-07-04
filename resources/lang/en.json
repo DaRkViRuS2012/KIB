@@ -64,5 +64,8 @@
     "code":"Code",
     "activated":"The user has been activated",
     "address-det":"Damascus - Kourniesh al tijarah",
-    "address":"Address"
+    "address":"Address",
+    "confirm":"please view the information before confirmation",
+    "account":"Update Your Account Info",
+    "update_account":"update"
 }

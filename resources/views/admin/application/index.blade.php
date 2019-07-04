@@ -49,7 +49,7 @@
                     <th>martial_status</th>
                     <th>work</th>
                     <th>cost</th>
-                   {{--  <th>user</th> --}}
+                    <th>user</th>
                     <th>birthdate</th>
                     <th>code</th>
                     <th>application date</th>
@@ -70,7 +70,12 @@
                     <td>{{$application->martial_status}}</td>
                     <td>{{$application->work}}</td>
                     <td>{{$application->cost}}</td>
-                    {{-- <td>{{$application->user->name}}</td> --}}
+                    @if ($application->user!=null)
+                     <td>{{$application->user->name}}</td>
+                     @else
+                     <td>Deleted</td>
+                    @endif
+                    
                      <td>{{$application->birthdate}}</td>
                       <td>{{$application->code}}</td>
                        <td>{{$application->date}}</td>

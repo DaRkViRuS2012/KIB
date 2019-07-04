@@ -73,20 +73,18 @@
 </div>
 <div class="container">
 
-
+@if($application->confirm==0)
 <div class="row">
-<h4 style="color: #3544ab; font-weight:bold;">@lang('thanks_code')<span style="color: green;">{{$application->code}}</span> </h4>
+<h4 style="color: #3544ab; font-weight:bold;">@lang('confirm')</h4>
 </div>
 
 <div class="row">
   <h4 style="color: #3544ab; font-weight:bold;">@lang('thanks_cost')<span style="color: green;">{{$application->cost}}</span> </h4>
 </div>
-</div>
- <div class="row">
-<a style="color:#3544ab;margin: 1%;font-size: 20px;" href="/">click here if you want to back to main page</a>
+
 </div>
 
-@if($application->confirm==0)
+
 <div class="col-lg-8" style="margin-top:5%;margin-bottom:5%;">
 
   <a href="/application/confirm/{{$application->id}}" class="btn btn-primary">Confirm</a>
@@ -95,6 +93,19 @@
   <a href="/application/unconfirm/{{$application->id}}" class="btn btn-danger">Cancel</a>
 
 </div>
+@else
+<div class="row">
+<h4 style="color: #3544ab; font-weight:bold;">@lang('thanks_code')<span style="color: green;">{{$application->code}}</span> </h4>
+</div>
+
+<div class="row">
+  <h4 style="color: #3544ab; font-weight:bold;">@lang('thanks_cost')<span style="color: green;">{{$application->cost}}</span> </h4>
+</div>
+
+ <div class="row">
+<a style="color:#3544ab;margin: 1%;font-size: 20px;" href="/">click here if you want to back to main page</a>
+</div>
+
 @endif
 
 {{--     <div class="form-group col-6">

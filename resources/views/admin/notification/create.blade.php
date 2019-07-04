@@ -69,30 +69,6 @@
 
 
 
-//   function create_notification() {
-//         var title=$('#title').val();
-//         var body=$('#body').val();
-//         var data = {"title":title,
-//         "body":body};
-//         console.log(data);
 
-//         $.ajax({
-//         type: 'POST',
-//         data: data,
-//         url:'/api/notification/add',
-//         success: function(){
-//           Push.Permission.GRANTED;
-//           Push.create(title, {
-//     body: body,
-//     icon: 'http://khouryinsurance.com/main_site/img/Logo.png',
-//     timeout: 4000,
-//     onClick: function () {
-//         window.focus();
-//         this.close();
-//     }
-// });
-//         }
-//         });   
-//   }
 
 </script>

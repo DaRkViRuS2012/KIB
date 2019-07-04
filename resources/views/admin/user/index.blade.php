@@ -59,7 +59,12 @@
                   <td>{{$user->username}}</td>
                   <td>{{$user->email}}</td>
                   <td>{{$user->birthdate}}</td>
+                  @if ($user->city!=null)
                   <td>{{$user->city->en_title}}</td>
+                  @else
+                  <td>Deleted</td>
+                  @endif
+                  
                   <td>{{$user->code}}</td>
                   <td>{{$user->role}}</td>
                     <td style="width: 18%;"><div class="container">

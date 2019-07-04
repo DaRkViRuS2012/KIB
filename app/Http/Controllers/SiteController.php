@@ -488,7 +488,6 @@ public function galleries()
 
     public function application_store(Request $request)
     {
-      return $request;
              $validator = $this->validator_application($request->input());
          if ($validator->fails()) {
             // return back()->withErrors($validator)->withInput(); //TODO

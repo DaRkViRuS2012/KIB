@@ -5,7 +5,7 @@
     
 
 <div class="row">
-    <h2 style="color:#3544ab">Fill Your Application</h2>
+    <h2 style="color:#3544ab">@lang('account')</h2>
 </div>
 <form action="/account" method="post">
   @csrf
@@ -89,7 +89,7 @@
 
 <div class="row">
 <button style="margin: 1%;
-    padding: 1% 3% 1% 3%;background-color:#3544ab;border-color:#3544ab" type="submit" class="btn btn-primary">Submit</button>   
+    padding: 1% 3% 1% 3%;background-color:#3544ab;border-color:#3544ab" type="submit" class="btn btn-primary">@lang('update_account')</button>   
 </div>
   
 </form>
