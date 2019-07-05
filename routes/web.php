@@ -22,7 +22,7 @@ use App\NotificationService;
 use App\Slider;
 
 
-
+Route::group(['middleware' => 'https'], function() {
 
 Route::group(['middleware' => 'checkval'], function() {
 
@@ -310,3 +310,4 @@ Route::get('/company/portal/{id}','UserController@company_portal');
 
 Route::get('user/active', 'UserController@active_view');
 Route::post('user/active', 'UserController@active');
+});

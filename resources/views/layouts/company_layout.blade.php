@@ -255,7 +255,12 @@
               
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->username}}</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                @if (Auth::user()->image!=null)
+                	<img class="img-profile rounded-circle" src="{{env('image_storage')}}/{{Auth::user()->image}}">
+                	@else
+                	<img class="img-profile rounded-circle" src="https://itjen.kemkes.go.id/public/assets/admin/avatar.png">
+                @endif
+                
               </a>
               @else
                  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

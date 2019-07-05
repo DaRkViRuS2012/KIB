@@ -70,8 +70,19 @@ Route::get('/product/sub/{id}', 'SiteController@product_sons_api')->name('home')
 Route::post('/user/active','UserController@active_api');
 
 
-Route::post('/user/update_token','UserController@update_token_api');
+Route::get('/users','UserController@index_api');
 
+
+Route::post('/user/update_token','UserController@update_token_api');
 
 Route::post('/application/create/{values?}','SiteController@application_service_store_api')->where('values', '(.*)');
 
+
+Route::get('/application/{id}', 'ApplicationController@show_api');
+
+Route::get('/application/show/{code}', 'ApplicationController@show_by_code_api');
+
+Route::get('/notification/deactive/{id}', 'NotificationController@deactive');
+
+
+Route::get('/notification/pending', 'NotificationController@pending_api');
