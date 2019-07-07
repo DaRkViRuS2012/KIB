@@ -314,9 +314,8 @@
               <div class="container">
                 <!-- Slide Text Layer -->
                 <div class="w3l-slide-text col-lg-6">
-                  <h3 style="color:##3544ab" data-animation="animated zoomInRight">{{$slider->en_title}}</h3>
-                  <p class="aos-init aos-animate" data-aos="fade-down">{{$slider->en_sub_title}}</p>
-                  <a  href="services.html" target="_blank" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">Get A Qutation</a>
+                  <h3 style="color:##3544ab" data-animation="animated zoomInRight">{{$slider->getTitle()}}</h3>
+                  <p class="aos-init aos-animate" data-aos="fade-down">{{$slider->getsubtitle()}}</p>
                 </div>
               </div>
             </div>
@@ -333,7 +332,22 @@
    <div style="width:100%;height:100%" id="JiSlider" class="jislider">
       <ul>
 
+@foreach ($sliders as $key => $slider)
 
+              <li>
+          <div class="w3layouts-banner-top{{$key+4}}" style="background: url({{env('image_storage')}}/{{$slider->media[0]->url}}) no-repeat 0px 0px;background-size: cover;-webkit-background-size: cover;-moz-background-size:cover;-o-background-size: cover;-moz-background-size: cover;">
+            <div class="bs-slider-overlay">
+              <div class="container">
+                <!-- Slide Text Layer -->
+                <div class="w3l-slide-text col-lg-6">
+                  <h3 style="color:#3544ab" data-animation="animated zoomInRight">{{$slider->getTitle()}}</h3>
+                  <p class="aos-init aos-animate" data-aos="fade-down">{{$slider->getsubtitle()}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li> --}}
+         @endforeach
  <li>
 
 
@@ -451,24 +465,7 @@
           </div>
         </li>
 
-{{-- @foreach ($sliders as $key => $slider) --}}
 
-
-{{--                 <li>
-          <div class="w3layouts-banner-top{{$key+4}}" style="background: url({{env('image_storage')}}/{{$slider->media->url}}) no-repeat 0px 0px;background-size: cover;-webkit-background-size: cover;-moz-background-size:cover;-o-background-size: cover;-moz-background-size: cover;">
-            <div class="bs-slider-overlay">
-              <div class="container">
-                <!-- Slide Text Layer -->
-                <div class="w3l-slide-text col-lg-6">
-                  <h3 style="color:#414141" data-animation="animated zoomInRight">{{$slider->en_title}}</h3>
-                  <p class="aos-init aos-animate" data-aos="fade-down">{{$slider->en_sub_title}}</p>
-                  <a  href="services.html" target="_blank" class="button-style" data-animation="animated fadeInDown" data-aos="fade-down">Get A Qutation</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li> --}}
-        {{-- @endforeach --}}
       </ul>
     </div>
 @endif

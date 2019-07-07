@@ -66,6 +66,11 @@
     "address":"العنوان",
     "confirm":"الرجاء التأكد من صحة معلومات الطلب ",
     "account":"عدل معلومات حسابك",
-    "update_account":"تعديل"
+    "update_account":"تعديل",
+    "app_fill":"املأ طلبك",
+    "more_soon":"المزيد قريباً ...",
+    "service":"خدمة",
+    "enquiry":"استفسار",
+    "complaint":"شكوى"
 
 }

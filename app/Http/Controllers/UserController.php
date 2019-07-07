@@ -254,7 +254,7 @@ class UserController extends Controller
         $user=User::user_create($name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token);
         Sms_helper::send_sms($user->mobile,$user->code);
 
-         return response()->json(['status' => True, 'data' => $user, 'message' => '','type'=>'array']);
+         return response()->json(['status' => True, 'data' => $user,'type'=>'array']);
 
 
     }
@@ -433,13 +433,13 @@ public function active_api(Request $request)
   if ($user->code==$code) {
         $id=$user->id;
         User::user_active($id);
-        return response()->json(['status' => true, 'data' =>$user, 'message' => __('activated'),'type'=>'succuess']);
+        return response()->json(['status' => true, 'data' =>$user, 'message' => ["Activated Succesfully"],'type'=>'succuess']);
 
   }
-  return response()->json(['status' => false, 'data' =>'', 'message' => 'The code you entered is wrong please try again','type'=>'error']);
+  return response()->json(['status' => false, 'data' =>'', 'message' => ['The code you entered is wrong please try again'],'type'=>'error']);
     }
 
-     return response()->json(['status' => false, 'data' =>'', 'message' => 'The User is not exist','type'=>'error']);
+     return response()->json(['status' => false, 'data' =>'', 'message' => ['The User is not exist'],'type'=>'error']);
 }
 
 public function company_portal()

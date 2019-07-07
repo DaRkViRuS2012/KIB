@@ -28,7 +28,7 @@
 <form  class="container" action='/admin/{{Request::segment(2)}}/create' method="POST" enctype="multipart/form-data">
   @csrf
         <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} Title</label>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} ar_title</label>
     <input name="ar_title" class="form-control" id="comment" required>
     
   </div>
@@ -36,18 +36,18 @@
 
 
         <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} Title</label>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} en_title</label>
     <input name="en_title" class="form-control" id="comment" required>
     
   </div>
 
           <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} Title</label>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} en_sub_title</label>
     <input name="en_sub_title" class="form-control" id="comment" required>
     
   </div>
         <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} url</label>
+    <label for="exampleInputEmail1">{{Request::segment(2)}} ar_sub_title</label>
     <input name="ar_sub_title" class="form-control" id="comment" required>
     
   </div>

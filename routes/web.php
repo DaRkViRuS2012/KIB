@@ -196,7 +196,7 @@ Route::get('/', function () {
     Session::put('locale', "en");
   }
   $sliders=Slider::slider_index();
-  $services=Service::service_index_fathers_main();
+   $services=Service::service_index_fathers_main();
   // return $services;
     return view('main_site.index',compact('services','sliders'));
 });

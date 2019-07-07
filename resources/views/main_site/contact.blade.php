@@ -85,8 +85,8 @@
     <label for="exampleInputEmail1">type</label>
     <select name="type" class="form-control">
       <option disabled>Select  type</option>
-      <option value="enquiry">enquiry</option>
-      <option value="complaint">complaint</option>
+      <option value="enquiry">@lang('enquiry')</option>
+      <option value="complaint">@lang('complaint')</option>
 
     </select>
     
@@ -98,7 +98,7 @@
     <select name="service_id" class="form-control">
       <option disabled>Select  service</option>
       @foreach ($services as $service)
-         <option value="{{$service->getTitle()}}/ {{$service->type}}">{{$service->getTitle()}}/ {{$service->type}}</option>
+         <option value="{{$service->getTitle()}}/ {{$service->type}}">{{$service->getTitle()}}/ @lang($service->type)</option>
       @endforeach
     </select>
     

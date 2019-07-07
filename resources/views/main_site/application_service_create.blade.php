@@ -5,7 +5,7 @@
 
 
 <div class="row">
-	<h2 style="color:#3544ab">Fill Your Application</h2>
+	<h2 style="color:#3544ab">@lang('app_fill')</h2>
 </div>
 <form action="/application/service/create" method="post">
   @csrf
@@ -112,6 +112,28 @@
 </div>
 </div>
 
+<div class="form-group" id="family_div" hidden>
+  <label for='sel1'>Family Members:</label>
+  <select class='form-control' id='family_members' name='family_members' required>
+    <option disabled selected>select your family members number</option>
+    <option value='1'>1</option>
+    <option value='2'>2</option>
+    <option value='3'>3</option>
+    <option value='4'>4</option>
+    <option value='5'>5</option>
+    <option value='6'>6</option>
+    <option value='7'>7</option>
+    <option value='8'>8</option>
+    <option value='9'>9</option>
+    <option value='10'>10</option>
+    </select>
+</div>
+
+
+<div id="birthdates">
+
+</div>
+
 
 
 
@@ -123,7 +145,7 @@
 
 <div class="row">
 <button style="margin: 1%;
-    padding: 1% 3% 1% 3%;background-color:#3544ab;border-color:#3544ab" type="submit" class="btn btn-primary">Submit</button>
+    padding: 1% 3% 1% 3%;background-color:#3544ab;border-color:#3544ab" type="submit" class="btn btn-primary">@lang('Submit')</button>
 </div>
 
 </form>
@@ -135,9 +157,21 @@
   $('#main_service').on('change', '', function (e) {
 get_sub_service();
 });
-	  $('#main_service').on('change', '', function (e) {
+    $('#main_service').on('change', '', function (e) {
 get_options();
 });
+
+
+
+$('#sub_service').on('change', '', function (e) {
+show_the_num();
+});
+
+
+$('#family_members').on('change', '', function (e) {
+get_family_members();
+});
+
 
 
 

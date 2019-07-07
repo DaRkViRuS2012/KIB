@@ -49,6 +49,7 @@
                     <th>martial_status</th>
                     <th>work</th>
                     <th>cost</th>
+                    <th>payment</th>
                     <th>user</th>
                     <th>birthdate</th>
                     <th>code</th>
@@ -70,6 +71,11 @@
                     <td>{{$application->martial_status}}</td>
                     <td>{{$application->work}}</td>
                     <td>{{$application->cost}}</td>
+                    @if ($application->paid=='1')
+                    	<td>Paid</td>
+                    	@else
+                    	<td>Not Paid</td>
+                    @endif
                     @if ($application->user!=null)
                      <td>{{$application->user->name}}</td>
                      @else

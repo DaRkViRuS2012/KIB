@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Session;
 class Slider extends Model
 {
         protected $fillable = [
@@ -42,7 +42,7 @@ class Slider extends Model
     	return $slider;
     }
 
-     public static function slider_update($id,$ar_title,$en_title,$en_sub_title,$ar_sub_title)
+     public static function slider_update($id,$en_title,$ar_title,$en_sub_title,$ar_sub_title)
     {
     	$slider=Slider::find($id);
     	$slider->ar_title=$ar_title;
@@ -58,4 +58,19 @@ class Slider extends Model
     	$slider=Slider::find($id);
     	$slider->delete();
     }
+
+
+        public function getTitle()
+{
+ $str =  Session::get('locale').'_title';
+ $title=$this[$str];
+ return $title;
+}
+
+   public function getsubtitle()
+{
+ $str =  Session::get('locale').'_sub_title';
+ $description=$this[$str];
+ return $description;
+}
 }

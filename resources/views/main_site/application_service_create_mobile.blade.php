@@ -126,6 +126,28 @@
 </div>
 
 
+<div class="form-group" id="family_div" hidden>
+  <label for='sel1'>Family Members:</label>
+  <select class='form-control' id='family_members' name='family_members' required>
+    <option disabled selected>select your family members number</option>
+    <option value='1'>1</option>
+    <option value='2'>2</option>
+    <option value='3'>3</option>
+    <option value='4'>4</option>
+    <option value='5'>5</option>
+    <option value='6'>6</option>
+    <option value='7'>7</option>
+    <option value='8'>8</option>
+    <option value='9'>9</option>
+    <option value='10'>10</option>
+    </select>
+</div>
+
+
+<div id="birthdates">
+
+</div>
+
 
 
   <div class="row" id="options">
@@ -152,6 +174,15 @@ get_options();
 });
 
 
+
+$('#sub_service').on('change', '', function (e) {
+show_the_num();
+});
+
+
+$('#family_members').on('change', '', function (e) {
+get_family_members();
+});
 
 </script>
 </body>

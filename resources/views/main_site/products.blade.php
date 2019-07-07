@@ -14,9 +14,9 @@
                    <h5 class="card-title">{{$product->getTitle()}}</h5>
                    <p class="card-text">{{ str_limit($product->getDescription(), $limit = 150, $end = '...') }}</p>
                    @if ($product->parent_id==0)
-                     <a href="/product/{{$product->id}}/show" id="service_button" href="#" class="btn btn-primary">More ...</a>
+                     <a href="/product/{{$product->id}}/show" id="service_button" href="#" class="btn btn-primary">@lang('More ...')</a>
                    @else
-                     <a href="/product/{{$product->id}}" id="service_button" href="#" class="btn btn-primary">More ...</a>
+                     <a href="/product/{{$product->id}}" id="service_button" href="#" class="btn btn-primary">@lang('More ...')</a>
                    @endif
                  </div>
                 </div>
@@ -24,7 +24,7 @@
               <div class="card small_font" id="service">
                  
                  <div class="card-body">
-                  <h4>More Soon...</h4>
+                  <h4>@lang('more_soon')</h4>
                  </div>
                 </div>
             </div>

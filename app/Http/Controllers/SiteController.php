@@ -19,6 +19,7 @@ use Redirect;
 use App\User;
 use Auth;
 use Mail;
+use Session;
 use App\ApplicationOption;
 use Illuminate\Support\Facades\Validator;
 class SiteController extends Controller
@@ -537,10 +538,13 @@ public function galleries()
           if (strpos($sub_service_title, 'Family') !== false) {
 
             $members=$request['family_members'];
+            Session::put('family_members', $members);
 
             for ($i=1; $i <$members+1 ; $i++) {
 
               $birthdates=$request['birthdate'.$i];
+              Session::put('birthdate'.$i, $birthdates);
+              //dd($birthdates);
                 $age_family=$this->calculate_age($birthdates);
               $price=Price::price_show_by_service_id($service_id,$age_family);
               if($price!=null){

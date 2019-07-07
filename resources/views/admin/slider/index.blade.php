@@ -28,11 +28,6 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-
-                      
-
-
-
                       <th>en_title</th>
                       <th>ar_title</th>
                       <th>en_sub_title</th>

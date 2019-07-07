@@ -73,8 +73,20 @@
 <div class="form-group">
   <label for="exampleInputEmail1">{{Request::segment(2)}} Company</label>
   <select name="company_id[]" class="custom-select" multiple>
+    @foreach ($service->partner as $partner)
     @foreach ($companies as $company)
+    @if ($partner->id==$company->id)
+      <option value="{{$company->id}}" selected>{{$company->title}}</option>
+      @else
+      @if ($partner->id!=$company->id)
       <option value="{{$company->id}}">{{$company->title}}</option>
+      @else
+      <option value="{{$company->id}}" hidden>{{$company->title}}</option>
+      @endif
+
+    @endif
+    @endforeach
+
     @endforeach
   </select>    
 </div>

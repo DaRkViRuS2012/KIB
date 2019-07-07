@@ -93,10 +93,11 @@ class SliderController extends Controller
      * @param  \App\Slider  $slider
      * @return \Illuminate\Http\Response
      */
-    public function edit(Slider $slider)
+    public function edit(Request $request)
     {
-      $slider=Slider::slider_show($id);
-       return view('admin.slider.update',compact('slider'));
+        $id=$request['id'];
+        $slider=Slider::slider_show($id);
+        return view('admin.slider.update',compact('slider'));
     }
 
     /**

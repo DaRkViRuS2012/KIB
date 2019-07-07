@@ -5,7 +5,7 @@
 
 
 <div class="row">
-	<h2 style="color:#3544ab">Fill Your Application</h2>
+	<h2 style="color:#3544ab">@lang('app_fill')</h2>
 </div>
 <form action="/application/create" method="post">
   @csrf
@@ -69,13 +69,13 @@
 
   <div class="form-group col-lg-6 col-sm-12">
 <label for="pwd">Issuing date تاريخ الاصدار</label>
-<input name="is_date"  class="form-control" id="pwd" type="date" required value="{{old('is_date')}}">
+<input name="is_date"  class="form-control" id="pwd" type="date"  value="{{old('is_date')}}" required>
 </div>
 
 
 <div class="form-group col-lg-6  col-sm-12">
 <label for="pwd">Date of Birth (DD-MM-YY) تاريخ الميلاد</label>
-<input name="birthdate"  class="form-control" id="pwd" type="date" required value="{{old('birthdate')}}">
+<input name="birthdate"  class="form-control" id="pwd" type="date"  value="{{old('birthdate')}}" required>
 </div>
 
 
@@ -150,7 +150,7 @@
 
 <div class="row">
 <button style="margin: 1%;
-    padding: 1% 3% 1% 3%;background-color:#3544ab;border-color:#3544ab" type="submit" class="btn btn-primary">Submit</button>
+    padding: 1% 3% 1% 3%;background-color:#3544ab;border-color:#3544ab" type="submit" class="btn btn-primary">@lang('Submit')</button>
 </div>
 
 </form>

@@ -123,6 +123,14 @@ class Service extends Model
     }
 
 
+         public static function service_index_fathers_main()
+    {
+        $services=Service::where('parent_id','0')->where('active',1)->where('type','service')->orderBy('id', 'ASC')->with('media','sons','prices')->limit(10)->get();
+        return $services;
+    }
+
+
+
      public static function fathers()
     {
         $services=Service::where('parent_id','0')->where('active',1)->with('media','sons','prices')->get();

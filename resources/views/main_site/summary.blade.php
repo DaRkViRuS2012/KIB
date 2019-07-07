@@ -67,6 +67,28 @@
   </div>
     @endforeach
 
+@if (Session::get('family_members')!=null)
+  {{-- expr --}}
+
+
+     <div class="form-group col-6">
+    <label for="email">Family Members count</label>
+    <input name="{{Session::get('family_members')}}" class="form-control" id="email" type="text" value="{{Session::get('family_members')}}" disabled>
+  </div>
+
+     @for ($i = 1; $i < Session::get('family_members')+1;$i++)
+       {{-- expr --}}
+     
+    {{-- expr --}}
+
+   <div class="form-group col-6">
+    <label for="email">Family Member {{$i}} BirthDate</label>
+    <input name="{{Session::get('birthdate'.$i)}}" class="form-control" id="email" type="text" value="{{Session::get('birthdate'.$i)}}" disabled>
+  </div>
+    @endfor
+@endif
+
+
 
 
 

@@ -224,7 +224,7 @@
  
   <div  class="collapse navbar-collapse col-lg-11"  id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="/">@lang("Home")
                 <span class="sr-only">(current)</span>
               </a>
@@ -298,7 +298,7 @@
 
 
      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="/">@lang("Home")
                 <span class="sr-only">(current)</span>
               </a>
@@ -742,6 +742,25 @@ function closeNav() {
     });
   </script>
 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDf7xO6xNordxm9T_ne_qrNBTDbheQPSnw",
+    authDomain: "kibproject-db262.firebaseapp.com",
+    databaseURL: "https://kibproject-db262.firebaseio.com",
+    projectId: "kibproject-db262",
+    storageBucket: "",
+    messagingSenderId: "307045925197",
+    appId: "1:307045925197:web:58b457c852e1f85f"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 
 </html>

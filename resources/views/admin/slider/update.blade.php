@@ -25,37 +25,36 @@
 @endif
 
   <div class="col-6">
-<form  class="container" action='/admin/{{Request::segment(2)}}/update/{{$partner->id}}' method="POST" enctype="multipart/form-data">
+<form  class="container" action='/admin/{{Request::segment(2)}}/update/{{$slider->id}}' method="POST" enctype="multipart/form-data">
   @csrf
 
         <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} title</label>
-    <input name="title" class="form-control" id="comment" required value="{{$partner->title}}">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} ar_title</label>
+    <input name="ar_title" class="form-control" id="comment" required value="{{$slider->ar_title}}">
+    
+  </div>
+
+        <div class="form-group">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} en_title</label>
+    <input name="en_title" class="form-control" id="comment" required value="{{$slider->en_title}}">
     
   </div>
 
 
         <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} title</label>
-    <input name="title" class="form-control" id="comment" required value="{{$partner->title}}">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} en_sub_title</label>
+    <input name="en_sub_title" class="form-control" id="comment" required value="{{$slider->en_sub_title}}">
     
   </div>
           <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} title</label>
-    <input name="title" class="form-control" id="comment" required value="{{$partner->title}}">
+    <label for="exampleInputEmail1">{{Request::segment(2)}} ar_sub_title</label>
+    <input name="ar_sub_title" class="form-control" id="comment" required value="{{$slider->ar_sub_title}}">
     
   </div>
-
-        <div class="form-group">
-    <label for="exampleInputEmail1">{{Request::segment(2)}} link</label>
-    <input name="url" class="form-control" id="comment" required value="{{$partner->url}}">
-    
-  </div>
-
 
           <div class="form-group">
     <label for="exampleInputEmail1">{{Request::segment(2)}} image</label>
-    <input name="image" class="form-control" id="comment" type="file">
+    <input name="img_url" class="form-control" id="comment" type="file">
     
   </div>
 
