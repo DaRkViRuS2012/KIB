@@ -32,7 +32,7 @@ class UserController extends Controller
              'father_name_en' => ['required', 'string', 'max:255'],
               'lname_en' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
+            'password' => ['required', 'string', 'min:3'],
              'username' => ['string', 'max:255'],
              'code' => ['unique:users'],
              'mobile' => ['required', 'string', 'max:9','unique:users'],
@@ -433,7 +433,7 @@ public function active_api(Request $request)
   if ($user->code==$code) {
         $id=$user->id;
         User::user_active($id);
-        return response()->json(['status' => true, 'data' =>$user, 'message' => ["Activated Succesfully"],'type'=>'succuess']);
+        return response()->json(['status' => true, 'data' =>$user, 'message' => ['Activated Succesfully','hello'],'type'=>'succuess']);
 
   }
   return response()->json(['status' => false, 'data' =>'', 'message' => ['The code you entered is wrong please try again'],'type'=>'error']);

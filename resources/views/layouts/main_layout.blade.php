@@ -2,7 +2,29 @@
 
 <html>
 <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <title>Welcome To KIB</title>
+
+
+  <!--[if gte IE 9]><!-->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+  
+<!--<![endif]-->
+<!--[if IE 9]>
+  <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie9.min.js"></script>
+<![endif]-->
+<!--[if lte IE 8]>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie8.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.js"></script>
+<![endif]-->
+
+  <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie9.min.css" rel="stylesheet">
+<link rel="manifest" href="{{request()->root()}}/public/manifest.json">
+
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 
@@ -71,6 +93,10 @@
   </script>
 <section id="navbar">
   <header>
+
+
+
+    
 {{--     <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
    <div class="container-fluid">
      @if (Session::get('locale')=="en")
@@ -573,7 +599,7 @@
 </script>
 
 
-
+{{-- 
   <script type="text/javascript">
     
 function notification_send() {
@@ -615,7 +641,7 @@ function deactivate_not(id) {
 });
 }
 
-  </script>
+  </script> --}}
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -699,17 +725,17 @@ function closeNav() {
     <script>
     $(document).ready(function () {
 
-      window.setInterval(notification_send, 3000);
+      // window.setInterval(notification_send, 3000);
 
-                    var href = window.location.href;
-                    $('nav a').each(function ($this, i) {
-                        console.log(href.indexOf($(this).attr('href')))
-                        if (href.indexOf($(this).attr('href')) >5) {
-                            $(this).addClass('active');
-                        } else {
-                            $(this).removeClass('active');
-                        }
-                    });
+      //               var href = window.location.href;
+      //               $('nav a').each(function ($this, i) {
+      //                   console.log(href.indexOf($(this).attr('href')))
+      //                   if (href.indexOf($(this).attr('href')) >5) {
+      //                       $(this).addClass('active');
+      //                   } else {
+      //                       $(this).removeClass('active');
+      //                   }
+      //               });
 
 
 
@@ -742,6 +768,7 @@ function closeNav() {
     });
   </script>
 
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
 
@@ -749,18 +776,29 @@ function closeNav() {
      https://firebase.google.com/docs/web/setup#config-web-app -->
 
 <script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyDf7xO6xNordxm9T_ne_qrNBTDbheQPSnw",
-    authDomain: "kibproject-db262.firebaseapp.com",
-    databaseURL: "https://kibproject-db262.firebaseio.com",
-    projectId: "kibproject-db262",
-    storageBucket: "",
-    messagingSenderId: "307045925197",
-    appId: "1:307045925197:web:58b457c852e1f85f"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+
+function subscribeTokenToTopic(token, topic) {
+  fetch('https://iid.googleapis.com/iid/v1/'+token+topic, {
+    method: 'POST',
+    headers: new Headers({
+      'Authorization': 'key='+"AIzaSyBE17OESDR3s5CcEVa6YxU96qLAirkn0Uw"
+    })
+  }).then(response => {
+    if (response.status < 200 || response.status >= 400) {
+      throw 'Error subscribing to topic: '+response.status + ' - ' + response.text();
+    }
+    console.log('Subscribed to "'+topic+'"');
+  }).catch(error => {
+    console.error(error);
+  })
+}
+
+
+       $(document).ready(function(){
+subscribeTokenToTopic("AAAAtKfo4tk:APA91bG3I2peRRuNsFiVdr-WW8c5z3ZY3CNY6OVAOTG0nhmVYKutQ9AHJnj8HdSC-9uiRiz3mW9JewmrQflfecWl_qAweLi6omVjy5-pFfn0i2CtWxOBZeUZcvbDAC0p62WEbKJ_pm82", "/topics/allUsers");
+});
+ 
 </script>
+
 
 </html>

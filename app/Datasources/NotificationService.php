@@ -123,8 +123,8 @@ $msg = array
         'body'  => $body,
         'title' => $title,
         'type' => 'public',
-        'click_action' => 'HomeActivity',
-        'icon'  => 'ic_launcher_round'/*Default Icon*/
+        'click_action' => 'https://khouryinsurance.com/',
+        'icon'  => 'https://khouryinsurance.com/main_site/img/Logo.png'/*Default Icon*/
         // 'sound' => 'mySound'/*Default sound*/
         );
 
@@ -148,7 +148,7 @@ $msg = array
 
     $headers = array
         (
-        'Authorization: key=' . "AAAAbVPtSqc:APA91bFeLNlQSxDYX6QSzIG1N8T2RW-KGxGKmKnoRq-5rVTCw86VDPwyMZ9FLemTLUHng7f6QNm2MyAWcl_71SQiOi-7Eef4qjVaahzH4iMP-GBnwlA-NjF6ZOvBw8_CDZxPSmmlYsC4",
+        'Authorization:key=AIzaSyBE17OESDR3s5CcEVa6YxU96qLAirkn0Uw',
         'Content-Type: application/json'
         );
 #Send Reponse To FireBase Server

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
   <title>Welcome To KIB</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -19,7 +21,12 @@
   <link href="{{ asset('main_site/css/JiSlider.css') }}" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="{{ asset('main_site/css/round_icons.css')}}">
+  <style type="text/css">
+    .bg-light {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
 
+  </style>
 </head>
 
    @if (Session::get('locale')=="ar")

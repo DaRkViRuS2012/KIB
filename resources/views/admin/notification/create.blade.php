@@ -11,27 +11,29 @@
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
 
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+     {{-- <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet"> --}}
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 @endsection
 @section('content')
 	
-<form class="container" action="/sendnotify" method="POST"  enctype="multipart/form-data">
-  @csrf
+{{-- <form class="container" action="/sendnotify" method="POST"  enctype="multipart/form-data"> --}}
+  {{-- @csrf --}}
+  <div class="container">
 	  <div class="form-group">
     <label for="exampleInputEmail1">Notification title</label>
-    <input name="title" class="form-control"  id="comment" required>
+    <input name="title" class="form-control"  id="title" required>
     
   </div>
        <div class="form-group">
     <label for="exampleInputEmail1">Notification body</label>
-    <textarea name="body" rows="5" class="form-control"  id="comment" required></textarea>
+    <textarea name="body" rows="5" class="form-control"  id="body" required></textarea>
   </div>
 
     <div class="form-group">
-    <button  type="submit" class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Send Notification</button>
+    <button id="submitclick"  class="btn btn-success"><i style="color: white" class="fa fa-plus" aria-hidden="true"></i> Send Notification</button>
     </div>
-</form>
+     </div>
+{{-- </form> --}}
 @endsection
 
 @section('scripts')
@@ -52,7 +54,7 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
 
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+ {{--  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script> --}}
 
 
 
@@ -60,12 +62,51 @@
 </script>
 <script type="text/javascript" src="{{ asset('main_site/js/push.min.js')}}">
 </script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+
+
+
 
 
 <script type="text/javascript">
+
+
+
+
+       function not_send() {
+
+        var title = $('#title').val();
+
+        var body = $('#body').val();
+    // body...
+  
+     $.ajax({        
+            type : 'POST',
+            url : "https://fcm.googleapis.com/fcm/send",
+            headers : {
+           Authorization : 'key=AIzaSyBE17OESDR3s5CcEVa6YxU96qLAirkn0Uw'
+            },
+            contentType : 'application/json',
+            dataType: 'json',
+            data: JSON.stringify({"to": "/topics/allUsers", "notification": {"title":title,"body":body}}),
+            success : function(response) {
+                console.log(response);
+                window.location.replace("https://khouryinsurance.com/admin/notification/index");
+            },
+            error : function(xhr, status, error) {
+                console.log(xhr.error);                   
+            }
+        });
+       }
+
+
+
   $(document).ready(function() {
-  $('.summernote').summernote();
-});
+
+ $("#submitclick").click(function(){
+     not_send();
+    });
+ });
 
 
 
