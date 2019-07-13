@@ -72,16 +72,21 @@ function get_options() {
 
 
 function show_the_num() {
+    console.log('begin the show num function');
 	 $("#family").empty();
     var sub_service = $('#sub_service').find(":selected").text();
     if (sub_service=='Family Insurance' || sub_service=='Family insurance  My family insurance' || sub_service=='Family insurance  Super insurance'  ) {
 			 $('#family_div').removeAttr('hidden');
     }
+    else
+        {
+            $('#family_div').hide();
+        }
 }
 
 
 function get_family_members() {
-
+console.log('begin the get_family_members function');
  $("#birthdates").empty();
     var family_members =parseInt($('#family_members').find(":selected").val());
 		console.log(family_members);

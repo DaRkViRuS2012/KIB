@@ -310,15 +310,6 @@ a.button-style {
     }
 }
 
-@media(max-width: 1280px) {
-    .w3l-slide-text {
-        padding-top: 12.5em;
-    }
-
-    .text-info-sec img {
-        left: 14%;
-    }
-}
 
 @media(max-width: 1080px) {
     .navbar-light .navbar-brand {
@@ -335,7 +326,7 @@ a.button-style {
     }
 
     .w3l-slide-text {
-        padding-top: 10em;
+        padding-top: 8em;
     }
 
     .navbar-light .navbar-brand img {
@@ -434,6 +425,13 @@ a.button-style {
         padding-left: 0%;
          padding-top: 30em;
     }
+
+
+
+    .navbar-expand-lg .navbar-collapse {
+    -ms-flex-preferred-size: auto!important;
+    flex-basis: auto!important;
+}
 
     .bs-slider-overlay {
 background-color: rgba(0, 0, 0, 0.40);
@@ -1112,3 +1110,12 @@ navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.
 }
 
 
+@media(max-width: 1280px) {
+    .w3l-slide-text {
+        padding-top: 8em;
+    }
+
+    .text-info-sec img {
+        left: 14%;
+    }
+}
