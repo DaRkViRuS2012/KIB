@@ -983,7 +983,50 @@ function closeNav() {
 }
 </script>
 
+@if (Auth::check())
+<script type="text/javascript">
+  function get_notifications() {
+    var user_id={{Auth::user()->id}};
+    console.log(user_id);
+      $.ajax({
+     type: "GET",
+     url: '/api/users/notifications/'+user_id,
+     data: "check",
+     success: function(response){
+      var notifications=response.data;
+      if (notifications!=null) {
+        // statement
+      
+      for (var i = 0; i < notifications.length; i++) {
+        Push.create(notifications[i].title, {
+    body: notifications[i].body,
+    icon: 'https://khouryinsurance.com/main_site/img/Logo.png',
+    timeout: 4000,
+    onClick: function () {
+        window.focus();
+        this.close();
+    }
+});
+              $.ajax({
+     type: "GET",
+     url: '/api/notification/delivered/'+notifications[i].notification.id,
+     data: "check",
+     success: function(response){
+      console.log('done making notification seen');
+     }
+});
+      }
+      }
+     }
+});
+}
 
+  $(document).ready(function(){
+  setTimeout(get_notifications, 100);
+});
+
+</script>
+@endif
 
 
 </html>

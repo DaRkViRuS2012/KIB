@@ -86,3 +86,15 @@ Route::get('/notification/deactive/{id}', 'NotificationController@deactive');
 
 
 Route::get('/notification/pending', 'NotificationController@pending_api');
+
+
+Route::post('/notification/create', 'NotificationController@store_api');
+
+
+Route::post('/notification/create_to_users', 'UserNotificationController@store');
+
+
+Route::get('/users/notifications/{user_id}','UserController@notifications_by_user');
+
+
+Route::get('/notification/delivered/{id}','UserNotificationController@delivered');

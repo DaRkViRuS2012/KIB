@@ -46,6 +46,12 @@ class User extends Authenticatable
     }
 
 
+         public function notifications()
+    {
+        return $this->belongsToMany('App\Notification','user_notifications')->where('delivered','unseen')->as('notification')->withPivot('id','delivered')->withTimestamps();
+    }
+
+
     public function city()
     {
        return $this->belongsTo('App\City','city_id');
@@ -53,7 +59,7 @@ class User extends Authenticatable
 
     public static function user_show($id)
     {
-        $user=User::where('id',$id)->with('city')->first();
+        $user=User::where('id',$id)->with('city','notifications')->first();
         return $user;
     }
 
@@ -161,7 +167,7 @@ class User extends Authenticatable
 
     public  static function user_index()
     {
-        $users=User::with('city')->get();
+        $users=User::with('city','notifications')->get();
         return $users;
     }
 

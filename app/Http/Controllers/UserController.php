@@ -261,6 +261,16 @@ class UserController extends Controller
 
 
 
+public function notifications_by_user(Request $request)
+{
+  $user_id=$request['user_id'];
+  $user=User::user_show($user_id);
+  $notifications=$user->notifications;
+  return response()->json(['status' => True, 'data' => $notifications,'type'=>'array']);
+
+}
+
+
    public function account()
     {
       if (Auth::check()) {

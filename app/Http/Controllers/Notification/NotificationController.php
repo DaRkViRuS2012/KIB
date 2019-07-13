@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Notification;
+use App\UserNotification;
 use App\NotificationService;
 use Illuminate\Http\Request;
 
@@ -54,6 +55,18 @@ class NotificationController extends Controller
         return redirect('/admin/notification/index');
         // return $notification;
     }
+
+        public function store_api(Request $request)
+    {
+
+        $title=$request['title'];
+        $body=$request['body'];
+         //NotificationService::SendToTopic('android',$body,$title);
+        $notification= Notification::notification_create($title,$body,$user_id=null);
+           return response()->json(['status' => True, 'data' => $notification, 'message' => '','type'=>'array']);
+        // return $notification;
+    }
+
 
 
 

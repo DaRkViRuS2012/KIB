@@ -90,8 +90,40 @@
             dataType: 'json',
             data: JSON.stringify({"to": "/topics/allUsers", "notification": {"title":title,"body":body}}),
             success : function(response) {
-                console.log(response);
+
+                   $.ajax({        
+            type : 'POST',
+            url : "/api/notification/create",
+            contentType : 'application/json',
+            dataType: 'json',
+            data: JSON.stringify({"title":title,"body":body}),
+            success : function(response) {
+
+              var notification=response.data;
+
+                console.log(notification);
+                var notification_id=notification.id;
+                       $.ajax({        
+            type : 'POST',
+            url : "/api/notification/create_to_users",
+            contentType : 'application/json',
+            dataType: 'json',
+            data: JSON.stringify({"notification_id":notification_id}),
+            success : function(response) {
+              var notification=response.data;
+                console.log(notification);
                 window.location.replace("https://khouryinsurance.com/admin/notification/index");
+            },
+            error : function(xhr, status, error) {
+                console.log(xhr.error);                   
+            }
+        });
+            },
+            error : function(xhr, status, error) {
+                console.log(xhr.error);                   
+            }
+        });
+          
             },
             error : function(xhr, status, error) {
                 console.log(xhr.error);                   

@@ -13,6 +13,14 @@ class Notification extends Model
     ];
 
 
+
+         public function users()
+    {
+        return $this->belongsToMany('App\User','user_notifications')->as('users')->withPivot('delivered')->withTimestamps();
+    }
+
+
+
     public static function notification_create($title,$body,$user_id=null)
     {
     	$notification=new Notification;
