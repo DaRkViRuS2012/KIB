@@ -32,6 +32,9 @@ Route::group(['middleware' => 'checkval'], function() {
 
 
 
+
+
+
 //*********************************************************************************************
 Route::get('/admin/about/index','AboutUsController@index');
 Route::get('/admin/about/create','AboutUsController@create');
@@ -310,4 +313,10 @@ Route::get('/company/portal/{id}','UserController@company_portal');
 
 Route::get('user/active', 'UserController@active_view');
 Route::post('user/active', 'UserController@active');
+
+  Route::get('/test', function() {
+    return view('test');
 });
+
+});
+
