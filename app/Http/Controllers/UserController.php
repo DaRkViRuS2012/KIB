@@ -265,8 +265,11 @@ public function notifications_by_user(Request $request)
 {
   $user_id=$request['user_id'];
   $user=User::user_show($user_id);
-  $notifications=$user->notifications;
+  if ($user!=null) {
+   $notifications=$user->notifications_unseen;
   return response()->json(['status' => True, 'data' => $notifications,'type'=>'array']);
+  }
+    return response()->json(['status' => false, 'data' => '','type'=>'array','message'=>'user not Found']);
 
 }
 

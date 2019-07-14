@@ -22,20 +22,6 @@
 
 </style> --}}
 
-  <!--[if gte IE 9]><!-->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-
-  
-<!--<![endif]-->
-<!--[if IE 9]>
-  <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie9.min.js"></script>
-<![endif]-->
-<!--[if lte IE 8]>
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie8.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.js"></script>
-<![endif]-->
 
   <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie9.min.css" rel="stylesheet">
 <link rel="manifest" href="{{request()->root()}}/public/manifest.json">
@@ -307,6 +293,7 @@
           <i class="fas fa-user"></i> {{Auth::user()->name}} </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
           <a class="dropdown-item" href="/account">@lang('My account')</a>
+          <a class="dropdown-item" href="/notifications">@lang('notifications')</a>
           <a class="dropdown-item" href="/logout">@lang('Log out')</a>
         </div>
       </li>
@@ -324,6 +311,40 @@
           <a class="nav-link" href="/lang/ar">عربي</a>
         </li>
         @endif
+        @if (Auth::check())
+          {{-- expr --}}
+        
+        <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter">{{Auth::user()->notifications->count()}}</span>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Alerts Center
+                </h6>
+
+                @foreach (Auth::user()->notifications as $notification)
+                  {{-- expr --}}
+                
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">{{$notification->created_at->format('h:i A')}}</div>
+                   {{$notification->title}}
+                  </div>
+                </a>
+                @endforeach
+                <a class="dropdown-item text-center small text-gray-500" href="/notifications">Show All Alerts</a>
+              </div>
+            </li>
+            @endif
       </ul>
   </div>
     <div style="left: 41%;" class="col-lg-1">
@@ -382,6 +403,7 @@
           <i class="fas fa-user"></i> {{Auth::user()->name}} </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
           <a class="dropdown-item" href="/account">@lang('My account')</a>
+          <a class="dropdown-item" href="/notifications">@lang('notifications')</a>
           <a class="dropdown-item" href="/logout">@lang('Log out')</a>
         </div>
       </li>
@@ -399,6 +421,40 @@
           <a class="nav-link" href="/lang/ar">عربي</a>
         </li>
         @endif
+             @if (Auth::check())
+          {{-- expr --}}
+        
+        <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter">{{Auth::user()->notifications->count()}}</span>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Alerts Center
+                </h6>
+
+                @foreach (Auth::user()->notifications as $notification)
+                  {{-- expr --}}
+                
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">{{$notification->created_at->format('h:i A')}}</div>
+                   {{$notification->title}}
+                  </div>
+                </a>
+                @endforeach
+                <a class="dropdown-item text-center small text-gray-500" href="/notifications">Show All Alerts</a>
+              </div>
+            </li>
+            @endif
       </ul>
     </div>
 
@@ -1002,6 +1058,7 @@ function closeNav() {
     body: notifications[i].body,
     icon: 'https://khouryinsurance.com/main_site/img/Logo.png',
     timeout: 4000,
+    link:'https://khouryinsurance.com/user/notifications/'+user_id,
     onClick: function () {
         window.focus();
         this.close();

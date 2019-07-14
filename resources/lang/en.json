@@ -72,6 +72,8 @@
     "more_soon":"More Soon ...",
     "service":"Service",
     "enquiry":"Enquiry",
-    "complaint":"Complaint"
+    "complaint":"Complaint",
+    "notifications":"My Notifications",
+    "notifications_title":"Notifications"
 
 }

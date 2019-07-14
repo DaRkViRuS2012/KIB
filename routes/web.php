@@ -306,6 +306,12 @@ Route::get('/application/single/mobile/{id}','SiteController@application_single_
 
 Route::get('/company/portal/{id}','UserController@company_portal');
 
+
+
+  Route::get('/notifications', function() {
+    return view('main_site.notifications');
+});
+
   Route::get('/company', function() {
     return view('company.index');
 });

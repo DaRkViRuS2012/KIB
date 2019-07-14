@@ -111,6 +111,40 @@
           <a class="nav-link" href="/lang/ar">عربي</a>
         </li>
         @endif
+             @if (Auth::check())
+          {{-- expr --}}
+        
+        <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter">{{Auth::user()->notifications->count()}}</span>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Alerts Center
+                </h6>
+
+                @foreach (Auth::user()->notifications as $notification)
+                  {{-- expr --}}
+                
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">{{$notification->created_at->format('h:i A')}}</div>
+                   {{$notification->title}}
+                  </div>
+                </a>
+                @endforeach
+                <a class="dropdown-item text-center small text-gray-500" href="/notifications">Show All Alerts</a>
+              </div>
+            </li>
+            @endif
       </ul>
   </div>
      <div class="col-lg-1 offset-lg-2">
@@ -184,6 +218,40 @@
           <a class="nav-link" href="/lang/ar">عربي</a>
         </li>
         @endif
+             @if (Auth::check())
+          {{-- expr --}}
+        
+        <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter">{{Auth::user()->notifications->count()}}</span>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Alerts Center
+                </h6>
+
+                @foreach (Auth::user()->notifications as $notification)
+                  {{-- expr --}}
+                
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">{{$notification->created_at->format('h:i A')}}</div>
+                   {{$notification->title}}
+                  </div>
+                </a>
+                @endforeach
+                <a class="dropdown-item text-center small text-gray-500" href="/notifications">Show All Alerts</a>
+              </div>
+            </li>
+            @endif
       </ul>
     </div>
 
