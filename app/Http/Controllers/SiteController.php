@@ -260,9 +260,10 @@ public function galleries()
     public function application_create_mobile(Request $request)
     {
 
-        $token=$request['token'];
+        //$token=$request['token'];
         $user_id=$request['user_id'];
-        $user=User::get_by_token($token);
+        $user=User::where('id',$user_id)->with('city')->first();
+        //$user=User::get_by_token($user_id);
         $services=Service::product_index_fathers();
         return view('main_site.application_create_mobile',compact('services','user'));
     }
@@ -270,9 +271,10 @@ public function galleries()
 
     public function application_service_create_mobile(Request $request)
     {
-        $token=$request['token'];
+        //$token=$request['token'];
         $user_id=$request['user_id'];
-        $user=User::get_by_token($token);
+        //$user=User::get_by_token($token);
+        $user=User::where('id',$user_id)->with('city')->first();
         $services=Service::product_index_fathers();
         return view('main_site.application_service_create_mobile',compact('services','user'));
     }

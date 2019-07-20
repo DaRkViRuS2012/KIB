@@ -47,6 +47,7 @@
                     <th>birthdate</th>
                     <th>City</th>
                     <th>Code</th>
+                    <th>Phone</th>
                     <th>role</th>
                     <th>Operations</th>
                   </tr>
@@ -66,6 +67,7 @@
                   @endif
                   
                   <td>{{$user->code}}</td>
+                  <td>0{{$user->mobile}}</td>
                   <td>{{$user->role}}</td>
                     <td style="width: 18%;"><div class="container">
                       <div  class="row"><a style="margin-left:1%" href="/admin/{{Request::segment(2)}}/update/{{$user->id}}"><button class="btn btn-primary" aria-hidden="true">Edit</button></a><a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" onclick="return confirm('Are you sure you want to delete this user')" href="/admin/{{Request::segment(2)}}/delete/{{$user->id}}"><button class="btn btn-danger" aria-hidden="true">Delete</button></a> <a  style="margin-left:1%;color:rgba(204, 0, 0, 1);" href="/admin/{{Request::segment(2)}}/index/{{$user->id}}"></div>

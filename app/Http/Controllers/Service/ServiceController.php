@@ -523,7 +523,7 @@ class ServiceController extends Controller
      public function product_index_api()
     {
          $products=Service::product_index();
-            foreach ($products as $product) {
+            foreach ($products as $product) {   
             foreach ($product->media as $media1) {
                 $media1->url=env('website_link').env('image_storage').$media1->url;
             }
