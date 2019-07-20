@@ -318,7 +318,12 @@
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">{{Auth::user()->notifications->count()}}</span>
+                @if (Auth::user()->notifications_unseen!=null)
+                <span class="badge badge-danger badge-counter">{{Auth::user()->notifications_unseen->count()}}</span>
+                @else
+                  <span class="badge badge-danger badge-counter">0</span>
+                @endif
+               
               </a>
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">

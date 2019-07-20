@@ -48,6 +48,31 @@ class SiteController extends Controller
 
         ]);
     }
+
+
+
+             protected function validator_application_mobile(array $data)
+    {
+
+
+        return Validator::make($data, [
+            'fname_en' => ['required', 'string', 'max:255'],
+             'father_name_en' => ['required', 'string', 'max:255'],
+             'lname_en' => ['required', 'string', 'max:255'],
+             'fname_ar' => ['required', 'string', 'max:255'],
+             'father_name_ar' => ['required', 'string', 'max:255'],
+             'lname_ar' => ['required', 'string', 'max:255'],
+             'birthdate' =>  ['required', 'date'],
+             'service' => ['required',],
+             'sub_service' => ['required'],
+             'nationality' => ['required', 'string', 'max:255'],
+             'national_id' => ['required', 'string', 'max:255'],
+             'martial_status' => ['required', 'string', 'max:255'],
+             'work' => ['required', 'string', 'max:255'],
+            'is_date' =>  ['required'],
+
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -611,6 +636,15 @@ public function galleries()
 
     public function application_store_mobile(Request $request)
     {
+    	  $validator = $this->validator_application($request->input());
+         if ($validator->fails()) {
+            // return back()->withErrors($validator)->withInput(); //TODO
+
+            return redirect()->back()
+                    ->withInput($request->input())
+                    ->withErrors($validator);
+
+        }
         $token=$request['token'];
         $applicant_name_en=$request['fname_en'].' '.$request['father_name_en'].' '.$request['lname_en'];
         $applicant_name_ar=$request['fname_ar'].' '.$request['father_name_ar'].' '.$request['lname_ar'];
@@ -841,8 +875,9 @@ public function galleries()
 
     public function product_sons_api(Request $request)
     {
+
         $id=$request['id'];
-        $products=Service::product_index_fathers();
+        // $products=Service::product_index_fathers();
         $main_service=Service::service_index_sons($id);
         foreach ($main_service as $key => $service) {
                 foreach ($service->media as $key => $image) {

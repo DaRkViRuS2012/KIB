@@ -17,7 +17,7 @@ class Service extends Model
 
     public function media()
     {
-        return $this->hasMany('App\Media','content_id')->where('content_type','service');
+        return $this->hasMany('App\Media','content_id');//->where('content_type','service');
     }
 
     public function cover()
@@ -112,7 +112,7 @@ class Service extends Model
 
     public static function product_index()
     {
-        $services=Service::where('type','product')->with('product_media','sons','options')->get();
+        $services=Service::where('type','product')->with('media','sons','options')->get();
         return $services;
     }
 

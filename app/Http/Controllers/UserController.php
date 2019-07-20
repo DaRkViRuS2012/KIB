@@ -297,7 +297,7 @@ public function notifications_by_user(Request $request)
     }
 
 
-              public function admin_update(Request $request)
+   public function admin_update(Request $request)
     {
         $validator = $this->validator_update($request->input());
          if ($validator->fails()) {
@@ -318,7 +318,8 @@ public function notifications_by_user(Request $request)
         $token=str_replace("/","",Hash::make($name.$email));
         $os='web';
 
-        $user=User::admin_user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token);
+        $user=User::admin_user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token,'');
+
           // Sms_helper::send_sms($user->mobile,$user->code);
          // Auth::loginUsingId($user->id);
          return redirect('/admin/user/index');
@@ -401,15 +402,15 @@ public function login(Request $request)
           // Authentication passed...
         $user= User::where('email',$request->email)->first();
         if ($user->active=='1') {
-    return response()->json(['status' => True, 'data' => $user, 'message' => '','type'=>'array']);
+    return response()->json(['status' => True, 'data' => $user, 'message' => ['Login Succesfully'],'type'=>'array']);
 
         }
 
 
-     return response()->json(['status' => false, 'data' => '', 'message' => 'the user needs to be activated','type'=>'error']);
+     return response()->json(['status' => false, 'data' => '', 'message' => ['the user needs to be activated'],'type'=>'error']);
       }
 
-      return response()->json(['status' => false, 'data' =>'', 'message' => 'The username or password are wronng','type'=>'error']);
+      return response()->json(['status' => false, 'data' =>'', 'message' => ['The username or password are wronng'],'type'=>'error']);
 
 
 }

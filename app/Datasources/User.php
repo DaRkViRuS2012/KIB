@@ -129,7 +129,7 @@ class User extends Authenticatable
     }
 
 
-            public static function admin_user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token,$image)
+    public static function admin_user_update($id,$name,$username,$email,$password,$birthdate,$fcmtoken,$os,$city_id,$code,$mobile,$token,$image)
     {
        $user=User::find($id);
         $user->name=$name;
@@ -145,7 +145,7 @@ class User extends Authenticatable
         $user->mobile=$mobile;
         $user->code=Sms_helper::RandomString();
         $user->city_id=$city_id;
-        $user->image=$image;
+        // $user->image=$image;
         $user->save();
         return $user;
     }
